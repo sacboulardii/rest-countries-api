@@ -6,9 +6,9 @@
     </section>
     <section class="countries">
       <ul class="countries__list">
-        <!-- <li v-for="country in countries">
-          <countryCard></countryCard>
-        </li> -->
+        <countryCard></countryCard>
+        <countryCard></countryCard>
+        <countryCard></countryCard>
       </ul>
     </section>
   </main>
@@ -17,23 +17,33 @@
 <script>
 import searchBar from '@/components/searchBar.vue'
 import filterSelect from '@/components/filterSelect.vue'
-// import countryCard from '@/components/countryCard.vue'
+import countryCard from '@/components/countryCard.vue'
 
 export default {
   name: 'HomeView',
   components: {
     searchBar,
     filterSelect,
+    countryCard,
   },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="sass">
+.search-wrapper
+  > * + *
+    margin-top: 2.5rem
+
+.countries__list
+  margin-top: 2rem
+  padding: 0 2.5rem
+
 main
   background-color: var(--very-light-gray-l)
-  padding-top: 3rem
-  height: 100vh
+  padding-top: 1.5rem
+  padding-bottom: 3rem
+
 h3
   margin: 40px 0 0
 

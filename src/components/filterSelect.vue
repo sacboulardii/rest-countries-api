@@ -1,7 +1,7 @@
 <template>
   <div class="filter">
     <select name="" id="" class="filter__select">
-      <option value="Country 1">Country 1</option>
+      <option value="" disabled selected hidden>Filter by Region</option>
       <option value="Country 2">Country 2</option>
       <option value="Country 3">Country 3</option>
       <option value="Country 4">Country 4</option>
@@ -15,4 +15,21 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="sass">
+.filter__select
+
+  background-color: white
+  border: none
+  border-radius: 0.25rem
+  border-right: 1rem solid transparent
+
+  box-shadow:         0px 2px 8px 4px rgba(0,0,0,0.05)
+  -webkit-box-shadow: 0px 2px 8px 4px rgba(0,0,0,0.05)
+  -moz-box-shadow:    0px 2px 8px 4px rgba(0,0,0,0.05)
+
+  padding: 1rem
+  width: 60%
+
+  ::focus
+    outline: none
+</style>
