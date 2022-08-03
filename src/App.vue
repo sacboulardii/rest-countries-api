@@ -7,23 +7,46 @@
 </template>
 
 <style lang="sass">
-#app
-  font-family: Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-  text-align: center
-  color: #2c3e50
+:root
+    /* Dark Mode */
+    --dark-blue-d : hsl(209, 23%, 22%)
+    --very-dark-blue-d: hsl(207, 26%, 17%)
+
+    /* Light Mode */
+    --very-dark-blue-l: hsl(200, 15%, 8%)
+    --dark-gray-l: hsl(0, 0%, 52%)
+    --very-light-gray-l: hsl(0, 0%, 98%)
+
+    /* Dark and Light Modes */
+    --white: hsl(0, 0%, 100%)
+
+    /* Typography */
+    --home-fs: 14px
+    --details-fs: 16px
+
+    --font-family: 'Nunito Sans', sans-serif
+
+    --fw-300: 300
+    --fw-600: 600
+    --fw-800: 800
+
+    /* Breakpoints */
+    --mobile: 375px
+    --desktop: 1440px
 
 
-nav
-  padding: 30px
+*,
+*::before,
+*::after
+    box-sizing: border-box
+    margin: 0
 
 
-nav a
-  font-weight: bold
-  color: #2c3e50
+ul
+    padding-left: 0
+    list-style: none
 
 
-nav a.router-link-exact-active
-  color: #42b983
+img
+    max-width: 100%
 </style>
