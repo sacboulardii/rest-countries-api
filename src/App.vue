@@ -1,7 +1,10 @@
 <template>
   <header class="container">
     <router-link to="/"><h1 class="title">Where in the world?</h1></router-link>
-    <p class="switch">Dark Mode</p>
+    <div class="switch">
+      <font-awesome-icon icon="fa-moon" />
+      <span>Dark Mode</span>
+    </div>
   </header>
   <router-view />
 </template>
@@ -34,19 +37,48 @@
     --mobile: 375px
     --desktop: 1440px
 
-
 *,
 *::before,
 *::after
-    box-sizing: border-box
-    margin: 0
-
+  box-sizing: border-box
+  margin: 0
 
 ul
-    padding-left: 0
-    list-style: none
-
+  padding-left: 0
+  list-style: none
 
 img
-    max-width: 100%
+  max-width: 100%
+
+a
+  color: initial
+  text-decoration: none
+
+header
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+  -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.15)
+  -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.15)
+  box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.15)
+
+  padding-top: 2rem
+  padding-bottom: 2rem
+
+body
+  font-family: var(--font-family)
+
+.container
+  padding-left: 5%
+  padding-right: 5%
+
+.title
+  font-size: var(--home-fs)
+
+.fa-moon
+  margin-right: 0.5rem
+
+.switch
+  font-size: var(--home-fs)
 </style>
