@@ -1,12 +1,12 @@
 <template>
   <main class="container">
     <section class="search-wrapper">
-      <searchBar />
-      <filterSelect />
+      <SearchBar />
+      <FilterSelect />
     </section>
     <section class="countries">
       <ul class="countries__list">
-        <countryCard
+        <CountryCard
           v-for="country in countries"
           :image="country.flags.png"
           :name="country.name.common"
@@ -21,17 +21,17 @@
 </template>
 
 <script>
-import searchBar from '@/components/searchBar.vue'
-import filterSelect from '@/components/filterSelect.vue'
-import countryCard from '@/components/countryCard.vue'
+import SearchBar from '@/components/SearchBar.vue'
+import FilterSelect from '@/components/FilterSelect.vue'
+import CountryCard from '@/components/CountryCard.vue'
 import CountriesService from '@/services/CountriesService'
 
 export default {
   name: 'HomeView',
   components: {
-    searchBar,
-    filterSelect,
-    countryCard,
+    SearchBar,
+    FilterSelect,
+    CountryCard,
   },
   data() {
     return {
