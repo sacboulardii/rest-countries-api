@@ -51,6 +51,11 @@ a
   color: initial
   text-decoration: none
 
+input:focus,
+textarea:focus,
+select:focus
+  outline: none
+
 header
   display: flex
   align-items: center
