@@ -13,19 +13,15 @@
 
 <style lang="sass">
 :root
-    /* Dark Mode */
     --dark-blue-d : hsl(209, 23%, 22%)
     --very-dark-blue-d: hsl(207, 26%, 17%)
 
-    /* Light Mode */
     --very-dark-blue-l: hsl(200, 15%, 8%)
     --dark-gray-l: hsl(0, 0%, 52%)
     --very-light-gray-l: hsl(0, 0%, 98%)
 
-    /* Dark and Light Modes */
     --white: hsl(0, 0%, 100%)
 
-    /* Typography */
     --home-fs: 14px
     --details-fs: 16px
 
@@ -35,7 +31,6 @@
     --fw-600: 600
     --fw-800: 800
 
-    /* Breakpoints */
     --mobile: 375px
     --desktop: 1440px
 

@@ -39,10 +39,8 @@ export default {
     }
   },
   created() {
-    // SET COUNTRIES TO RETURNED ARRAY OF COUNTRIES
     CountriesService.getCountries().then((res) => (this.countries = res.data))
 
-    // LOG COUNTRIES FROM API
     // CountriesService.getCountries()
     //   .then((res) => res.data)
     //   .then(console.log)
@@ -50,7 +48,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="sass">
 .search-wrapper
   > * + *
