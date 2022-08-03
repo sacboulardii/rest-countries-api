@@ -1,8 +1,8 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <header class="container">
+    <router-link to="/"><h1 class="title">Where in the world?</h1></router-link>
+    <p class="switch">Dark Mode</p>
+  </header>
   <router-view />
 </template>
 
