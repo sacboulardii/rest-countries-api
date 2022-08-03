@@ -4,14 +4,26 @@
       <searchBar />
       <filterSelect />
     </section>
-    <section class="countries"></section>
+    <section class="countries">
+      <ul class="countries__list">
+        <countryCard
+          v-for="country in countries"
+          :image="country.flags.png"
+          :name="country.name.common"
+          :population="country.population"
+          :region="country.region"
+          :capital="country.capital"
+          :key="country.name.common"
+        />
+      </ul>
+    </section>
   </main>
 </template>
 
 <script>
 import searchBar from '@/components/searchBar.vue'
 import filterSelect from '@/components/filterSelect.vue'
-// import countryCard from '@/components/countryCard.vue'
+import countryCard from '@/components/countryCard.vue'
 import CountriesService from '@/services/CountriesService'
 
 export default {
@@ -19,7 +31,7 @@ export default {
   components: {
     searchBar,
     filterSelect,
-    // countryCard,
+    countryCard,
   },
   data() {
     return {
@@ -27,9 +39,13 @@ export default {
     }
   },
   created() {
-    CountriesService.getCountries()
-      .then((res) => res.data)
-      .then(console.log)
+    // SET COUNTRIES TO RETURNED ARRAY OF COUNTRIES
+    CountriesService.getCountries().then((res) => (this.countries = res.data))
+
+    // LOG COUNTRIES FROM API
+    // CountriesService.getCountries()
+    //   .then((res) => res.data)
+    //   .then(console.log)
   },
 }
 </script>

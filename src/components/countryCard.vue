@@ -1,22 +1,18 @@
 <template>
   <div class="card">
     <figure>
-      <img
-        :src="require(`@/assets/${image}`)"
-        class="card__image"
-        :alt="name + ' Flag'"
-      />
+      <img :src="image" class="card__image" :alt="name + ' Flag'" />
     </figure>
     <div class="card__description">
       <h3 class="card__country">{{ name }}</h3>
       <p class="card__population">
-        Population: <span>{{ population }}</span>
+        Population: <span>{{ population.toLocaleString('en-US') }}</span>
       </p>
       <p class="card__region">
         Region: <span>{{ region }}</span>
       </p>
       <p class="card__capital">
-        Capital: <span>{{ capital }}</span>
+        Capital: <span>{{ capital[0] }}</span>
       </p>
     </div>
   </div>
@@ -25,14 +21,27 @@
 <script>
 export default {
   name: 'countryCard',
-  data() {
-    return {
-      image: 'Flag_of_Germany.svg.png',
-      name: 'Germany',
-      population: '12,345,678',
-      region: 'Europe',
-      capital: 'Berlin',
-    }
+  props: {
+    region: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    population: {
+      type: Number,
+    },
+    capital: {
+      type: Array,
+      required: true,
+      default: () => ['None'],
+    },
+    image: {
+      type: String,
+      required: true,
+    },
   },
 }
 </script>
@@ -45,8 +54,10 @@ export default {
     -webkit-box-shadow: 0px 2px 8px 4px rgba(0,0,0,0.05)
     -moz-box-shadow:    0px 2px 8px 4px rgba(0,0,0,0.05)
 
-    font-weight: var(--fw-600)
+    font-weight: var(--fw-300)
     overflow: hidden
+
+    max-width: 320px
 
     + .card
         margin-top: 3rem
