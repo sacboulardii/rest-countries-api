@@ -4,27 +4,32 @@
       <searchBar />
       <filterSelect />
     </section>
-    <section class="countries">
-      <ul class="countries__list">
-        <countryCard></countryCard>
-        <countryCard></countryCard>
-        <countryCard></countryCard>
-      </ul>
-    </section>
+    <section class="countries"></section>
   </main>
 </template>
 
 <script>
 import searchBar from '@/components/searchBar.vue'
 import filterSelect from '@/components/filterSelect.vue'
-import countryCard from '@/components/countryCard.vue'
+// import countryCard from '@/components/countryCard.vue'
+import CountriesService from '@/services/CountriesService'
 
 export default {
   name: 'HomeView',
   components: {
     searchBar,
     filterSelect,
-    countryCard,
+    // countryCard,
+  },
+  data() {
+    return {
+      countries: null,
+    }
+  },
+  created() {
+    CountriesService.getCountries()
+      .then((res) => res.data)
+      .then(console.log)
   },
 }
 </script>
