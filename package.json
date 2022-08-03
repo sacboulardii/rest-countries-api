@@ -1,7 +1,12 @@
-{
+  {
   "name": "rest-countries-api",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=16.0.0",
+    "npm":  ">=8.15.0",
+    "yarn": "please use npm"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
