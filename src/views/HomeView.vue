@@ -7,13 +7,9 @@
     <section class="countries">
       <ul class="countries__list">
         <CountryCard
-          v-for="country in countries"
-          :image="country.flags.png"
-          :name="country.name.common"
-          :population="country.population"
-          :region="country.region"
-          :capital="country.capital"
-          :key="country.name.common"
+          v-for="(country, index) in countries"
+          :country="country"
+          :key="index"
         />
       </ul>
     </section>
@@ -40,10 +36,6 @@ export default {
   },
   created() {
     CountriesService.getCountries().then((res) => (this.countries = res.data))
-
-    // CountriesService.getCountries()
-    //   .then((res) => res.data)
-    //   .then(console.log)
   },
 }
 </script>

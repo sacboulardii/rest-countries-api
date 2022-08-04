@@ -6,13 +6,14 @@
     <div class="card__description">
       <h3 class="card__country">{{ name }}</h3>
       <p class="card__population">
-        Population: <span>{{ population.toLocaleString('en-US') }}</span>
+        Population:
+        <span>{{ population }}</span>
       </p>
       <p class="card__region">
         Region: <span>{{ region }}</span>
       </p>
       <p class="card__capital">
-        Capital: <span>{{ capital[0] }}</span>
+        Capital: <span>{{ capital }}</span>
       </p>
     </div>
   </div>
@@ -22,25 +23,28 @@
 export default {
   name: 'CountryCard',
   props: {
-    region: {
-      type: String,
+    country: {
+      type: Object,
       required: true,
     },
-    name: {
-      type: String,
-      required: true,
+  },
+  computed: {
+    population() {
+      let popCount = this.country.population
+      return popCount.toLocaleString('en-US')
     },
-    population: {
-      type: Number,
+    capital() {
+      let capitalArray = this.country.capital
+      return capitalArray ? capitalArray[0] : 'None'
     },
-    capital: {
-      type: Array,
-      required: true,
-      default: () => ['None'],
+    image() {
+      return this.country.flags.png
     },
-    image: {
-      type: String,
-      required: true,
+    name() {
+      return this.country.name.common
+    },
+    region() {
+      return this.country.region
     },
   },
 }
