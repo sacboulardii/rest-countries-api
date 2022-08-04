@@ -37,4 +37,7 @@ export default {
   width: calc(60% - 6%)
 
   position: absolute
+  transform: translateY(5px)
+
+  overflow: hidden
 </style>

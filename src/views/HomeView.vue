@@ -5,7 +5,7 @@
       <AppDropdown>
         <template v-slot:toggler>
           <button class="dropdown-button">
-            Click me
+            Filter by Region
             <svg
               class="dropdown-arrow"
               xmlns="http://www.w3.org/2000/svg"
@@ -18,9 +18,11 @@
           </button>
         </template>
         <AppDropdownContent>
-          <AppDropdownItem>Action 1</AppDropdownItem>
-          <AppDropdownItem>Action 2</AppDropdownItem>
-          <AppDropdownItem>Action 3</AppDropdownItem>
+          <AppDropdownItem>Africa</AppDropdownItem>
+          <AppDropdownItem>America</AppDropdownItem>
+          <AppDropdownItem>Asia</AppDropdownItem>
+          <AppDropdownItem>Europe</AppDropdownItem>
+          <AppDropdownItem>Oceania</AppDropdownItem>
         </AppDropdownContent>
       </AppDropdown>
     </section>

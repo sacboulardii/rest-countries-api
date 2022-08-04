@@ -1,5 +1,6 @@
 <template>
   <div class="search-bar">
+    <font-awesome-icon icon="fa-solid fa-magnifying-glass" opacity="0.2" />
     <input
       type="text"
       class="search-bar__input"
@@ -27,6 +28,15 @@ export default {
 </script>
 
 <style lang="sass">
+.search-bar
+  position: relative
+
+.fa-magnifying-glass
+  position: absolute
+  top: 50%
+  left: 1rem
+  transform: translateY(-50%)
+
 .search-bar__input
   border: none
   border-radius: 0.25rem
@@ -39,6 +49,8 @@ export default {
   width: 100%
 
 ::placeholder
+  position: relative
+  left: 2rem
   font-size: 12px
   opacity: 0.5
 </style>
