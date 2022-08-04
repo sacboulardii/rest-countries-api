@@ -58,7 +58,7 @@ export default {
     -webkit-box-shadow: 0px 2px 8px 4px rgba(0,0,0,0.05)
     -moz-box-shadow:    0px 2px 8px 4px rgba(0,0,0,0.05)
 
-    font-weight: var(--fw-300)
+    font-weight: $fw-300
     overflow: hidden
 
     max-width: 320px
@@ -70,10 +70,10 @@ export default {
     margin-bottom: 1.5rem
 
 .card__description
-    font-size: var(--home-fs)
+    font-size: $home-fs
     padding: 2rem 1.5rem 3rem 1.5rem
     > p + p
         margin-top: 0.5rem
     span
-        font-weight: var(--fw-300)
+        font-weight: $fw-300
 </style>

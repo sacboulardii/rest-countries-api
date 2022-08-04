@@ -73,7 +73,7 @@ export default {
   padding: 0 2.5rem
 
 main
-  background-color: var(--very-light-gray-l)
+  background-color: $very-light-gray-l
   padding-top: 1.5rem
   padding-bottom: 3rem
 </style>

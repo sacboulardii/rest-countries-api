@@ -12,49 +12,6 @@
 </template>
 
 <style lang="sass">
-:root
-    --dark-blue-d : hsl(209, 23%, 22%)
-    --very-dark-blue-d: hsl(207, 26%, 17%)
-
-    --very-dark-blue-l: hsl(200, 15%, 8%)
-    --dark-gray-l: hsl(0, 0%, 52%)
-    --very-light-gray-l: hsl(0, 0%, 98%)
-
-    --white: hsl(0, 0%, 100%)
-
-    --home-fs: 14px
-    --details-fs: 16px
-
-    --font-family: 'Nunito Sans', sans-serif
-
-    --fw-300: 300
-    --fw-600: 600
-    --fw-800: 800
-
-    --mobile: 375px
-    --desktop: 1440px
-
-*,
-*::before,
-*::after
-  box-sizing: border-box
-  margin: 0
-
-ul
-  padding-left: 0
-  list-style: none
-
-img
-  max-width: 100%
-
-a
-  color: initial
-  text-decoration: none
-
-input:focus,
-textarea:focus,
-select:focus
-  outline: none
 
 header
   display: flex
@@ -72,18 +29,18 @@ header
   z-index: 10
 
 body
-  font-family: var(--font-family)
+  font-family: $font-family
 
 .container
   padding-left: 5%
   padding-right: 5%
 
 .title
-  font-size: var(--home-fs)
+  font-size: $home-fs
 
 .fa-moon
   margin-right: 0.5rem
 
 .switch
-  font-size: var(--home-fs)
+  font-size: $home-fs
 </style>
