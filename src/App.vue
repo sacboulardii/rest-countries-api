@@ -54,7 +54,7 @@ a
 input:focus,
 textarea:focus,
 select:focus
-  outline: n
+  outline: none
 
 header
   display: flex
