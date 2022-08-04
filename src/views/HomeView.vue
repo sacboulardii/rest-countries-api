@@ -2,7 +2,6 @@
   <main class="container">
     <section class="search-wrapper">
       <SearchBar @search-countries-by-query="searchByName" />
-      <FilterSelect />
       <AppDropdown>
         <template v-slot:toggler>
           <button class="dropdown-button">
@@ -39,7 +38,6 @@
 
 <script>
 import SearchBar from '@/components/SearchBar.vue'
-import FilterSelect from '@/components/FilterSelect.vue'
 import CountryCard from '@/components/CountryCard.vue'
 import CountriesService from '@/services/CountriesService'
 import AppDropdown from '@/components/AppDropdown.vue'
@@ -50,7 +48,6 @@ export default {
   name: 'HomeView',
   components: {
     SearchBar,
-    FilterSelect,
     CountryCard,
     AppDropdown,
     AppDropdownContent,
