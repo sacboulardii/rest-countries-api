@@ -3,6 +3,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import VueClickAway from 'vue3-click-away'
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -19,5 +20,6 @@ library.add(faMoon)
 createApp(App)
   .use(store)
   .use(router)
+  .use(VueClickAway)
   .component('font-awesome-icon', FontAwesomeIcon)
   .mount('#app')

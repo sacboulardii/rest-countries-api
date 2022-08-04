@@ -3,6 +3,27 @@
     <section class="search-wrapper">
       <SearchBar @search-countries-by-query="searchByName" />
       <FilterSelect />
+      <AppDropdown>
+        <template v-slot:toggler>
+          <button class="dropdown-button">
+            Click me
+            <svg
+              class="dropdown-arrow"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"
+              ></path>
+            </svg>
+          </button>
+        </template>
+        <AppDropdownContent>
+          <AppDropdownItem>Action 1</AppDropdownItem>
+          <AppDropdownItem>Action 2</AppDropdownItem>
+          <AppDropdownItem>Action 3</AppDropdownItem>
+        </AppDropdownContent>
+      </AppDropdown>
     </section>
     <section class="countries">
       <ul class="countries__list">
@@ -21,6 +42,9 @@ import SearchBar from '@/components/SearchBar.vue'
 import FilterSelect from '@/components/FilterSelect.vue'
 import CountryCard from '@/components/CountryCard.vue'
 import CountriesService from '@/services/CountriesService'
+import AppDropdown from '@/components/AppDropdown.vue'
+import AppDropdownContent from '@/components/AppDropdownContent.vue'
+import AppDropdownItem from '@/components/AppDropdownItem.vue'
 
 export default {
   name: 'HomeView',
@@ -28,6 +52,9 @@ export default {
     SearchBar,
     FilterSelect,
     CountryCard,
+    AppDropdown,
+    AppDropdownContent,
+    AppDropdownItem,
   },
   data() {
     return {
@@ -64,6 +91,27 @@ export default {
 </script>
 
 <style scoped lang="sass">
+.dropdown-button
+  background-color: #fff
+  border: none
+  border-radius: 0.25rem
+
+  box-shadow:         0px 2px 8px 4px rgba(0,0,0,0.05)
+  -webkit-box-shadow: 0px 2px 8px 4px rgba(0,0,0,0.05)
+  -moz-box-shadow:    0px 2px 8px 4px rgba(0,0,0,0.05)
+
+  width: 60%
+  padding: 1rem
+  position: relative
+  text-align: left
+
+.dropdown-arrow
+  position: absolute
+  top: 50%
+  right: 0.5rem
+  transform: translateY(-50%)
+  width: 1.5rem
+
 .search-wrapper
   > * + *
     margin-top: 2.5rem
