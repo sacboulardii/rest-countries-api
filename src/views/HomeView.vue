@@ -1,7 +1,7 @@
 <template>
   <main class="container">
     <section class="search-wrapper">
-      <SearchBar @search-countries-by-query="searchCountries" />
+      <SearchBar @search-countries-by-query="searchByName" />
       <FilterSelect />
     </section>
     <section class="countries">
@@ -48,11 +48,14 @@ export default {
     CountriesService.getCountries().then((res) => (this.countries = res.data))
   },
   methods: {
-    searchCountries(query) {
+    searchByName(query) {
       CountriesService.getCountries().then(
         (res) =>
-          (this.countries = res.data.filter(
-            (country) => country.name.common === query
+          (this.countries = res.data.filter((country) =>
+            country.name.common
+              .toLowerCase()
+              .split(' ')
+              .some((name) => name.startsWith(query.toLowerCase()))
           ))
       )
     },

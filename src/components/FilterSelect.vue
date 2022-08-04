@@ -18,6 +18,7 @@ export default {
 <style lang="sass">
 .filter
   margin-bottom: 2rem
+
 .filter__select
 
   background-color: white
