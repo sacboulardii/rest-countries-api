@@ -4,13 +4,26 @@
       type="text"
       class="search-bar__input"
       placeholder="Search for a country..."
+      v-model="searchQuery"
+      @keyup.enter="searchCountriesByQuery"
     />
+    <span>{{ searchQuery }}</span>
   </div>
 </template>
 
 <script>
 export default {
   name: 'searchBar',
+  data() {
+    return {
+      searchQuery: '',
+    }
+  },
+  methods: {
+    searchCountriesByQuery() {
+      this.$emit('search-countries-by-query', this.searchQuery)
+    },
+  },
 }
 </script>
 

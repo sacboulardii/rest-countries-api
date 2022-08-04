@@ -1,7 +1,7 @@
 <template>
   <main class="container">
     <section class="search-wrapper">
-      <SearchBar />
+      <SearchBar @search-countries-by-query="searchCountries" />
       <FilterSelect />
     </section>
     <section class="countries">
@@ -31,11 +31,31 @@ export default {
   },
   data() {
     return {
-      countries: null,
+      apiCountries: null,
     }
+  },
+  computed: {
+    countries: {
+      get() {
+        return this.apiCountries
+      },
+      set(countries) {
+        this.apiCountries = countries
+      },
+    },
   },
   created() {
     CountriesService.getCountries().then((res) => (this.countries = res.data))
+  },
+  methods: {
+    searchCountries(query) {
+      CountriesService.getCountries().then(
+        (res) =>
+          (this.countries = res.data.filter(
+            (country) => country.name.common === query
+          ))
+      )
+    },
   },
 }
 </script>
@@ -53,18 +73,4 @@ main
   background-color: var(--very-light-gray-l)
   padding-top: 1.5rem
   padding-bottom: 3rem
-
-h3
-  margin: 40px 0 0
-
-ul
-  list-style-type: none
-  padding: 0
-
-li
-  display: inline-block
-  margin: 0 10px
-
-a
-  color: #42b983
 </style>
