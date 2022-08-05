@@ -16,4 +16,7 @@ export default {
   getCountryByName(name) {
     return apiClient.get(`/name/${name}`)
   },
+  getCountryByRegion(region) {
+    return apiClient.get(`/region/${region}`)
+  },
 }

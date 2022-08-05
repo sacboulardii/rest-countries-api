@@ -9,9 +9,6 @@ export default createStore({
     SET_COUNTRIES(state, countries) {
       state.countries = countries
     },
-    SET_FILTERED_COUNTRIES(state, countries) {
-      state.countries = countries
-    },
   },
   actions: {
     fetchCountries({ commit }) {
@@ -26,7 +23,16 @@ export default createStore({
     fetchCountryByName({ commit }, name) {
       return CountriesService.getCountryByName(name)
         .then((response) => {
-          commit('SET_FILTERED_COUNTRIES', response.data)
+          commit('SET_COUNTRIES', response.data)
+        })
+        .catch((e) => {
+          throw e
+        })
+    },
+    fetchCountryByRegion({ commit }, region) {
+      return CountriesService.getCountryByRegion(region)
+        .then((response) => {
+          commit('SET_COUNTRIES', response.data)
         })
         .catch((e) => {
           throw e

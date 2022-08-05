@@ -18,11 +18,13 @@
           </button>
         </template>
         <AppDropdownContent>
-          <AppDropdownItem>Africa</AppDropdownItem>
-          <AppDropdownItem>America</AppDropdownItem>
-          <AppDropdownItem>Asia</AppDropdownItem>
-          <AppDropdownItem>Europe</AppDropdownItem>
-          <AppDropdownItem>Oceania</AppDropdownItem>
+          <AppDropdownItem
+            v-for="region in ['Africa', 'America', 'Asia', 'Europe', 'Oceania']"
+            :key="region"
+            @search-countries-by-region="searchByRegion"
+          >
+            {{ region }}
+          </AppDropdownItem>
         </AppDropdownContent>
       </AppDropdown>
     </section>
@@ -65,6 +67,9 @@ export default {
   methods: {
     searchByName(query) {
       this.$store.dispatch('fetchCountryByName', query)
+    },
+    searchByRegion(region) {
+      this.$store.dispatch('fetchCountryByRegion', region)
     },
   },
 }
