@@ -41,7 +41,6 @@
 <script>
 import SearchBar from '@/components/SearchBar.vue'
 import CountryCard from '@/components/CountryCard.vue'
-import CountriesService from '@/services/CountriesService'
 import AppDropdown from '@/components/AppDropdown.vue'
 import AppDropdownContent from '@/components/AppDropdownContent.vue'
 import AppDropdownItem from '@/components/AppDropdownItem.vue'
@@ -55,35 +54,22 @@ export default {
     AppDropdownContent,
     AppDropdownItem,
   },
-  data() {
-    return {
-      apiCountries: null,
-    }
-  },
   computed: {
-    countries: {
-      get() {
-        return this.apiCountries
-      },
-      set(countries) {
-        this.apiCountries = countries
-      },
+    countries() {
+      return this.$store.state.countries
     },
   },
   created() {
-    CountriesService.getCountries().then((res) => (this.countries = res.data))
+    this.$store.dispatch('fetchCountries').catch((error) => {
+      this.$router.push({
+        name: 'ErrorDisplay',
+        params: { error: error },
+      })
+    })
   },
   methods: {
     searchByName(query) {
-      CountriesService.getCountries().then(
-        (res) =>
-          (this.countries = res.data.filter((country) =>
-            country.name.common
-              .toLowerCase()
-              .split(' ')
-              .some((name) => name.startsWith(query.toLowerCase()))
-          ))
-      )
+      this.$store.dispatch('fetchCountryByName', query)
     },
   },
 }
