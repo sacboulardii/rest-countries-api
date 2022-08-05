@@ -60,12 +60,7 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('fetchCountries').catch((error) => {
-      this.$router.push({
-        name: 'ErrorDisplay',
-        params: { error: error },
-      })
-    })
+    this.$store.dispatch('fetchCountries')
   },
   methods: {
     searchByName(query) {
