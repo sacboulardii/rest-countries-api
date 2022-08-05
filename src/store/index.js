@@ -4,10 +4,14 @@ import CountriesService from '@/services/CountriesService'
 export default createStore({
   state: {
     countries: null,
+    mode: 'light',
   },
   mutations: {
     SET_COUNTRIES(state, countries) {
       state.countries = countries
+    },
+    SWITCH_MODE(state) {
+      state.mode = state.mode === 'light' ? 'dark' : 'light'
     },
   },
   actions: {
@@ -37,6 +41,10 @@ export default createStore({
         .catch((e) => {
           throw e
         })
+    },
+    switchThemeMode({ commit, state }) {
+      commit('SWITCH_MODE')
+      console.log(state.mode)
     },
   },
   modules: {},
