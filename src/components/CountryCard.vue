@@ -1,22 +1,27 @@
 <template>
-  <div class="card">
-    <figure>
-      <img :src="image" class="card__image" :alt="name + ' Flag'" />
-    </figure>
-    <div class="card__description">
-      <h3 class="card__country">{{ name }}</h3>
-      <p class="card__population">
-        Population:
-        <span>{{ population }}</span>
-      </p>
-      <p class="card__region">
-        Region: <span>{{ region }}</span>
-      </p>
-      <p class="card__capital">
-        Capital: <span>{{ capital }}</span>
-      </p>
+  <router-link
+    :to="{ name: 'detail', params: { country: name } }"
+    class="card-link"
+  >
+    <div class="card">
+      <figure>
+        <img :src="image" class="card__image" :alt="name + ' Flag'" />
+      </figure>
+      <div class="card__description">
+        <h3 class="card__country">{{ name }}</h3>
+        <p class="card__population">
+          Population:
+          <span>{{ population }}</span>
+        </p>
+        <p class="card__region">
+          Region: <span>{{ region }}</span>
+        </p>
+        <p class="card__capital">
+          Capital: <span>{{ capital }}</span>
+        </p>
+      </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -51,6 +56,10 @@ export default {
 </script>
 
 <style lang="scss">
+.card-link {
+  display: block;
+}
+
 .card {
   background-color: var($--theme-foreground);
   border-radius: 0.25rem;
