@@ -16,7 +16,6 @@ export default createStore({
       console.log(countries)
       state.countriesV2 = countries
     },
-    // API V2
     SET_COUNTRY(state, country) {
       console.log(country)
       state.country.name = country.name
@@ -35,26 +34,6 @@ export default createStore({
       state.country.borderCountries = country.borders
       state.country.image = country.flags.svg
     },
-    // API V3
-    // SET_COUNTRY(state, country) {
-    //   console.log(
-    //     '🚀 ~ file: index.js ~ line 15 ~ SET_COUNTRY ~ country',
-    //     country
-    //   )
-    //   state.country.name = country.name.common
-    //   state.country.nativeName = ''
-    //   state.country.population = country.population.toLocaleString('en-US')
-    //   state.country.capital = country.capital[0]
-    //   state.country.region = country.region
-    //   state.country.subRegion = country.subregion
-    //   state.country.topLevelDomain = country.tld[0]
-    //   state.country.currencies = Object.values(country.currencies)
-    //     .map((curr) => curr.name)
-    //     .join(', ')
-    //   state.country.languages = Object.values(country.languages).join(', ')
-    //   state.country.borderCountries = ''
-    //   state.country.image = country.flags.svg
-    // },
     SWITCH_MODE(state) {
       state.mode = state.mode === 'light' ? 'dark' : 'light'
     },
@@ -63,7 +42,6 @@ export default createStore({
     },
   },
   actions: {
-    // API V2
     fetchCountries({ commit }) {
       return CountriesService.getCountries()
         .then((response) => {
@@ -73,16 +51,6 @@ export default createStore({
           throw e
         })
     },
-    // API V3
-    // fetchCountries({ commit }) {
-    //   return CountriesService.getCountries()
-    //     .then((response) => {
-    //       commit('SET_COUNTRIES', response.data)
-    //     })
-    //     .catch((e) => {
-    //       throw e
-    //     })
-    // },
     fetchCountryByName({ commit }, name) {
       return CountriesService.getCountryByName(name)
         .then((response) => {

@@ -19,14 +19,9 @@ const apiClient = axios.create({
 // })
 
 export default {
-  // API V2
   getCountries() {
     return apiClient.get('/all')
   },
-  // API V3
-  // getCountries() {
-  //   return apiClient.get('/all')
-  // },
   getCountryByName(name) {
     return apiClient.get(`/name/${name}`)
   },
