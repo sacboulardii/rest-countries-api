@@ -31,7 +31,7 @@ export default {
 }
 
 .dropdown-list {
-  background-color: $white;
+  background-color: var($--theme-foreground);
   border-radius: 0.25rem;
   display: flex;
   flex-direction: column;

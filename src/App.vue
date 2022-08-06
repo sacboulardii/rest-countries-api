@@ -1,5 +1,5 @@
 <template>
-  <header class="container" :class="this.$store.state.mode">
+  <header class="container">
     <router-link to="/">
       <h1 class="title">Where in the world?</h1>
     </router-link>
@@ -16,22 +16,32 @@ export default {
   name: 'App',
   methods: {
     switchMode() {
+      // Remove body theme class
+      document.body.classList.remove(this.$store.state.mode)
+      // Switch theme and add theme class to body
       this.$store.dispatch('switchThemeMode')
+      document.body.classList.add(this.$store.state.mode)
     },
+  },
+  created() {
+    // Add light theme to body on created Lifecycle
+    document.body.classList.add(this.$store.state.mode)
   },
 }
 </script>
 
 <style lang="scss">
+// Apply light (default) theme variables to light class
 .light {
   @include spread-map($theme-map-light);
 }
+// Apply dark theme variables to dark class
 .dark {
   @include spread-map($theme-map-dark);
 }
 
 header {
-  background-color: var($--theme-background);
+  background-color: var($--theme-foreground);
 
   display: flex;
   align-items: center;
@@ -49,6 +59,8 @@ header {
 }
 
 body {
+  background-color: var($--theme-background);
+  color: var($--theme-font-color);
   font-family: $font-family;
 }
 
@@ -58,6 +70,7 @@ body {
 }
 
 .title {
+  color: var($--theme-font-color);
   font-size: $home-fs;
 }
 

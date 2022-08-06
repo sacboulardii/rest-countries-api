@@ -52,6 +52,7 @@ export default {
 
 <style lang="scss">
 .card {
+  background-color: var($--theme-foreground);
   border-radius: 0.25rem;
 
   box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
@@ -61,7 +62,7 @@ export default {
   font-weight: $fw-300;
   overflow: hidden;
 
-  max-width: 320px;
+  max-width: 320px; // API Country Flag Image Max Width
 
   + .card {
     margin-top: 3rem;

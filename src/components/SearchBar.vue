@@ -33,13 +33,17 @@ export default {
 }
 
 .fa-magnifying-glass {
+  color: var($--theme-font-color);
   position: absolute;
   top: 50%;
   left: 1rem;
+  opacity: var($--theme-placeholder-opacity);
   transform: translateY(-50%);
 }
 
 .search-bar__input {
+  background-color: var($--theme-foreground);
+  color: var($--theme-font-color);
   border: none;
   border-radius: 0.25rem;
 
@@ -52,9 +56,10 @@ export default {
 }
 
 ::placeholder {
+  color: var($--theme-font-color);
   position: relative;
   left: 2rem;
   font-size: 12px;
-  opacity: 0.5;
+  opacity: var($--theme-placeholder-opacity);
 }
 </style>
