@@ -50,30 +50,36 @@ export default {
 }
 </script>
 
-<style lang="sass">
-.card
-    border-radius: 0.25rem
+<style lang="scss">
+.card {
+  border-radius: 0.25rem;
 
-    box-shadow:         0px 2px 8px 4px rgba(0,0,0,0.05)
-    -webkit-box-shadow: 0px 2px 8px 4px rgba(0,0,0,0.05)
-    -moz-box-shadow:    0px 2px 8px 4px rgba(0,0,0,0.05)
+  box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
 
-    font-weight: $fw-300
-    overflow: hidden
+  font-weight: $fw-300;
+  overflow: hidden;
 
-    max-width: 320px
+  max-width: 320px;
 
-    + .card
-        margin-top: 3rem
+  + .card {
+    margin-top: 3rem;
+  }
+}
 
-.card__country
-    margin-bottom: 1.5rem
+.card__country {
+  margin-bottom: 1.5rem;
+}
 
-.card__description
-    font-size: $home-fs
-    padding: 2rem 1.5rem 3rem 1.5rem
-    > p + p
-        margin-top: 0.5rem
-    span
-        font-weight: $fw-300
+.card__description {
+  font-size: $home-fs;
+  padding: 2rem 1.5rem 3rem 1.5rem;
+  > p + p {
+    margin-top: 0.5rem;
+  }
+  span {
+    font-weight: $fw-300;
+  }
+}
 </style>

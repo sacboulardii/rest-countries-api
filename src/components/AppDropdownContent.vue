@@ -18,26 +18,27 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="scss">
 .dropdown-content-enter-active,
-.dropdown-content-leave-active
-  transition: all 0.1s
+.dropdown-content-leave-active {
+  transition: all 0.1s;
+}
 
 .dropdown-content-enter,
-.dropdown-content-leave-to
-  opacity: 0
-  transform: translateY(-5px)
+.dropdown-content-leave-to {
+  opacity: 0;
+  transform: translateY(-5px);
+}
 
+.dropdown-list {
+  background-color: $white;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  width: calc(60% - 6%);
 
-.dropdown-list
-  background-color: $white
-  border-radius: 0.25rem
-  display: flex
-  flex-direction: column
-  width: calc(60% - 6%)
-
-  position: absolute
-  transform: translateY(5px)
-
-  overflow: hidden
+  position: absolute;
+  transform: translateY(5px);
+  overflow: hidden;
+}
 </style>

@@ -15,12 +15,13 @@ export default {
 }
 </script>
 
-<style lang="sass">
-.dropdown-item
+<style lang="scss">
+.dropdown-item {
+  padding: 1rem 0;
+  padding-left: 1rem;
 
-  padding: 1rem 0
-  padding-left: 1rem
-
-  &:hover
-    background-color: #eee
+  &:hover {
+    background-color: #eee;
+  }
+}
 </style>

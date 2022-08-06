@@ -6,8 +6,8 @@ module.exports = defineConfig({
 
   pluginOptions: {
     'style-resources-loader': {
-      preProcessor: 'sass',
-      patterns: [path.resolve(__dirname, './src/sass/*.sass')],
+      preProcessor: 'scss',
+      patterns: [path.resolve(__dirname, './src/scss/*.scss')],
     },
   },
 })

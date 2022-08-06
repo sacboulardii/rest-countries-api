@@ -75,38 +75,44 @@ export default {
 }
 </script>
 
-<style scoped lang="sass">
-.dropdown-button
-  background-color: #fff
-  border: none
-  border-radius: 0.25rem
+<style scoped lang="scss">
+.dropdown-button {
+  background-color: #fff;
+  border: none;
+  border-radius: 0.25rem;
 
-  box-shadow:         0px 2px 8px 4px rgba(0,0,0,0.05)
-  -webkit-box-shadow: 0px 2px 8px 4px rgba(0,0,0,0.05)
-  -moz-box-shadow:    0px 2px 8px 4px rgba(0,0,0,0.05)
+  box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
 
-  width: 60%
-  padding: 1rem
-  position: relative
-  text-align: left
+  width: 60%;
+  padding: 1rem;
+  position: relative;
+  text-align: left;
+}
 
-.dropdown-arrow
-  position: absolute
-  top: 50%
-  right: 0.5rem
-  transform: translateY(-50%)
-  width: 1.5rem
+.dropdown-arrow {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  width: 1.5rem;
+}
 
-.search-wrapper
-  > * + *
-    margin-top: 2.5rem
+.search-wrapper {
+  > * + * {
+    margin-top: 2.5rem;
+  }
+}
 
-.countries__list
-  margin-top: 2rem
-  padding: 0 2.5rem
+.countries__list {
+  margin-top: 2rem;
+  padding: 0 2.5rem;
+}
 
-main
-  background-color: $very-light-gray-l
-  padding-top: 1.5rem
-  padding-bottom: 3rem
+main {
+  background-color: $very-light-gray-l;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+}
 </style>
