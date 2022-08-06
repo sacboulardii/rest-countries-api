@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'https://restcountries.com/v3.1',
+  baseURL: 'https://restcountries.com/v2',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -9,8 +9,8 @@ const apiClient = axios.create({
   },
 })
 
-// const apiClientV2 = axios.create({
-//   baseURL: 'https://restcountries.com/v2',
+// const apiClient = axios.create({
+//   baseURL: 'https://restcountries.com/v3.1',
 //   withCredentials: false,
 //   headers: {
 //     Accept: 'application/json',
@@ -19,11 +19,13 @@ const apiClient = axios.create({
 // })
 
 export default {
+  // API V2
   getCountries() {
     return apiClient.get('/all')
   },
-  // getCountriesV2() {
-  //   return apiClientV2.get('/all')
+  // API V3
+  // getCountries() {
+  //   return apiClient.get('/all')
   // },
   getCountryByName(name) {
     return apiClient.get(`/name/${name}`)
