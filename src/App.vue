@@ -1,5 +1,5 @@
 <template>
-  <header class="container">
+  <header class="container" :class="[this.$store.state.theme]">
     <router-link to="/">
       <h1 class="title">Where in the world?</h1>
     </router-link>
@@ -23,7 +23,16 @@ export default {
 </script>
 
 <style lang="scss">
+.light {
+  @include spread-map($theme-map-light);
+}
+.dark {
+  @include spread-map($theme-map-dark);
+}
+
 header {
+  background-color: var($--theme-background);
+
   display: flex;
   align-items: center;
   justify-content: space-between;

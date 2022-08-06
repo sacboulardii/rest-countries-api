@@ -1,4 +1,5 @@
-// @mixin spread-map($map: ()) 
-//     @each $key, $value in $map 
-//         #{$key}: $value
-    
+@mixin spread-map($map: ()) {
+    @each $key, $value in $map {
+        #{$key}: $value;
+    }
+}

@@ -111,7 +111,7 @@ export default {
 }
 
 main {
-  background-color: $very-light-gray-l;
+  background-color: var($--theme-background);
   padding-top: 1.5rem;
   padding-bottom: 3rem;
 }
