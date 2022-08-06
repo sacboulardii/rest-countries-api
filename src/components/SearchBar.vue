@@ -52,13 +52,12 @@ export default {
   -moz-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
 
   padding: 1rem;
+  padding-left: 3rem;
   width: 100%;
 }
 
 ::placeholder {
   color: var($--theme-font-color);
-  position: relative;
-  left: 2rem;
   font-size: 12px;
   opacity: var($--theme-placeholder-opacity);
 }
