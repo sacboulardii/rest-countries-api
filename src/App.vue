@@ -1,5 +1,5 @@
 <template>
-  <header class="container" :class="[this.$store.state.theme]">
+  <header class="container" :class="this.$store.state.mode">
     <router-link to="/">
       <h1 class="title">Where in the world?</h1>
     </router-link>
