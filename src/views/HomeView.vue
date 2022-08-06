@@ -110,6 +110,9 @@ export default {
 .countries__list {
   margin-top: 2rem;
   padding: 0 2.5rem;
+  > * + * {
+    margin-top: 3rem;
+  }
 }
 
 main {

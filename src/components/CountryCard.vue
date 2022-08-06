@@ -63,10 +63,6 @@ export default {
   overflow: hidden;
 
   max-width: 320px; // API Country Flag Image Max Width
-
-  + .card {
-    margin-top: 3rem;
-  }
 }
 
 .card__country {
