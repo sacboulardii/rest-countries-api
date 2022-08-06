@@ -88,7 +88,7 @@ export default {
   color: var($--theme-font-color);
 
   width: 60%;
-  padding: 1rem;
+  padding: 1.125rem;
   position: relative;
   text-align: left;
 }

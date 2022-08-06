@@ -36,7 +36,7 @@ export default {
   color: var($--theme-font-color);
   position: absolute;
   top: 50%;
-  left: 1rem;
+  left: 1.5rem;
   opacity: var($--theme-placeholder-opacity);
   transform: translateY(-50%);
 }
@@ -51,8 +51,8 @@ export default {
   -webkit-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
 
-  padding: 1rem;
-  padding-left: 3rem;
+  padding: 1.125rem;
+  padding-left: 4rem;
   width: 100%;
 }
 
