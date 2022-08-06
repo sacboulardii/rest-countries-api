@@ -9,10 +9,22 @@ const apiClient = axios.create({
   },
 })
 
+// const apiClientV2 = axios.create({
+//   baseURL: 'https://restcountries.com/v2',
+//   withCredentials: false,
+//   headers: {
+//     Accept: 'application/json',
+//     'Content-Type': 'application/json',
+//   },
+// })
+
 export default {
   getCountries() {
     return apiClient.get('/all')
   },
+  // getCountriesV2() {
+  //   return apiClientV2.get('/all')
+  // },
   getCountryByName(name) {
     return apiClient.get(`/name/${name}`)
   },

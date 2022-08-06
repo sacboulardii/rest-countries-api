@@ -1,6 +1,6 @@
 <template>
   <router-link
-    :to="{ name: 'detail', params: { country: name } }"
+    :to="{ name: 'detail', params: { countryName: name } }"
     class="card-link"
   >
     <div class="card">
@@ -79,6 +79,7 @@ export default {
 }
 
 .card__description {
+  color: var($--theme-font-color);
   font-size: $home-fs;
   padding: 2rem 1.5rem 3rem 1.5rem;
   > p + p {

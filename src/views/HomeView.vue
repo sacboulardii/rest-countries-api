@@ -63,6 +63,7 @@ export default {
   },
   created() {
     this.$store.dispatch('fetchCountries')
+    // this.$store.dispatch('fetchCountriesV2')
   },
   methods: {
     searchByName(query) {
