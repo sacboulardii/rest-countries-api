@@ -1,40 +1,26 @@
 import { createStore } from 'vuex'
 import CountriesService from '@/services/CountriesService'
+import ENUM from '@/enums'
 
 export default createStore({
   state: {
+    apiState: ENUM.INIT,
     mode: 'light',
     countries: null,
-    countriesV2: null,
-    country: {},
+    country: null,
   },
   mutations: {
     SET_COUNTRIES(state, countries) {
       state.countries = countries
     },
-    SET_BORDER_COUNTRIES(state, borders) {
-      state.country.borderCountries = borders.map(
+    SET_BORDER_COUNTRIES_NAMES(state, borders) {
+      state.country.borderCountriesNames = borders.map(
         (country) => country.name.common
       )
     },
     SET_COUNTRY(state, country) {
-      console.log(
-        '🚀 ~ file: index.js ~ line 15 ~ SET_COUNTRY ~ country',
-        country
-      )
-      state.country.name = country.name.common
-      state.country.nativeName = ''
-      state.country.population = country.population.toLocaleString('en-US')
-      state.country.capital = country.capital[0]
-      state.country.region = country.region
-      state.country.subRegion = country.subregion
-      state.country.topLevelDomain = country.tld[0]
-      state.country.currencies = Object.values(country.currencies)
-        .map((curr) => curr.name)
-        .join(', ')
-      state.country.languages = Object.values(country.languages).join(', ')
-      state.country.borders = country.borders
-      state.country.image = country.flags.svg
+      state.country = country
+      console.log(country)
     },
     SWITCH_MODE(state) {
       state.mode = state.mode === 'light' ? 'dark' : 'light'
@@ -87,7 +73,7 @@ export default createStore({
         if (state.country.borders) {
           CountriesService.getBorderCountries(state.country.borders).then(
             (response) => {
-              commit('SET_BORDER_COUNTRIES', response.data)
+              commit('SET_BORDER_COUNTRIES_NAMES', response.data)
             }
           )
           clearInterval(timerID)

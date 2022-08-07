@@ -7,7 +7,7 @@
     </div>
     <div class="country-details__description">
       <h2 class="country-details__title">
-        {{ name }}
+        {{ commonName }}
       </h2>
       <div class="details">
         <div class="details__main">
@@ -17,7 +17,7 @@
           </p>
           <p class="details__subject">
             Population:
-            <span class="subject-data">{{ population }}</span>
+            <span class="subject-data">{{ populationCount }}</span>
           </p>
           <p class="details__subject">
             Region:
@@ -64,9 +64,8 @@
 export default {
   name: 'CountryDetails',
   props: {
-    name: String,
-    image: String,
-    nativeName: String,
+    name: Object,
+    flags: Object,
     population: Number,
     region: String,
     subRegion: String,
@@ -75,6 +74,40 @@ export default {
     currencies: Object,
     languages: Object,
     borderCountries: Array,
+  },
+  computed: {
+    commonName() {
+      console.log('STORE.STATE.COUNTRY IS TRUE?')
+      console.log(Boolean(this.$store.state.country))
+      console.log('LOGGING STORE.STATE.COUNTRY...')
+      console.log(this.$store.state.country)
+      console.log('COUNTRY NAME IS TRUE?')
+      console.log(Boolean(this.$store.state.country.name))
+      console.log(Boolean(this.name))
+      console.log('RETURNING THIS.NAME.COMMON')
+      //   return this.name ? this.name.common : ''
+      //   let test
+      //   if (this.name) test = this.name.common
+      //   return test
+      return this.name.common
+    },
+    image() {
+      let image
+      if (this.flags) image = this.flags.svg
+      return image
+    },
+    nativeName() {
+      return 0
+    },
+    populationCount() {
+      return this.population
+    },
+    regionss() {
+      return 0
+    },
+  },
+  created() {
+    console.log('Creating CountryDetails')
   },
 }
 </script>

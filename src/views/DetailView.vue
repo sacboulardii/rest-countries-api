@@ -3,7 +3,7 @@
     <router-link to="/"
       ><button style="padding: 1rem 2rem; margin: 1rem 0">back</button>
     </router-link>
-    <CountryDetails v-bind="country" />
+    <CountryDetails v-if="country" v-bind="country" />
   </main>
 </template>
 
@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     country() {
-      return this.$store.state.country
+      return this.$store.state.country ? this.$store.state.country : null
     },
     borderCountries() {
       return this.$store.state.country.borderCountries
