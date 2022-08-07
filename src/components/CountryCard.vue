@@ -46,7 +46,7 @@ export default {
       return this.country.flags.png
     },
     name() {
-      return this.country.name
+      return this.country.name.common
     },
     region() {
       return this.country.region

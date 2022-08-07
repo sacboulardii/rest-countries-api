@@ -17,21 +17,22 @@ export default createStore({
       state.countriesV2 = countries
     },
     SET_COUNTRY(state, country) {
-      console.log(country)
-      state.country.name = country.name
-      state.country.nativeName = country.nativeName
+      console.log(
+        '🚀 ~ file: index.js ~ line 15 ~ SET_COUNTRY ~ country',
+        country
+      )
+      state.country.name = country.name.common
+      state.country.nativeName = ''
       state.country.population = country.population.toLocaleString('en-US')
-      state.country.capital = country.capital
+      state.country.capital = country.capital[0]
       state.country.region = country.region
       state.country.subRegion = country.subregion
-      state.country.topLevelDomain = country.topLevelDomain.join(', ')
-      state.country.currencies = country.currencies
+      state.country.topLevelDomain = country.tld[0]
+      state.country.currencies = Object.values(country.currencies)
         .map((curr) => curr.name)
         .join(', ')
-      state.country.languages = country.languages
-        .map((lang) => lang.name)
-        .join(', ')
-      state.country.borderCountries = country.borders
+      state.country.languages = Object.values(country.languages).join(', ')
+      state.country.borderCountries = ''
       state.country.image = country.flags.svg
     },
     SWITCH_MODE(state) {
