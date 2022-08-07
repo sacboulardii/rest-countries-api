@@ -19,14 +19,19 @@ export default createStore({
       )
     },
     SET_COUNTRY(state, country) {
+      // console.log('ASSIGNING COUNTRY TO $STORE.STATE.COUNTRY')
       state.country = country
-      console.log(country)
+      // console.log('LOGGING $STORE.STATE.COUNTRY', state.country)
+      state.apiState = ENUM.LOADED
     },
     SWITCH_MODE(state) {
       state.mode = state.mode === 'light' ? 'dark' : 'light'
     },
     CLEAR_STORED_COUNTRY(state) {
       state.country = {}
+    },
+    SET_API_STATE(state, apiState) {
+      state.apiState = apiState
     },
   },
   actions: {
@@ -58,11 +63,13 @@ export default createStore({
         })
     },
     fetchCountryDetails({ commit }, name) {
+      // console.log('FETCHING COUNTRY DETAILS...')
       commit('CLEAR_STORED_COUNTRY')
+      commit('SET_API_STATE', ENUM.LOADING)
       return CountriesService.getCountryByName(name)
         .then((response) => {
-          if (response.data.length === 1)
-            commit('SET_COUNTRY', response.data[0])
+          console.log('FETCHED DATA', response.data)
+          commit('SET_COUNTRY', response.data[0])
         })
         .catch((e) => {
           throw e

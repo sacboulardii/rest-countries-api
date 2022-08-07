@@ -3,12 +3,13 @@
     <router-link to="/"
       ><button style="padding: 1rem 2rem; margin: 1rem 0">back</button>
     </router-link>
-    <CountryDetails v-if="country" v-bind="country" />
+    <CountryDetails v-if="dataIsAvailable" v-bind="country" />
   </main>
 </template>
 
 <script>
 import CountryDetails from '@/components/CountryDetails.vue'
+import ENUM from '@/enums'
 
 export default {
   name: 'DetailView',
@@ -26,6 +27,9 @@ export default {
     },
     borderCountries() {
       return this.$store.state.country.borderCountries
+    },
+    dataIsAvailable() {
+      return this.$store.state.apiState === ENUM.LOADED
     },
   },
 }
