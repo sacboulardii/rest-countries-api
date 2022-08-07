@@ -19,4 +19,7 @@ export default {
   getCountryByRegion(region) {
     return apiClient.get(`/region/${region}`)
   },
+  getBorderCountries() {
+    return 'Border Countries'
+  },
 }

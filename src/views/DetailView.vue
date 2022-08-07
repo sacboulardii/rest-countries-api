@@ -72,6 +72,7 @@ export default {
   props: ['countryName'],
   created() {
     this.$store.dispatch('fetchCountryDetails', this.countryName)
+    this.$store.dispatch('fetchBorderCountries', this.countryName)
   },
   computed: {
     country() {

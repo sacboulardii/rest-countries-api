@@ -16,6 +16,9 @@ export default createStore({
       console.log(countries)
       state.countriesV2 = countries
     },
+    SET_BORDER_COUNTRIES() {
+      console.log('SETTING BORDER COUNTRIES')
+    },
     SET_COUNTRY(state, country) {
       console.log(
         '🚀 ~ file: index.js ~ line 15 ~ SET_COUNTRY ~ country',
@@ -32,7 +35,7 @@ export default createStore({
         .map((curr) => curr.name)
         .join(', ')
       state.country.languages = Object.values(country.languages).join(', ')
-      state.country.borderCountries = ''
+      state.country.borderCountries = country.borders
       state.country.image = country.flags.svg
     },
     SWITCH_MODE(state) {
@@ -80,6 +83,10 @@ export default createStore({
         .catch((e) => {
           throw e
         })
+    },
+    fetchBorderCountries({ commit }) {
+      console.log(CountriesService.getBorderCountries())
+      commit('SET_BORDER_COUNTRIES')
     },
     switchThemeMode({ commit, state }) {
       commit('SWITCH_MODE')
