@@ -1,49 +1,49 @@
 <template>
-  <section class="country-details">
-    <div class="country-details__image">
+  <section class="country">
+    <div class="country__image">
       <figcaption>
         <img :src="Image" alt="'Teste' + ' Flag'" />
       </figcaption>
     </div>
-    <div class="country-details__description">
-      <h2 class="country-details__title">
+    <div class="country__description">
+      <h2 class="country__name">
         {{ Name }}
       </h2>
-      <div class="details">
-        <div class="details__main">
-          <p class="details__subject">
+      <div class="country-details">
+        <div class="country-details__main">
+          <p class="subject">
             Native Name:
-            <span class="subject-data">{{ NativeName }}</span>
+            <span class="subject__data">{{ NativeName }}</span>
           </p>
-          <p class="details__subject">
+          <p class="subject">
             Population:
-            <span class="subject-data">{{ Population }}</span>
+            <span class="subject__data">{{ Population }}</span>
           </p>
-          <p class="details__subject">
+          <p class="subject">
             Region:
-            <span class="subject-data">{{ Region }}</span>
+            <span class="subject__data">{{ Region }}</span>
           </p>
-          <p class="details__subject">
+          <p class="subject">
             Sub Region:
-            <span class="subject-data">{{ SubRegion }}</span>
+            <span class="subject__data">{{ SubRegion }}</span>
           </p>
-          <p class="details__subject">
+          <p class="subject">
             Capital:
-            <span class="subject-data">{{ Capital }}</span>
+            <span class="subject__data">{{ Capital }}</span>
           </p>
         </div>
-        <div class="details__other">
-          <p class="details__subject">
+        <div class="country-details__other">
+          <p class="subject">
             Top Level Domain:
-            <span class="subject-data">{{ TopLevelDomain }}</span>
+            <span class="subject__data">{{ TopLevelDomain }}</span>
           </p>
-          <p class="details__subject">
+          <p class="subject">
             Currencies:
-            <span class="subject-data">{{ Currencies }} </span>
+            <span class="subject__data">{{ Currencies }} </span>
           </p>
-          <p class="details__subject">
+          <p class="subject">
             Languages:
-            <span class="subject-data">{{ Languages }}</span>
+            <span class="subject__data">{{ Languages }}</span>
           </p>
         </div>
       </div>
