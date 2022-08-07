@@ -14,7 +14,7 @@ export default {
     return apiClient.get('/all')
   },
   getCountryByName(name) {
-    // console.log('RECEIVED COUNTRY NAME', name)
+    //console.log('RECEIVED COUNTRY NAME', name)
     return apiClient.get(`/name/${name}`)
   },
   getCountryByRegion(region) {

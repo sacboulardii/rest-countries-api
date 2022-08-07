@@ -14,14 +14,21 @@ export default createStore({
       state.countries = countries
     },
     SET_BORDER_COUNTRIES_NAMES(state, borders) {
-      state.country.borderCountriesNames = borders.map(
-        (country) => country.name.common
+      //console.log('SETTING BORDER COUNTRIES', borders)
+      let borderCountriesNames = []
+      borders.forEach((country) =>
+        borderCountriesNames.push(country.name.common)
       )
+      state.country.borderCountriesNames = borderCountriesNames
+      //console.log(
+      //   'BORDER COUNTRIES NAMES: ',
+      //   state.country.borderCountriesNames
+      // )
     },
     SET_COUNTRY(state, country) {
-      // console.log('ASSIGNING COUNTRY TO $STORE.STATE.COUNTRY')
+      //console.log('ASSIGNING COUNTRY TO $STORE.STATE.COUNTRY')
       state.country = country
-      // console.log('LOGGING $STORE.STATE.COUNTRY', state.country)
+      //console.log('LOGGING $STORE.STATE.COUNTRY', state.country)
       state.apiState = ENUM.LOADED
     },
     SWITCH_MODE(state) {
@@ -63,12 +70,12 @@ export default createStore({
         })
     },
     fetchCountryDetails({ commit }, name) {
-      // console.log('FETCHING COUNTRY DETAILS...')
+      //console.log('FETCHING COUNTRY DETAILS...')
       commit('CLEAR_STORED_COUNTRY')
       commit('SET_API_STATE', ENUM.LOADING)
       return CountriesService.getCountryByName(name)
         .then((response) => {
-          console.log('FETCHED DATA', response.data)
+          //console.log('FETCHED DATA', response.data)
           commit('SET_COUNTRY', response.data[0])
         })
         .catch((e) => {

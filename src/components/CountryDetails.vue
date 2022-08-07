@@ -49,20 +49,20 @@
       </div>
       <div class="border-countries">
         <h3 class="border-countries__title">Border Countries:</h3>
-        <ul class="border-countries__list">
-          <li class="border-countries__item"><a href=""></a></li>
-          <li class="border-countries__item"><a href=""></a></li>
-          <li class="border-countries__item"><a href=""></a></li>
-        </ul>
-        <div>{{ borderCountries }}</div>
+        <BorderCountriesList />
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import BorderCountriesList from './BorderCountriesList.vue'
+
 export default {
   name: 'CountryDetails',
+  components: {
+    BorderCountriesList,
+  },
   // Declare received country object prop types
   props: {
     name: Object,
@@ -74,7 +74,6 @@ export default {
     tld: Array,
     currencies: Object,
     languages: Object,
-    borderCountries: Array,
   },
   computed: {
     // Property Accessing and Formatting
