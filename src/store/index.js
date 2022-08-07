@@ -12,10 +12,6 @@ export default createStore({
     SET_COUNTRIES(state, countries) {
       state.countries = countries
     },
-    SET_COUNTRIESV2(state, countries) {
-      console.log(countries)
-      state.countriesV2 = countries
-    },
     SET_BORDER_COUNTRIES() {
       console.log('SETTING BORDER COUNTRIES')
     },
@@ -88,9 +84,8 @@ export default createStore({
       console.log(CountriesService.getBorderCountries())
       commit('SET_BORDER_COUNTRIES')
     },
-    switchThemeMode({ commit, state }) {
+    switchThemeMode({ commit }) {
       commit('SWITCH_MODE')
-      console.log(state.mode)
     },
   },
   modules: {},
