@@ -12,8 +12,10 @@ export default createStore({
     SET_COUNTRIES(state, countries) {
       state.countries = countries
     },
-    SET_BORDER_COUNTRIES() {
-      console.log('SETTING BORDER COUNTRIES')
+    SET_BORDER_COUNTRIES(state, borders) {
+      state.country.borderCountries = borders.map(
+        (country) => country.name.common
+      )
     },
     SET_COUNTRY(state, country) {
       console.log(
@@ -31,7 +33,7 @@ export default createStore({
         .map((curr) => curr.name)
         .join(', ')
       state.country.languages = Object.values(country.languages).join(', ')
-      state.country.borderCountries = country.borders
+      state.country.borders = country.borders
       state.country.image = country.flags.svg
     },
     SWITCH_MODE(state) {
@@ -80,9 +82,17 @@ export default createStore({
           throw e
         })
     },
-    fetchBorderCountries({ commit }) {
-      console.log(CountriesService.getBorderCountries())
-      commit('SET_BORDER_COUNTRIES')
+    fetchBorderCountries({ commit, state }) {
+      let timerID = setInterval(() => {
+        if (state.country.borders) {
+          CountriesService.getBorderCountries(state.country.borders).then(
+            (response) => {
+              commit('SET_BORDER_COUNTRIES', response.data)
+            }
+          )
+          clearInterval(timerID)
+        }
+      }, 100)
     },
     switchThemeMode({ commit }) {
       commit('SWITCH_MODE')

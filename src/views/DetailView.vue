@@ -60,6 +60,7 @@
             <li class="border-countries__item"><a href=""></a></li>
             <li class="border-countries__item"><a href=""></a></li>
           </ul>
+          <div>{{ borderCountries }}</div>
         </div>
       </div>
     </section>
@@ -77,6 +78,9 @@ export default {
   computed: {
     country() {
       return this.$store.state.country
+    },
+    borderCountries() {
+      return this.$store.state.country.borderCountries
     },
   },
 }

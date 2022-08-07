@@ -19,7 +19,9 @@ export default {
   getCountryByRegion(region) {
     return apiClient.get(`/region/${region}`)
   },
-  getBorderCountries() {
-    return 'Border Countries'
+  getBorderCountries(borders) {
+    // let borderCountriesNames = borders.map((country) => country.name.common)
+    // console.log(borderCountriesNames)
+    return apiClient.get(`/alpha?codes=${Object.values(borders).join(',')}`)
   },
 }
