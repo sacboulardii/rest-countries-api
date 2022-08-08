@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import DetailView from '../views/DetailView.vue'
+import NotFound from '../views/NotFound'
 
 const routes = [
   {
@@ -12,6 +13,12 @@ const routes = [
     path: '/:countryName',
     name: 'detail',
     component: DetailView,
+    props: true,
+  },
+  {
+    path: '/404/:resource',
+    name: '404Resource',
+    component: NotFound,
     props: true,
   },
 ]

@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import CountriesService from '@/services/CountriesService'
+import router from '@/router'
 import ENUM from '@/enums'
 
 export default createStore({
@@ -14,21 +15,14 @@ export default createStore({
       state.countries = countries
     },
     SET_BORDER_COUNTRIES_NAMES(state, borders) {
-      //console.log('SETTING BORDER COUNTRIES', borders)
       let borderCountriesNames = []
       borders.forEach((country) =>
         borderCountriesNames.push(country.name.common)
       )
       state.country.borderCountriesNames = borderCountriesNames
-      //   'BORDER COUNTRIES NAMES: ',
-      //console.log(
-      //   state.country.borderCountriesNames
-      // )
     },
     SET_COUNTRY(state, country) {
-      //console.log('ASSIGNING COUNTRY TO $STORE.STATE.COUNTRY')
       state.country = country
-      //console.log('LOGGING $STORE.STATE.COUNTRY', state.country)
       state.apiState = ENUM.LOADED
     },
     SWITCH_MODE(state) {
@@ -70,16 +64,17 @@ export default createStore({
         })
     },
     getCountryDetails({ commit }, name) {
-      //console.log('FETCHING COUNTRY DETAILS...')
       commit('CLEAR_STORED_COUNTRY')
       commit('SET_API_STATE', ENUM.LOADING)
       CountriesService.fetchCountryByName(name)
         .then((response) => {
-          //console.log('FETCHED DATA', response.data)
           commit('SET_COUNTRY', response.data[0])
         })
-        .catch((e) => {
-          throw e
+        .catch(() => {
+          router.push({
+            name: '404Resource',
+            params: { resource: name },
+          })
         })
     },
     getBorderCountries({ commit, state }) {
