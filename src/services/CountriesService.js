@@ -20,6 +20,8 @@ export default {
     return apiClient.get(`/name/${name}`)
   },
   fetchCountryByRegion(region) {
+    // Return all countries if region filter option is All
+    if (region === 'All') return apiClient.get('/all')
     return apiClient.get(`/region/${region}`)
   },
   fetchBorderCountries(borders) {

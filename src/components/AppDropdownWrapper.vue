@@ -5,7 +5,14 @@
     </template>
     <AppDropdownContent>
       <AppDropdownItem
-        v-for="region in ['Africa', 'America', 'Asia', 'Europe', 'Oceania']"
+        v-for="region in [
+          'All',
+          'Africa',
+          'America',
+          'Asia',
+          'Europe',
+          'Oceania',
+        ]"
         :key="region"
         @search-countries-by-region="searchByRegion"
       >
