@@ -14,6 +14,8 @@ export default {
     return apiClient.get('/all')
   },
   fetchCountryByName(name) {
+    // Return all countries if search query is empty
+    if (name === '') return apiClient.get('/all')
     //console.log('RECEIVED COUNTRY NAME', name)
     return apiClient.get(`/name/${name}`)
   },
