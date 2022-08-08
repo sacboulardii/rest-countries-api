@@ -20,8 +20,8 @@ export default createStore({
         borderCountriesNames.push(country.name.common)
       )
       state.country.borderCountriesNames = borderCountriesNames
-      //console.log(
       //   'BORDER COUNTRIES NAMES: ',
+      //console.log(
       //   state.country.borderCountriesNames
       // )
     },
@@ -42,8 +42,8 @@ export default createStore({
     },
   },
   actions: {
-    fetchCountries({ commit }) {
-      CountriesService.getCountries()
+    getCountries({ commit }) {
+      CountriesService.fetchCountries()
         .then((response) => {
           commit('SET_COUNTRIES', response.data)
         })
@@ -51,8 +51,8 @@ export default createStore({
           throw e
         })
     },
-    fetchCountryByName({ commit }, name) {
-      CountriesService.getCountryByName(name)
+    getCountryByName({ commit }, name) {
+      CountriesService.fetchCountryByName(name)
         .then((response) => {
           commit('SET_COUNTRIES', response.data)
         })
@@ -60,8 +60,8 @@ export default createStore({
           throw e
         })
     },
-    fetchCountryByRegion({ commit }, region) {
-      CountriesService.getCountryByRegion(region)
+    getCountryByRegion({ commit }, region) {
+      CountriesService.fetchCountryByRegion(region)
         .then((response) => {
           commit('SET_COUNTRIES', response.data)
         })
@@ -69,11 +69,11 @@ export default createStore({
           throw e
         })
     },
-    fetchCountryDetails({ commit }, name) {
+    getCountryDetails({ commit }, name) {
       //console.log('FETCHING COUNTRY DETAILS...')
       commit('CLEAR_STORED_COUNTRY')
       commit('SET_API_STATE', ENUM.LOADING)
-      CountriesService.getCountryByName(name)
+      CountriesService.fetchCountryByName(name)
         .then((response) => {
           //console.log('FETCHED DATA', response.data)
           commit('SET_COUNTRY', response.data[0])
@@ -82,10 +82,10 @@ export default createStore({
           throw e
         })
     },
-    fetchBorderCountries({ commit, state }) {
+    getBorderCountries({ commit, state }) {
       let timerID = setInterval(() => {
         if (state.country.borders) {
-          CountriesService.getBorderCountries(state.country.borders).then(
+          CountriesService.fetchBorderCountries(state.country.borders).then(
             (response) => {
               commit('SET_BORDER_COUNTRIES_NAMES', response.data)
             }

@@ -10,17 +10,17 @@ const apiClient = axios.create({
 })
 
 export default {
-  getCountries() {
+  fetchCountries() {
     return apiClient.get('/all')
   },
-  getCountryByName(name) {
+  fetchCountryByName(name) {
     //console.log('RECEIVED COUNTRY NAME', name)
     return apiClient.get(`/name/${name}`)
   },
-  getCountryByRegion(region) {
+  fetchCountryByRegion(region) {
     return apiClient.get(`/region/${region}`)
   },
-  getBorderCountries(borders) {
+  fetchBorderCountries(borders) {
     let bordersCodes = Object.values(borders)
     return apiClient.get(`/alpha?codes=${bordersCodes.join(',')}`)
   },

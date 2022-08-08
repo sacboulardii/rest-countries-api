@@ -34,11 +34,11 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('fetchCountries')
+    this.$store.dispatch('getCountries')
   },
   methods: {
     searchByName(query) {
-      this.$store.dispatch('fetchCountryByName', query)
+      this.$store.dispatch('getCountryByName', query)
     },
   },
 }

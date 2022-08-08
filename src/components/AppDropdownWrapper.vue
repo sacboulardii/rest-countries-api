@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     searchByRegion(region) {
-      this.$store.dispatch('fetchCountryByRegion', region)
+      this.$store.dispatch('getCountryByRegion', region)
     },
   },
 }

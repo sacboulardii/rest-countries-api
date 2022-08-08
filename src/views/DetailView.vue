@@ -20,8 +20,8 @@ export default {
     CountryDetails,
   },
   created() {
-    this.$store.dispatch('fetchCountryDetails', this.countryName)
-    this.$store.dispatch('fetchBorderCountries', this.countryName)
+    this.$store.dispatch('getCountryDetails', this.countryName)
+    this.$store.dispatch('getBorderCountries', this.countryName)
   },
   computed: {
     country() {
