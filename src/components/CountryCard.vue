@@ -1,30 +1,30 @@
 <template>
   <router-link
-    :to="{ name: 'detail', params: { countryName: name } }"
+    :to="{ name: 'detail', params: { countryName: getName } }"
     class="card-link"
   >
     <div class="card">
-      <img :src="image" class="image" :alt="name + ' Flag'" />
+      <img :src="getImage" class="image" :alt="getName + ' Flag'" />
       <div class="description">
         <h3 class="name">
-          {{ name }}
+          {{ getName }}
         </h3>
         <p class="subject">
           Population:
           <span class="data">
-            {{ population }}
+            {{ getPopulation }}
           </span>
         </p>
         <p class="subject">
           Region:
           <span class="data">
-            {{ region }}
+            {{ getRegion }}
           </span>
         </p>
         <p class="subject">
           Capital:
           <span class="data">
-            {{ capital }}
+            {{ getCapital }}
           </span>
         </p>
       </div>
@@ -35,29 +35,30 @@
 <script>
 export default {
   name: 'CountryCard',
+  // Declare received country object props
   props: {
-    country: {
-      type: Object,
-      required: true,
-    },
+    name: Object,
+    population: Number,
+    capital: Array,
+    region: String,
+    flags: Object,
   },
   computed: {
-    population() {
-      let popCount = this.country.population
-      return popCount.toLocaleString('en-US')
+    // Property Accessing and Formatting
+    getPopulation() {
+      return this.population.toLocaleString('en-US')
     },
-    capital() {
-      let capitalArray = this.country.capital
-      return capitalArray ? capitalArray[0] : 'None'
+    getCapital() {
+      return this.capital ? this.capital[0] : 'None'
     },
-    image() {
-      return this.country.flags.png
+    getImage() {
+      return this.flags.png
     },
-    name() {
-      return this.country.name.common
+    getName() {
+      return this.name.common
     },
-    region() {
-      return this.country.region
+    getRegion() {
+      return this.region
     },
   },
 }

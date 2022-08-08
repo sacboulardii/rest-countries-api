@@ -59,7 +59,7 @@ export default {
   components: {
     BorderCountriesList,
   },
-  // Declare received country object prop types
+  // Declare received country object props
   props: {
     name: Object,
     flags: Object,

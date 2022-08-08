@@ -9,7 +9,7 @@
       <ul v-if="!notFound" class="list">
         <CountryCard
           v-for="(country, index) in countries"
-          :country="country"
+          v-bind="country"
           :key="index"
         />
       </ul>
