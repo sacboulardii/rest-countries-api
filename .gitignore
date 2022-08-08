@@ -24,3 +24,4 @@ pnpm-debug.log*
 
 *.excalidraw
 TODO
+src/assets/*.png
