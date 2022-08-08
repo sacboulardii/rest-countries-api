@@ -1,45 +1,45 @@
 <template>
   <section class="country-details">
-    <img class="flag-image" :src="Image" alt="'Teste' + ' Flag'" />
+    <img class="flag-image" :src="getImage" alt="'Teste' + ' Flag'" />
     <div class="description">
       <h2 class="name">
-        {{ Name }}
+        {{ getName }}
       </h2>
       <div class="subjects">
         <div class="main-subjects">
           <p class="subject">
             Native Name:
-            <span class="data">{{ NativeName }}</span>
+            <span class="data">{{ getNativeName }}</span>
           </p>
           <p class="subject">
             Population:
-            <span class="data">{{ Population }}</span>
+            <span class="data">{{ getPopulation }}</span>
           </p>
           <p class="subject">
             Region:
-            <span class="data">{{ Region }}</span>
+            <span class="data">{{ getRegion }}</span>
           </p>
           <p class="subject">
             Sub Region:
-            <span class="data">{{ SubRegion }}</span>
+            <span class="data">{{ getSubRegion }}</span>
           </p>
           <p class="subject">
             Capital:
-            <span class="data">{{ Capital }}</span>
+            <span class="data">{{ getCapital }}</span>
           </p>
         </div>
         <div class="other-subjects">
           <p class="subject">
             Top Level Domain:
-            <span class="data">{{ TopLevelDomain }}</span>
+            <span class="data">{{ getTopLevelDomain }}</span>
           </p>
           <p class="subject">
             Currencies:
-            <span class="data">{{ Currencies }} </span>
+            <span class="data">{{ getCurrencies }} </span>
           </p>
           <p class="subject">
             Languages:
-            <span class="data">{{ Languages }}</span>
+            <span class="data">{{ getLanguages }}</span>
           </p>
         </div>
       </div>
@@ -73,42 +73,42 @@ export default {
   },
   computed: {
     // Property Accessing and Formatting
-    // Use capitalized names to avoid conflict with props and stay simple
-    Name() {
+    getName() {
       return this.name.common
     },
-    NativeName() {
+    getNativeName() {
       return Object.values(this.name.nativeName)
         .map((nativeName) => nativeName.common)
         .join(', ')
     },
-    Image() {
+    getImage() {
       return this.flags.svg
     },
-    nativeName() {
-      return 0
-    },
-    Population() {
+    getPopulation() {
       return this.population.toLocaleString('en-US')
     },
-    Region() {
+    getRegion() {
       return this.region
     },
-    SubRegion() {
-      return this.subregion
+    getSubRegion() {
+      return this.subregion ? this.subregion : 'None'
     },
-    Capital() {
-      return this.capital[0]
+    getCapital() {
+      return this.capital ? this.capital[0] : 'None'
     },
-    TopLevelDomain() {
+    getTopLevelDomain() {
       return this.tld.join(', ')
     },
-    Currencies() {
-      return Object.values(this.currencies)
-        .map((currency) => currency.name)
-        .join(', ')
+    getCurrencies() {
+      if (this.currencies) {
+        return Object.values(this.currencies)
+          .map((currency) => currency.name)
+          .join(', ')
+      } else {
+        return 'None'
+      }
     },
-    Languages() {
+    getLanguages() {
       return Object.values(this.languages).join(', ')
     },
   },
