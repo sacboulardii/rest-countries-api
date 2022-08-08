@@ -43,7 +43,7 @@ export default createStore({
   },
   actions: {
     fetchCountries({ commit }) {
-      return CountriesService.getCountries()
+      CountriesService.getCountries()
         .then((response) => {
           commit('SET_COUNTRIES', response.data)
         })
@@ -52,7 +52,7 @@ export default createStore({
         })
     },
     fetchCountryByName({ commit }, name) {
-      return CountriesService.getCountryByName(name)
+      CountriesService.getCountryByName(name)
         .then((response) => {
           commit('SET_COUNTRIES', response.data)
         })
@@ -61,7 +61,7 @@ export default createStore({
         })
     },
     fetchCountryByRegion({ commit }, region) {
-      return CountriesService.getCountryByRegion(region)
+      CountriesService.getCountryByRegion(region)
         .then((response) => {
           commit('SET_COUNTRIES', response.data)
         })
@@ -73,7 +73,7 @@ export default createStore({
       //console.log('FETCHING COUNTRY DETAILS...')
       commit('CLEAR_STORED_COUNTRY')
       commit('SET_API_STATE', ENUM.LOADING)
-      return CountriesService.getCountryByName(name)
+      CountriesService.getCountryByName(name)
         .then((response) => {
           //console.log('FETCHED DATA', response.data)
           commit('SET_COUNTRY', response.data[0])
