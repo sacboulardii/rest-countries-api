@@ -1,10 +1,6 @@
 <template>
-  <ul class="border-countries__list" v-if="borderCountries">
-    <li
-      v-for="country in borderCountries"
-      class="border-countries__item"
-      :key="country"
-    >
+  <ul v-if="borderCountries">
+    <li v-for="country in borderCountries" :key="country">
       {{ country }}
     </li>
   </ul>

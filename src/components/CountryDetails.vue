@@ -1,54 +1,50 @@
 <template>
-  <section class="country">
-    <div class="country__image">
-      <figcaption>
-        <img :src="Image" alt="'Teste' + ' Flag'" />
-      </figcaption>
-    </div>
-    <div class="country__description">
-      <h2 class="country__name">
+  <section class="country-details">
+    <img class="flag-image" :src="Image" alt="'Teste' + ' Flag'" />
+    <div class="description">
+      <h2 class="name">
         {{ Name }}
       </h2>
-      <div class="country-details">
-        <div class="country-details__main">
+      <div class="subjects">
+        <div class="main-subjects">
           <p class="subject">
             Native Name:
-            <span class="subject__data">{{ NativeName }}</span>
+            <span class="data">{{ NativeName }}</span>
           </p>
           <p class="subject">
             Population:
-            <span class="subject__data">{{ Population }}</span>
+            <span class="data">{{ Population }}</span>
           </p>
           <p class="subject">
             Region:
-            <span class="subject__data">{{ Region }}</span>
+            <span class="data">{{ Region }}</span>
           </p>
           <p class="subject">
             Sub Region:
-            <span class="subject__data">{{ SubRegion }}</span>
+            <span class="data">{{ SubRegion }}</span>
           </p>
           <p class="subject">
             Capital:
-            <span class="subject__data">{{ Capital }}</span>
+            <span class="data">{{ Capital }}</span>
           </p>
         </div>
-        <div class="country-details__other">
+        <div class="other-subjects">
           <p class="subject">
             Top Level Domain:
-            <span class="subject__data">{{ TopLevelDomain }}</span>
+            <span class="data">{{ TopLevelDomain }}</span>
           </p>
           <p class="subject">
             Currencies:
-            <span class="subject__data">{{ Currencies }} </span>
+            <span class="data">{{ Currencies }} </span>
           </p>
           <p class="subject">
             Languages:
-            <span class="subject__data">{{ Languages }}</span>
+            <span class="data">{{ Languages }}</span>
           </p>
         </div>
       </div>
       <div class="border-countries">
-        <h3 class="border-countries__title">Border Countries:</h3>
+        <h3 class="subject">Border Countries:</h3>
         <BorderCountriesList />
       </div>
     </div>

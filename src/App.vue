@@ -4,8 +4,8 @@
       <h1 class="title">Where in the world?</h1>
     </router-link>
     <div class="switch" @click="switchMode">
-      <font-awesome-icon icon="fa-moon" />
-      <span>Dark Mode</span>
+      <font-awesome-icon icon="fa-moon" class="icon" />
+      <span class="mode">Dark Mode</span>
     </div>
   </header>
   <router-view />

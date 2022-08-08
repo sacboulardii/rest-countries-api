@@ -4,20 +4,28 @@
     class="card-link"
   >
     <div class="card">
-      <figure>
-        <img :src="image" class="card__image" :alt="name + ' Flag'" />
-      </figure>
-      <div class="card__description">
-        <h3 class="card__country">{{ name }}</h3>
-        <p class="card__population">
+      <img :src="image" class="image" :alt="name + ' Flag'" />
+      <div class="description">
+        <h3 class="name">
+          {{ name }}
+        </h3>
+        <p class="subject">
           Population:
-          <span>{{ population }}</span>
+          <span class="data">
+            {{ population }}
+          </span>
         </p>
-        <p class="card__region">
-          Region: <span>{{ region }}</span>
+        <p class="subject">
+          Region:
+          <span class="data">
+            {{ region }}
+          </span>
         </p>
-        <p class="card__capital">
-          Capital: <span>{{ capital }}</span>
+        <p class="subject">
+          Capital:
+          <span class="data">
+            {{ capital }}
+          </span>
         </p>
       </div>
     </div>
@@ -55,7 +63,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .card-link {
   display: block;
 }
@@ -73,20 +81,20 @@ export default {
 
   max-width: 320px; // API Country Flag Image Max Width
 }
-
-.card__country {
-  margin-bottom: 1.5rem;
-}
-
-.card__description {
+.description {
   color: var($--theme-font-color);
   font-size: $home-fs;
   padding: 2rem 1.5rem 3rem 1.5rem;
-  > p + p {
+  > .subject + .subject {
     margin-top: 0.5rem;
   }
-  span {
+
+  .data {
     font-weight: $fw-300;
+  }
+
+  .name {
+    margin-bottom: 1.5rem;
   }
 }
 </style>

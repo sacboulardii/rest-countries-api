@@ -1,9 +1,13 @@
 <template>
   <div class="search-bar">
-    <font-awesome-icon icon="fa-solid fa-magnifying-glass" opacity="0.2" />
+    <font-awesome-icon
+      class="icon"
+      icon="fa-solid fa-magnifying-glass"
+      opacity="0.2"
+    />
     <input
       type="text"
-      class="search-bar__input"
+      class="input"
       placeholder="Search for a country..."
       v-model="query"
       @keyup.enter="searchCountriesByQuery"
@@ -27,12 +31,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .search-bar {
   position: relative;
 }
 
-.fa-magnifying-glass {
+.icon {
   color: var($--theme-font-color);
   position: absolute;
   top: 50%;
@@ -41,7 +45,7 @@ export default {
   transform: translateY(-50%);
 }
 
-.search-bar__input {
+.input {
   background-color: var($--theme-foreground);
   color: var($--theme-font-color);
   border: none;

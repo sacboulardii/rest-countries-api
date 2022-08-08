@@ -1,7 +1,9 @@
 <template>
   <main class="container">
     <router-link to="/"
-      ><button style="padding: 1rem 2rem; margin: 1rem 0">back</button>
+      ><button class="btn btn--lg" style="padding: 1rem 2rem; margin: 1rem 0">
+        back
+      </button>
     </router-link>
     <CountryDetails v-if="dataIsAvailable" v-bind="country" />
   </main>
