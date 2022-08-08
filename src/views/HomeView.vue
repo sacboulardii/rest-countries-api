@@ -2,20 +2,7 @@
   <main class="container">
     <section class="search-section">
       <SearchBar @search-countries-by-query="searchByName" />
-      <AppDropdown class="filter-dropdown">
-        <template v-slot:toggler>
-          <AppDropdownButton />
-        </template>
-        <AppDropdownContent>
-          <AppDropdownItem
-            v-for="region in ['Africa', 'America', 'Asia', 'Europe', 'Oceania']"
-            :key="region"
-            @search-countries-by-region="searchByRegion"
-          >
-            {{ region }}
-          </AppDropdownItem>
-        </AppDropdownContent>
-      </AppDropdown>
+      <AppDropdownWrapper />
     </section>
     <section class="countries-results">
       <ul class="list">
@@ -32,20 +19,14 @@
 <script>
 import SearchBar from '@/components/SearchBar.vue'
 import CountryCard from '@/components/CountryCard.vue'
-import AppDropdown from '@/components/AppDropdown.vue'
-import AppDropdownContent from '@/components/AppDropdownContent.vue'
-import AppDropdownItem from '@/components/AppDropdownItem.vue'
-import AppDropdownButton from '@/components/AppDropdownButton.vue'
+import AppDropdownWrapper from '@/components/AppDropdownWrapper.vue'
 
 export default {
   name: 'HomeView',
   components: {
     SearchBar,
     CountryCard,
-    AppDropdown,
-    AppDropdownContent,
-    AppDropdownItem,
-    AppDropdownButton,
+    AppDropdownWrapper,
   },
   computed: {
     countries() {
@@ -58,9 +39,6 @@ export default {
   methods: {
     searchByName(query) {
       this.$store.dispatch('fetchCountryByName', query)
-    },
-    searchByRegion(region) {
-      this.$store.dispatch('fetchCountryByRegion', region)
     },
   },
 }
