@@ -31,6 +31,9 @@ export default createStore({
     CLEAR_STORED_COUNTRY(state) {
       state.country = {}
     },
+    CLEAR_STORED_COUNTRIES(state) {
+      state.countries = []
+    },
     SET_API_STATE(state, apiState) {
       state.apiState = apiState
     },
@@ -45,13 +48,17 @@ export default createStore({
           throw e
         })
     },
-    getCountryByName({ commit }, name) {
+    getCountryByName({ commit, state }, name) {
+      commit('CLEAR_STORED_COUNTRIES')
+      commit('SET_API_STATE', ENUM.LOADING)
       CountriesService.fetchCountryByName(name)
         .then((response) => {
           commit('SET_COUNTRIES', response.data)
         })
-        .catch((e) => {
-          throw e
+        .catch((error) => {
+          if (error.response && error.response.status === 404) {
+            state.apiState = ENUM.ERROR
+          }
         })
     },
     getCountryByRegion({ commit }, region) {

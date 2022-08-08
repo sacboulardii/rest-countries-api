@@ -4,14 +4,17 @@
       <SearchBar />
       <AppDropdownWrapper />
     </section>
+    <!-- Lista de países -->
     <section class="countries-results">
-      <ul class="list">
+      <ul v-if="!notFound" class="list">
         <CountryCard
           v-for="(country, index) in countries"
           :country="country"
           :key="index"
         />
       </ul>
+      <!-- Mensagem de resultado não encontrado -->
+      <p v-else>Nenhum resultado foi encotrado.</p>
     </section>
   </main>
 </template>
@@ -20,6 +23,7 @@
 import SearchBar from '@/components/SearchBar.vue'
 import CountryCard from '@/components/CountryCard.vue'
 import AppDropdownWrapper from '@/components/AppDropdownWrapper.vue'
+import ENUM from '@/enums'
 
 export default {
   name: 'HomeView',
@@ -31,6 +35,12 @@ export default {
   computed: {
     countries() {
       return this.$store.state.countries
+    },
+    notFound() {
+      return (
+        this.$store.state.apiState === ENUM.ERROR &&
+        this.$store.state.countries.length === 0
+      )
     },
   },
   created() {
