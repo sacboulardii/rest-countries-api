@@ -10,7 +10,7 @@ const routes = [
     component: HomeView,
   },
   {
-    path: '/:countryName',
+    path: '/details/:countryName',
     name: 'detail',
     component: DetailView,
     props: true,
