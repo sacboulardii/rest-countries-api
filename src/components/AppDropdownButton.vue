@@ -15,7 +15,24 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.button {
+  background-color: var($--theme-foreground);
+  border: none;
+  border-radius: 0.25rem;
+
+  box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
+
+  color: var($--theme-font-color);
+
+  width: 60%;
+  padding: 1.125rem;
+  position: relative;
+  text-align: left;
+}
+
 .arrow {
   position: absolute;
   top: 50%;
