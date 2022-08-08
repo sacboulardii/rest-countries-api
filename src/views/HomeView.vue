@@ -1,7 +1,7 @@
 <template>
   <main class="container">
     <section class="search-section">
-      <SearchBar @search-countries-by-query="searchByName" />
+      <SearchBar />
       <AppDropdownWrapper />
     </section>
     <section class="countries-results">
@@ -35,11 +35,6 @@ export default {
   },
   created() {
     this.$store.dispatch('getCountries')
-  },
-  methods: {
-    searchByName(query) {
-      this.$store.dispatch('getCountryByName', query)
-    },
   },
 }
 </script>

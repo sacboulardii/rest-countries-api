@@ -10,7 +10,7 @@
       class="input"
       placeholder="Search for a country..."
       v-model="query"
-      @keyup.enter="searchCountriesByQuery"
+      @keyup.enter="searchCountriesByName"
     />
   </div>
 </template>
@@ -24,8 +24,8 @@ export default {
     }
   },
   methods: {
-    searchCountriesByQuery() {
-      this.$emit('search-countries-by-query', this.query)
+    searchCountriesByName() {
+      this.$store.dispatch('getCountryByName', this.query)
     },
   },
 }
