@@ -63,6 +63,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
@@ -76,6 +78,8 @@ body {
   max-width: $desktop;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .title {
