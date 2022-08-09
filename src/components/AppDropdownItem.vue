@@ -1,16 +1,17 @@
 <template>
-  <a @click="searchCountriesByRegion" class="dropdown-item" href="#">
+  <a @click="searchByRegion" class="dropdown-item" href="#">
     <slot />
   </a>
 </template>
-<script>
-export default {
-  name: 'AppDropdownItem',
-  methods: {
-    searchCountriesByRegion(e) {
-      this.$emit('search-countries-by-region', e.target.innerText)
-    },
-  },
+
+<script setup>
+// Vuex store
+import { useStore } from 'vuex'
+const store = useStore()
+
+// Fetch countries by region
+const searchByRegion = (e) => {
+  store.dispatch('getCountryByRegion', e.target.innerText)
 }
 </script>
 

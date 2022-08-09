@@ -15,19 +15,16 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'SearchBar',
-  data() {
-    return {
-      query: '',
-    }
-  },
-  methods: {
-    searchCountriesByName() {
-      this.$store.dispatch('getCountryByName', this.query)
-    },
-  },
+<script setup>
+import { ref } from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
+
+const query = ref('')
+
+const searchCountriesByName = () => {
+  store.dispatch('getCountryByName', query.value)
 }
 </script>
 

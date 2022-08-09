@@ -38,6 +38,7 @@ export default createStore({
       state.apiState = apiState
     },
   },
+
   actions: {
     getCountries({ commit }) {
       CountriesService.fetchCountries()

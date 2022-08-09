@@ -19,34 +19,30 @@
   </main>
 </template>
 
-<script>
+<script setup>
+import ENUM from '@/enums'
+
+// Components
 import SearchBar from '@/components/SearchBar.vue'
 import CountryCard from '@/components/CountryCard.vue'
 import AppDropdownWrapper from '@/components/AppDropdownWrapper.vue'
-import ENUM from '@/enums'
 
-export default {
-  name: 'HomeView',
-  components: {
-    SearchBar,
-    CountryCard,
-    AppDropdownWrapper,
-  },
-  computed: {
-    countries() {
-      return this.$store.state.countries
-    },
-    notFound() {
-      return (
-        this.$store.state.apiState === ENUM.ERROR &&
-        this.$store.state.countries.length === 0
-      )
-    },
-  },
-  created() {
-    this.$store.dispatch('getCountries')
-  },
-}
+import { computed, onBeforeMount } from 'vue'
+import { useStore } from 'vuex'
+
+// Vuex store
+const store = useStore()
+
+// Computed properties
+const countries = computed(() => store.state.countries)
+const notFound = computed(() => {
+  return (
+    store.state.apiState === ENUM.ERROR && store.state.countries.length === 0
+  )
+})
+
+// Fetch countries from API
+onBeforeMount(() => store.dispatch('getCountries'))
 </script>
 
 <style scoped lang="scss">

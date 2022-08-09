@@ -52,14 +52,11 @@
 </template>
 
 <script>
+import useCountryData from '@/use/country-data'
 import BorderCountriesList from './BorderCountriesList.vue'
 
 export default {
-  name: 'CountryDetails',
-  components: {
-    BorderCountriesList,
-  },
-  // Declare received country object props
+  components: { BorderCountriesList },
   props: {
     name: Object,
     flags: Object,
@@ -71,46 +68,8 @@ export default {
     currencies: Object,
     languages: Object,
   },
-  computed: {
-    // Property Accessing and Formatting
-    getName() {
-      return this.name.common
-    },
-    getNativeName() {
-      return Object.values(this.name.nativeName)
-        .map((nativeName) => nativeName.common)
-        .join(', ')
-    },
-    getImage() {
-      return this.flags.svg
-    },
-    getPopulation() {
-      return this.population.toLocaleString('en-US')
-    },
-    getRegion() {
-      return this.region
-    },
-    getSubRegion() {
-      return this.subregion ? this.subregion : 'None'
-    },
-    getCapital() {
-      return this.capital ? this.capital[0] : 'None'
-    },
-    getTopLevelDomain() {
-      return this.tld.join(', ')
-    },
-    getCurrencies() {
-      if (this.currencies) {
-        return Object.values(this.currencies)
-          .map((currency) => currency.name)
-          .join(', ')
-      } else {
-        return 'None'
-      }
-    },
-    getLanguages() {
-      return Object.values(this.languages).join(', ')
-    },
+  setup(props) {
+    return { ...useCountryData(props) }
   },
 }
 </script>

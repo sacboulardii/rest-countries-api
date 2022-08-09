@@ -14,7 +14,6 @@
           'Oceania',
         ]"
         :key="region"
-        @search-countries-by-region="searchByRegion"
       >
         {{ region }}
       </AppDropdownItem>
@@ -22,26 +21,12 @@
   </AppDropdown>
 </template>
 
-<script>
+<script setup>
+// Components
 import AppDropdown from './AppDropdown.vue'
 import AppDropdownContent from './AppDropdownContent.vue'
 import AppDropdownItem from './AppDropdownItem.vue'
 import AppDropdownButton from './AppDropdownButton.vue'
-
-export default {
-  name: 'AppDropdownWrapper',
-  components: {
-    AppDropdown,
-    AppDropdownContent,
-    AppDropdownItem,
-    AppDropdownButton,
-  },
-  methods: {
-    searchByRegion(region) {
-      this.$store.dispatch('getCountryByRegion', region)
-    },
-  },
-}
 </script>
 
 <style></style>

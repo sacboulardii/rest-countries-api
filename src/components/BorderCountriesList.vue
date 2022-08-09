@@ -1,22 +1,21 @@
 <template>
-  <ul v-if="borderCountries">
-    <li v-for="country in borderCountries" :key="country">
+  <ul v-if="borderCountriesNames">
+    <li v-for="country in borderCountriesNames" :key="country">
       {{ country }}
     </li>
   </ul>
 </template>
 
-<script>
-export default {
-  name: 'BorderCountriesList',
-  computed: {
-    borderCountries() {
-      let fetchedBorderCountries =
-        this.$store.state.country.borderCountriesNames
-      return fetchedBorderCountries ? fetchedBorderCountries : null
-    },
-  },
-}
+<script setup>
+import { useStore } from 'vuex'
+import { computed } from 'vue'
+
+const store = useStore()
+
+const borderCountriesNames = computed(() => {
+  let countries = store.state.country.borderCountriesNames
+  return countries ? countries : null
+})
 </script>
 
 <style></style>

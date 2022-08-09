@@ -33,8 +33,9 @@
 </template>
 
 <script>
+import useCountryData from '@/use/country-data'
+
 export default {
-  name: 'CountryCard',
   // Declare received country object props
   props: {
     name: Object,
@@ -43,23 +44,8 @@ export default {
     region: String,
     flags: Object,
   },
-  computed: {
-    // Property Accessing and Formatting
-    getPopulation() {
-      return this.population.toLocaleString('en-US')
-    },
-    getCapital() {
-      return this.capital ? this.capital[0] : 'None'
-    },
-    getImage() {
-      return this.flags.svg
-    },
-    getName() {
-      return this.name.common
-    },
-    getRegion() {
-      return this.region
-    },
+  setup(props) {
+    return { ...useCountryData(props) }
   },
 }
 </script>

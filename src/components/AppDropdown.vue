@@ -7,31 +7,18 @@
   </div>
 </template>
 
-<script>
-import { mixin as VueClickAway } from 'vue3-click-away'
+<script setup>
+import { ref, provide } from 'vue'
 
-export default {
-  name: 'AppDropdown',
-  mixins: [VueClickAway],
-  provide() {
-    return {
-      sharedState: this.sharedState,
-    }
-  },
-  data() {
-    return {
-      sharedState: {
-        active: false,
-      },
-    }
-  },
-  methods: {
-    toggle() {
-      this.sharedState.active = !this.sharedState.active
-    },
-    onClickAway() {
-      this.sharedState.active = false
-    },
-  },
+const sharedState = ref({ active: false })
+
+provide('sharedState', sharedState.value)
+
+const toggle = () => {
+  sharedState.value.active = !sharedState.value.active
+}
+
+const onClickAway = () => {
+  sharedState.value.active = false
 }
 </script>
