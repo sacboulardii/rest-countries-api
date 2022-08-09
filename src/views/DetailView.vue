@@ -9,32 +9,33 @@
   </main>
 </template>
 
-<script>
+<script setup>
+// Components
 import CountryDetails from '@/components/CountryDetails.vue'
+
+import { defineProps, onBeforeMount, computed } from 'vue'
+
 import ENUM from '@/enums'
 
-export default {
-  name: 'DetailView',
-  props: ['countryName'],
-  components: {
-    CountryDetails,
-  },
-  created() {
-    this.$store.dispatch('getCountryDetails', this.countryName)
-    this.$store.dispatch('getBorderCountries', this.countryName)
-  },
-  computed: {
-    country() {
-      return this.$store.state.country ? this.$store.state.country : null
-    },
-    borderCountries() {
-      return this.$store.state.country.borderCountries
-    },
-    dataIsAvailable() {
-      return this.$store.state.apiState === ENUM.LOADED
-    },
-  },
-}
+// Vuex store
+import { useStore } from 'vuex'
+const store = useStore()
+
+// Received route param
+const props = defineProps(['countryName'])
+
+// Fetch country details
+onBeforeMount(() => {
+  store.dispatch('getCountryDetails', props.countryName)
+  store.dispatch('getBorderCountries', props.countryName)
+})
+
+const country = computed(() => {
+  return store.state.country
+})
+
+// Show details when data is ready
+const dataIsAvailable = computed(() => store.state.apiState === ENUM.LOADED)
 </script>
 
 <style></style>

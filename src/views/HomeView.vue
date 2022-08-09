@@ -41,7 +41,7 @@ const notFound = computed(() => {
   )
 })
 
-// Fetch countries from API
+// Fetch all countries
 onBeforeMount(() => store.dispatch('getCountries'))
 </script>
 
