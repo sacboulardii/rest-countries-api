@@ -52,7 +52,7 @@ export default {
       return this.capital ? this.capital[0] : 'None'
     },
     getImage() {
-      return this.flags.png
+      return this.flags.svg
     },
     getName() {
       return this.name.common
