@@ -95,7 +95,7 @@ export default createStore({
           )
           clearInterval(timerID)
         }
-      }, 100)
+      }, 0.1)
     },
     switchThemeMode({ commit }) {
       commit('SWITCH_MODE')
