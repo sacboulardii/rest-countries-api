@@ -53,10 +53,18 @@ onBeforeMount(() => store.dispatch('getCountries'))
 }
 
 .list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
   margin-top: 2rem;
   padding: 0 2.5rem;
+
   > * + * {
     margin-top: 3rem;
+
+    @media (min-width: 500px) {
+      margin-top: 0;
+    }
   }
 }
 

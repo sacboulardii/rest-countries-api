@@ -4,7 +4,10 @@
     class="card-link"
   >
     <div class="card">
-      <img :src="getImage" class="image" :alt="getName + ' Flag'" />
+      <div class="card__image">
+        <img :src="getImage" class="image" :alt="getName + ' Flag'" />
+      </div>
+
       <div class="description">
         <h3 class="name">
           {{ getName }}
@@ -50,7 +53,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .card-link {
   display: block;
 }
@@ -63,11 +66,13 @@ export default {
   -webkit-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
 
+  display: grid;
+  grid-template-rows: repeat(2, 170px);
+
   font-weight: $fw-300;
   overflow: hidden;
-
-  max-width: 320px; // API Country Flag Image Max Width
 }
+
 .description {
   color: var($--theme-font-color);
   font-size: $home-fs;
@@ -75,13 +80,19 @@ export default {
   > .subject + .subject {
     margin-top: 0.5rem;
   }
+}
 
-  .data {
-    font-weight: $fw-300;
-  }
+.data {
+  font-weight: $fw-300;
+}
 
-  .name {
-    margin-bottom: 1.5rem;
-  }
+.name {
+  margin-bottom: 1.5rem;
+}
+
+.image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 </style>
