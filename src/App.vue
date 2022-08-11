@@ -42,6 +42,10 @@ export default {
   @include spread-map($theme-map-dark);
 }
 
+.retro {
+  @include spread-map($theme-map-retro);
+}
+
 header {
   background-color: var($--theme-foreground);
 

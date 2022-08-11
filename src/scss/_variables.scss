@@ -3,6 +3,8 @@ $--theme-background: --theme-background;
 $--theme-foreground: --theme-foreground;
 $--theme-font-color: --theme-font-color;
 $--theme-placeholder-opacity: --theme-placeholder-opacity;
+$--theme-neon-border-color: --theme-neon-border-color;
+$--theme-box-shadow: --theme-box-shadow;
 
 // Default theme
 $theme-map-light: (
@@ -17,8 +19,26 @@ $theme-map-dark: (
     $--theme-background: hsl(207, 26%, 17%),
     $--theme-foreground: hsl(209, 23%, 22%),
     $--theme-font-color: white,
-    $--theme-placeholder-opacity: 1
+    $--theme-placeholder-opacity: 1,
 );
+
+// Retro theme
+$theme-map-retro: (
+    $--theme-background: #B270A2,
+    $--theme-foreground: #7A4495,
+    $--theme-font-color: white,
+    $--theme-placeholder-opacity: 0.3,
+    $--theme-neon-border-color: #B233FF,
+    $--theme-box-shadow: (0 0 1rem #fff, 0 0 0.2rem #fff, 0 0 2rem #B233FF,
+    0 0 0.8rem #B233FF, 0 0 2.8rem #B233FF,
+    inset 0 0 1.3rem #B233FF) 
+);
+    
+    
+// $--theme-box-shadow: 0 0 1rem #fff, 0 0 0.2rem #fff, 0 0 2rem #B233FF,
+// 0 0 0.8rem #B233FF, 0 0 2.8rem #B233FF,
+// inset 0 0 1.3rem #B233FF;    
+/*#D933FF */
 
 $dark-gray-l: hsl(0, 0%, 52%);
 $white: hsl(0, 0%, 100%);
