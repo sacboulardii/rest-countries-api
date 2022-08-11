@@ -75,10 +75,6 @@ export default {
 
   font-weight: $fw-300;
   overflow: hidden;
-
-  &:hover {
-    box-shadow: var($--theme-box-shadow);
-  }
 }
 
 .description {
