@@ -1,6 +1,6 @@
 <template>
   <button class="button">
-    Filter by Region
+    {{ currentFilter }}
     <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path
         d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"
@@ -9,7 +9,17 @@
   </button>
 </template>
 
-<script setup></script>
+<script setup>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
+
+const currentFilter = computed(() => {
+  let filter = store.state.regionFilter
+  return filter === 'All' ? 'Filter by Region' : filter
+})
+</script>
 
 <style lang="scss">
 .button {
