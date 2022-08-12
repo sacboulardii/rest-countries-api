@@ -29,13 +29,13 @@ import AppDropdownWrapper from '@/components/AppDropdownWrapper.vue'
 
 import { useStore } from 'vuex'
 import { onBeforeMount, computed } from 'vue'
-// import { useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 
 // Vuex store
 const store = useStore()
 
 // Route
-// const route = useRoute()
+const route = useRoute()
 
 // Computed properties
 const countries = computed(() => store.state.countries)
@@ -48,9 +48,13 @@ const notFound = computed(() => {
 
 // Fetch countries
 onBeforeMount(() => {
-  console.log('✨ MOUNTING HOMEVIEW')
-  console.log('🟢 FETCHING ALL COUNTRIES 🌏')
-  store.dispatch('getCountries')
+  // Check if region param is true
+  route.params.region &&
+    store.dispatch('getCountryByRegion', route.params.region)
+  // Check if search param is true
+  route.params.search && store.dispatch('getCountryByName', route.params.search)
+  // Check if params object is empty
+  !Object.keys(route.params).length && store.dispatch('getCountries')
 })
 </script>
 
