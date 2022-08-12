@@ -1,13 +1,47 @@
 <template>
   <main class="container">
-    <router-link to="/"
-      ><button class="btn btn--lg" style="padding: 1rem 2rem; margin: 1rem 0">
-        back
-      </button>
-    </router-link>
+    <button
+      class="btn btn--lg"
+      @click="handleBack('/')"
+      style="padding: 1rem 2rem; margin: 1rem 0"
+    >
+      back
+    </button>
     <CountryDetails v-if="dataIsAvailable" v-bind="country" />
   </main>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      fromRoute: null,
+    }
+  },
+  // Assign previous route
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      vm.$data.fromRoute = from
+    })
+  },
+
+  methods: {
+    /**
+     * Handle Back
+     * @desc Extends default router back functionality
+     * @param {string} fallback - The fallback path if there is no history to use with $router.back().
+     * This is usually the case if the page was visited directly or from another site
+     **/
+    handleBack(fallback) {
+      if (!this.fromRoute.name) {
+        this.$router.push(fallback)
+      } else {
+        this.$router.back()
+      }
+    },
+  },
+}
+</script>
 
 <script setup>
 // Components
@@ -16,20 +50,19 @@ import CountryDetails from '@/components/CountryDetails.vue'
 import { defineProps, onBeforeMount, computed } from 'vue'
 
 import ENUM from '@/enums'
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 
 // Vuex store
 import { useStore } from 'vuex'
 const store = useStore()
 
-const router = useRouter()
+// const router = useRouter()
 
 // Received route param
 const props = defineProps(['countryName'])
 
 // Fetch country details
 onBeforeMount(() => {
-  console.log(router.currentRoute.value)
   store.dispatch('getCountryDetails', props.countryName)
   store.dispatch('getBorderCountries', props.countryName)
 })
