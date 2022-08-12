@@ -17,9 +17,17 @@ $theme-map-dark: (
     $--theme-background: hsl(207, 26%, 17%),
     $--theme-foreground: hsl(209, 23%, 22%),
     $--theme-font-color: white,
-    $--theme-placeholder-opacity: 1
+    $--theme-placeholder-opacity: 1,
 );
 
+// Retro theme
+$theme-map-retro: (
+    $--theme-background: #B270A2,
+    $--theme-foreground: #7A4495,
+    $--theme-font-color: white,
+    $--theme-placeholder-opacity: 0.3,
+);
+    
 $dark-gray-l: hsl(0, 0%, 52%);
 $white: hsl(0, 0%, 100%);
 

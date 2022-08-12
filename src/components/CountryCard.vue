@@ -60,14 +60,18 @@ export default {
 
 .card {
   background-color: var($--theme-foreground);
+
   border-radius: 0.25rem;
+
+  display: grid;
+  grid-template:
+    160px
+    160px
+    / 1fr;
 
   box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
-
-  display: grid;
-  grid-template-rows: repeat(2, 170px);
 
   font-weight: $fw-300;
   overflow: hidden;

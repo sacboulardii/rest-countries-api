@@ -26,7 +26,16 @@ export default createStore({
       state.apiState = ENUM.LOADED
     },
     SWITCH_MODE(state) {
-      state.mode = state.mode === 'light' ? 'dark' : 'light'
+      switch (state.mode) {
+        case 'light':
+          state.mode = 'dark'
+          break
+        case 'dark':
+          state.mode = 'retro'
+          break
+        default:
+          state.mode = 'light'
+      }
     },
     CLEAR_STORED_COUNTRY(state) {
       state.country = {}

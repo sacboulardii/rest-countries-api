@@ -55,6 +55,9 @@ onBeforeMount(() => store.dispatch('getCountries'))
 .list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto-fit, 320px);
+  grid-column-gap: 2%;
+  grid-row-gap: 2rem;
 
   margin-top: 2rem;
   padding: 0 2.5rem;
