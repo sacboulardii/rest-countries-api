@@ -4,16 +4,30 @@ import DetailView from '../views/DetailView.vue'
 import NotFound from '../views/NotFound'
 
 const routes = [
+  // Default route: fetch all countries
   {
     path: '/',
     name: 'home',
     component: HomeView,
   },
+  // Detail route: fetch country details
   {
     path: '/details/:countryName',
     name: 'detail',
     component: DetailView,
     props: true,
+  },
+  // Filter route: fetch countries by region
+  {
+    path: '/:region',
+    name: 'region',
+    component: HomeView,
+  },
+  // Search route: fetch countries matching the search query
+  {
+    path: '/search/:search',
+    name: 'search',
+    component: HomeView,
   },
   {
     path: '/:catchAll(.*)',

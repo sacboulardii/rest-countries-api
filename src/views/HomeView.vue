@@ -27,22 +27,31 @@ import SearchBar from '@/components/SearchBar.vue'
 import CountryCard from '@/components/CountryCard.vue'
 import AppDropdownWrapper from '@/components/AppDropdownWrapper.vue'
 
-import { computed, onBeforeMount } from 'vue'
 import { useStore } from 'vuex'
+import { onBeforeMount, computed } from 'vue'
+// import { useRoute } from 'vue-router'
 
 // Vuex store
 const store = useStore()
 
+// Route
+// const route = useRoute()
+
 // Computed properties
 const countries = computed(() => store.state.countries)
+
 const notFound = computed(() => {
   return (
     store.state.apiState === ENUM.ERROR && store.state.countries.length === 0
   )
 })
 
-// Fetch all countries
-onBeforeMount(() => store.dispatch('getCountries'))
+// Fetch countries
+onBeforeMount(() => {
+  console.log('✨ MOUNTING HOMEVIEW')
+  console.log('🟢 FETCHING ALL COUNTRIES 🌏')
+  store.dispatch('getCountries')
+})
 </script>
 
 <style scoped lang="scss">

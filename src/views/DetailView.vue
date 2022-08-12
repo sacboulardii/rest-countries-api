@@ -16,16 +16,20 @@ import CountryDetails from '@/components/CountryDetails.vue'
 import { defineProps, onBeforeMount, computed } from 'vue'
 
 import ENUM from '@/enums'
+import { useRouter } from 'vue-router'
 
 // Vuex store
 import { useStore } from 'vuex'
 const store = useStore()
+
+const router = useRouter()
 
 // Received route param
 const props = defineProps(['countryName'])
 
 // Fetch country details
 onBeforeMount(() => {
+  console.log(router.currentRoute.value)
   store.dispatch('getCountryDetails', props.countryName)
   store.dispatch('getBorderCountries', props.countryName)
 })

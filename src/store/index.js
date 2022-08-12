@@ -9,6 +9,7 @@ export default createStore({
     mode: 'light',
     countries: null,
     country: null,
+    regionFilter: 'All',
   },
   mutations: {
     SET_COUNTRIES(state, countries) {
@@ -46,6 +47,9 @@ export default createStore({
     SET_API_STATE(state, apiState) {
       state.apiState = apiState
     },
+    SET_REGION_FILTER(state, region) {
+      state.regionFilter = region
+    },
   },
 
   actions: {
@@ -59,11 +63,12 @@ export default createStore({
         })
     },
     getCountryByName({ commit, state }, name) {
-      commit('CLEAR_STORED_COUNTRIES')
       commit('SET_API_STATE', ENUM.LOADING)
       CountriesService.fetchCountryByName(name)
         .then((response) => {
+          commit('CLEAR_STORED_COUNTRIES')
           commit('SET_COUNTRIES', response.data)
+          router.push({ name: 'search', params: { search: name } })
         })
         .catch((error) => {
           if (error.response && error.response.status === 404) {
@@ -74,7 +79,14 @@ export default createStore({
     getCountryByRegion({ commit }, region) {
       CountriesService.fetchCountryByRegion(region)
         .then((response) => {
+          commit('SET_REGION_FILTER', region)
           commit('SET_COUNTRIES', response.data)
+          region === 'All'
+            ? router.push('/')
+            : router.push({
+                name: 'region',
+                params: { region: region },
+              })
         })
         .catch((e) => {
           throw e

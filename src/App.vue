@@ -1,6 +1,7 @@
 <template>
   <header>
     <div class="inner">
+      <!-- <router-link :to="{ name: 'region', params: { region: 'All' } }"> -->
       <router-link to="/">
         <h1 class="title">Where in the world?</h1>
       </router-link>
@@ -28,6 +29,14 @@ export default {
   created() {
     // Add light theme to body on created Lifecycle
     document.body.classList.add(this.$store.state.mode)
+  },
+  async beforeRouteUpdate(to, from, next) {
+    console.log('beforeRouteUpdate')
+    next()
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log('beforeRouteLeave: HOME')
+    next()
   },
 }
 </script>
