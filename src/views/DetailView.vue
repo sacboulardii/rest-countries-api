@@ -18,11 +18,22 @@ export default {
       fromRoute: null,
     }
   },
-  // Assign previous route
+  // Assign previous route for future handling
   beforeRouteEnter(to, from, next) {
     next((vm) => {
       vm.$data.fromRoute = from
     })
+  },
+  /**
+   * Clear countries list
+   * @desc Clear previous countries list before going to a route that has a clear param.
+   * This is true when clicking the header title and ensures no previous list are seen before loading the next list.
+   **/
+  beforeRouteLeave(to, from, next) {
+    if (to.params.clear) {
+      this.$root.$store.dispatch('clearStoredCountries')
+    }
+    next()
   },
 
   methods: {

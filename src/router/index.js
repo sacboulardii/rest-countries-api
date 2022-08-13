@@ -9,6 +9,7 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
+    props: true,
   },
   // Detail route: fetch country details
   {
