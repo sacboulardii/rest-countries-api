@@ -13,7 +13,7 @@ import { computed } from 'vue'
 const store = useStore()
 
 const borderCountriesNames = computed(() => {
-  let countries = store.state.country.borderCountriesNames
+  let countries = store.state.countries.country.borderCountriesNames
   return countries ? countries : null
 })
 </script>

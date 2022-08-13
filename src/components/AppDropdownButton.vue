@@ -16,7 +16,7 @@ import { useStore } from 'vuex'
 const store = useStore()
 
 const currentFilter = computed(() => {
-  let filter = store.state.regionFilter
+  let filter = store.state.countries.countryRegionFilter
   return filter === 'All' ? 'Filter by Region' : filter
 })
 </script>

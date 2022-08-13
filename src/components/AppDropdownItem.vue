@@ -11,7 +11,7 @@ const store = useStore()
 
 // Fetch countries by region
 const searchByRegion = (e) => {
-  store.dispatch('getCountryByRegion', e.target.innerText)
+  store.dispatch('countries/getCountryByRegion', e.target.innerText)
 }
 </script>
 

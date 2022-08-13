@@ -31,9 +31,9 @@ export default {
    **/
   beforeRouteLeave(to, from, next) {
     if (to.params.clear) {
-      this.$root.$store.dispatch('clearStoredCountries')
-      this.$root.$store.dispatch('resetRegionFilter')
-      this.$root.$store.dispatch('getCountries')
+      this.$root.$store.dispatch('countries/clearStoredCountries')
+      this.$root.$store.dispatch('countries/resetRegionFilter')
+      this.$root.$store.dispatch('countries/getCountries')
     }
     next()
   },
@@ -76,16 +76,15 @@ const props = defineProps(['countryName'])
 
 // Fetch country details
 onBeforeMount(() => {
-  store.dispatch('getCountryDetails', props.countryName)
-  store.dispatch('getBorderCountries', props.countryName)
+  store.dispatch('countries/getCountryDetails', props.countryName)
+  store.dispatch('countries/getBorderCountries', props.countryName)
 })
 
 const country = computed(() => {
-  return store.state.country
+  return store.state.countries.country
 })
-
 // Show details when data is ready
-const dataIsAvailable = computed(() => store.state.apiState === ENUM.LOADED)
+const dataIsAvailable = computed(() => store.state.api.apiState === ENUM.LOADED)
 </script>
 
 <style></style>

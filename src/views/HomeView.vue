@@ -38,11 +38,12 @@ const store = useStore()
 const route = useRoute()
 
 // Computed properties
-const countries = computed(() => store.state.countries)
+const countries = computed(() => store.state.countries.countriesList)
 
 const notFound = computed(() => {
   return (
-    store.state.apiState === ENUM.ERROR && store.state.countries.length === 0
+    store.state.api.apiState === ENUM.ERROR &&
+    store.state.countries.countriesList.length === 0
   )
 })
 
@@ -50,11 +51,12 @@ const notFound = computed(() => {
 onBeforeMount(() => {
   // Check if region param is true
   route.params.region &&
-    store.dispatch('getCountryByRegion', route.params.region)
+    store.dispatch('countries/getCountryByRegion', route.params.region)
   // Check if search param is true
-  route.params.search && store.dispatch('getCountryByName', route.params.search)
+  route.params.search &&
+    store.dispatch('countries/getCountryByName', route.params.search)
   // Check if params object is empty
-  !Object.keys(route.params).length && store.dispatch('getCountries')
+  !Object.keys(route.params).length && store.dispatch('countries/getCountries')
 })
 </script>
 

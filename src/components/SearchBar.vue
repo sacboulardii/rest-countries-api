@@ -24,7 +24,7 @@ const store = useStore()
 const query = ref('')
 
 const searchCountriesByName = () => {
-  store.dispatch('getCountryByName', query.value)
+  store.dispatch('countries/getCountryByName', query.value)
 }
 </script>
 
