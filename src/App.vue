@@ -31,14 +31,6 @@ export default {
     // Add light theme to body on created Lifecycle
     document.body.classList.add(this.$store.state.mode)
   },
-  async beforeRouteUpdate(to, from, next) {
-    console.log('beforeRouteUpdate')
-    next()
-  },
-  beforeRouteLeave(to, from, next) {
-    console.log('beforeRouteLeave: HOME')
-    next()
-  },
 }
 </script>
 
