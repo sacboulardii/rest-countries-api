@@ -2,7 +2,7 @@ import { computed } from 'vue'
 
 export default function useCountryData(props) {
   const getName = computed(() => {
-    return props.name.common
+    return props.name.common ? props.name.common : 'None'
   })
 
   const getImage = computed(() => {
@@ -10,7 +10,7 @@ export default function useCountryData(props) {
   })
 
   const getRegion = computed(() => {
-    return props.region
+    return props.region ? props.region : 'None'
   })
 
   const getSubRegion = computed(() => {
@@ -18,7 +18,7 @@ export default function useCountryData(props) {
   })
 
   const getPopulation = computed(() => {
-    return props.population.toLocaleString('en-US')
+    return props.population ? props.population.toLocaleString('en-US') : 'None'
   })
 
   const getCapital = computed(() => {
@@ -26,17 +26,21 @@ export default function useCountryData(props) {
   })
 
   const getTopLevelDomain = computed(() => {
-    return props.tld.join(', ')
+    return props.tld ? props.tld.join(', ') : 'None'
   })
 
   const getLanguages = computed(() => {
-    return Object.values(props.languages).join(', ')
+    return props.languages ? Object.values(props.languages).join(', ') : 'None'
   })
 
   const getNativeName = computed(() => {
-    return Object.values(props.name.nativeName)
-      .map((nativeName) => nativeName.common)
-      .join(', ')
+    if (props.name.nativeName) {
+      return Object.values(props.name.nativeName)
+        .map((nativeName) => nativeName.common)
+        .join(', ')
+    } else {
+      return props.name.common ? props.name.common : 'None'
+    }
   })
 
   const getCurrencies = computed(() => {
