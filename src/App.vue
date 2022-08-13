@@ -2,9 +2,7 @@
   <header>
     <div class="inner">
       <router-link :to="{ name: 'home', params: { clear: true } }">
-        <h1 class="title" @click="this.$store.dispatch('getCountries')">
-          Where in the world?
-        </h1>
+        <h1 class="title">Where in the world?</h1>
       </router-link>
       <div class="switch" @click="switchMode">
         <font-awesome-icon icon="fa-moon" class="icon" />

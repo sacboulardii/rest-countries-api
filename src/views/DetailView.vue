@@ -25,14 +25,15 @@ export default {
     })
   },
   /**
-   * Clear countries list and reset region filter
-   * @desc Clear previous countries list and set filter text to default before going to a route that has a clear param.
-   * This is only true when going to home though the header title and ensures it has a refresh to default home page functionality.
+   * Refresh to default home page
+   * @desc Clear stored countries, reset region filter and load all countries before going to a route that has a clear param.
+   * This is only true when going to home route though the header title ensuring its refresh to default home funcionality.
    **/
   beforeRouteLeave(to, from, next) {
     if (to.params.clear) {
       this.$root.$store.dispatch('clearStoredCountries')
       this.$root.$store.dispatch('resetRegionFilter')
+      this.$root.$store.dispatch('getCountries')
     }
     next()
   },
