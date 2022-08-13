@@ -50,9 +50,16 @@ export default createStore({
     SET_REGION_FILTER(state, region) {
       state.regionFilter = region
     },
+    RESET_REGION_FILTER(state) {
+      state.regionFilter = 'All'
+    },
   },
 
   actions: {
+    resetRegionFilter({ commit }) {
+      commit('RESET_REGION_FILTER')
+    },
+
     clearStoredCountries({ commit }) {
       commit('CLEAR_STORED_COUNTRIES')
     },
