@@ -1,5 +1,9 @@
 import { computed } from 'vue'
 
+/**
+ * Composable Function
+ * @desc Encapsulates reusable logic for accessing country objects properties and extracting required data.
+ **/
 export default function useCountryData(props) {
   const getName = computed(() => {
     return props.name.common ? props.name.common : 'None'
