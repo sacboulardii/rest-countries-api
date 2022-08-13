@@ -53,6 +53,10 @@ export default createStore({
   },
 
   actions: {
+    clearStoredCountries({ commit }) {
+      commit('CLEAR_STORED_COUNTRIES')
+    },
+
     getCountries({ commit }) {
       CountriesService.fetchCountries()
         .then((response) => {
