@@ -55,7 +55,7 @@ const actions = {
         throw e
       })
   },
-  getCountryByName({ commit, state }, name) {
+  getCountryByName({ commit }, name) {
     commit('api/SET_API_STATE', ENUM.LOADING, { root: true })
     CountriesService.fetchCountryByName(name)
       .then((response) => {
@@ -63,10 +63,11 @@ const actions = {
         commit('SET_COUNTRIES', response.data)
         router.push({ name: 'search', params: { search: name } })
       })
-      .catch((error) => {
-        if (error.response && error.response.status === 404) {
-          state.api.apiState = ENUM.ERROR
-        }
+      .catch(() => {
+        router.push({
+          name: '404Resource',
+          params: { resource: name },
+        })
       })
   },
   getCountryByRegion({ commit }, region) {
@@ -81,8 +82,11 @@ const actions = {
               params: { region: region },
             })
       })
-      .catch((e) => {
-        throw e
+      .catch(() => {
+        router.push({
+          name: '404Resource',
+          params: { resource: region },
+        })
       })
   },
   getCountryDetails({ commit }, name) {

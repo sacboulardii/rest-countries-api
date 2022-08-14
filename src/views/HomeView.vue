@@ -49,7 +49,14 @@ const store = useStore()
 const route = useRoute()
 
 // Computed properties
-const countries = computed(() => store.state.countries.countriesList)
+const countries = computed(() => {
+  let countries = store.state.countries.countriesList
+  // Sort alphabetical order
+  let sortedCountries = countries
+    .slice()
+    .sort((a, b) => a.name.common.localeCompare(b.name.common))
+  return sortedCountries
+})
 
 const notFound = computed(() => {
   return (
