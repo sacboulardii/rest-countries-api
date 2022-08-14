@@ -97,13 +97,16 @@ onBeforeMount(() => {
   margin-top: 2rem;
   padding: 0 2.5rem;
 
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(auto-fit, 320px);
+    grid-column-gap: 2%;
+    grid-row-gap: 1rem;
+  }
+
   > * + * {
     margin-top: 3rem;
-
     @media (min-width: 768px) {
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(auto-fit, 320px);
-      grid-column-gap: 2%;
       margin-top: 0;
     }
   }
