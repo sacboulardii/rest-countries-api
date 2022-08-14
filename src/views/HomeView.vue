@@ -67,7 +67,9 @@ onBeforeMount(() => {
   route.params.search &&
     store.dispatch('countries/getCountryByName', route.params.search)
   // Check if params object is empty
-  !Object.keys(route.params).length && store.dispatch('countries/getCountries')
+  !Object.keys(route.params).length &&
+    !store.state.countries.countriesList &&
+    store.dispatch('countries/getCountries')
 })
 </script>
 
