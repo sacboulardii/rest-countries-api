@@ -19,6 +19,17 @@
   </main>
 </template>
 
+<script>
+export default {
+  beforeRouteLeave(to, from, next) {
+    if (to.params.clear) {
+      this.$root.$store.dispatch('countries/getCountries')
+    }
+    next()
+  },
+}
+</script>
+
 <script setup>
 import ENUM from '@/enums'
 
