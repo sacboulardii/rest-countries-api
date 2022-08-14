@@ -14,7 +14,6 @@ const apiClient = axios.create({
  * @desc Passed to API to filter request output and prevent unnecessary data
  */
 const cardsFields = 'name,flags,population,region,capital'
-const borderCountriesFields = 'name'
 
 export default {
   fetchCountries() {
@@ -30,8 +29,6 @@ export default {
   },
   fetchBorderCountries(borders) {
     let bordersCodes = Object.values(borders)
-    return apiClient.get(
-      `/alpha?codes=${bordersCodes.join(',')}?fields=${borderCountriesFields}`
-    )
+    return apiClient.get(`/alpha?codes=${bordersCodes.join(',')}`)
   },
 }
