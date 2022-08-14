@@ -50,12 +50,16 @@ const route = useRoute()
 
 // Computed properties
 const countries = computed(() => {
-  let countries = store.state.countries.countriesList
-  // Sort in alphabetical order
-  let sortedCountries = countries
-    .slice()
-    .sort((a, b) => a.name.common.localeCompare(b.name.common))
-  return sortedCountries
+  if (store.state.api.apiState === ENUM.LOADED) {
+    // Sort in alphabetical order
+    let countries = store.state.countries.countriesList
+    let sortedCountries = countries
+      .slice()
+      .sort((a, b) => a.name.common.localeCompare(b.name.common))
+    return sortedCountries
+  } else {
+    return null
+  }
 })
 
 const notFound = computed(() => {
@@ -89,10 +93,6 @@ onBeforeMount(() => {
 
 .list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(auto-fit, 320px);
-  grid-column-gap: 2%;
-  grid-row-gap: 2rem;
 
   margin-top: 2rem;
   padding: 0 2.5rem;
@@ -100,7 +100,10 @@ onBeforeMount(() => {
   > * + * {
     margin-top: 3rem;
 
-    @media (min-width: 500px) {
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(auto-fit, 320px);
+      grid-column-gap: 2%;
       margin-top: 0;
     }
   }

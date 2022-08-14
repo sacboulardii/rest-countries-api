@@ -16,6 +16,7 @@ const state = {
 const mutations = {
   SET_COUNTRIES(state, countries) {
     state.countriesList = countries
+    this.state.api.apiState = ENUM.LOADED
   },
   SET_BORDER_COUNTRIES_NAMES(state, borders) {
     let borderCountriesNames = []
