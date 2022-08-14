@@ -5,8 +5,17 @@
         <h1 class="title">Where in the world?</h1>
       </router-link>
       <div class="switch" @click="switchMode">
-        <font-awesome-icon icon="fa-moon" class="icon" />
-        <span class="mode">Dark Mode</span>
+        <font-awesome-icon
+          v-if="theme === 'light'"
+          icon="fa-moon"
+          class="icon"
+        />
+        <font-awesome-icon
+          v-else-if="theme === 'retro'"
+          icon="fa-solid fa-sun"
+          class="icon"
+        />
+        <font-awesome-icon v-else icon="fa-solid fa-glasses" class="icon" />
       </div>
     </div>
   </header>
@@ -23,6 +32,11 @@ export default {
       // Switch theme and add theme class to body
       this.$store.dispatch('theme/switchThemeMode')
       document.body.classList.add(this.$store.state.theme.mode)
+    },
+  },
+  computed: {
+    theme() {
+      return this.$store.state.theme.mode
     },
   },
   created() {
@@ -87,8 +101,9 @@ body {
   font-size: $home-fs;
 }
 
-.fa-moon {
+.icon {
   margin-right: 0.5rem;
+  height: 1rem;
 }
 
 .switch {

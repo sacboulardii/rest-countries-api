@@ -51,7 +51,7 @@ const route = useRoute()
 // Computed properties
 const countries = computed(() => {
   let countries = store.state.countries.countriesList
-  // Sort alphabetical order
+  // Sort in alphabetical order
   let sortedCountries = countries
     .slice()
     .sort((a, b) => a.name.common.localeCompare(b.name.common))
