@@ -31,8 +31,6 @@ export default {
    **/
   beforeRouteLeave(to, from, next) {
     if (to.params.clear) {
-      this.$root.$store.dispatch('countries/clearStoredCountries')
-      this.$root.$store.dispatch('countries/resetRegionFilter')
       this.$root.$store.dispatch('countries/getCountries')
     }
     next()

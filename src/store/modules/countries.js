@@ -44,18 +44,11 @@ const mutations = {
 // ACTIONS
 
 const actions = {
-  resetRegionFilter({ commit }) {
-    commit('RESET_REGION_FILTER')
-  },
-
-  clearStoredCountries({ commit }) {
-    commit('CLEAR_STORED_COUNTRIES')
-  },
-
   getCountries({ commit }) {
+    commit('RESET_REGION_FILTER')
+    commit('CLEAR_STORED_COUNTRIES')
     CountriesService.fetchCountries()
       .then((response) => {
-        commit('CLEAR_STORED_COUNTRIES')
         commit('SET_COUNTRIES', response.data)
       })
       .catch((e) => {
