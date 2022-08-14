@@ -33,7 +33,7 @@ const currentFilter = computed(() => {
 
   color: var($--theme-font-color);
 
-  width: 60%;
+  width: 100%;
   padding: 1.125rem;
   position: relative;
   text-align: left;

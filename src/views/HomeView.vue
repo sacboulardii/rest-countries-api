@@ -88,28 +88,38 @@ onBeforeMount(() => {
 .search-section {
   > * + * {
     margin-top: 2.5rem;
+    @media (min-width: 768px) {
+      margin-top: 0;
+    }
+  }
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
   }
 }
 
 .list {
+  background-color: purple;
   display: grid;
 
-  margin-top: 2rem;
+  margin-top: 3rem;
   padding: 0 2.5rem;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(auto-fit, 320px);
-    grid-column-gap: 2%;
-    grid-row-gap: 1rem;
+    grid-column-gap: 5rem;
+    grid-row-gap: 5rem;
+
+    padding: 0;
   }
 
-  > * + * {
-    margin-top: 3rem;
-    @media (min-width: 768px) {
-      margin-top: 0;
-    }
-  }
+  // > * + * {
+  //   margin-top: 2.5rem;
+  //   @media (min-width: 768px) {
+  //     margin-top: 0;
+  //   }
+  // }
 }
 
 main {

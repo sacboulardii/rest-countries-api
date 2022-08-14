@@ -61,13 +61,11 @@ export default {
 .card {
   background-color: var($--theme-foreground);
 
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
 
   display: grid;
-  grid-template:
-    160px
-    160px
-    / 1fr;
+  grid-template-rows: 160px 180px;
+  grid-template-columns: 1fr;
 
   box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
@@ -75,6 +73,10 @@ export default {
 
   font-weight: $fw-300;
   overflow: hidden;
+
+  @media (min-width: 768px) {
+    border-radius: 0.325rem;
+  }
 }
 
 .description {
@@ -86,11 +88,16 @@ export default {
   }
 }
 
+.subject {
+  font-weight: $fw-600;
+}
+
 .data {
   font-weight: $fw-300;
 }
 
 .name {
+  font-size: 18px;
   margin-bottom: 1.5rem;
 }
 

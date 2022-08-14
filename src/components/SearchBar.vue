@@ -55,6 +55,10 @@ const searchCountriesByName = () => {
   padding: 1.125rem;
   padding-left: 4rem;
   width: 100%;
+
+  @media (min-width: 768px) {
+    width: initial;
+  }
 }
 
 ::placeholder {
