@@ -64,12 +64,10 @@ export default {
   border-radius: 0.375rem;
 
   display: grid;
-  grid-template-rows: 160px 180px;
+  grid-template-rows: 160px auto;
   grid-template-columns: 1fr;
 
-  box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
-  -webkit-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 8px 1px rgba(0, 0, 0, 0.05);
 
   font-weight: $fw-300;
   overflow: hidden;

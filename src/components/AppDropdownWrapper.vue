@@ -31,6 +31,7 @@ import AppDropdownButton from './AppDropdownButton.vue'
 
 <style lang="scss" scoped>
 .filter-dropdown {
+  width: 60%;
   @media (min-width: 768px) {
     width: 30%;
   }

@@ -31,39 +31,38 @@ const searchCountriesByName = () => {
 <style lang="scss" scoped>
 .search-bar {
   position: relative;
+  width: 100%;
 }
 
 .icon {
   color: var($--theme-font-color);
   position: absolute;
   top: 50%;
-  left: 1.5rem;
+  left: 2rem;
   opacity: var($--theme-placeholder-opacity);
   transform: translateY(-50%);
 }
 
 .input {
   background-color: var($--theme-foreground);
-  color: var($--theme-font-color);
-  border: none;
-  border-radius: 0.25rem;
 
-  box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
-  -webkit-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 0.375rem;
+
+  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.05);
+
+  color: var($--theme-font-color);
 
   padding: 1.125rem;
-  padding-left: 4rem;
-  width: 100%;
+  padding-left: 4.5rem;
 
-  @media (min-width: 768px) {
-    width: initial;
-  }
+  width: 100%;
 }
 
 ::placeholder {
   color: var($--theme-font-color);
-  font-size: 12px;
+  font-size: 0.75rem;
   opacity: var($--theme-placeholder-opacity);
+  letter-spacing: 0.01rem;
 }
 </style>

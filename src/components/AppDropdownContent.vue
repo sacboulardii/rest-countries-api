@@ -32,13 +32,22 @@ export default {
 
 .dropdown-list {
   background-color: var($--theme-foreground);
-  border-radius: 0.25rem;
+
+  border-radius: 0.375rem;
+  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.05);
+
   display: flex;
   flex-direction: column;
-  width: calc(60% - 6%);
+
+  font-size: 12px;
+
+  width: 200px;
+
+  padding: 1rem 0.5rem;
 
   position: absolute;
   transform: translateY(5px);
+
   overflow: hidden;
 }
 </style>

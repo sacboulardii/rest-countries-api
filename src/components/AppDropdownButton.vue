@@ -24,26 +24,35 @@ const currentFilter = computed(() => {
 <style lang="scss">
 .button {
   background-color: var($--theme-foreground);
-  border: none;
-  border-radius: 0.25rem;
 
-  box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
-  -webkit-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 0.375rem;
+
+  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.05);
 
   color: var($--theme-font-color);
 
+  font-size: 0.75rem;
+
   width: 100%;
-  padding: 1.125rem;
+
+  max-width: 200px;
+
+  padding-left: 1.5rem;
+  padding-top: 1.125rem;
+  padding-bottom: 1.125rem;
+
   position: relative;
+
   text-align: left;
 }
 
 .arrow {
   position: absolute;
   top: 50%;
-  right: 0.5rem;
   transform: translateY(-50%);
-  width: 1.5rem;
+
+  width: 1.25rem;
+  right: 1rem;
 }
 </style>

@@ -86,12 +86,15 @@ onBeforeMount(() => {
 
 <style scoped lang="scss">
 .search-section {
+  padding-top: 1.875rem;
+
   > * + * {
     margin-top: 2.5rem;
     @media (min-width: 768px) {
       margin-top: 0;
     }
   }
+
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
@@ -99,15 +102,15 @@ onBeforeMount(() => {
 }
 
 .list {
-  background-color: purple;
   display: grid;
 
   margin-top: 3rem;
   padding: 0 2.5rem;
 
+  grid-row-gap: 3rem;
+
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(auto-fit, 320px);
     grid-column-gap: 5rem;
     grid-row-gap: 5rem;
 
@@ -120,11 +123,5 @@ onBeforeMount(() => {
   //     margin-top: 0;
   //   }
   // }
-}
-
-main {
-  background-color: var($--theme-background);
-  padding-top: 1.5rem;
-  padding-bottom: 3rem;
 }
 </style>

@@ -115,6 +115,11 @@ body {
 .title {
   color: var($--theme-font-color);
   font-size: $home-fs;
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+    font-weight: $fw-800;
+  }
 }
 
 .icon {
