@@ -89,10 +89,9 @@ header {
 
 .title {
   color: var($--theme-font-color);
-  font-size: $home-fs;
+  @include fluid-type(14, 24, 375, 1440);
 
   @media (min-width: 768px) {
-    font-size: 24px;
     font-weight: $fw-800;
   }
 }
