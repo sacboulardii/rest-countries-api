@@ -36,14 +36,14 @@ export default {
   border-radius: 0.375rem;
   box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.05);
 
-  display: flex;
-  flex-direction: column;
+  @include flex($direction: column);
 
   font-size: 12px;
 
   width: 200px;
 
-  padding: 1rem 0.5rem;
+  @include padding-y(1rem);
+  @include padding-x(0.5rem);
 
   position: absolute;
   transform: translateY(5px);

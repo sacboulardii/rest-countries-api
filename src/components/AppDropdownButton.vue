@@ -38,9 +38,7 @@ const currentFilter = computed(() => {
 
   max-width: 200px;
 
-  padding-left: 1.5rem;
-  padding-top: 1.125rem;
-  padding-bottom: 1.125rem;
+  @include padding($top: 1.125rem, $bottom: 1.125rem, $left: 1.5rem);
 
   position: relative;
 
@@ -48,8 +46,7 @@ const currentFilter = computed(() => {
 }
 
 .arrow {
-  position: absolute;
-  top: 50%;
+  @include position($top: 50%);
   transform: translateY(-50%);
 
   width: 1.25rem;

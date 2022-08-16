@@ -80,8 +80,11 @@ export default {
 .description {
   color: var($--theme-font-color);
   font-size: $home-fs;
-  padding: 2rem 1.5rem 3rem 1.5rem;
-  > .subject + .subject {
+
+  @include padding($top: 2rem, $bottom: 3rem);
+  @include padding-x(1.5rem);
+
+  @include second-to-last-child {
     margin-top: 0.5rem;
   }
 }

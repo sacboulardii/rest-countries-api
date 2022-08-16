@@ -18,7 +18,7 @@ const searchByRegion = (e) => {
 <style lang="scss">
 .dropdown-item {
   color: var($--theme-font-color);
-  padding: 0.25rem 0;
+  @include padding-y(0.25rem);
   padding-left: 1rem;
 
   &:hover {
