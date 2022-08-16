@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="inner">
+    <div class="inner container">
       <router-link :to="{ name: 'home', params: { clear: true } }">
         <h1 class="title">Where in the world?</h1>
       </router-link>
@@ -47,47 +47,15 @@ export default {
 </script>
 
 <style lang="scss">
-// Apply light (default) theme variables to light class
+/** Include theme related styles */
 .light {
   @include spread-map($theme-map-light);
 }
-// Apply dark theme variables to dark class
 .dark {
   @include spread-map($theme-map-dark);
 }
-
 .retro {
   @include spread-map($theme-map-retro);
-}
-
-header {
-  background-color: var($--theme-foreground);
-
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
-  -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
-
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-
-  position: relative;
-  z-index: 10;
-
-  & .inner {
-    max-width: 1440px;
-    margin-left: auto;
-    margin-right: auto;
-
-    @include flex(space-between, center);
-
-    padding-left: 1rem;
-    padding-right: 1rem;
-
-    @media (min-width: 768px) {
-      padding-left: 5rem;
-      padding-right: 5rem;
-    }
-  }
 }
 
 body {
@@ -96,17 +64,26 @@ body {
   font-family: $font-family;
 }
 
+header {
+  background-color: var($--theme-foreground);
+
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
+
+  @include padding-y(2rem);
+  @include position(relative, $z-index: 10);
+
+  & .inner {
+    @include flex(space-between, center);
+  }
+}
+
 .container {
   max-width: $desktop;
-  margin-left: auto;
-  margin-right: auto;
-
-  padding-left: 1rem;
-  padding-right: 1rem;
+  @include margin-x(auto);
+  @include padding-x(1rem);
 
   @media (min-width: 768px) {
-    padding-left: 5rem;
-    padding-right: 5rem;
+    @include padding-x(5rem);
   }
 }
 

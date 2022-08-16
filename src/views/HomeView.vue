@@ -88,40 +88,31 @@ onBeforeMount(() => {
 .search-section {
   padding-top: 1.875rem;
 
-  > * + * {
+  @include second-to-last-child {
     margin-top: 2.5rem;
+
     @media (min-width: 768px) {
       margin-top: 0;
     }
   }
 
   @media (min-width: 768px) {
-    display: flex;
-    justify-content: space-between;
+    @include flex(space-between);
   }
 }
 
 .list {
   display: grid;
+  grid-row-gap: 3rem;
 
   margin-top: 3rem;
-  padding: 0 2.5rem;
-
-  grid-row-gap: 3rem;
+  @include padding-x(2.5rem);
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 5rem;
-    grid-row-gap: 5rem;
+    grid-gap: 5rem;
 
     padding: 0;
   }
-
-  // > * + * {
-  //   margin-top: 2.5rem;
-  //   @media (min-width: 768px) {
-  //     margin-top: 0;
-  //   }
-  // }
 }
 </style>

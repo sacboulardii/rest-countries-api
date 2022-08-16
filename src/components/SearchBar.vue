@@ -36,11 +36,11 @@ const searchCountriesByName = () => {
 
 .icon {
   color: var($--theme-font-color);
-  position: absolute;
-  top: 50%;
-  left: 2rem;
-  opacity: var($--theme-placeholder-opacity);
+
+  @include position($top: 50%, $left: 2rem);
   transform: translateY(-50%);
+
+  opacity: var($--theme-placeholder-opacity);
 }
 
 .input {
@@ -53,16 +53,22 @@ const searchCountriesByName = () => {
 
   color: var($--theme-font-color);
 
-  padding: 1.125rem;
-  padding-left: 4.5rem;
+  @include padding(
+    $top: 1.125rem,
+    $right: 1.125rem,
+    $bottom: 1.125rem,
+    $left: 4.5rem
+  );
 
   width: 100%;
 }
 
 ::placeholder {
   color: var($--theme-font-color);
+
   font-size: 0.75rem;
-  opacity: var($--theme-placeholder-opacity);
   letter-spacing: 0.01rem;
+
+  opacity: var($--theme-placeholder-opacity);
 }
 </style>
