@@ -3,3 +3,117 @@
         #{$key}: $value;
     }
 }
+
+@mixin position($position: absolute, $top: null, $right: null, $bottom: null, $left: null, $z-index: initial) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    z-index: $z-index;
+  }
+
+@mixin flex($justify: null, $align: null, $direction: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+@mixin fluid-font($min-width, $max-width, $min-font-size, $max-font-size) {
+    $unit1: unit($min-width);
+    $unit2: unit($max-width);
+    $unit3: unit($min-font-size);
+    $unit4: unit($max-font-size);
+    @if $unit1 == $unit2 and $unit1 == $unit3 and $unit1 == $unit4 {
+      & {
+        font-size: $min-font-size;
+        line-height: $min-font-size * 1.618;
+        @media screen and (min-width: $min-width) {
+          font-size: calc(
+            #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+              ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)})
+          );
+          line-height: calc(
+            #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+              1.618 *
+              ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)})
+          );
+        }
+        @media screen and (min-width: $max-width) {
+          font-size: $max-font-size;
+          line-height: $max-font-size * 1.618;
+        }
+      }
+    }
+  }
+
+  $breakpoints:  (
+    "xs": 25em, // 400px
+    "sm": 34em, // 544px
+    "md": 48em, // 768px
+    "lg": 60em, // 960px
+    "xl": 80em, // 1280px
+    "xxl": 90em // 1440px
+  );
+   
+  @mixin respond-above($breakpoint) {
+    // If the breakpoint exists in the map.
+    @if map-has-key($breakpoints, $breakpoint) {
+      // Get the breakpoint value.
+      $breakpoint-value: map-get($breakpoints, $breakpoint);
+      // Write the media query.
+      @media (min-width: $breakpoint-value) {
+        @content;
+      }
+      // If the breakpoint doesn't exist in the map.
+    }
+    @else {
+      // Log a warning.
+      @warn 'Invalid breakpoint: #{$breakpoint}.';
+    }
+  }
+
+  //Padding mixin
+@mixin padding($top: null, $right: null, $bottom: null, $left: null) {
+    padding-top: $top;
+    padding-right: $right;
+    padding-bottom: $bottom;
+    padding-left: $left;
+  }
+  
+// Horizontal padding
+@mixin padding-x($value) {
+    padding-left: $value;
+    padding-right: $value;
+}
+
+// Vertical padding
+@mixin padding-y($value) {
+    padding-top: $value;
+    padding-bottom: $value;
+}
+
+// Margin mixin
+@mixin margin($top: null, $right: null, $bottom: null, $left: null) {
+    margin-top: $top;
+    margin-right: $right;
+    margin-bottom: $bottom;
+    margin-left: $left;
+}
+
+// Horizontal margin
+@mixin margin-x($value) {
+    margin-left: $value;
+    margin-right: $value;
+}
+// Vertical margin
+@mixin margin-y($value) {
+    margin-top: $value;
+    margin-bottom: $value;
+}
+
+// Lobotomized owl selector
+@mixin second-to-last-child {
+    > * + * { @content; }
+}
