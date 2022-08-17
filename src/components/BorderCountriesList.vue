@@ -1,6 +1,10 @@
 <template>
   <ul v-if="borderCountriesNames">
-    <li v-for="country in borderCountriesNames" :key="country">
+    <li
+      class="btn border"
+      v-for="country in borderCountriesNames"
+      :key="country"
+    >
       <router-link :to="{ name: 'detail', params: { countryName: country } }">{{
         country
       }}</router-link>
@@ -20,4 +24,20 @@ const borderCountriesNames = computed(() => {
 })
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+ul {
+  // display: grid;
+  // grid-column-gap: 1rem;
+  // grid-template-columns: repeat(auto-fit, auto);
+  // grid-template-rows: repeat(auto-fit, minmax(auto, 2rem));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 1rem;
+}
+
+.border {
+  font-size: 12px;
+  display: inline-block;
+}
+</style>

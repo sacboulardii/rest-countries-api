@@ -74,4 +74,32 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.country-details {
+  @include second-to-last-child {
+    margin-top: 3rem;
+  }
+
+  padding-bottom: 3rem;
+}
+
+.description {
+  @include second-to-last-child {
+    margin-top: 3rem;
+  }
+}
+
+.subjects {
+  margin-top: 2rem;
+}
+
+[class*='-subjects'] {
+  &:last-child {
+    margin-top: 3rem;
+  }
+
+  @include second-to-last-child {
+    margin-top: 1rem;
+  }
+}
+</style>

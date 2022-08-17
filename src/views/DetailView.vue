@@ -1,12 +1,6 @@
 <template>
-  <main class="container">
-    <button
-      class="btn btn--lg"
-      @click="handleBack('/')"
-      style="padding: 1rem 2rem; margin: 1rem 0"
-    >
-      back
-    </button>
+  <main class="container container--sm detail-view">
+    <button class="btn btn--lg" @click="handleBack('/')">back</button>
     <CountryDetails v-if="dataIsAvailable" v-bind="country" />
   </main>
 </template>
@@ -94,4 +88,27 @@ const country = computed(() => {
 const dataIsAvailable = computed(() => store.state.api.apiState === ENUM.LOADED)
 </script>
 
-<style></style>
+<style lang="scss">
+.container--sm {
+  @media (max-width: 768px) {
+    @include margin-x(auto);
+    @include padding-x(1.5rem);
+  }
+}
+
+.btn {
+  background-color: var($--theme-foreground);
+  border: none;
+  padding: 0.5rem 1rem;
+  box-shadow: 0px 0px 9px 1px hsl(0, 0, 0, 0.2);
+  text-transform: capitalize;
+}
+
+.detail-view {
+  padding-top: 2rem;
+
+  @include second-to-last-child {
+    margin-top: 4rem;
+  }
+}
+</style>
