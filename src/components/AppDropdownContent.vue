@@ -34,6 +34,9 @@ export default {
   @include dropdown;
   @include flex($direction: column);
 
+  @include padding-x(0);
+  @include padding-y(calc(1.125rem / 2));
+
   position: absolute;
   transform: translateY(5px);
 
