@@ -1,7 +1,7 @@
 <template>
   <button class="button dropdown-container">
     {{ currentFilter }}
-    <font-awesome-icon icon="fa-solid fa-angle-down" class="arrow" />
+    <font-awesome-icon icon="fa-solid fa-chevron-down" class="arrow" />
   </button>
 </template>
 

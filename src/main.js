@@ -18,11 +18,11 @@ import {
   faMoon,
   faGlasses,
   faMagnifyingGlass,
-  faAngleDown,
+  faChevronDown,
 } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faSun, faMoon, faGlasses, faMagnifyingGlass, faAngleDown)
+library.add(faSun, faMoon, faGlasses, faMagnifyingGlass, faChevronDown)
 
 createApp(App)
   .use(store)
