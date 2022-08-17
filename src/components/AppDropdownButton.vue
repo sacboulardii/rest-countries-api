@@ -1,11 +1,7 @@
 <template>
   <button class="button dropdown-container">
     {{ currentFilter }}
-    <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path
-        d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"
-      ></path>
-    </svg>
+    <font-awesome-icon icon="fa-solid fa-angle-down" class="arrow" />
   </button>
 </template>
 
@@ -31,7 +27,7 @@ const currentFilter = computed(() => {
   @include position($top: 50%);
   transform: translateY(-50%);
 
-  width: 1.25rem;
-  right: 1rem;
+  width: 0.5rem;
+  right: 1.25rem;
 }
 </style>
