@@ -47,7 +47,7 @@ const searchCountriesByName = () => {
   background-color: var($--theme-foreground);
 
   border: none;
-  border-radius: 0.375rem;
+  border-radius: $border-radius;
 
   box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.05);
 

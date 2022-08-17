@@ -61,7 +61,7 @@ export default {
 .card {
   background-color: var($--theme-foreground);
 
-  border-radius: 0.375rem;
+  border-radius: $border-radius;
 
   display: grid;
   grid-template-rows: 160px auto;
@@ -73,7 +73,7 @@ export default {
   overflow: hidden;
 
   @media (min-width: 768px) {
-    border-radius: 0.325rem;
+    border-radius: $border-radius-sm;
   }
 }
 
