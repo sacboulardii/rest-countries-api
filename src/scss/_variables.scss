@@ -3,13 +3,15 @@ $--theme-background: --theme-background;
 $--theme-foreground: --theme-foreground;
 $--theme-font-color: --theme-font-color;
 $--theme-placeholder-opacity: --theme-placeholder-opacity;
+$--theme-hover-color: --theme-hover-color;
 
 // Default theme
 $theme-map-light: (
     $--theme-background: hsl(0, 0%, 98%),
     $--theme-foreground: white,
     $--theme-font-color: hsl(200, 15%, 8%),
-    $--theme-placeholder-opacity: 0.3
+    $--theme-placeholder-opacity: 0.3,
+    $--theme-hover-color: darken(white, 5%),
 );
 
 // Override the default light theme
@@ -18,6 +20,7 @@ $theme-map-dark: (
     $--theme-foreground: hsl(209, 23%, 22%),
     $--theme-font-color: white,
     $--theme-placeholder-opacity: 1,
+    $--theme-hover-color: lighten(hsl(209, 23%, 22%), 5%),
 );
 
 // Retro theme
@@ -26,9 +29,10 @@ $theme-map-retro: (
     $--theme-foreground: #7A4495,
     $--theme-font-color: white,
     $--theme-placeholder-opacity: 0.3,
+    $--theme-hover-color: darken(#7A4495, 5%),
 );
     
-$dark-gray-l: hsl(0, 0%, 52%);
+// $dark-gray-l: hsl(0, 0%, 52%);
 $white: hsl(0, 0%, 100%);
 
 // Typography
