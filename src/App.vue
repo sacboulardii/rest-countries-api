@@ -12,7 +12,7 @@
         />
         <font-awesome-icon
           v-else-if="theme === 'retro'"
-          icon="fa-solid fa-sun"
+          icon="fa-solid fa-lightbulb"
           class="icon"
         />
         <font-awesome-icon v-else icon="fa-solid fa-glasses" class="icon" />
