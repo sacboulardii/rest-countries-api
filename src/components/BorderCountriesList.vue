@@ -1,7 +1,9 @@
 <template>
   <ul v-if="borderCountriesNames">
     <li v-for="country in borderCountriesNames" :key="country">
-      {{ country }}
+      <router-link :to="{ name: 'detail', params: { countryName: country } }">{{
+        country
+      }}</router-link>
     </li>
   </ul>
 </template>

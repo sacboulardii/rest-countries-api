@@ -36,6 +36,15 @@ export default {
     next()
   },
 
+  beforeRouteUpdate(to) {
+    to.params.countryName &&
+      this.$root.$store.dispatch(
+        'countries/getCountryDetails',
+        to.params.countryName
+      ) &&
+      this.$root.$store.dispatch('countries/getBorderCountries')
+  },
+
   methods: {
     /**
      * Handle Back
