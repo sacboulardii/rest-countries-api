@@ -29,11 +29,13 @@ import AppDropdownItem from './AppDropdownItem.vue'
 import AppDropdownButton from './AppDropdownButton.vue'
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .filter-dropdown {
-  width: 60%;
+  width: 100%;
+  max-width: 400px;
+
   @media (min-width: 768px) {
-    width: 30%;
+    max-width: 200px;
   }
 }
 </style>

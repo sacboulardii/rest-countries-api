@@ -19,7 +19,6 @@ const searchByRegion = (e) => {
 .dropdown-item {
   color: var($--theme-font-color);
   @include padding-y(0.25rem);
-  padding-left: 1rem;
 
   &:hover {
     background-color: #eee;

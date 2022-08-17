@@ -87,6 +87,7 @@ onBeforeMount(() => {
 <style scoped lang="scss">
 .search-section {
   padding-top: 1.875rem;
+  @include flex($direction: column, $align: center);
 
   @include second-to-last-child {
     margin-top: 2.5rem;
@@ -104,15 +105,23 @@ onBeforeMount(() => {
 .list {
   display: grid;
   grid-row-gap: 3rem;
+  justify-items: center;
 
   margin-top: 3rem;
   @include padding-x(2.5rem);
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 5rem;
-
     padding: 0;
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1440px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 </style>

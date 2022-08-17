@@ -1,5 +1,5 @@
 <template>
-  <transition name="dropdown-content">
+  <transition name="dropdown-content dropdown-container ">
     <div class="dropdown-list" v-if="active">
       <slot />
     </div>
@@ -31,19 +31,8 @@ export default {
 }
 
 .dropdown-list {
-  background-color: var($--theme-foreground);
-
-  border-radius: $border-radius;
-  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.05);
-
+  @include dropdown;
   @include flex($direction: column);
-
-  font-size: 12px;
-
-  width: 200px;
-
-  @include padding-y(1rem);
-  @include padding-x(0.5rem);
 
   position: absolute;
   transform: translateY(5px);

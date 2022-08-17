@@ -103,3 +103,32 @@
 @mixin second-to-last-child {
     > * + * { @content; }
 }
+
+@mixin input {
+  background-color: var($--theme-foreground);
+
+  border: none;
+  border-radius: $border-radius;
+
+  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.05);
+
+  color: var($--theme-font-color);
+  font-size: 0.75rem;
+  
+  @include padding-y(1.125rem);
+  
+  text-align: left;
+}
+
+@mixin dropdown {
+  @include input;
+
+  max-width: 200px;
+  width: 60%;
+
+  @include padding-x(1.5rem);
+
+  @media (min-width: 768px) {
+    width: 100%;
+  }
+}

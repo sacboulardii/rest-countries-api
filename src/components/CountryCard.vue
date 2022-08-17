@@ -72,6 +72,8 @@ export default {
   font-weight: $fw-300;
   overflow: hidden;
 
+  max-width: 260px;
+
   @media (min-width: 768px) {
     border-radius: $border-radius-sm;
   }

@@ -1,5 +1,5 @@
 <template>
-  <button class="button">
+  <button class="button dropdown-container">
     {{ currentFilter }}
     <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path
@@ -23,26 +23,8 @@ const currentFilter = computed(() => {
 
 <style lang="scss">
 .button {
-  background-color: var($--theme-foreground);
-
-  border: none;
-  border-radius: $border-radius;
-
-  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.05);
-
-  color: var($--theme-font-color);
-
-  font-size: 0.75rem;
-
-  width: 100%;
-
-  max-width: 200px;
-
-  @include padding($top: 1.125rem, $bottom: 1.125rem, $left: 1.5rem);
-
+  @include dropdown;
   position: relative;
-
-  text-align: left;
 }
 
 .arrow {

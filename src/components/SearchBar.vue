@@ -32,6 +32,15 @@ const searchCountriesByName = () => {
 .search-bar {
   position: relative;
   width: 100%;
+  max-width: 400px;
+
+  @media (min-width: 768px) {
+    max-width: 350px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 480px;
+  }
 }
 
 .icon {
@@ -44,31 +53,15 @@ const searchCountriesByName = () => {
 }
 
 .input {
-  background-color: var($--theme-foreground);
-
-  border: none;
-  border-radius: $border-radius;
-
-  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.05);
-
-  color: var($--theme-font-color);
-
-  @include padding(
-    $top: 1.125rem,
-    $right: 1.125rem,
-    $bottom: 1.125rem,
-    $left: 4.5rem
-  );
-
+  @include input;
+  @include padding($left: 4.5rem, $right: 1.125rem);
   width: 100%;
 }
 
 ::placeholder {
   color: var($--theme-font-color);
 
-  font-size: 0.75rem;
-  letter-spacing: 0.01rem;
-
   opacity: var($--theme-placeholder-opacity);
+  letter-spacing: 0.01rem;
 }
 </style>
