@@ -26,6 +26,7 @@ const currentFilter = computed(() => {
 .arrow {
   @include position($top: 50%);
   transform: translateY(-50%);
+  color: var($--theme-angle-icon-color);
 
   width: 0.5rem;
   right: 1.25rem;

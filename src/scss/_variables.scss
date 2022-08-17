@@ -4,6 +4,7 @@ $--theme-foreground: --theme-foreground;
 $--theme-font-color: --theme-font-color;
 $--theme-placeholder-opacity: --theme-placeholder-opacity;
 $--theme-hover-color: --theme-hover-color;
+$--theme-angle-icon-color: --angle-icon-color;
 
 // Default theme
 $theme-map-light: (
@@ -12,6 +13,7 @@ $theme-map-light: (
     $--theme-font-color: hsl(200, 15%, 8%),
     $--theme-placeholder-opacity: 0.3,
     $--theme-hover-color: darken(white, 5%),
+    $--theme-angle-icon-color: black,
 );
 
 // Override the default light theme
@@ -21,6 +23,7 @@ $theme-map-dark: (
     $--theme-font-color: white,
     $--theme-placeholder-opacity: 1,
     $--theme-hover-color: lighten(hsl(209, 23%, 22%), 5%),
+    $--theme-angle-icon-color: white,
 );
 
 // Retro theme
@@ -30,6 +33,7 @@ $theme-map-retro: (
     $--theme-font-color: white,
     $--theme-placeholder-opacity: 0.3,
     $--theme-hover-color: darken(#7A4495, 5%),
+    $--theme-angle-icon-color: white,
 );
     
 // $dark-gray-l: hsl(0, 0%, 52%);
