@@ -102,6 +102,6 @@ header {
 
 .switch {
   cursor: pointer;
-  font-size: $home-fs;
+  font-size: $font-sm;
 }
 </style>

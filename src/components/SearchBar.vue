@@ -34,11 +34,11 @@ const searchCountriesByName = () => {
   width: 100%;
   max-width: 400px;
 
-  @media (min-width: 768px) {
+  @include respond-above(sm) {
     max-width: 350px;
   }
 
-  @media (min-width: 1024px) {
+  @include respond-above(md) {
     max-width: 480px;
   }
 }

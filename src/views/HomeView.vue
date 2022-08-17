@@ -104,24 +104,15 @@ onBeforeMount(() => {
 
 .list {
   display: grid;
+  grid-template-columns: repeat(auto-fit, $card-x);
   grid-row-gap: 3rem;
-  justify-items: center;
+  grid-column-gap: 5rem;
+  justify-content: center;
 
   margin-top: 3rem;
-  @include padding-x(2.5rem);
 
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 5rem;
-    padding: 0;
-  }
-
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (min-width: 1440px) {
-    grid-template-columns: repeat(4, 1fr);
+  @include respond-above(sm) {
+    grid-row-gap: 5rem;
   }
 }
 </style>

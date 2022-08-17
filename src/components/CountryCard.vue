@@ -60,11 +60,10 @@ export default {
 
 .card {
   background-color: var($--theme-foreground);
-
   border-radius: $border-radius;
 
   display: grid;
-  grid-template-rows: 160px auto;
+  grid-template-rows: $card-image-y $card-description-y; /** Total height - 350px */
   grid-template-columns: 1fr;
 
   box-shadow: 0px 1px 8px 1px rgba(0, 0, 0, 0.05);
@@ -72,16 +71,14 @@ export default {
   font-weight: $fw-300;
   overflow: hidden;
 
-  max-width: 260px;
-
-  @media (min-width: 768px) {
+  @include respond-above(sm) {
     border-radius: $border-radius-sm;
   }
 }
 
 .description {
   color: var($--theme-font-color);
-  font-size: $home-fs;
+  font-size: $font-sm;
 
   @include padding($top: 2rem, $bottom: 3rem);
   @include padding-x(1.5rem);
@@ -100,7 +97,7 @@ export default {
 }
 
 .name {
-  font-size: 18px;
+  font-size: $font-lg;
   margin-bottom: 1.5rem;
 }
 
