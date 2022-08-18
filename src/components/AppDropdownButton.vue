@@ -1,5 +1,5 @@
 <template>
-  <button class="dropdown__button">
+  <button class="input dropdown dropdown__button">
     {{ currentFilter }}
     <font-awesome-icon
       icon="fa-solid fa-chevron-down"
@@ -22,13 +22,14 @@ const currentFilter = computed(() => {
 
 <style lang="scss">
 .dropdown__button {
-  @include dropdown;
   position: relative;
 }
 
 .dropdown__toggle {
-  @include position($top: 50%);
+  position: absolute;
+  top: 50%;
   transform: translateY(-50%);
+
   color: var($--theme-angle-icon-color);
 
   width: 0.5rem;

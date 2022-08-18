@@ -66,7 +66,7 @@ export default {
   font-weight: $fw-300;
   overflow: hidden;
 
-  @include respond-above(sm) {
+  @media (min-width: 768px) {
     border-radius: $border-radius-sm;
   }
 

@@ -1,5 +1,9 @@
 <template>
-  <div @click="toggle" v-click-away="onClickAway" class="dropdown relative">
+  <div
+    @click="toggle"
+    v-click-away="onClickAway"
+    class="dropdown-wrapper relative"
+  >
     <slot name="toggler">
       <button>Toggle</button>
     </slot>
@@ -24,7 +28,7 @@ const onClickAway = () => {
 </script>
 
 <style lang="scss">
-.dropdown {
+.dropdown-wrapper {
   width: 100%;
   max-width: 400px;
 

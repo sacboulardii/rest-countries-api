@@ -111,7 +111,7 @@ onBeforeMount(() => {
 
   margin-top: 3rem;
 
-  @include respond-above(sm) {
+  @media (min-width: 768px) {
     grid-row-gap: 5rem;
   }
 }

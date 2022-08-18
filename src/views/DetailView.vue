@@ -106,7 +106,7 @@ const dataIsAvailable = computed(() => store.state.api.apiState === ENUM.LOADED)
     margin-top: 4rem;
   }
 
-  @include respond-below(sm) {
+  @media (max-width: 768px) {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }

@@ -72,11 +72,13 @@ body {
 
 .container {
   max-width: $desktop;
-  @include margin-x(auto);
-  @include padding-x(1rem);
+  margin: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   @media (min-width: 768px) {
-    @include padding-x(5rem);
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }
 
@@ -85,11 +87,14 @@ body {
 
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
 
-  @include padding-y(2rem);
-  @include position(relative, $z-index: 10);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  position: relative;
+  z-index: 10;
 
   &__inner {
-    @include flex(space-between, center);
+    @include flex($justify: space-between, $align: center);
   }
 }
 
@@ -99,6 +104,34 @@ body {
 
   @media (min-width: 768px) {
     font-weight: $fw-800;
+  }
+}
+
+.input {
+  background-color: var($--theme-foreground);
+
+  border: none;
+  border-radius: $border-radius;
+
+  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.05);
+
+  color: var($--theme-font-color);
+
+  padding-top: 1.125rem;
+  padding-bottom: 1.125rem;
+
+  text-align: left;
+}
+
+.dropdown {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  max-width: 200px;
+  width: 60%;
+
+  @media (min-width: 768px) {
+    width: 100%;
   }
 }
 

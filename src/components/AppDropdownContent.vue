@@ -1,6 +1,6 @@
 <template>
   <transition name="dropdown__content">
-    <div class="dropdown__content-list" v-if="active">
+    <div class="input dropdown dropdown__content-list" v-if="active">
       <slot />
     </div>
   </transition>
@@ -31,11 +31,12 @@ export default {
 }
 
 .dropdown__content-list {
-  @include dropdown;
   @include flex($direction: column);
 
-  @include padding-x(0);
-  @include padding-y(calc(1.125rem / 2));
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: calc(1.125rem / 2);
+  padding-bottom: calc(1.125rem / 2);
 
   position: absolute;
   transform: translateY(5px);

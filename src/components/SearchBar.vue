@@ -7,7 +7,7 @@
     />
     <input
       type="text"
-      class="search-bar__input"
+      class="input search-bar__input"
       placeholder="Search for a country..."
       v-model="query"
       @keyup.enter="searchCountriesByName"
@@ -34,25 +34,29 @@ const searchCountriesByName = () => {
   width: 100%;
   max-width: 400px;
 
-  @include respond-above(sm) {
+  @media (min-width: 768px) {
     max-width: 350px;
   }
 
-  @include respond-above(md) {
+  @media (min-width: 1024px) {
     max-width: 480px;
   }
 
   &__icon {
     color: var($--theme-font-color);
 
-    @include position($top: 50%, $left: 2rem);
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+
     transform: translateY(-50%);
 
     opacity: var($--theme-placeholder-opacity);
   }
 
   &__input {
-    @include input;
+    @include fluid-type(12, 14, 375, 1440);
+
     padding-left: 4.5rem;
     padding-right: 1.125rem;
     width: 100%;

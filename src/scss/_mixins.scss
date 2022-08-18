@@ -4,15 +4,7 @@
     }
 }
 
-@mixin position($position: absolute, $top: null, $right: null, $bottom: null, $left: null, $z-index: initial) {
-    position: $position;
-    top: $top;
-    right: $right;
-    bottom: $bottom;
-    left: $left;
-    z-index: $z-index;
-  }
-
+// Flexbox
 @mixin flex($justify: null, $align: null, $direction: row) {
     display: flex;
     justify-content: $justify;
@@ -20,6 +12,7 @@
     flex-direction: $direction;
 }
 
+// Fluid typography
 @mixin fluid-type($font-min, $font-max, $screen-min, $screen-max) {
   font-size: #{$font-min}px;
 
@@ -34,115 +27,7 @@
   }
 }
 
-  $breakpoints:  (
-    "xs": 23.4375em, // 375px
-    "sm": 48em, // 768px
-    "md": 64em, // 1024px
-    "lg": 90em, // 1440px
-  );
-   
-  @mixin respond-above($breakpoint) {
-    // If the breakpoint exists in the map.
-    @if map-has-key($breakpoints, $breakpoint) {
-      // Get the breakpoint value.
-      $breakpoint-value: map-get($breakpoints, $breakpoint);
-      // Write the media query.
-      @media (min-width: $breakpoint-value) {
-        @content;
-      }
-      // If the breakpoint doesn't exist in the map.
-    }
-    @else {
-      // Log a warning.
-      @warn 'Invalid breakpoint: #{$breakpoint}.';
-    }
-  }
-
-  @mixin respond-below($breakpoint) {
-    // If the breakpoint exists in the map.
-    @if map-has-key($breakpoints, $breakpoint) {
-      // Get the breakpoint value.
-      $breakpoint-value: map-get($breakpoints, $breakpoint);
-      // Write the media query.
-      @media (max-width: $breakpoint-value) {
-        @content;
-      }
-      // If the breakpoint doesn't exist in the map.
-    }
-    @else {
-      // Log a warning.
-      @warn 'Invalid breakpoint: #{$breakpoint}.';
-    }
-  }
-
-  //Padding mixin
-@mixin padding($top: null, $right: null, $bottom: null, $left: null) {
-    padding-top: $top;
-    padding-right: $right;
-    padding-bottom: $bottom;
-    padding-left: $left;
-  }
-  
-// Horizontal padding
-@mixin padding-x($value) {
-    padding-left: $value;
-    padding-right: $value;
-}
-
-// Vertical padding
-@mixin padding-y($value) {
-    padding-top: $value;
-    padding-bottom: $value;
-}
-
-// Margin mixin
-@mixin margin($top: null, $right: null, $bottom: null, $left: null) {
-    margin-top: $top;
-    margin-right: $right;
-    margin-bottom: $bottom;
-    margin-left: $left;
-}
-
-// Horizontal margin
-@mixin margin-x($value) {
-    margin-left: $value;
-    margin-right: $value;
-}
-// Vertical margin
-@mixin margin-y($value) {
-    margin-top: $value;
-    margin-bottom: $value;
-}
-
 // Lobotomized owl selector
 @mixin second-to-last-child {
     > * + * { @content; }
-}
-
-@mixin input {
-  background-color: var($--theme-foreground);
-
-  border: none;
-  border-radius: $border-radius;
-
-  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.05);
-
-  color: var($--theme-font-color);
-  @include fluid-type(12, 14, 375, 1440);
-  
-  @include padding-y(1.125rem);
-  
-  text-align: left;
-}
-
-@mixin dropdown {
-  @include input;
-  @include padding-x(1.5rem);
-
-  max-width: 200px;
-  width: 60%;
-
-  @media (min-width: 768px) {
-    width: 100%;
-  }
 }
