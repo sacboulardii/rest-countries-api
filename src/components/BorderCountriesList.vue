@@ -48,7 +48,7 @@ const borderCountriesNames = computed(() => {
   }
 
   &__link {
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px 0px rgba(0deg, 0%, 0%, 0.2);
     display: block;
     font-size: 11px;
   }

@@ -61,7 +61,7 @@ export default {
   grid-template-rows: $card-image-y $card-description-y; /** Total height - 350px */
   grid-template-columns: 1fr;
 
-  box-shadow: 0px 1px 8px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 8px 1px rgba(0deg, 0%, 0%, 0.05);
 
   font-weight: $fw-300;
   overflow: hidden;
