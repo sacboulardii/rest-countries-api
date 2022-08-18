@@ -30,22 +30,27 @@ const borderCountriesNames = computed(() => {
 .border-countries-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  align-items: center;
+  justify-content: flex-start;
 
   row-gap: 1rem;
   column-gap: 0.625rem;
 
   margin-top: 1.5rem;
 
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
+
   &__item {
     text-align: center;
-    min-width: calc(33.333% - 1.25rem);
+    min-width: 80px;
   }
 
   &__link {
-    box-shadow: 0px 0px 5px 0px hsl(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
     display: block;
-    font-size: $font-xs;
+    font-size: 11px;
   }
 }
 </style>

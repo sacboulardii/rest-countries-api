@@ -8,9 +8,9 @@ $--theme-angle-icon-color: --angle-icon-color;
 
 // Default theme
 $theme-map-light: (
-    $--theme-background: hsl(0, 0%, 98%),
+    $--theme-background: hsl(0deg, 0%, 98%),
     $--theme-foreground: white,
-    $--theme-font-color: hsl(200, 15%, 8%),
+    $--theme-font-color: hsl(200deg, 15%, 8%),
     $--theme-placeholder-opacity: 0.3,
     $--theme-hover-color: darken(white, 5%),
     $--theme-angle-icon-color: black,
@@ -18,11 +18,11 @@ $theme-map-light: (
 
 // Override the default light theme
 $theme-map-dark: (
-    $--theme-background: hsl(207, 26%, 17%),
-    $--theme-foreground: hsl(209, 23%, 22%),
+    $--theme-background: hsl(207deg, 26%, 17%),
+    $--theme-foreground: hsl(209deg, 23%, 22%),
     $--theme-font-color: white,
     $--theme-placeholder-opacity: 1,
-    $--theme-hover-color: lighten(hsl(209, 23%, 22%), 5%),
+    $--theme-hover-color: lighten(hsl(209deg, 23%, 22%), 5%),
     $--theme-angle-icon-color: white,
 );
 
@@ -31,20 +31,20 @@ $theme-map-retro: (
     $--theme-background: #B270A2,
     $--theme-foreground: #7A4495,
     $--theme-font-color: white,
-    $--theme-placeholder-opacity: 0.3,
+    $--theme-placeholder-opacity: 0.75,
     $--theme-hover-color: darken(#7A4495, 5%),
     $--theme-angle-icon-color: white,
 );
     
 // $dark-gray-l: hsl(0, 0%, 52%);
-$white: hsl(0, 0%, 100%);
+$white: hsl(0deg, 0%, 100%);
 
 // Typography
 $font-xs: 12px;
 $font-sm: 14px;
 $font-md: 16px;
 $font-lg: 18px;
-$font-xlg: 24px;
+$font-xlg: 28px;
 
 $font-family: 'Nunito Sans', sans-serif;
 

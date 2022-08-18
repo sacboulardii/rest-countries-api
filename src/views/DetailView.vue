@@ -1,6 +1,6 @@
 <template>
   <main class="details container">
-    <button class="btn details__btn--back" @click="handleBack('/')">
+    <button class="btn btn--round details__btn--back" @click="handleBack('/')">
       <font-awesome-icon
         class="details__btn--back-icon"
         icon="fa-solid fa-arrow-left-long"
@@ -53,7 +53,7 @@ export default {
      * This is usually the case if the page was visited directly or from another site
      **/
     handleBack(fallback) {
-      if (!this.fromRoute.name) {
+      if (this.fromRoute && !this.fromRoute.name) {
         this.$router.push(fallback)
       } else {
         this.$router.back()
@@ -96,12 +96,11 @@ const dataIsAvailable = computed(() => store.state.api.apiState === ENUM.LOADED)
 
 <style lang="scss">
 .details {
-  padding-top: 2.5rem;
+  padding-top: 2rem;
 
-  @include second-to-last-child {
-    margin-top: 4rem;
+  @media (min-width: 768px) {
+    padding-top: 4rem;
   }
-
   @media (max-width: 768px) {
     padding-left: 1.5rem;
     padding-right: 1.5rem;

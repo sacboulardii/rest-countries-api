@@ -1,12 +1,14 @@
 <template>
   <section class="country-details">
-    <img
-      class="country-details__image"
-      :src="getImage"
-      alt="'Teste' + ' Flag'"
-    />
+    <figure class="country-details__figure">
+      <img
+        class="country-details__image"
+        :src="getImage"
+        alt="'Teste' + ' Flag'"
+      />
+    </figure>
     <div class="country-details__description">
-      <h2 class="country-details__name subtitle">
+      <h2 class="country-details__name subtitle--lg">
         {{ getName }}
       </h2>
       <div class="country-details__fields">
@@ -47,8 +49,13 @@
           </p>
         </div>
       </div>
-      <div class="country-details__border-countries">
-        <h3 class="country-details__field subtitle">Border Countries:</h3>
+      <div
+        v-if="foundBorderCountries"
+        class="country-details__border-countries"
+      >
+        <h3 class="country-details__border-countries-title">
+          Border Countries:
+        </h3>
         <BorderCountriesList />
       </div>
     </div>
@@ -72,6 +79,11 @@ export default {
     currencies: Object,
     languages: Object,
   },
+  computed: {
+    foundBorderCountries() {
+      return this.$store.state.countries.country.borderCountriesNames
+    },
+  },
   setup(props) {
     return { ...useCountryData(props) }
   },
@@ -80,10 +92,46 @@ export default {
 
 <style lang="scss" scoped>
 .country-details {
+  margin-top: 3.5rem;
   padding-bottom: 3rem;
+
+  @media (min-width: 1024px) {
+    display: flex;
+    align-items: flex-start;
+    column-gap: 100px;
+  }
+
+  &__figure {
+    @media (min-width: 768px) {
+      max-width: 100%;
+    }
+
+    @media (min-width: 1024px) {
+      min-width: calc(50% - 100px);
+      height: 400px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__description {
+    font-size: $font-sm;
+
+    @media (min-width: 1024px) {
+      padding-top: 3rem;
+    }
+  }
 
   &__name {
     margin-top: 3rem;
+
+    @media (min-width: 1024px) {
+      margin-top: 0;
+    }
   }
 
   &__field {
@@ -100,14 +148,45 @@ export default {
 
   &__fields {
     margin-top: 2rem;
+
+    @media (min-width: 480px) {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    @media (min-width: 1024px) {
+      justify-content: flex-start;
+    }
   }
 
   &__other-fields {
     margin-top: 3rem;
+
+    @media (min-width: 480px) {
+      margin-left: 3rem;
+      margin-top: 0;
+    }
   }
 
   &__border-countries {
-    margin-top: 3rem;
+    margin-top: 4rem;
+
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      row-gap: 1rem;
+      column-gap: 1rem;
+    }
+
+    &-title {
+      font-size: $font-md;
+
+      @media (min-width: 768px) {
+        font-size: $font-sm;
+      }
+    }
   }
 }
 </style>
