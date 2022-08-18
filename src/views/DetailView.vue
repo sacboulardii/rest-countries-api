@@ -107,6 +107,10 @@ const dataIsAvailable = computed(() => store.state.api.apiState === ENUM.LOADED)
     padding-right: 1.5rem;
   }
 
+  &__btn--back {
+    cursor: pointer;
+  }
+
   &__btn--back-icon {
     margin-right: 0.25rem;
   }
