@@ -85,7 +85,7 @@ body {
 .header {
   background-color: var($--theme-foreground);
 
-  box-shadow: 0px 2px 4px 0px rgba(0deg, 0%, 0%, 0.075);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0%, 0%, 0.075);
 
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -139,7 +139,7 @@ body {
   border: none;
   border-radius: $border-radius;
 
-  box-shadow: 0px 2px 8px 1px rgba(0deg, 0%, 0%, 0.05);
+  box-shadow: 0px 2px 8px 1px rgba(0, 0%, 0%, 0.05);
 
   color: var($--theme-font-color);
 
