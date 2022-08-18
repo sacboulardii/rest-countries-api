@@ -1,6 +1,7 @@
 <template>
   <main class="details container">
     <button class="btn btn--lg details__btn--back" @click="handleBack('/')">
+      <font-awesome-icon icon="fa-solid fa-arrow-left-long" />
       back
     </button>
     <CountryDetails v-if="dataIsAvailable" v-bind="country" />
