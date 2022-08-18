@@ -1,5 +1,5 @@
 <template>
-  <div @click="toggle" v-click-away="onClickAway" class="relative">
+  <div @click="toggle" v-click-away="onClickAway" class="dropdown relative">
     <slot name="toggler">
       <button>Toggle</button>
     </slot>
@@ -22,3 +22,14 @@ const onClickAway = () => {
   sharedState.value.active = false
 }
 </script>
+
+<style lang="scss">
+.dropdown {
+  width: 100%;
+  max-width: 400px;
+
+  @media (min-width: 768px) {
+    max-width: 200px;
+  }
+}
+</style>

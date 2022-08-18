@@ -1,6 +1,8 @@
 <template>
-  <main class="container container--sm detail-view">
-    <button class="btn btn--lg" @click="handleBack('/')">back</button>
+  <main class="details container">
+    <button class="btn btn--lg details__btn--back" @click="handleBack('/')">
+      back
+    </button>
     <CountryDetails v-if="dataIsAvailable" v-bind="country" />
   </main>
 </template>
@@ -89,13 +91,6 @@ const dataIsAvailable = computed(() => store.state.api.apiState === ENUM.LOADED)
 </script>
 
 <style lang="scss">
-.container--sm {
-  @media (max-width: 768px) {
-    @include margin-x(auto);
-    @include padding-x(1.5rem);
-  }
-}
-
 .btn {
   background-color: var($--theme-foreground);
   border: none;
@@ -104,11 +99,16 @@ const dataIsAvailable = computed(() => store.state.api.apiState === ENUM.LOADED)
   text-transform: capitalize;
 }
 
-.detail-view {
+.details {
   padding-top: 2rem;
 
   @include second-to-last-child {
     margin-top: 4rem;
+  }
+
+  @include respond-below(sm) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 </style>

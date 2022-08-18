@@ -1,13 +1,11 @@
 <template>
-  <ul v-if="borderCountriesNames">
-    <li
-      class="btn border"
-      v-for="country in borderCountriesNames"
-      :key="country"
-    >
-      <router-link :to="{ name: 'detail', params: { countryName: country } }">{{
-        country
-      }}</router-link>
+  <ul v-if="borderCountriesNames" class="border-countries-list">
+    <li v-for="country in borderCountriesNames" :key="country">
+      <router-link
+        class="btn border-countries-list__item"
+        :to="{ name: 'detail', params: { countryName: country } }"
+        >{{ country }}</router-link
+      >
     </li>
   </ul>
 </template>
@@ -25,19 +23,16 @@ const borderCountriesNames = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-ul {
-  // display: grid;
-  // grid-column-gap: 1rem;
-  // grid-template-columns: repeat(auto-fit, auto);
-  // grid-template-rows: repeat(auto-fit, minmax(auto, 2rem));
+.border-countries-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 1rem;
-}
+  margin-top: 1.5rem;
 
-.border {
-  font-size: 12px;
-  display: inline-block;
+  &__item {
+    display: inline-block;
+    font-size: $font-xs;
+  }
 }
 </style>

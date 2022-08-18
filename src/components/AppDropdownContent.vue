@@ -1,6 +1,6 @@
 <template>
-  <transition name="dropdown-content dropdown-container ">
-    <div class="dropdown-list" v-if="active">
+  <transition name="dropdown__content">
+    <div class="dropdown__content-list" v-if="active">
       <slot />
     </div>
   </transition>
@@ -19,18 +19,18 @@ export default {
 </script>
 
 <style lang="scss">
-.dropdown-content-enter-active,
-.dropdown-content-leave-active {
+.dropdown__content-enter-active,
+.dropdown__content-leave-active {
   transition: all 0.1s;
 }
 
-.dropdown-content-enter,
-.dropdown-content-leave-to {
+.dropdown__content-enter,
+.dropdown__content-leave-to {
   opacity: 0;
   transform: translateY(-5px);
 }
 
-.dropdown-list {
+.dropdown__content-list {
   @include dropdown;
   @include flex($direction: column);
 

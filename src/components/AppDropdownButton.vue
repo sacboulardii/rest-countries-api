@@ -1,7 +1,10 @@
 <template>
-  <button class="button dropdown-container">
+  <button class="dropdown__button">
     {{ currentFilter }}
-    <font-awesome-icon icon="fa-solid fa-chevron-down" class="arrow" />
+    <font-awesome-icon
+      icon="fa-solid fa-chevron-down"
+      class="dropdown__toggle"
+    />
   </button>
 </template>
 
@@ -18,12 +21,12 @@ const currentFilter = computed(() => {
 </script>
 
 <style lang="scss">
-.button {
+.dropdown__button {
   @include dropdown;
   position: relative;
 }
 
-.arrow {
+.dropdown__toggle {
   @include position($top: 50%);
   transform: translateY(-50%);
   color: var($--theme-angle-icon-color);

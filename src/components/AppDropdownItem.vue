@@ -1,5 +1,5 @@
 <template>
-  <a @click="searchByRegion" class="dropdown-item" href="#">
+  <a @click="searchByRegion" class="dropdown__item" href="#">
     <slot />
   </a>
 </template>
@@ -16,10 +16,12 @@ const searchByRegion = (e) => {
 </script>
 
 <style lang="scss">
-.dropdown-item {
+.dropdown__item {
   color: var($--theme-font-color);
-  @include padding-y(0.375rem);
-  @include padding-x(1.5rem);
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 
   &:hover {
     background-color: var($--theme-hover-color);

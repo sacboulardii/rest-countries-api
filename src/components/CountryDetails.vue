@@ -1,50 +1,54 @@
 <template>
   <section class="country-details">
-    <img class="flag-image" :src="getImage" alt="'Teste' + ' Flag'" />
-    <div class="description">
-      <h2 class="name">
+    <img
+      class="country-details__image"
+      :src="getImage"
+      alt="'Teste' + ' Flag'"
+    />
+    <div class="country-details__description">
+      <h2 class="country-details__name subtitle">
         {{ getName }}
       </h2>
-      <div class="subjects">
-        <div class="main-subjects">
-          <p class="subject">
+      <div class="country-details__fields">
+        <div class="country-details__main-fields">
+          <p class="country-details__field">
             Native Name:
-            <span class="data">{{ getNativeName }}</span>
+            <span class="country-details__data">{{ getNativeName }}</span>
           </p>
-          <p class="subject">
+          <p class="country-details__field">
             Population:
-            <span class="data">{{ getPopulation }}</span>
+            <span class="country-details__data">{{ getPopulation }}</span>
           </p>
-          <p class="subject">
+          <p class="country-details__field">
             Region:
-            <span class="data">{{ getRegion }}</span>
+            <span class="country-details__data">{{ getRegion }}</span>
           </p>
-          <p class="subject">
+          <p class="country-details__field">
             Sub Region:
-            <span class="data">{{ getSubRegion }}</span>
+            <span class="country-details__data">{{ getSubRegion }}</span>
           </p>
-          <p class="subject">
+          <p class="country-details__field">
             Capital:
-            <span class="data">{{ getCapital }}</span>
+            <span class="country-details__data">{{ getCapital }}</span>
           </p>
         </div>
-        <div class="other-subjects">
-          <p class="subject">
+        <div class="country-details__other-fields">
+          <p class="country-details__field">
             Top Level Domain:
-            <span class="data">{{ getTopLevelDomain }}</span>
+            <span class="country-details__data">{{ getTopLevelDomain }}</span>
           </p>
-          <p class="subject">
+          <p class="country-details__field">
             Currencies:
-            <span class="data">{{ getCurrencies }} </span>
+            <span class="country-details__data">{{ getCurrencies }} </span>
           </p>
-          <p class="subject">
+          <p class="country-details__field">
             Languages:
-            <span class="data">{{ getLanguages }}</span>
+            <span class="country-details__data">{{ getLanguages }}</span>
           </p>
         </div>
       </div>
-      <div class="border-countries">
-        <h3 class="subject">Border Countries:</h3>
+      <div class="country-details__border-countries">
+        <h3 class="country-details__field subtitle">Border Countries:</h3>
         <BorderCountriesList />
       </div>
     </div>
@@ -76,30 +80,26 @@ export default {
 
 <style lang="scss" scoped>
 .country-details {
-  @include second-to-last-child {
-    margin-top: 3rem;
-  }
-
   padding-bottom: 3rem;
-}
 
-.description {
-  @include second-to-last-child {
-    margin-top: 3rem;
-  }
-}
-
-.subjects {
-  margin-top: 2rem;
-}
-
-[class*='-subjects'] {
-  &:last-child {
+  &__name {
     margin-top: 3rem;
   }
 
-  @include second-to-last-child {
+  &__field + &__field {
     margin-top: 1rem;
+  }
+
+  &__fields {
+    margin-top: 2rem;
+  }
+
+  &__other-fields {
+    margin-top: 3rem;
+  }
+
+  &__border-countries {
+    margin-top: 3rem;
   }
 }
 </style>

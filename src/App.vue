@@ -1,21 +1,27 @@
 <template>
-  <header>
-    <div class="inner container">
+  <header class="header">
+    <div class="header__inner container">
       <router-link :to="{ name: 'home', params: { clear: true } }">
-        <h1 class="title">Where in the world?</h1>
+        <h1 class="header__title title">Where in the world?</h1>
       </router-link>
-      <div class="switch" @click="switchMode">
+      <div class="theme-toggle" @click="switchMode">
+        <!-- Render the right theme toggle icon conditionally based on current theme -->
         <font-awesome-icon
           v-if="theme === 'light'"
           icon="fa-moon"
-          class="icon"
+          class="theme-toggle__icon"
         />
         <font-awesome-icon
           v-else-if="theme === 'retro'"
           icon="fa-solid fa-lightbulb"
-          class="icon"
+          class="theme-toggle__icon"
         />
-        <font-awesome-icon v-else icon="fa-solid fa-glasses" class="icon" />
+        <font-awesome-icon
+          v-else
+          icon="fa-solid fa-glasses"
+          class="theme-toggle__icon"
+        />
+        <!-- endloop -->
       </div>
     </div>
   </header>
@@ -64,19 +70,6 @@ body {
   font-family: $font-family;
 }
 
-header {
-  background-color: var($--theme-foreground);
-
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
-
-  @include padding-y(2rem);
-  @include position(relative, $z-index: 10);
-
-  & .inner {
-    @include flex(space-between, center);
-  }
-}
-
 .container {
   max-width: $desktop;
   @include margin-x(auto);
@@ -84,6 +77,19 @@ header {
 
   @media (min-width: 768px) {
     @include padding-x(5rem);
+  }
+}
+
+.header {
+  background-color: var($--theme-foreground);
+
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
+
+  @include padding-y(2rem);
+  @include position(relative, $z-index: 10);
+
+  &__inner {
+    @include flex(space-between, center);
   }
 }
 
@@ -96,12 +102,12 @@ header {
   }
 }
 
-.icon {
-  height: 1rem;
-}
-
-.switch {
+.theme-toggle {
   cursor: pointer;
   font-size: $font-sm;
+
+  &__icon {
+    height: 1rem;
+  }
 }
 </style>

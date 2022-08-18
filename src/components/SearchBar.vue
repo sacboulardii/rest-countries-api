@@ -1,13 +1,13 @@
 <template>
   <div class="search-bar">
     <font-awesome-icon
-      class="icon"
+      class="search-bar__icon"
       icon="fa-solid fa-magnifying-glass"
       opacity="0.2"
     />
     <input
       type="text"
-      class="input"
+      class="search-bar__input"
       placeholder="Search for a country..."
       v-model="query"
       @keyup.enter="searchCountriesByName"
@@ -41,21 +41,22 @@ const searchCountriesByName = () => {
   @include respond-above(md) {
     max-width: 480px;
   }
-}
 
-.icon {
-  color: var($--theme-font-color);
+  &__icon {
+    color: var($--theme-font-color);
 
-  @include position($top: 50%, $left: 2rem);
-  transform: translateY(-50%);
+    @include position($top: 50%, $left: 2rem);
+    transform: translateY(-50%);
 
-  opacity: var($--theme-placeholder-opacity);
-}
+    opacity: var($--theme-placeholder-opacity);
+  }
 
-.input {
-  @include input;
-  @include padding($left: 4.5rem, $right: 1.125rem);
-  width: 100%;
+  &__input {
+    @include input;
+    padding-left: 4.5rem;
+    padding-right: 1.125rem;
+    width: 100%;
+  }
 }
 
 ::placeholder {

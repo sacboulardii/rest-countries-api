@@ -1,5 +1,5 @@
 <template>
-  <AppDropdown class="filter-dropdown">
+  <AppDropdown>
     <template v-slot:toggler>
       <AppDropdownButton />
     </template>
@@ -28,14 +28,3 @@ import AppDropdownContent from './AppDropdownContent.vue'
 import AppDropdownItem from './AppDropdownItem.vue'
 import AppDropdownButton from './AppDropdownButton.vue'
 </script>
-
-<style lang="scss">
-.filter-dropdown {
-  width: 100%;
-  max-width: 400px;
-
-  @media (min-width: 768px) {
-    max-width: 200px;
-  }
-}
-</style>

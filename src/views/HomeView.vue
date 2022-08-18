@@ -6,7 +6,7 @@
     </section>
     <!-- Lista de países -->
     <section class="countries-results">
-      <ul v-if="!notFound" class="list">
+      <ul v-if="!notFound" class="countries-results__list">
         <CountryCard
           v-for="(country, index) in countries"
           v-bind="country"
@@ -14,7 +14,7 @@
         />
       </ul>
       <!-- Mensagem de resultado não encontrado -->
-      <p v-else>Nenhum resultado foi encotrado.</p>
+      <p class="not-found" v-else>Nenhum resultado foi encotrado.</p>
     </section>
   </main>
 </template>
@@ -102,7 +102,7 @@ onBeforeMount(() => {
   }
 }
 
-.list {
+.countries-results__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, $card-x);
   grid-row-gap: 3rem;

@@ -1,38 +1,37 @@
 <template>
-  <router-link
-    :to="{ name: 'detail', params: { countryName: getName } }"
-    class="card-link"
-  >
-    <div class="card">
-      <div class="card__image">
-        <img :src="getImage" class="image" :alt="getName + ' Flag'" />
-      </div>
+  <li class="countries-results__item">
+    <router-link :to="{ name: 'detail', params: { countryName: getName } }">
+      <div class="card">
+        <figure class="card__figure">
+          <img :src="getImage" class="card__image" :alt="getName + ' Flag'" />
+        </figure>
 
-      <div class="description">
-        <h3 class="name">
-          {{ getName }}
-        </h3>
-        <p class="subject">
-          Population:
-          <span class="data">
-            {{ getPopulation }}
-          </span>
-        </p>
-        <p class="subject">
-          Region:
-          <span class="data">
-            {{ getRegion }}
-          </span>
-        </p>
-        <p class="subject">
-          Capital:
-          <span class="data">
-            {{ getCapital }}
-          </span>
-        </p>
+        <div class="card__description">
+          <h3 class="card__name">
+            {{ getName }}
+          </h3>
+          <p class="card__field">
+            Population:
+            <span class="card__data">
+              {{ getPopulation }}
+            </span>
+          </p>
+          <p class="card__field">
+            Region:
+            <span class="card__data">
+              {{ getRegion }}
+            </span>
+          </p>
+          <p class="card__field">
+            Capital:
+            <span class="card__data">
+              {{ getCapital }}
+            </span>
+          </p>
+        </div>
       </div>
-    </div>
-  </router-link>
+    </router-link>
+  </li>
 </template>
 
 <script>
@@ -54,10 +53,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-link {
-  display: block;
-}
-
 .card {
   background-color: var($--theme-foreground);
   border-radius: $border-radius;
@@ -74,36 +69,37 @@ export default {
   @include respond-above(sm) {
     border-radius: $border-radius-sm;
   }
-}
 
-.description {
-  color: var($--theme-font-color);
-  font-size: $font-sm;
-
-  @include padding($top: 2rem, $bottom: 3rem);
-  @include padding-x(1.5rem);
-
-  @include second-to-last-child {
-    margin-top: 0.5rem;
+  &__image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
   }
-}
 
-.subject {
-  font-weight: $fw-600;
-}
+  &__description {
+    color: var($--theme-font-color);
+    font-size: $font-sm;
+    padding-top: 2rem;
+    padding-right: 1.5rem;
+    padding-bottom: 3rem;
+    padding-left: 1.5rem;
 
-.data {
-  font-weight: $fw-300;
-}
+    > * + * {
+      margin-top: 0.5rem;
+    }
+  }
 
-.name {
-  font-size: $font-lg;
-  margin-bottom: 1.5rem;
-}
+  &__name {
+    font-size: $font-lg;
+    margin-bottom: 1.5rem;
+  }
 
-.image {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
+  &__field {
+    font-weight: $fw-600;
+  }
+
+  &__data {
+    font-weight: $fw-300;
+  }
 }
 </style>
