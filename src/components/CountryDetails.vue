@@ -86,8 +86,16 @@ export default {
     margin-top: 3rem;
   }
 
+  &__field {
+    font-weight: $fw-600;
+  }
+
   &__field + &__field {
     margin-top: 1rem;
+  }
+
+  &__data {
+    font-weight: $fw-300;
   }
 
   &__fields {

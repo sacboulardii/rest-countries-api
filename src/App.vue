@@ -107,6 +107,20 @@ body {
   }
 }
 
+.btn {
+  background-color: var($--theme-foreground);
+  border: none;
+  border-radius: 0.15rem;
+  color: var($--theme-font-color);
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0px 0px 9px 1px hsl(0, 0, 0, 0.2);
+  text-transform: capitalize;
+
+  &--sm {
+    padding: 0.5rem 1rem;
+  }
+}
+
 .input {
   background-color: var($--theme-foreground);
 

@@ -1,7 +1,10 @@
 <template>
   <main class="details container">
-    <button class="btn btn--lg details__btn--back" @click="handleBack('/')">
-      <font-awesome-icon icon="fa-solid fa-arrow-left-long" />
+    <button class="btn details__btn--back" @click="handleBack('/')">
+      <font-awesome-icon
+        class="details__btn--back-icon"
+        icon="fa-solid fa-arrow-left-long"
+      />
       back
     </button>
     <CountryDetails v-if="dataIsAvailable" v-bind="country" />
@@ -92,16 +95,8 @@ const dataIsAvailable = computed(() => store.state.api.apiState === ENUM.LOADED)
 </script>
 
 <style lang="scss">
-.btn {
-  background-color: var($--theme-foreground);
-  border: none;
-  padding: 0.5rem 1rem;
-  box-shadow: 0px 0px 9px 1px hsl(0, 0, 0, 0.2);
-  text-transform: capitalize;
-}
-
 .details {
-  padding-top: 2rem;
+  padding-top: 2.5rem;
 
   @include second-to-last-child {
     margin-top: 4rem;
@@ -110,6 +105,10 @@ const dataIsAvailable = computed(() => store.state.api.apiState === ENUM.LOADED)
   @media (max-width: 768px) {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  &__btn--back-icon {
+    margin-right: 0.25rem;
   }
 }
 </style>
