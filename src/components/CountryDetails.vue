@@ -105,11 +105,7 @@ export default {
 
 /* ------------------------------------------------------ */
 
-/**
- * Country Details Section
- *
- * Styles for the high level section block
- */
+/* Country Details Section */
 
 .country-details {
   margin-top: 3.5rem;
@@ -149,22 +145,14 @@ export default {
     grid-template-rows: auto auto;
   }
 
-  /**
-  * Country Details Figure
-  *
-  * Styles for the figure element image wrapper
-  */
+  /* Country Details Figure */
 
   &__figure {
     grid-area: figure;
     align-self: flex-start;
   }
 
-  /**
-  * Country Details Image
-  *
-  * Styles for the country flag image
-  */
+  /* Country Details Image */
 
   &__image {
     display: block;
@@ -173,11 +161,7 @@ export default {
     max-height: 450px;
   }
 
-  /**
-  * Country Details Description
-  *
-  * Styles for the nested description block
-  */
+  /* Country Details Description */
 
   &__description {
     display: grid;
@@ -197,11 +181,7 @@ export default {
     font-size: $font-sm;
   }
 
-  /**
-  * Country Details Name
-  *
-  * Styles for the country name inside the description block
-  */
+  /* Country Details Name */
 
   &__name {
     align-self: flex-end;
@@ -212,11 +192,7 @@ export default {
     // }
   }
 
-  /**
-  * Country Details Fields
-  *
-  * Styles for the country description fields wrapper
-  */
+  /* Country Details Fields */
 
   &__fields {
     background-image: purple;
@@ -228,22 +204,14 @@ export default {
     // margin-top: 2rem;
   }
 
-  /**
-  * Country Details Main Fields
-  *
-  * Styles for the main fields block inside fields
-  */
+  /* Country Details Main Fields */
 
   &__main-fields {
     @media (min-width: 768px) {
     }
   }
 
-  /**
-  * Country Details Other Fields
-  *
-  * Styles for the other fields block inside fields
-  */
+  /* Country Details Other Fields */
 
   &__other-fields {
     @media (min-width: 768px) {
@@ -255,11 +223,7 @@ export default {
     }
   }
 
-  /**
- * Country Details Field
- *
- * Styles for the country description field
- */
+  /* Country Details Field */
 
   &__field {
     font-weight: $fw-600;
@@ -269,21 +233,13 @@ export default {
     // margin-top: 1rem;
   }
 
-  /**
- * Country Details Data
- *
- * Styles for the country data inside a description field
- */
+  /* Country Details Data */
 
   &__data {
     font-weight: $fw-300;
   }
 
-  /**
- * Country Details Border Countries
- *
- * Styles for the border countries field block inside description
- */
+  /* Country Details Border Countries */
 
   &__border-countries {
     grid-area: border-countries;
@@ -292,11 +248,7 @@ export default {
     flex-wrap: wrap;
     row-gap: 0;
 
-    /**
-   * Country Details Border Countries Title
-   *
-   * Styles for the border countries field title
-   */
+    /* Country Details Border Countries Title */
 
     &-title {
       font-size: $font-md;
