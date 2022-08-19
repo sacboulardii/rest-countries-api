@@ -33,10 +33,8 @@ const borderCountriesNames = computed(() => {
   align-items: center;
   justify-content: flex-start;
 
-  row-gap: 1rem;
+  row-gap: 0.875rem;
   column-gap: 0.625rem;
-
-  margin-top: 1.5rem;
 
   @media (min-width: 768px) {
     margin-top: 0;

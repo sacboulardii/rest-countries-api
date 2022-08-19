@@ -49,15 +49,10 @@
           </p>
         </div>
       </div>
-      <div
-        v-if="foundBorderCountries"
-        class="country-details__border-countries"
-      >
-        <h3 class="country-details__border-countries-title">
-          Border Countries:
-        </h3>
-        <BorderCountriesList />
-      </div>
+    </div>
+    <div v-if="foundBorderCountries" class="country-details__border-countries">
+      <h3 class="country-details__border-countries-title">Border Countries:</h3>
+      <BorderCountriesList />
     </div>
   </section>
 </template>
@@ -97,7 +92,7 @@ export default {
  * These are the styles for the Country Details section.
  *
  * Index
- * - Country Details Section 
+ * - Country Details Section
  * - Country Details Figure
  * - Country Details Image
  * - Country Details Description
@@ -117,118 +112,152 @@ export default {
  */
 
 .country-details {
-  background-color: white;
   margin-top: 3.5rem;
   padding-bottom: 3rem;
 
+  display: grid;
+
+  grid-template-areas:
+    'figure'
+    'description'
+    'border-countries';
+  grid-template-rows: auto 1fr;
+
+  grid-row-gap: 3rem;
+
+  @media (min-width: 768px) {
+    padding-bottom: 0;
+    grid-template-areas:
+      'figure           description'
+      'border-countries border-countries';
+    grid-template-rows: auto auto;
+    grid-template-columns: 2fr 1fr;
+    grid-row-gap: 2rem;
+    grid-column-gap: 50px;
+  }
+
   @media (min-width: 1024px) {
-    display: flex;
-    align-items: flex-start;
-    column-gap: 100px;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 100px;
+  }
+
+  @media (min-width: 1440px) {
+    grid-template-areas:
+      'figure description'
+      'figure border-countries';
+
+    grid-template-rows: auto auto;
   }
 
   /**
   * Country Details Figure
-  * 
+  *
   * Styles for the figure element image wrapper
   */
 
   &__figure {
-    @media (min-width: 768px) {
-      max-width: 100%;
-    }
-
-    @media (min-width: 1024px) {
-      min-width: calc(50% - 100px);
-      height: 400px;
-    }
+    grid-area: figure;
+    align-self: flex-start;
   }
 
   /**
   * Country Details Image
-  * 
+  *
   * Styles for the country flag image
   */
 
   &__image {
-    object-fit: cover;
+    display: block;
+    object-fit: contain;
     height: 100%;
-    width: 100%;
+    max-height: 450px;
   }
 
   /**
   * Country Details Description
-  * 
+  *
   * Styles for the nested description block
   */
 
   &__description {
-    font-size: $font-sm;
+    display: grid;
+    grid-area: description;
+
+    @media (min-width: 768px) {
+      padding-top: 1rem;
+      row-gap: 1.5rem;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 3fr;
+    }
 
     @media (min-width: 1024px) {
-      padding-top: 3rem;
+      padding-top: 2rem;
     }
+
+    font-size: $font-sm;
   }
 
   /**
   * Country Details Name
-  * 
+  *
   * Styles for the country name inside the description block
   */
 
   &__name {
-    margin-top: 3rem;
+    align-self: flex-end;
+    // margin-top: 3rem;
 
-    @media (min-width: 1024px) {
-      margin-top: 0;
-    }
+    // @media (min-width: 1024px) {
+    //   margin-top: 0;
+    // }
   }
 
   /**
   * Country Details Fields
-  * 
+  *
   * Styles for the country description fields wrapper
   */
 
   &__fields {
-    margin-top: 2rem;
-
-    @media (min-width: 480px) {
-      display: flex;
-      align-items: flex-start;
+    background-image: purple;
+    @media (min-width: 1440px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 2rem;
     }
-
-    @media (min-width: 1024px) {
-      justify-content: flex-start;
-    }
+    // margin-top: 2rem;
   }
 
   /**
   * Country Details Main Fields
-  * 
+  *
   * Styles for the main fields block inside fields
   */
 
-  /* @@ PLACEHOLDER @@ */
+  &__main-fields {
+    @media (min-width: 768px) {
+    }
+  }
 
   /**
   * Country Details Other Fields
-  * 
+  *
   * Styles for the other fields block inside fields
   */
 
   &__other-fields {
-    margin-top: 3rem;
+    @media (min-width: 768px) {
+      margin-top: 1rem;
+    }
 
-    @media (min-width: 480px) {
-      margin-left: 3rem;
+    @media (min-width: 1440px) {
       margin-top: 0;
     }
   }
 
   /**
  * Country Details Field
- * 
+ *
  * Styles for the country description field
  */
 
@@ -237,13 +266,13 @@ export default {
   }
 
   &__field + &__field {
-    margin-top: 1rem;
+    // margin-top: 1rem;
   }
 
   /**
  * Country Details Data
- * 
- * Styles for the country data inside a description field 
+ *
+ * Styles for the country data inside a description field
  */
 
   &__data {
@@ -252,30 +281,26 @@ export default {
 
   /**
  * Country Details Border Countries
- * 
+ *
  * Styles for the border countries field block inside description
  */
 
   &__border-countries {
-    margin-top: 4rem;
-
-    @media (min-width: 768px) {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      row-gap: 1rem;
-      column-gap: 1rem;
-    }
+    grid-area: border-countries;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 0;
 
     /**
    * Country Details Border Countries Title
-   * 
+   *
    * Styles for the border countries field title
    */
 
     &-title {
       font-size: $font-md;
+      margin-right: 1rem;
 
       @media (min-width: 768px) {
         font-size: $font-sm;
