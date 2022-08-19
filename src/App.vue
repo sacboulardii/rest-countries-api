@@ -24,6 +24,7 @@
         <!-- endloop -->
       </div>
     </div>
+    <a href="#" class="scroll" v-scroll-to="'.header'">Scroll to TOP</a>
   </header>
   <router-view />
 </template>
@@ -35,7 +36,7 @@ export default {
     switchMode() {
       // Remove body theme class
       document.body.classList.remove(this.$store.state.theme.mode)
-      // Switch theme and add theme class to body
+      // Switch theme and add current theme class to body
       this.$store.dispatch('theme/switchThemeMode')
       document.body.classList.add(this.$store.state.theme.mode)
     },
@@ -168,5 +169,12 @@ body {
   &__icon {
     height: 1rem;
   }
+}
+
+.scroll {
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  z-index: 9999;
 }
 </style>
