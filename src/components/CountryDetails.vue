@@ -91,7 +91,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/**
+ * CountryDetails.vue
+ *
+ * These are the styles for the Country Details section.
+ *
+ * Index
+ * - Country Details Section 
+ * - Country Details Figure
+ * - Country Details Image
+ * - Country Details Description
+ * - Country Details Name
+ * - Country Details Fields
+ * - Country Details Main Fields
+ * - Country Details Other Fields
+ * - Country Details Border Countries
+ */
+
+/* ------------------------------------------------------ */
+
+/**
+ * Country Details Section
+ *
+ * Styles for the high level section block
+ */
+
 .country-details {
+  background-color: white;
   margin-top: 3.5rem;
   padding-bottom: 3rem;
 
@@ -100,6 +126,12 @@ export default {
     align-items: flex-start;
     column-gap: 100px;
   }
+
+  /**
+  * Country Details Figure
+  * 
+  * Styles for the figure element image wrapper
+  */
 
   &__figure {
     @media (min-width: 768px) {
@@ -112,11 +144,23 @@ export default {
     }
   }
 
+  /**
+  * Country Details Image
+  * 
+  * Styles for the country flag image
+  */
+
   &__image {
     object-fit: cover;
     height: 100%;
     width: 100%;
   }
+
+  /**
+  * Country Details Description
+  * 
+  * Styles for the nested description block
+  */
 
   &__description {
     font-size: $font-sm;
@@ -126,6 +170,12 @@ export default {
     }
   }
 
+  /**
+  * Country Details Name
+  * 
+  * Styles for the country name inside the description block
+  */
+
   &__name {
     margin-top: 3rem;
 
@@ -134,17 +184,11 @@ export default {
     }
   }
 
-  &__field {
-    font-weight: $fw-600;
-  }
-
-  &__field + &__field {
-    margin-top: 1rem;
-  }
-
-  &__data {
-    font-weight: $fw-300;
-  }
+  /**
+  * Country Details Fields
+  * 
+  * Styles for the country description fields wrapper
+  */
 
   &__fields {
     margin-top: 2rem;
@@ -159,6 +203,20 @@ export default {
     }
   }
 
+  /**
+  * Country Details Main Fields
+  * 
+  * Styles for the main fields block inside fields
+  */
+
+  /* @@ PLACEHOLDER @@ */
+
+  /**
+  * Country Details Other Fields
+  * 
+  * Styles for the other fields block inside fields
+  */
+
   &__other-fields {
     margin-top: 3rem;
 
@@ -167,6 +225,36 @@ export default {
       margin-top: 0;
     }
   }
+
+  /**
+ * Country Details Field
+ * 
+ * Styles for the country description field
+ */
+
+  &__field {
+    font-weight: $fw-600;
+  }
+
+  &__field + &__field {
+    margin-top: 1rem;
+  }
+
+  /**
+ * Country Details Data
+ * 
+ * Styles for the country data inside a description field 
+ */
+
+  &__data {
+    font-weight: $fw-300;
+  }
+
+  /**
+ * Country Details Border Countries
+ * 
+ * Styles for the border countries field block inside description
+ */
 
   &__border-countries {
     margin-top: 4rem;
@@ -179,6 +267,12 @@ export default {
       row-gap: 1rem;
       column-gap: 1rem;
     }
+
+    /**
+   * Country Details Border Countries Title
+   * 
+   * Styles for the border countries field title
+   */
 
     &-title {
       font-size: $font-md;
