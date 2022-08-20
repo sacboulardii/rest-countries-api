@@ -25,7 +25,7 @@
           v-else
           src="./assets/wolf-svgrepo-com.svg"
           alt="wolf"
-          class="theme-toggle__icon wolf"
+          class="theme-toggle__icon"
         />
         <!-- endloop -->
       </div>
@@ -104,6 +104,8 @@ body {
 
   position: relative;
   z-index: 10;
+
+  transition: color 0.4s ease, background-color 0.4s ease, opacity 0.4s ease;
 
   &__inner {
     @include flex($justify: space-between, $align: center);
