@@ -16,15 +16,25 @@
           icon="fa-solid fa-lightbulb"
           class="theme-toggle__icon"
         />
-        <font-awesome-icon
+        <!-- <font-awesome-icon
           v-else
           icon="fa-solid fa-glasses"
           class="theme-toggle__icon"
+        /> -->
+        <img
+          v-else
+          src="./assets/wolf-svgrepo-com.svg"
+          alt="wolf"
+          class="theme-toggle__icon wolf"
         />
         <!-- endloop -->
       </div>
     </div>
-    <a href="#" class="scroll" v-scroll-to="'.header'">Scroll to TOP</a>
+    <font-awesome-icon
+      id="scroll-to-top"
+      v-scroll-to="'.header'"
+      icon="fa-solid fa-circle-chevron-up"
+    />
   </header>
   <router-view />
 </template>
@@ -173,10 +183,13 @@ body {
   }
 }
 
-.scroll {
+#scroll-to-top {
+  cursor: pointer;
   position: fixed;
   right: 5%;
   bottom: 5%;
+  color: var($--theme-circle-chevron-color);
+  font-size: 2rem;
   z-index: 9999;
 }
 </style>

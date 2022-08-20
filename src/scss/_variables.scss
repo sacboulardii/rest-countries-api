@@ -5,6 +5,7 @@ $--theme-font-color: --theme-font-color;
 $--theme-placeholder-opacity: --theme-placeholder-opacity;
 $--theme-hover-color: --theme-hover-color;
 $--theme-angle-icon-color: --angle-icon-color;
+$--theme-circle-chevron-color: --theme-circle-chevron-color;
 
 // Default theme
 $theme-map-light: (
@@ -14,6 +15,7 @@ $theme-map-light: (
     $--theme-placeholder-opacity: 0.3,
     $--theme-hover-color: darken(white, 5%),
     $--theme-angle-icon-color: black,
+    $--theme-circle-chevron-color: gray,
 );
 
 // Override the default light theme
@@ -24,20 +26,23 @@ $theme-map-dark: (
     $--theme-placeholder-opacity: 1,
     $--theme-hover-color: lighten(hsl(209deg, 23%, 22%), 5%),
     $--theme-angle-icon-color: white,
+    $--theme-circle-chevron-color: gray,
 );
 
 // Retro theme
 $theme-map-retro: (
-    $--theme-background: #B270A2,
-    $--theme-foreground: #7A4495,
+    $--theme-background: black,
+    $--theme-foreground: rgb(63, 0, 113),
     $--theme-font-color: white,
     $--theme-placeholder-opacity: 0.75,
-    $--theme-hover-color: darken(#7A4495, 5%),
+    $--theme-hover-color: rgb(21, 0, 80),
     $--theme-angle-icon-color: white,
+    $--theme-circle-chevron-color: white,
 );
     
 // $dark-gray-l: hsl(0, 0%, 52%);
 $white: hsl(0deg, 0%, 100%);
+$light-gray: rgb(197, 193, 193);
 
 // Typography
 $font-xs: 12px;
