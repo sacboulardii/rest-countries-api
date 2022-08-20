@@ -111,7 +111,7 @@ onBeforeMount(() => {
   display: grid;
   grid-template-columns: repeat(auto-fit, $card-x);
   grid-row-gap: 3rem;
-  grid-column-gap: 5rem;
+  grid-column-gap: calc((1440px - 9rem - (260px * 4)) / 3);
   justify-content: center;
 
   margin-top: 3rem;
