@@ -76,17 +76,7 @@ body {
   padding-left: 1rem;
   padding-right: 1rem;
 
-  @media (min-width: 768) {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-
-  @media (min-width: 1024px) {
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-
-  @media (min-width: 1200) {
+  @media (min-width: 768px) {
     padding-left: 4.5rem;
     padding-right: 4.5rem;
   }

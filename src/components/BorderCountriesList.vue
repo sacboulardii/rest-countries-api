@@ -42,13 +42,13 @@ const borderCountriesNames = computed(() => {
 
   &__item {
     text-align: center;
-    min-width: 80px;
+    min-width: 100px;
   }
 
   &__link {
     box-shadow: 0px 0px 5px 0px rgba(0, 0%, 0%, 0.2);
     display: block;
-    font-size: 11px;
+    font-size: 12px;
 
     &:hover,
     &:focus {
