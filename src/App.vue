@@ -30,11 +30,6 @@
         <!-- endloop -->
       </div>
     </div>
-    <font-awesome-icon
-      id="scroll-to-top"
-      v-scroll-to="'.header'"
-      icon="fa-solid fa-circle-chevron-up"
-    />
   </header>
   <router-view />
 </template>
