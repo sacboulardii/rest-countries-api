@@ -19,6 +19,7 @@ import {
   faGlasses,
   faMagnifyingGlass,
   faChevronDown,
+  faCircleChevronUp,
   faLightbulb,
   faArrowLeftLong,
 } from '@fortawesome/free-solid-svg-icons'
@@ -29,6 +30,7 @@ library.add(
   faGlasses,
   faMagnifyingGlass,
   faChevronDown,
+  faCircleChevronUp,
   faLightbulb,
   faArrowLeftLong
 )
