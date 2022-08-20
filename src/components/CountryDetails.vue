@@ -230,7 +230,7 @@ export default {
   }
 
   &__field + &__field {
-    // margin-top: 1rem;
+    margin-top: 1rem;
   }
 
   /* Country Details Data */

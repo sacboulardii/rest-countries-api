@@ -49,6 +49,19 @@ const borderCountriesNames = computed(() => {
     box-shadow: 0px 0px 5px 0px rgba(0, 0%, 0%, 0.2);
     display: block;
     font-size: 11px;
+
+    &:hover,
+    &:focus {
+      transform: translateY(-0.2em);
+      box-shadow: 0 0 0 1em rgba(#fff, 0);
+      animation: pulse 0.4s;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px 0 rgba(0, 0%, 0%, 0.05);
   }
 }
 </style>
