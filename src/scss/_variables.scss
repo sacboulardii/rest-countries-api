@@ -30,12 +30,12 @@ $theme-map-dark: (
 );
 
 // Retro theme
-$theme-map-retro: (
-    $--theme-background: rgb(202, 34, 34),
-    $--theme-foreground: rgb(124, 31, 201),
-    $--theme-font-color: rgb(138, 71, 71),
+$theme-map-wolf: (
+    $--theme-background: #916BBF,
+    $--theme-foreground: #1C0C5B,
+    $--theme-font-color: white,
     $--theme-placeholder-opacity: 0.75,
-    $--theme-hover-color: rgb(21, 0, 80),
+    $--theme-hover-color: lighten(#1C0C5B, 5%),
     $--theme-angle-icon-color: white,
     $--theme-circle-chevron-color: white,
 );

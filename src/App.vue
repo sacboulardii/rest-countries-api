@@ -12,7 +12,7 @@
           class="theme-toggle__icon"
         />
         <font-awesome-icon
-          v-else-if="theme === 'retro'"
+          v-else-if="theme === 'wolf'"
           icon="fa-solid fa-lightbulb"
           class="theme-toggle__icon"
         />
@@ -66,8 +66,8 @@ export default {
 .dark {
   @include spread-map($theme-map-dark);
 }
-.retro {
-  @include spread-map($theme-map-retro);
+.wolf {
+  @include spread-map($theme-map-wolf);
 }
 
 body {

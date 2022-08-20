@@ -13,7 +13,7 @@ const mutations = {
         state.mode = 'dark'
         break
       case 'dark':
-        state.mode = 'retro'
+        state.mode = 'wolf'
         break
       default:
         state.mode = 'light'
