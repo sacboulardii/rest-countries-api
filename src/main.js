@@ -5,6 +5,7 @@ import router from './router'
 import store from './store'
 import './assets/reset.css'
 import VueClickAway from 'vue3-click-away'
+import VueScrollTo from 'vue-scrollto'
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -33,6 +34,7 @@ library.add(
 )
 
 createApp(App)
+  .use(VueScrollTo)
   .use(store)
   .use(router)
   .use(VueClickAway)
