@@ -69,6 +69,7 @@ body {
   background-color: var($--theme-background);
   color: var($--theme-font-color);
   font-family: $font-family;
+  transition: color 0.4s ease, background-color 0.4s ease, opacity 0.4s ease;
 }
 
 .container {
@@ -165,6 +166,7 @@ body {
 .theme-toggle {
   cursor: pointer;
   font-size: $font-sm;
+  transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
 
   &__icon {
     height: 1rem;
