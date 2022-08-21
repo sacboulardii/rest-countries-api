@@ -6,13 +6,13 @@
 
 <script setup>
 // Vuex store
-import { useStore } from 'vuex'
-const store = useStore()
+// import { useStore } from 'vuex'
+// const store = useStore()
 
 // Fetch countries by region
-const searchByRegion = (e) => {
-  store.dispatch('countries/getCountryByRegion', e.target.innerText)
-}
+// const searchByRegion = (e) => {
+//   store.dispatch('countries/getCountryByRegion', e.target.innerText)
+// }
 </script>
 
 <style lang="scss">

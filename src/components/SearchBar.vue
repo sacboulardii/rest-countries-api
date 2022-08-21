@@ -17,15 +17,15 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useStore } from 'vuex'
+// import { useStore } from 'vuex'
 
-const store = useStore()
+// const store = useStore()
 
 const query = ref('')
 
-const searchCountriesByName = () => {
-  store.dispatch('countries/getCountryByName', query.value)
-}
+// const searchCountriesByName = () => {
+//   store.dispatch('countries/getCountryByName', query.value)
+// }
 </script>
 
 <style lang="scss" scoped>

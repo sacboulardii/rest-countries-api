@@ -67,31 +67,27 @@ export default {
 // Components
 import CountryDetails from '@/components/CountryDetails.vue'
 
-import { defineProps, onBeforeMount, computed } from 'vue'
+// import { defineProps, onBeforeMount, computed } from 'vue'
 
-import ENUM from '@/enums'
+// import ENUM from '@/enums'
 // import { useRouter } from 'vue-router'
-
-// Vuex store
-import { useStore } from 'vuex'
-const store = useStore()
 
 // const router = useRouter()
 
 // Received route param
-const props = defineProps(['countryName'])
+// const props = defineProps(['countryName'])
 
 // Fetch country details
-onBeforeMount(() => {
-  store.dispatch('countries/getCountryDetails', props.countryName)
-  store.dispatch('countries/getBorderCountries', props.countryName)
-})
+// onBeforeMount(() => {
+// store.dispatch('countries/getCountryDetails', props.countryName)
+// store.dispatch('countries/getBorderCountries', props.countryName)
+// })
 
-const country = computed(() => {
-  return store.state.countries.country
-})
+// const country = computed(() => {
+// return store.state.countries.country
+// })
 // Show details when data is ready
-const dataIsAvailable = computed(() => store.state.api.apiState === ENUM.LOADED)
+// const dataIsAvailable = computed(() => store.state.api.apiState === ENUM.LOADED)
 </script>
 
 <style lang="scss">

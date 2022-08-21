@@ -37,24 +37,24 @@
 <script>
 export default {
   name: 'App',
-  methods: {
-    switchMode() {
-      // Remove body theme class
-      document.body.classList.remove(this.$store.state.theme.mode)
-      // Switch theme and add current theme class to body
-      this.$store.dispatch('theme/switchThemeMode')
-      document.body.classList.add(this.$store.state.theme.mode)
-    },
-  },
-  computed: {
-    theme() {
-      return this.$store.state.theme.mode
-    },
-  },
-  created() {
-    // Add light theme to body on created Lifecycle
-    document.body.classList.add(this.$store.state.theme.mode)
-  },
+  // methods: {
+  //   switchMode() {
+  //     // Remove body theme class
+  //     document.body.classList.remove(this.$store.state.theme.mode)
+  //     // Switch theme and add current theme class to body
+  //     this.$store.dispatch('theme/switchThemeMode')
+  //     document.body.classList.add(this.$store.state.theme.mode)
+  //   },
+  // },
+  // computed: {
+  //   theme() {
+  //     return this.$store.state.theme.mode
+  //   },
+  // },
+  // created() {
+  //   // Add light theme to body on created Lifecycle
+  //   document.body.classList.add(this.$store.state.theme.mode)
+  // },
 }
 </script>
 

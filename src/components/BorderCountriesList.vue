@@ -15,15 +15,15 @@
 </template>
 
 <script setup>
-import { useStore } from 'vuex'
-import { computed } from 'vue'
+// import { useStore } from 'vuex'
+// import { computed } from 'vue'
 
-const store = useStore()
+// const store = useStore()
 
-const borderCountriesNames = computed(() => {
-  let countries = store.state.countries.country.borderCountriesNames
-  return countries ? countries : null
-})
+// const borderCountriesNames = computed(() => {
+//   let countries = store.state.countries.country.borderCountriesNames
+//   return countries ? countries : null
+// })
 </script>
 
 <style lang="scss" scoped>

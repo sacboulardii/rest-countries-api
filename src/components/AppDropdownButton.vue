@@ -9,15 +9,15 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useStore } from 'vuex'
+// import { computed } from 'vue'
+// import { useStore } from 'vuex'
 
-const store = useStore()
+// const store = useStore()
 
-const currentFilter = computed(() => {
-  let filter = store.state.countries.countryRegionFilter
-  return filter === 'All' ? 'Filter by Region' : filter
-})
+// const currentFilter = computed(() => {
+// let filter = store.state.countries.countryRegionFilter
+// return filter === 'All' ? 'Filter by Region' : filter
+// })
 </script>
 
 <style lang="scss">

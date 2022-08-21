@@ -36,56 +36,55 @@ export default {
 </script>
 
 <script setup>
-import ENUM from '@/enums'
+// import ENUM from '@/enums'
 
 // Components
 import SearchBar from '@/components/SearchBar.vue'
 import CountryCard from '@/components/CountryCard.vue'
 import AppDropdownWrapper from '@/components/AppDropdownWrapper.vue'
 
-import { useStore } from 'vuex'
-import { onBeforeMount, computed } from 'vue'
-import { useRoute } from 'vue-router'
-
-// Vuex store
-const store = useStore()
+import { onBeforeMount } from 'vue'
+// import { useRoute } from 'vue-router'
+import { useCountriesStore } from '@/store/apiCountries'
 
 // Route
-const route = useRoute()
+// const route = useRoute()
 
 // Computed properties
-const countries = computed(() => {
-  if (store.state.api.apiState === ENUM.LOADED) {
-    // Sort in alphabetical order
-    let countries = store.state.countries.countriesList
-    let sortedCountries = countries
-      .slice()
-      .sort((a, b) => a.name.common.localeCompare(b.name.common))
-    return sortedCountries
-  } else {
-    return null
-  }
-})
+// const countries = computed(() => {
+// if (store.state.api.apiState === ENUM.LOADED) {
+// Sort in alphabetical order
+// let countries = store.state.countries.countriesList
+// let sortedCountries = countries
+// .slice()
+// .sort((a, b) => a.name.common.localeCompare(b.name.common))
+//     return sortedCountries
+//   } else {
+//     return null
+//   }
+// })
 
-const notFound = computed(() => {
-  return (
-    store.state.api.apiState === ENUM.ERROR &&
-    store.state.countries.countriesList.length === 0
-  )
-})
+// const notFound = computed(() => {
+//   return (
+//     store.state.api.apiState === ENUM.ERROR &&
+//     store.state.countries.countriesList.length === 0
+//   )
+// })
 
 // Fetch countries
 onBeforeMount(() => {
+  const store = useCountriesStore()
+  console.log(store)
   // Check if region param is true
-  route.params.region &&
-    store.dispatch('countries/getCountryByRegion', route.params.region)
+  // route.params.region &&
+  //   store.dispatch('countries/getCountryByRegion', route.params.region)
   // Check if search param is true
-  route.params.search &&
-    store.dispatch('countries/getCountryByName', route.params.search)
+  // route.params.search &&
+  //   store.dispatch('countries/getCountryByName', route.params.search)
   // Check if params object is empty
-  !Object.keys(route.params).length &&
-    !store.state.countries.countriesList &&
-    store.dispatch('countries/getCountries')
+  // !Object.keys(route.params).length &&
+  //   !store.state.countries.countriesList &&
+  //   store.dispatch('countries/getCountries')
 })
 </script>
 
