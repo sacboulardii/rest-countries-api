@@ -2,7 +2,6 @@
 node_modules
 /dist
 
-
 # local env files
 .env.local
 .env.*.local
@@ -22,6 +21,11 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
+# Excalidraw files
 *.excalidraw
+
+# Todo files
 TODO
+*.todo
+
 src/assets/*.png
