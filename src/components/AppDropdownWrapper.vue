@@ -8,7 +8,7 @@
         v-for="region in [
           'All',
           'Africa',
-          'America',
+          'Americas',
           'Asia',
           'Europe',
           'Oceania',

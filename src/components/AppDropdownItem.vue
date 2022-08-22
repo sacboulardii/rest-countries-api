@@ -1,18 +1,13 @@
 <template>
-  <a @click="searchByRegion" class="dropdown__item" href="#">
+  <a @click="store.fetchCountriesByRegion" class="dropdown__item" href="#">
     <slot />
   </a>
 </template>
 
 <script setup>
-// Vuex store
-// import { useStore } from 'vuex'
-// const store = useStore()
+import { useCountriesStore } from '@/store/countries'
 
-// Fetch countries by region
-// const searchByRegion = (e) => {
-//   store.dispatch('countries/getCountryByRegion', e.target.innerText)
-// }
+const store = useCountriesStore()
 </script>
 
 <style lang="scss">
