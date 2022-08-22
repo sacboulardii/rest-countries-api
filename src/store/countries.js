@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { apiClient } from '@/services/CountriesService'
 import { useApiStore } from './api'
 
-import sortCountriesList from '@/helpers'
+import { sortCountriesList } from '@/helpers'
 
 import ENUM from '@/enums'
 
@@ -95,23 +95,22 @@ export const useCountriesStore = defineStore('countries', () => {
     return selectedOption === 'All' ? 'Filter by Region' : selectedOption
   })
 
-  /* A computed property that returns true if the countries list is available and the API state is
-  loaded. */
-  const isCountriesListAvailable = computed(() => {
-    const apiStore = useApiStore()
-
-    return (
-      getSortedCountriesList.value &&
-      getSortedCountriesList.value.length &&
-      apiStore.apiState === ENUM.LOADED
-    )
+  /* A computed property that returns the length of the countries list. */
+  const getCountriesListLength = computed(() => {
+    return (countriesList.value && Object.keys(countriesList.value).length) || 0
   })
 
-  /* A computed property that returns true if the countries list is not available and the API state is
-    error. */
+  /* A computed property that returns true if the API state is LOADED and the length of the countries
+  list is greater than 0. */
+  const isCountriesListAvailable = computed(() => {
+    const apiStore = useApiStore()
+    return apiStore.apiState === ENUM.LOADED && getCountriesListLength.value
+  })
+
+  /* A computed property that returns true if the API state is ERROR. */
   const isResourceUnavailable = computed(() => {
     const apiStore = useApiStore()
-    return !isCountriesListAvailable.value && apiStore.apiState === ENUM.ERROR
+    return apiStore.apiState === ENUM.ERROR
   })
 
   return {
