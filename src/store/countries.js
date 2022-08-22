@@ -86,8 +86,8 @@ export const useCountriesStore = defineStore('countries', () => {
     return fetchedCountries.value
   })
 
-  /* A computed property that sorts the countries list alphabetically. */
-  const getCountriesList = computed(() => {
+  /* A computed property that returns the sorted countries list. */
+  const getSortedCountriesList = computed(() => {
     return sortCountriesList(countriesList.value)
   })
 
@@ -97,20 +97,23 @@ export const useCountriesStore = defineStore('countries', () => {
     return selectedOption === 'All' ? 'Filter by Region' : selectedOption
   })
 
-  /* Checking if the countriesList is available. */
+  /* A computed property that returns true if the countries list is available and the API state is
+  loaded. */
   const isCountriesListAvailable = computed(() => {
     const apiStore = useApiStore()
 
-    if (countriesList.value) {
-      return (
-        (getCountriesList.value &&
-          getCountriesList.value.length &&
-          apiStore.apiState === ENUM.LOADED) ||
-        (getCountriesList.value.length === 0 &&
-          apiStore.apiState === ENUM.ERROR)
-      )
-    }
-    return false
+    return (
+      getSortedCountriesList.value &&
+      getSortedCountriesList.value.length &&
+      apiStore.apiState === ENUM.LOADED
+    )
+  })
+
+  /* A computed property that returns true if the countries list is not available and the API state is
+    error. */
+  const isResourceUnavailable = computed(() => {
+    const apiStore = useApiStore()
+    return !isCountriesListAvailable.value && apiStore.apiState === ENUM.ERROR
   })
 
   return {
@@ -119,8 +122,9 @@ export const useCountriesStore = defineStore('countries', () => {
     regionFilter,
     fetchAllCountries,
     fetchCountriesByRegion,
-    getCountriesList,
+    getSortedCountriesList,
     getRegionFilterText,
     isCountriesListAvailable,
+    isResourceUnavailable,
   }
 })

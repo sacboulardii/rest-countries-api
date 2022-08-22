@@ -8,13 +8,15 @@
     <section class="countries-results">
       <ul v-if="store.isCountriesListAvailable" class="countries-results__list">
         <CountryCard
-          v-for="(country, index) in store.getCountriesList"
+          v-for="(country, index) in store.getSortedCountriesList"
           v-bind="country"
           :key="index"
         />
       </ul>
       <!-- Mensagem de resultado não encontrado -->
-      <p class="not-found" v-else>Nenhum resultado foi encotrado.</p>
+      <p class="not-found" v-if="isResourceUnavailable">
+        Nenhum resultado foi encotrado.
+      </p>
     </section>
     <font-awesome-icon
       id="scroll-to-top"
@@ -54,11 +56,11 @@ const store = useCountriesStore()
 // Fetch countries
 onBeforeMount(() => {
   store.fetchAllCountries()
-  route.params.region && store.getCountryByRegion(route.params.region)
+  route.params.region && store.filterCountriesByRegion(route.params.region)
   route.params.search && store.getCountryByName(route.params.search)
-  !Object.keys(route.params).length &&
-    !store.getCountriesList &&
-    store.fetchAllCountries()
+  // !Object.keys(route.params).length &&
+  //   !store.getCountriesList &&
+  //   store.fetchAllCountries()
 })
 </script>
 
