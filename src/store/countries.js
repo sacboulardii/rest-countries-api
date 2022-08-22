@@ -81,6 +81,7 @@ export const useCountriesStore = defineStore('countries', () => {
   //                            GETTERS
   /* ---------------------------------------------------------------- */
 
+  /* A computed property that returns the fetched countries from the API. */
   const getFetchedCountries = computed(() => {
     return fetchedCountries.value
   })
