@@ -12,7 +12,7 @@ export const useCountriesStore = defineStore('countries', () => {
   //                              STATE
   /* ---------------------------------------------------------------- */
 
-  const fetchedCountries = ref(null)
+  const apiFetchedCountries = ref(null)
   const countriesList = ref(null)
   const country = ref(null)
   /* Setting the initial value of the regionFilter variable to 'All'. */
@@ -23,9 +23,8 @@ export const useCountriesStore = defineStore('countries', () => {
   /* ---------------------------------------------------------------- */
 
   /**
-   * It fetches all countries from the API, sets the fetched countries to the fetchedCountries
-   * observable, sets the countriesList observable to the fetchedCountries observable, and sets the
-   * apiState to loaded
+   * It fetches all countries from the API, sets the apiFetchedCountries and countriesList values to
+   * the fetched countries, and sets the apiState to either LOADED or ERROR depending on the response
    */
   function fetchAllCountries() {
     const apiStore = useApiStore()
@@ -34,8 +33,8 @@ export const useCountriesStore = defineStore('countries', () => {
     apiClient
       .get(`/all?fields=${filteredFields}`)
       .then((response) => {
-        fetchedCountries.value = response.data
-        setCountriesList(getFetchedCountries.value)
+        apiFetchedCountries.value = response.data
+        setCountriesList(getApiFetchedCountries.value)
         apiStore.setApiState(ENUM.LOADED)
       })
       .catch(() => {
@@ -44,21 +43,20 @@ export const useCountriesStore = defineStore('countries', () => {
   }
 
   /**
-   * It takes a list of countries as an argument and sets the value of the countriesList variable to
-   * that list
-   * @param fetchedCountries - The countries fetched from the API.
+   * It takes a list of countries and sets the value of the countriesList to that list
+   * @param countries - An array of countries.
    */
-  function setCountriesList(fetchedCountries) {
-    countriesList.value = fetchedCountries
+  function setCountriesList(countries) {
+    countriesList.value = countries
   }
 
   /**
-   * It takes a region as an argument, gets the countries from the fetchedCountries object, filters
-   * them by the region, and sets the countriesList to the filtered countries
+   * It takes a region as an argument, gets the API fetched countries, filters them by the region, and
+   * sets the countries list to the filtered countries
    * @param region - The region that the user has selected from the dropdown menu.
    */
-  function filterCountriesByRegion(region) {
-    let countriesArray = Object.values(getFetchedCountries.value)
+  function filterCountriesListByRegion(region) {
+    let countriesArray = Object.values(getApiFetchedCountries.value)
     let filteredCountries = countriesArray.filter(
       (country) => country.region === region
     )
@@ -66,15 +64,15 @@ export const useCountriesStore = defineStore('countries', () => {
   }
 
   /**
-   * If the region is 'All', then set the countries list to the fetched countries. Otherwise, filter
-   * the countries by region
-   * @param event - the event object that is passed to the function
+   * If the selected region is 'All', then set the countries list to the list of countries fetched from
+   * the API. Otherwise, filter the countries list by the selected region
+   * @param event - The event object that is passed to the function.
    */
   function fetchCountriesByRegion(event) {
-    let region = event.target.innerText
-    region === 'All'
-      ? setCountriesList(getFetchedCountries.value)
-      : filterCountriesByRegion(region)
+    let selectedRegion = event.target.innerText
+    selectedRegion === 'All'
+      ? setCountriesList(getApiFetchedCountries.value)
+      : filterCountriesListByRegion(selectedRegion)
   }
 
   /* ---------------------------------------------------------------- */
@@ -82,8 +80,8 @@ export const useCountriesStore = defineStore('countries', () => {
   /* ---------------------------------------------------------------- */
 
   /* A computed property that returns the fetched countries from the API. */
-  const getFetchedCountries = computed(() => {
-    return fetchedCountries.value
+  const getApiFetchedCountries = computed(() => {
+    return apiFetchedCountries.value
   })
 
   /* A computed property that returns the sorted countries list. */
