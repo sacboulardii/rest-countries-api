@@ -1,6 +1,6 @@
 <template>
   <button class="input dropdown dropdown__button">
-    {{ store.getFilterText }}
+    {{ store.getRegionFilterText }}
     <font-awesome-icon
       icon="fa-solid fa-chevron-down"
       class="dropdown__toggle"

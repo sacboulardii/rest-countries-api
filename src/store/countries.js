@@ -12,10 +12,15 @@ export const useCountriesStore = defineStore('countries', () => {
   const fetchedCountries = ref(null)
   const countriesList = ref(null)
   const country = ref(null)
-  const countryRegionFilter = ref('All')
-  // const region = ref('America')
+  const regionFilter = ref('All')
 
   /* -------------------- ACTIONS -------------------- */
+
+  /**
+   * It fetches all countries from the API, sets the fetched countries to the fetchedCountries
+   * observable, sets the countriesList observable to the fetchedCountries observable, and sets the
+   * apiState to loaded
+   */
   function fetchAllCountries() {
     const apiStore = useApiStore()
     let filteredFields = 'name,flags,population,region,capital'
@@ -24,7 +29,7 @@ export const useCountriesStore = defineStore('countries', () => {
       .get(`/all?fields=${filteredFields}`)
       .then((response) => {
         fetchedCountries.value = response.data
-        setCountries(getFetchedCountries.value)
+        setCountriesList(getFetchedCountries.value)
         apiStore.setApiState(ENUM.LOADED)
       })
       .catch(() => {
@@ -32,22 +37,37 @@ export const useCountriesStore = defineStore('countries', () => {
       })
   }
 
-  function setCountries(fetchedCountries) {
+  /**
+   * It takes a list of countries as an argument and sets the value of the countriesList variable to
+   * that list
+   * @param fetchedCountries - The countries fetched from the API.
+   */
+  function setCountriesList(fetchedCountries) {
     countriesList.value = fetchedCountries
   }
 
+  /**
+   * It takes a region as an argument, gets the countries from the fetchedCountries object, filters
+   * them by the region, and sets the countriesList to the filtered countries
+   * @param region - The region that the user has selected from the dropdown menu.
+   */
   function filterCountriesByRegion(region) {
     let countriesArray = Object.values(getFetchedCountries.value)
-    let filteredByRegion = countriesArray.filter(
+    let filteredCountries = countriesArray.filter(
       (country) => country.region === region
     )
-    setCountries(filteredByRegion)
+    setCountriesList(filteredCountries)
   }
 
+  /**
+   * If the region is 'All', then set the countries list to the fetched countries. Otherwise, filter
+   * the countries by region
+   * @param event - the event object that is passed to the function
+   */
   function fetchCountriesByRegion(event) {
     let region = event.target.innerText
     region === 'All'
-      ? setCountries(getFetchedCountries.value)
+      ? setCountriesList(getFetchedCountries.value)
       : filterCountriesByRegion(region)
   }
 
@@ -56,13 +76,15 @@ export const useCountriesStore = defineStore('countries', () => {
     return fetchedCountries.value
   })
 
+  /* A computed property that sorts the countries list alphabetically. */
   const getCountriesList = computed(() => {
     return sortCountriesList(countriesList.value)
   })
 
-  const getFilterText = computed(() => {
-    let currentFilter = countryRegionFilter.value
-    return currentFilter === 'All' ? 'Filter by Region' : currentFilter
+  /* A computed property that returns the text that is displayed in the dropdown menu. */
+  const getRegionFilterText = computed(() => {
+    let selectedOption = regionFilter.value
+    return selectedOption === 'All' ? 'Filter by Region' : selectedOption
   })
 
   const isCountriesListAvailable = computed(() => {
@@ -83,11 +105,11 @@ export const useCountriesStore = defineStore('countries', () => {
   return {
     countriesList,
     country,
-    countryRegionFilter,
+    regionFilter,
     fetchAllCountries,
     fetchCountriesByRegion,
     getCountriesList,
-    getFilterText,
+    getRegionFilterText,
     isCountriesListAvailable,
   }
 })
