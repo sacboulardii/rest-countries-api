@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 import ENUM from '@/enums'
 
@@ -12,8 +12,5 @@ export const useApiStore = defineStore('api', () => {
     apiState.value = payload
   }
 
-  /* -------------------- GETTERS -------------------- */
-  const getApiState = computed(() => apiState.value)
-
-  return { apiState, setApiState, getApiState }
+  return { apiState, setApiState }
 })

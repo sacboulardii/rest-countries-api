@@ -4,23 +4,18 @@
       <router-link :to="{ name: 'home', params: { clear: true } }">
         <h1 class="header__title title">Where in the world?</h1>
       </router-link>
-      <div class="theme-toggle" @click="switchMode">
+      <div class="theme-toggle" @click="store.switchTheme">
         <!-- Render the right theme toggle icon conditionally based on current theme -->
         <font-awesome-icon
-          v-if="theme === 'light'"
+          v-if="store.getCurrentTheme === 'light'"
           icon="fa-moon"
-          class="theme-toggle__icon"
+          class="getCurrentTheme-toggle__icon"
         />
         <font-awesome-icon
-          v-else-if="theme === 'wolf'"
+          v-else-if="store.getCurrentTheme === 'wolf'"
           icon="fa-solid fa-lightbulb"
           class="theme-toggle__icon"
         />
-        <!-- <font-awesome-icon
-          v-else
-          icon="fa-solid fa-glasses"
-          class="theme-toggle__icon"
-        /> -->
         <img
           v-else
           src="./assets/wolf-svgrepo-com.svg"
@@ -34,32 +29,18 @@
   <router-view />
 </template>
 
-<script>
-export default {
-  name: 'App',
-  // methods: {
-  //   switchMode() {
-  //     // Remove body theme class
-  //     document.body.classList.remove(this.$store.state.theme.mode)
-  //     // Switch theme and add current theme class to body
-  //     this.$store.dispatch('theme/switchThemeMode')
-  //     document.body.classList.add(this.$store.state.theme.mode)
-  //   },
-  // },
-  // computed: {
-  //   theme() {
-  //     return this.$store.state.theme.mode
-  //   },
-  // },
-  // created() {
-  //   // Add light theme to body on created Lifecycle
-  //   document.body.classList.add(this.$store.state.theme.mode)
-  // },
-}
+<script setup>
+import { onBeforeMount } from '@vue/runtime-core'
+import { useThemeStore } from './store/theme'
+
+const store = useThemeStore()
+
+onBeforeMount(() => {
+  document.documentElement.classList.add(store.getCurrentTheme)
+})
 </script>
 
 <style lang="scss">
-/** Include theme related styles */
 .light {
   @include spread-map($theme-map-light);
 }

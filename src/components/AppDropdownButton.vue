@@ -1,6 +1,6 @@
 <template>
   <button class="input dropdown dropdown__button">
-    {{ currentFilter }}
+    {{ store.getFilterText }}
     <font-awesome-icon
       icon="fa-solid fa-chevron-down"
       class="dropdown__toggle"
@@ -9,15 +9,9 @@
 </template>
 
 <script setup>
-// import { computed } from 'vue'
-// import { useStore } from 'vuex'
+import { useCountriesStore } from '@/store/countries'
 
-// const store = useStore()
-
-// const currentFilter = computed(() => {
-// let filter = store.state.countries.countryRegionFilter
-// return filter === 'All' ? 'Filter by Region' : filter
-// })
+const store = useCountriesStore()
 </script>
 
 <style lang="scss">
