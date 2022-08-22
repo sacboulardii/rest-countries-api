@@ -1,7 +1,6 @@
 function sortCountriesList(countriesList) {
-  return (
-    countriesList &&
-    countriesList.sort((a, b) => a.name.common.localeCompare(b.name.common))
+  return countriesList.sort((a, b) =>
+    a.name.common.localeCompare(b.name.common)
   )
 }
 
