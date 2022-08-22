@@ -1,28 +1,42 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+import { getNextTheme } from '@/helpers'
 
 export const useThemeStore = defineStore('theme', () => {
-  /* -------------------- STATE -------------------- */
+  /* ---------------------------------------------------------------- */
+  //                              STATE
+  /* ---------------------------------------------------------------- */
+
+  /* Creating a theme reactive object with the default of `light`. */
   const theme = ref('light')
 
-  /* -------------------- ACTIONS -------------------- */
+  /* ---------------------------------------------------------------- */
+  //                              ACTIONS
+  /* ---------------------------------------------------------------- */
+
+  /**
+   * Sets the value of the theme object to the value of `newTheme`.
+   * @param newTheme - The new theme to set.
+   */
   function setTheme(newTheme) {
     theme.value = newTheme
   }
 
+  /**
+   * It removes the current theme from the document element, sets the next theme, and then adds the new
+   * theme to the document element
+   */
   function switchTheme() {
-    // Remove current theme class
-    document.documentElement.classList.remove(theme.value)
-    setTheme(
-      (theme.value === 'light' && 'dark') ||
-        (theme.value === 'dark' && 'wolf') ||
-        'light'
-    )
-    // Add new theme class
-    document.documentElement.classList.add(theme.value)
+    document.documentElement.classList.remove(getCurrentTheme.value)
+    setTheme(getNextTheme(getCurrentTheme.value))
+    document.documentElement.classList.add(getCurrentTheme.value)
   }
 
-  /* -------------------- GETTERS -------------------- */
+  /* ---------------------------------------------------------------- */
+  //                              GETTERS
+  /* ---------------------------------------------------------------- */
+
+  /* A computed property that returns the value of `theme`. */
   const getCurrentTheme = computed(() => theme.value)
 
   return { switchTheme, getCurrentTheme }
