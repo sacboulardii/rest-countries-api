@@ -14,7 +14,7 @@
         />
       </ul>
       <!-- Mensagem de resultado não encontrado -->
-      <p class="not-found" v-if="isResourceUnavailable">
+      <p class="not-found" v-if="store.isResourceUnavailable">
         Nenhum resultado foi encotrado.
       </p>
     </section>
