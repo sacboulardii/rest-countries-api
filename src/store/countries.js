@@ -8,13 +8,19 @@ import sortCountriesList from '@/helpers'
 import ENUM from '@/enums'
 
 export const useCountriesStore = defineStore('countries', () => {
-  /* -------------------- STATE -------------------- */
+  /* ---------------------------------------------------------------- */
+  //                              STATE
+  /* ---------------------------------------------------------------- */
+
   const fetchedCountries = ref(null)
   const countriesList = ref(null)
   const country = ref(null)
+  /* Setting the initial value of the regionFilter variable to 'All'. */
   const regionFilter = ref('All')
 
-  /* -------------------- ACTIONS -------------------- */
+  /* ---------------------------------------------------------------- */
+  //                             ACTIONS
+  /* ---------------------------------------------------------------- */
 
   /**
    * It fetches all countries from the API, sets the fetched countries to the fetchedCountries
@@ -71,7 +77,10 @@ export const useCountriesStore = defineStore('countries', () => {
       : filterCountriesByRegion(region)
   }
 
-  /* -------------------- GETTERS -------------------- */
+  /* ---------------------------------------------------------------- */
+  //                            GETTERS
+  /* ---------------------------------------------------------------- */
+
   const getFetchedCountries = computed(() => {
     return fetchedCountries.value
   })
@@ -87,6 +96,7 @@ export const useCountriesStore = defineStore('countries', () => {
     return selectedOption === 'All' ? 'Filter by Region' : selectedOption
   })
 
+  /* Checking if the countriesList is available. */
   const isCountriesListAvailable = computed(() => {
     const apiStore = useApiStore()
 
