@@ -4,4 +4,12 @@ function sortCountriesList(countriesList) {
   )
 }
 
-export default sortCountriesList
+function getNextTheme(currentTheme) {
+  return (
+    (currentTheme === 'light' && 'dark') ||
+    (currentTheme === 'dark' && 'wolf') ||
+    'light'
+  )
+}
+
+export { sortCountriesList, getNextTheme }
