@@ -85,14 +85,21 @@ onBeforeMount(() => {
 .countries-results__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, $card-x);
-  grid-row-gap: 3rem;
-  grid-column-gap: calc((1440px - 9rem - (260px * 4)) / 3);
+  row-gap: 2.5rem;
+  column-gap: 2.5rem;
   justify-content: center;
 
   margin-top: 3rem;
 
   @media (min-width: 768px) {
-    grid-row-gap: 5rem;
+    justify-content: space-between;
+    column-gap: 4rem;
+    row-gap: 4rem;
+  }
+
+  @media (min-width: 1440px) {
+    column-gap: 5.3333rem;
+    row-gap: 5.3333rem;
   }
 }
 </style>
