@@ -96,14 +96,12 @@ export const useCountriesStore = defineStore('countries', () => {
   function fetchBorderCountriesNames() {
     const apiStore = useApiStore()
     apiStore.setApiState(ENUM.LOADING)
-    console.log('🀄 CALLED FETCH BORDER COUNTRIES NAMES')
 
     const timerID = setInterval(() => {
       if (country.value && country.value.borders) {
         CountriesService.fetchBorderCountries(country.value.borders)
           .then((response) => {
             setBorderCountriesNames(response.data)
-            console.log('🔥 FETCHED BORDER COUNTRIES OBJECTS', response.data)
             apiStore.setApiState(ENUM.LOADED)
           })
           .catch(() => {
@@ -174,10 +172,6 @@ export const useCountriesStore = defineStore('countries', () => {
   })
 
   const getBorderCountriesNames = computed(() => {
-    console.log(
-      '➡️ GETTING BORDER COUNTRIES NAMES',
-      country.value.borderCountriesNames
-    )
     return country.value.borderCountriesNames
   })
 

@@ -33,7 +33,6 @@ export default {
   },
   fetchBorderCountries(borders) {
     let bordersCodes = Object.values(borders)
-    console.log('🚀 RECEIVED BORDERS 3 LETTER CODES', bordersCodes)
     return apiClient.get(`/alpha?codes=${bordersCodes.join(',')}`)
   },
 }
