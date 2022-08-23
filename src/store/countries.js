@@ -17,8 +17,8 @@ export const useCountriesStore = defineStore('countries', () => {
 
   const country = ref(null)
   const countries = ref(null)
-  /* Setting the initial value of the regionFilter variable to 'All'. */
-  const regionFilter = ref('All')
+  /* Setting the initial value of the regionFilterOption variable to 'All'. */
+  const regionFilterOption = ref('All')
 
   /* ---------------------------------------------------------------- */
   //                             ACTIONS
@@ -186,7 +186,7 @@ export const useCountriesStore = defineStore('countries', () => {
 
   /* A computed property that returns the text that is displayed in the dropdown menu. */
   const getRegionFilterText = computed(() => {
-    let selectedOption = regionFilter.value
+    let selectedOption = regionFilterOption.value
     return selectedOption === 'All' ? 'Filter by Region' : selectedOption
   })
 
@@ -222,7 +222,7 @@ export const useCountriesStore = defineStore('countries', () => {
   return {
     countries,
     country,
-    regionFilter,
+    regionFilterOption,
 
     fetchAllCountries,
     fetchCountriesByRegion,
