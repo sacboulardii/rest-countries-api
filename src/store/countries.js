@@ -8,12 +8,15 @@ import { sortCountriesAlphabetically } from '@/helpers'
 import ENUM from '@/enums'
 
 export const useCountriesStore = defineStore('countries', () => {
+  /* Declare API enumerated states */
+  const { LOADING, ERROR, LOADED } = ENUM
+
   /* ---------------------------------------------------------------- */
   //                              STATE
   /* ---------------------------------------------------------------- */
 
-  const countries = ref(null)
   const country = ref(null)
+  const countries = ref(null)
   /* Setting the initial value of the regionFilter variable to 'All'. */
   const regionFilter = ref('All')
 
@@ -26,15 +29,15 @@ export const useCountriesStore = defineStore('countries', () => {
    */
   function fetchAllCountries() {
     const apiStore = useApiStore()
-    apiStore.setApiState(ENUM.LOADING)
+    apiStore.setApiState(LOADING)
 
     CountriesService.fetchAll()
       .then((response) => {
         setCountriesObservable(response.data)
-        apiStore.setApiState(ENUM.LOADED)
+        apiStore.setApiState(LOADED)
       })
       .catch(() => {
-        apiStore.setApiState(ENUM.ERROR)
+        apiStore.setApiState(ERROR)
       })
   }
 
@@ -44,15 +47,15 @@ export const useCountriesStore = defineStore('countries', () => {
    */
   function fetchCountriesByRegion(region) {
     const apiStore = useApiStore()
-    apiStore.setApiState(ENUM.LOADING)
+    apiStore.setApiState(LOADING)
 
     CountriesService.fetchByRegion(region)
       .then((response) => {
         setCountriesObservable(response.data)
-        apiStore.setApiState(ENUM.LOADED)
+        apiStore.setApiState(LOADED)
       })
       .catch(() => {
-        apiStore.setApiState(ENUM.ERROR)
+        apiStore.setApiState(ERROR)
       })
   }
 
@@ -62,15 +65,15 @@ export const useCountriesStore = defineStore('countries', () => {
    */
   function fetchCountriesByName(name) {
     const apiStore = useApiStore()
-    apiStore.setApiState(ENUM.LOADING)
+    apiStore.setApiState(LOADING)
 
     CountriesService.fetchByName(name)
       .then((response) => {
         setCountriesObservable(response.data)
-        apiStore.setApiState(ENUM.LOADED)
+        apiStore.setApiState(LOADED)
       })
       .catch(() => {
-        apiStore.setApiState(ENUM.ERROR)
+        apiStore.setApiState(ERROR)
       })
   }
 
@@ -80,36 +83,42 @@ export const useCountriesStore = defineStore('countries', () => {
    * @param name - The name of the country to fetch details for.
    */
   function fetchCountryDetails(name) {
+    clearCountryObservable()
     const apiStore = useApiStore()
-    apiStore.setApiState(ENUM.LOADING)
+    apiStore.setApiState(LOADING)
 
     CountriesService.fetchDetails(name)
       .then((response) => {
         setCountryObservable(response.data[0])
-        apiStore.setApiState(ENUM.LOADED)
+        apiStore.setApiState(LOADED)
       })
       .catch(() => {
-        apiStore.setApiState(ENUM.ERROR)
+        apiStore.setApiState(ERROR)
       })
+  }
+
+  function clearCountryObservable() {
+    country.value = null
   }
 
   function fetchBorderCountriesNames() {
     const apiStore = useApiStore()
-    apiStore.setApiState(ENUM.LOADING)
+    apiStore.setApiState(LOADING)
 
     const timerID = setInterval(() => {
       if (country.value && country.value.borders) {
         CountriesService.fetchBorderCountries(country.value.borders)
           .then((response) => {
             setBorderCountriesNames(response.data)
-            apiStore.setApiState(ENUM.LOADED)
+            apiStore.setApiState(LOADED)
           })
-          .catch(() => {
-            apiStore.setApiState(ENUM.ERROR)
+          .catch((e) => {
+            apiStore.setApiState(ERROR)
+            throw e
           })
+        clearInterval(timerID)
       }
-      clearInterval(timerID)
-    }, 0.1)
+    }, 0.15)
   }
 
   function setBorderCountriesNames(borderCountries) {
@@ -190,26 +199,25 @@ export const useCountriesStore = defineStore('countries', () => {
   length is greater than 0. */
   const isCountriesObjectLoaded = computed(() => {
     const apiStore = useApiStore()
-    return apiStore.apiState === ENUM.LOADED && getCountriesLength.value
+    return apiStore.apiState === LOADED && getCountriesLength.value
   })
 
   /* A computed property that returns true if the API state is LOADED, and the country object is non-empty. */
   const isCountryDetailsLoaded = computed(() => {
     const apiStore = useApiStore()
-    return apiStore.apiState === ENUM.LOADED && country.value
+    return apiStore.apiState === LOADED && country.value
   })
 
+  /* A computed property that returns true if the border countries names were successfully loaded */
   const isBorderCountriesLoaded = computed(() => {
     const apiStore = useApiStore()
-    return (
-      apiStore.apiState === ENUM.LOADED && country.value.borderCountriesNames
-    )
+    return apiStore.apiState === LOADED && country.value.borderCountriesNames
   })
 
   /* A computed property that returns true if the API state is ERROR. */
   const isResourceUnavailable = computed(() => {
     const apiStore = useApiStore()
-    return apiStore.apiState === ENUM.ERROR
+    return apiStore.apiState === ERROR
   })
   return {
     countries,
