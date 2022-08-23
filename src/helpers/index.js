@@ -1,5 +1,5 @@
-function sortCountriesList(countriesList) {
-  return countriesList.sort((a, b) =>
+function sortCountriesAlphabetically(countriesObject) {
+  return countriesObject.sort((a, b) =>
     a.name.common.localeCompare(b.name.common)
   )
 }
@@ -12,4 +12,4 @@ function getNextTheme(currentTheme) {
   )
 }
 
-export { sortCountriesList, getNextTheme }
+export { sortCountriesAlphabetically, getNextTheme }
