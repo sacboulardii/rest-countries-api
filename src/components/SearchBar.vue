@@ -29,7 +29,7 @@ const store = useCountriesStore()
     max-width: 350px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     max-width: 480px;
   }
 
