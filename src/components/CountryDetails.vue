@@ -135,7 +135,7 @@ export default {
 
   &__figure {
     grid-area: figure;
-    align-self: flex-start; // fix flag image on top
+    align-self: flex-start;
     justify-self: center;
   }
 
