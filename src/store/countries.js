@@ -134,6 +134,7 @@ export const useCountriesStore = defineStore('countries', () => {
    */
   function filterCountriesByRegion(event) {
     let selectedRegion = event.target.innerText
+    setRegionFilterOption(selectedRegion)
     selectedRegion === 'All'
       ? fetchAllCountries()
       : fetchCountriesByRegion(selectedRegion)
@@ -164,6 +165,14 @@ export const useCountriesStore = defineStore('countries', () => {
    */
   function setCountryObservable(fetchedCountryDetails) {
     country.value = fetchedCountryDetails
+  }
+
+  /**
+   * @desc It sets the current selected region filter option.
+   * @param {string} option
+   */
+  function setRegionFilterOption(option) {
+    regionFilterOption.value = option
   }
 
   /* ---------------------------------------------------------------- */
@@ -230,6 +239,7 @@ export const useCountriesStore = defineStore('countries', () => {
     fetchBorderCountriesNames,
     filterCountriesByQuery,
     filterCountriesByRegion,
+    setRegionFilterOption,
 
     getSortedCountries,
     getCountryDetails,
