@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { useCountriesStore as useStore } from '@/store/countries'
+
 export default {
   data() {
     return {
@@ -33,19 +35,17 @@ export default {
    * This is only true when going to home route though the header title ensuring its refresh to default home funcionality.
    **/
   beforeRouteLeave(to, from, next) {
+    const store = useStore()
     if (to.params.clear) {
-      this.$root.$store.dispatch('countries/getCountries')
+      store.fetchAllCountries
     }
     next()
   },
 
   beforeRouteUpdate(to) {
-    to.params.countryName &&
-      this.$root.$store.dispatch(
-        'countries/getCountryDetails',
-        to.params.countryName
-      ) &&
-      this.$root.$store.dispatch('countries/getBorderCountries')
+    const store = useStore()
+    store.fetchCountryDetails(to.params.countryName)
+    store.fetchBorderCountriesNames()
   },
 
   methods: {
