@@ -1,5 +1,5 @@
 <template>
-  <a @click="store.fetchCountriesByRegion" class="dropdown__item" href="#">
+  <a @click="store.filterCountriesByRegion" class="dropdown__item" href="#">
     <slot />
   </a>
 </template>

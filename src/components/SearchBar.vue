@@ -9,23 +9,14 @@
       type="text"
       class="input search-bar__input"
       placeholder="Search for a country..."
-      v-model="query"
-      @keyup.enter="searchCountriesByName"
+      @keyup.enter="store.filterCountriesByQuery"
     />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-// import { useStore } from 'vuex'
-
-// const store = useStore()
-
-const query = ref('')
-
-// const searchCountriesByName = () => {
-//   store.dispatch('countries/getCountryByName', query.value)
-// }
+import { useCountriesStore } from '@/store/countries'
+const store = useCountriesStore()
 </script>
 
 <style lang="scss" scoped>

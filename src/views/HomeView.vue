@@ -6,9 +6,9 @@
     </section>
     <!-- Lista de países -->
     <section class="countries-results">
-      <ul v-if="store.isCountriesListAvailable" class="countries-results__list">
+      <ul v-if="store.isCountriesObjectLoaded" class="countries-results__list">
         <CountryCard
-          v-for="(country, index) in store.getSortedCountriesList"
+          v-for="(country, index) in store.getSortedCountries"
           v-bind="country"
           :key="index"
         />

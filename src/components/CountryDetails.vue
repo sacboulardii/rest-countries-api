@@ -50,7 +50,10 @@
         </div>
       </div>
     </div>
-    <div v-if="foundBorderCountries" class="country-details__border-countries">
+    <div
+      v-if="store.isBorderCountriesLoaded"
+      class="country-details__border-countries"
+    >
       <h3 class="country-details__border-countries-title">Border Countries:</h3>
       <BorderCountriesList />
     </div>
@@ -60,6 +63,8 @@
 <script>
 import useCountryData from '@/use/country-data'
 import BorderCountriesList from './BorderCountriesList.vue'
+
+import { useCountriesStore } from '@/store/countries'
 
 export default {
   components: { BorderCountriesList },
@@ -74,13 +79,9 @@ export default {
     currencies: Object,
     languages: Object,
   },
-  computed: {
-    foundBorderCountries() {
-      return this.$store.state.countries.country.borderCountriesNames
-    },
-  },
   setup(props) {
-    return { ...useCountryData(props) }
+    const store = useCountriesStore()
+    return { ...useCountryData(props), store }
   },
 }
 </script>

@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { apiClient } from '@/services/CountriesService'
 import { useApiStore } from './api'
+import CountriesService from '@/services/CountriesService'
 
-import { sortCountriesList } from '@/helpers'
+import { sortCountriesAlphabetically } from '@/helpers'
 
 import ENUM from '@/enums'
 
@@ -12,8 +12,7 @@ export const useCountriesStore = defineStore('countries', () => {
   //                              STATE
   /* ---------------------------------------------------------------- */
 
-  const apiFetchedCountries = ref(null)
-  const countriesList = ref(null)
+  const countries = ref(null)
   const country = ref(null)
   /* Setting the initial value of the regionFilter variable to 'All'. */
   const regionFilter = ref('All')
@@ -23,18 +22,15 @@ export const useCountriesStore = defineStore('countries', () => {
   /* ---------------------------------------------------------------- */
 
   /**
-   * It fetches all countries from the API, sets the apiFetchedCountries and countriesList values to
-   * the fetched countries, and sets the apiState to either LOADED or ERROR depending on the response
+   * It fetches all countries from the API and sets the state of the API to either LOADED or ERROR
    */
   function fetchAllCountries() {
     const apiStore = useApiStore()
-    let filteredFields = 'name,flags,population,region,capital'
+    apiStore.setApiState(ENUM.LOADING)
 
-    apiClient
-      .get(`/all?fields=${filteredFields}`)
+    CountriesService.fetchAll()
       .then((response) => {
-        apiFetchedCountries.value = response.data
-        setCountriesList(getApiFetchedCountries.value)
+        setCountriesObservable(response.data)
         apiStore.setApiState(ENUM.LOADED)
       })
       .catch(() => {
@@ -43,50 +39,146 @@ export const useCountriesStore = defineStore('countries', () => {
   }
 
   /**
-   * It takes a list of countries and sets the value of the countriesList to that list
-   * @param countries - An array of countries.
+   * It fetches countries by region and sets the countries observable to the response data
+   * @param region - The region to filter by.
    */
-  function setCountriesList(countries) {
-    countriesList.value = countries
+  function fetchCountriesByRegion(region) {
+    const apiStore = useApiStore()
+    apiStore.setApiState(ENUM.LOADING)
+
+    CountriesService.fetchByRegion(region)
+      .then((response) => {
+        setCountriesObservable(response.data)
+        apiStore.setApiState(ENUM.LOADED)
+      })
+      .catch(() => {
+        apiStore.setApiState(ENUM.ERROR)
+      })
   }
 
   /**
-   * It takes a region as an argument, gets the API fetched countries, filters them by the region, and
-   * sets the countries list to the filtered countries
-   * @param region - The region that the user has selected from the dropdown menu.
+   * It fetches countries by name and sets the countries observable to the response data
+   * @param name - The name of the country you want to search for.
    */
-  function filterCountriesListByRegion(region) {
-    let countriesArray = Object.values(getApiFetchedCountries.value)
-    let filteredCountries = countriesArray.filter(
-      (country) => country.region === region
+  function fetchCountriesByName(name) {
+    const apiStore = useApiStore()
+    apiStore.setApiState(ENUM.LOADING)
+
+    CountriesService.fetchByName(name)
+      .then((response) => {
+        setCountriesObservable(response.data)
+        apiStore.setApiState(ENUM.LOADED)
+      })
+      .catch(() => {
+        apiStore.setApiState(ENUM.ERROR)
+      })
+  }
+
+  /**
+   * It fetches the details of a country from the API and sets the state of the API to either LOADED or
+   * ERROR
+   * @param name - The name of the country to fetch details for.
+   */
+  function fetchCountryDetails(name) {
+    const apiStore = useApiStore()
+    apiStore.setApiState(ENUM.LOADING)
+
+    CountriesService.fetchDetails(name)
+      .then((response) => {
+        setCountryObservable(response.data[0])
+        apiStore.setApiState(ENUM.LOADED)
+      })
+      .catch(() => {
+        apiStore.setApiState(ENUM.ERROR)
+      })
+  }
+
+  function fetchBorderCountriesNames() {
+    const apiStore = useApiStore()
+    apiStore.setApiState(ENUM.LOADING)
+    console.log('🀄 CALLED FETCH BORDER COUNTRIES NAMES')
+
+    const timerID = setInterval(() => {
+      if (country.value && country.value.borders) {
+        CountriesService.fetchBorderCountries(country.value.borders)
+          .then((response) => {
+            setBorderCountriesNames(response.data)
+            console.log('🔥 FETCHED BORDER COUNTRIES OBJECTS', response.data)
+            apiStore.setApiState(ENUM.LOADED)
+          })
+          .catch(() => {
+            apiStore.setApiState(ENUM.ERROR)
+          })
+      }
+      clearInterval(timerID)
+    }, 0.1)
+  }
+
+  function setBorderCountriesNames(borderCountries) {
+    country.value.borderCountriesNames = borderCountries.map(
+      (country) => country.name.common
     )
-    setCountriesList(filteredCountries)
   }
 
   /**
-   * If the selected region is 'All', then set the countries list to the list of countries fetched from
-   * the API. Otherwise, filter the countries list by the selected region
-   * @param event - The event object that is passed to the function.
+   * When the user clicks on a region, if the region is 'All', then fetch all countries, otherwise
+   * fetch countries by region
+   * @param event - the event object that is passed to the function when the event occurs.
    */
-  function fetchCountriesByRegion(event) {
+  function filterCountriesByRegion(event) {
     let selectedRegion = event.target.innerText
     selectedRegion === 'All'
-      ? setCountriesList(getApiFetchedCountries.value)
-      : filterCountriesListByRegion(selectedRegion)
+      ? fetchAllCountries()
+      : fetchCountriesByRegion(selectedRegion)
+  }
+
+  /**
+   * It takes the value of the input field, trims it, and if it's not empty, it calls the
+   * fetchCountriesByName function with the value of the input field as an argument
+   * @param event - the event object that is passed to the function when the event occurs.
+   */
+  function filterCountriesByQuery(event) {
+    let searchInputQuery = event.target.value
+    searchInputQuery.trim() && fetchCountriesByName(searchInputQuery)
+  }
+
+  /**
+   * It takes a countries object and sets the value of the countries observable to that object
+   * @param fetchedCountries - The countries object that were fetched from the API.
+   */
+  function setCountriesObservable(fetchedCountries) {
+    countries.value = fetchedCountries
+  }
+
+  /**
+   * It takes a country object as an argument and sets the value of the country observable to that
+   * object.
+   * @param fetchedCountryDetails - The country details fetched from the API.
+   */
+  function setCountryObservable(fetchedCountryDetails) {
+    country.value = fetchedCountryDetails
   }
 
   /* ---------------------------------------------------------------- */
   //                            GETTERS
   /* ---------------------------------------------------------------- */
 
-  /* A computed property that returns the fetched countries from the API. */
-  const getApiFetchedCountries = computed(() => {
-    return apiFetchedCountries.value
+  /* A computed property that returns the sorted countries list. */
+  const getSortedCountries = computed(() => {
+    return sortCountriesAlphabetically(countries.value)
   })
 
-  /* A computed property that returns the sorted countries list. */
-  const getSortedCountriesList = computed(() => {
-    return sortCountriesList(countriesList.value)
+  /* A computed property that returns the country details. */
+  const getCountryDetails = computed(() => {
+    return country.value
+  })
+
+  const getBorderCountriesNames = computed(() => {
+    console.log(
+      '➡️ GETTING BORDER COUNTRIES NAMES',
+      country.value.borderCountriesNames
+    )
+    return country.value.borderCountriesNames
   })
 
   /* A computed property that returns the text that is displayed in the dropdown menu. */
@@ -95,16 +187,29 @@ export const useCountriesStore = defineStore('countries', () => {
     return selectedOption === 'All' ? 'Filter by Region' : selectedOption
   })
 
-  /* A computed property that returns the length of the countries list. */
-  const getCountriesListLength = computed(() => {
-    return (countriesList.value && Object.keys(countriesList.value).length) || 0
+  /* A computed property that returns the length of the observable countries object keys. */
+  const getCountriesLength = computed(() => {
+    return (countries.value && Object.keys(countries.value).length) || 0
   })
 
-  /* A computed property that returns true if the API state is LOADED and the length of the countries
-  list is greater than 0. */
-  const isCountriesListAvailable = computed(() => {
+  /* A computed property that returns true if the API state is LOADED, and the countries object 
+  length is greater than 0. */
+  const isCountriesObjectLoaded = computed(() => {
     const apiStore = useApiStore()
-    return apiStore.apiState === ENUM.LOADED && getCountriesListLength.value
+    return apiStore.apiState === ENUM.LOADED && getCountriesLength.value
+  })
+
+  /* A computed property that returns true if the API state is LOADED, and the country object is non-empty. */
+  const isCountryDetailsLoaded = computed(() => {
+    const apiStore = useApiStore()
+    return apiStore.apiState === ENUM.LOADED && country.value
+  })
+
+  const isBorderCountriesLoaded = computed(() => {
+    const apiStore = useApiStore()
+    return (
+      apiStore.apiState === ENUM.LOADED && country.value.borderCountriesNames
+    )
   })
 
   /* A computed property that returns true if the API state is ERROR. */
@@ -112,16 +217,25 @@ export const useCountriesStore = defineStore('countries', () => {
     const apiStore = useApiStore()
     return apiStore.apiState === ENUM.ERROR
   })
-
   return {
-    countriesList,
+    countries,
     country,
     regionFilter,
+
     fetchAllCountries,
     fetchCountriesByRegion,
-    getSortedCountriesList,
+    fetchCountryDetails,
+    fetchBorderCountriesNames,
+    filterCountriesByQuery,
+    filterCountriesByRegion,
+
+    getSortedCountries,
+    getCountryDetails,
+    getBorderCountriesNames,
     getRegionFilterText,
-    isCountriesListAvailable,
+    isCountriesObjectLoaded,
+    isCountryDetailsLoaded,
+    isBorderCountriesLoaded,
     isResourceUnavailable,
   }
 })

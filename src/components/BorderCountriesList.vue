@@ -1,7 +1,7 @@
 <template>
-  <ul v-if="borderCountriesNames" class="border-countries-list">
+  <ul class="border-countries-list">
     <li
-      v-for="country in borderCountriesNames"
+      v-for="country in store.getBorderCountriesNames"
       :key="country"
       class="border-countries-list__item"
     >
@@ -15,15 +15,8 @@
 </template>
 
 <script setup>
-// import { useStore } from 'vuex'
-// import { computed } from 'vue'
-
-// const store = useStore()
-
-// const borderCountriesNames = computed(() => {
-//   let countries = store.state.countries.country.borderCountriesNames
-//   return countries ? countries : null
-// })
+import { useCountriesStore } from '@/store/countries'
+const store = useCountriesStore()
 </script>
 
 <style lang="scss" scoped>

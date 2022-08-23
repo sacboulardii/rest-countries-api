@@ -7,7 +7,10 @@
       />
       back
     </button>
-    <CountryDetails v-if="dataIsAvailable" v-bind="country" />
+    <CountryDetails
+      v-if="store.isCountryDetailsLoaded"
+      v-bind="store.getCountryDetails"
+    />
   </main>
 </template>
 
@@ -66,28 +69,19 @@ export default {
 <script setup>
 // Components
 import CountryDetails from '@/components/CountryDetails.vue'
+import { defineProps, onBeforeMount } from 'vue'
 
-// import { defineProps, onBeforeMount, computed } from 'vue'
-
-// import ENUM from '@/enums'
-// import { useRouter } from 'vue-router'
-
-// const router = useRouter()
+import { useCountriesStore } from '@/store/countries'
+const store = useCountriesStore()
 
 // Received route param
-// const props = defineProps(['countryName'])
+const props = defineProps(['countryName'])
 
 // Fetch country details
-// onBeforeMount(() => {
-// store.dispatch('countries/getCountryDetails', props.countryName)
-// store.dispatch('countries/getBorderCountries', props.countryName)
-// })
-
-// const country = computed(() => {
-// return store.state.countries.country
-// })
-// Show details when data is ready
-// const dataIsAvailable = computed(() => store.state.api.apiState === ENUM.LOADED)
+onBeforeMount(() => {
+  store.fetchCountryDetails(props.countryName)
+  store.fetchBorderCountriesNames()
+})
 </script>
 
 <style lang="scss">
