@@ -15,7 +15,7 @@ $theme-map-light: (
     $--theme-placeholder-opacity: 0.3,
     $--theme-hover-color: darken(white, 5%),
     $--theme-angle-icon-color: black,
-    $--theme-circle-chevron-color: gray,
+    $--theme-circle-chevron-color: black,
 );
 
 // Override the default light theme
@@ -26,7 +26,7 @@ $theme-map-dark: (
     $--theme-placeholder-opacity: 1,
     $--theme-hover-color: lighten(hsl(209deg, 23%, 22%), 5%),
     $--theme-angle-icon-color: white,
-    $--theme-circle-chevron-color: gray,
+    $--theme-circle-chevron-color: rgb(221, 219, 219),
 );
 
 // Retro theme

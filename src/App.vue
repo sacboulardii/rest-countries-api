@@ -167,7 +167,19 @@ body {
   right: 5%;
   bottom: 5%;
   color: var($--theme-circle-chevron-color);
-  font-size: 2rem;
+  font-size: 2.5rem;
   z-index: 9999;
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 3.5rem;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 3.875rem;
+  }
 }
 </style>
