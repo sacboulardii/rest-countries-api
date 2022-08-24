@@ -97,6 +97,9 @@ export const useCountriesStore = defineStore('countries', () => {
       })
   }
 
+  /**
+   * `clearCountryObservable()` is a function that sets the value of the `country` observable to `null`
+   */
   function clearCountryObservable() {
     country.value = null
   }
@@ -121,6 +124,13 @@ export const useCountriesStore = defineStore('countries', () => {
     }, 0.15)
   }
 
+  /**
+   * It takes an array of countries objects as an argument, and returns an array of the names of those
+   * countries
+   * @param {Array} borderCountries - an array of objects containing the names of the countries that border the
+   * country you're looking at.
+   * @returns {Array}
+   */
   function setBorderCountriesNames(borderCountries) {
     country.value.borderCountriesNames = borderCountries.map(
       (country) => country.name.common
@@ -159,12 +169,12 @@ export const useCountriesStore = defineStore('countries', () => {
   }
 
   /**
-   * It takes a country object as an argument and sets the value of the country observable to that
-   * object.
-   * @param fetchedCountryDetails - The country details fetched from the API.
+   * It takes a country object as an argument, and sets the value of the country observable to that
+   * country object
+   * @param {Object} fetchedCountry - The country object that was fetched from the API.
    */
-  function setCountryObservable(fetchedCountryDetails) {
-    country.value = fetchedCountryDetails
+  function setCountryObservable(fetchedCountry) {
+    country.value = fetchedCountry
   }
 
   /**
