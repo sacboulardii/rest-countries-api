@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { useApiStore } from './api'
 import CountriesService from '@/services/CountriesService'
+import { CountryCardFields } from '@/types/CountryFields'
 
 import { sortCountriesAlphabetically } from '@/helpers'
 
@@ -28,8 +29,9 @@ export const useCountriesStore = defineStore('countries', () => {
     const apiStore = useApiStore()
     apiStore.setApiState(ApiState.LOADING)
     CountriesService.fetchAll()
-      .then((response: any) => {
-        setCountriesObservable(response.data)
+      .then((response) => {
+        const data: CountryCardFields = response.data
+        setCountriesObservable(data)
         apiStore.setApiState(ApiState.LOADED)
       })
       .catch(() => {
@@ -82,7 +84,6 @@ export const useCountriesStore = defineStore('countries', () => {
     clearCountryObservable()
     const apiStore = useApiStore()
     apiStore.setApiState(ApiState.LOADING)
-
     CountriesService.fetchDetails(name)
       .then((response: any) => {
         setCountryObservable(response.data[0])
@@ -159,7 +160,7 @@ export const useCountriesStore = defineStore('countries', () => {
    * It takes a countries object and sets the value of the countries observable to that object
    * @param fetchedCountries - The countries object that were fetched from the API.
    */
-  function setCountriesObservable(fetchedCountries: object) {
+  function setCountriesObservable(fetchedCountries: CountryCardFields): void {
     countries.value = fetchedCountries
   }
 

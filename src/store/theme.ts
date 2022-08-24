@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref, computed, Ref } from 'vue'
 import { getNextTheme } from '@/helpers'
+import { DesignTheme } from '@/types/DesignTheme'
 
 export const useThemeStore = defineStore('theme', () => {
   /* ---------------------------------------------------------------- */
@@ -8,7 +9,7 @@ export const useThemeStore = defineStore('theme', () => {
   /* ---------------------------------------------------------------- */
 
   /* Creating a theme reactive object with the default of `light`. */
-  const theme = ref('light')
+  const theme: Ref<DesignTheme> = ref('light')
 
   /* ---------------------------------------------------------------- */
   //                              ACTIONS
@@ -18,7 +19,7 @@ export const useThemeStore = defineStore('theme', () => {
    * Sets the value of the theme object to the value of `newTheme`.
    * @param newTheme - The new theme to set.
    */
-  function setTheme(newTheme) {
+  function setTheme(newTheme: DesignTheme): void {
     theme.value = newTheme
   }
 
@@ -26,7 +27,7 @@ export const useThemeStore = defineStore('theme', () => {
    * It removes the current theme from the document element, sets the next theme, and then adds the new
    * theme to the document element
    */
-  function switchTheme() {
+  function switchTheme(): void {
     document.documentElement.classList.remove(getCurrentTheme.value)
     setTheme(getNextTheme(getCurrentTheme.value))
     document.documentElement.classList.add(getCurrentTheme.value)
