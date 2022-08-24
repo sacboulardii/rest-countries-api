@@ -1,12 +1,9 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { Ref, ref } from 'vue'
 
-import ENUM from '@/enums'
+import { ApiState } from '@/enums'
 
 export const useApiStore = defineStore('api', () => {
-  /* Declare API enumerated state */
-  const { INIT } = ENUM
-
   /* ---------------------------------------------------------------- */
   //                              STATE
   /* ---------------------------------------------------------------- */
@@ -14,16 +11,13 @@ export const useApiStore = defineStore('api', () => {
   /**
    * It initializes api state to INIT (0)
    */
-  const apiState = ref(INIT)
+  const apiState = ref(ApiState.INIT)
 
   /* ---------------------------------------------------------------- */
   //                              ACTIONS
   /* ---------------------------------------------------------------- */
 
-  /**
-   * It sets the api state to the payload
-   */
-  function setApiState(payload) {
+  function setApiState(payload: ApiState): void {
     apiState.value = payload
   }
 

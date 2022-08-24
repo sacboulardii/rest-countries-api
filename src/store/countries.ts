@@ -5,18 +5,15 @@ import CountriesService from '@/services/CountriesService'
 
 import { sortCountriesAlphabetically } from '@/helpers'
 
-import ENUM from '@/enums'
+import { ApiState } from '@/enums'
 
 export const useCountriesStore = defineStore('countries', () => {
-  /* Declare API enumerated states */
-  const { LOADING, ERROR, LOADED } = ENUM
-
   /* ---------------------------------------------------------------- */
   //                              STATE
   /* ---------------------------------------------------------------- */
 
-  const country = ref(null)
-  const countries = ref(null)
+  const country: any = ref({})
+  const countries: any = ref({})
   /* Setting the initial value of the regionFilterOption variable to 'All'. */
   const regionFilterOption = ref('All')
 
@@ -29,15 +26,14 @@ export const useCountriesStore = defineStore('countries', () => {
    */
   function fetchAllCountries() {
     const apiStore = useApiStore()
-    apiStore.setApiState(LOADING)
-
+    apiStore.setApiState(ApiState.LOADING)
     CountriesService.fetchAll()
-      .then((response) => {
+      .then((response: any) => {
         setCountriesObservable(response.data)
-        apiStore.setApiState(LOADED)
+        apiStore.setApiState(ApiState.LOADED)
       })
       .catch(() => {
-        apiStore.setApiState(ERROR)
+        apiStore.setApiState(ApiState.ERROR)
       })
   }
 
@@ -45,17 +41,17 @@ export const useCountriesStore = defineStore('countries', () => {
    * It fetches countries by region and sets the countries observable to the response data
    * @param region - The region to filter by.
    */
-  function fetchCountriesByRegion(region) {
+  function fetchCountriesByRegion(region: string) {
     const apiStore = useApiStore()
-    apiStore.setApiState(LOADING)
+    apiStore.setApiState(ApiState.LOADING)
 
     CountriesService.fetchByRegion(region)
-      .then((response) => {
+      .then((response: any) => {
         setCountriesObservable(response.data)
-        apiStore.setApiState(LOADED)
+        apiStore.setApiState(ApiState.LOADED)
       })
       .catch(() => {
-        apiStore.setApiState(ERROR)
+        apiStore.setApiState(ApiState.ERROR)
       })
   }
 
@@ -63,37 +59,37 @@ export const useCountriesStore = defineStore('countries', () => {
    * It fetches countries by name and sets the countries observable to the response data
    * @param name - The name of the country you want to search for.
    */
-  function fetchCountriesByName(name) {
+  function fetchCountriesByName(name: string) {
     const apiStore = useApiStore()
-    apiStore.setApiState(LOADING)
+    apiStore.setApiState(ApiState.LOADING)
 
     CountriesService.fetchByName(name)
-      .then((response) => {
+      .then((response: any) => {
         setCountriesObservable(response.data)
-        apiStore.setApiState(LOADED)
+        apiStore.setApiState(ApiState.LOADED)
       })
       .catch(() => {
-        apiStore.setApiState(ERROR)
+        apiStore.setApiState(ApiState.ERROR)
       })
   }
 
   /**
    * It fetches the details of a country from the API and sets the state of the API to either LOADED or
    * ERROR
-   * @param name - The name of the country to fetch details for.
+   * @param {string} name - The name of the country to fetch details for.
    */
-  function fetchCountryDetails(name) {
+  function fetchCountryDetails(name: string) {
     clearCountryObservable()
     const apiStore = useApiStore()
-    apiStore.setApiState(LOADING)
+    apiStore.setApiState(ApiState.LOADING)
 
     CountriesService.fetchDetails(name)
-      .then((response) => {
+      .then((response: any) => {
         setCountryObservable(response.data[0])
-        apiStore.setApiState(LOADED)
+        apiStore.setApiState(ApiState.LOADED)
       })
       .catch(() => {
-        apiStore.setApiState(ERROR)
+        apiStore.setApiState(ApiState.ERROR)
       })
   }
 
@@ -101,23 +97,23 @@ export const useCountriesStore = defineStore('countries', () => {
    * `clearCountryObservable()` is a function that sets the value of the `country` observable to `null`
    */
   function clearCountryObservable() {
-    country.value = null
+    country.value = {}
   }
 
   function fetchBorderCountriesNames() {
     const apiStore = useApiStore()
-    apiStore.setApiState(LOADING)
+    apiStore.setApiState(ApiState.LOADING)
 
     const timerID = setInterval(() => {
       if (country.value && country.value.borders) {
         CountriesService.fetchBorderCountries(country.value.borders)
-          .then((response) => {
+          .then((response: any) => {
             setBorderCountriesNames(response.data)
-            apiStore.setApiState(LOADED)
+            apiStore.setApiState(ApiState.LOADED)
           })
-          .catch((e) => {
-            apiStore.setApiState(ERROR)
-            throw e
+          .catch((error: any) => {
+            apiStore.setApiState(ApiState.ERROR)
+            throw error
           })
         clearInterval(timerID)
       }
@@ -129,9 +125,8 @@ export const useCountriesStore = defineStore('countries', () => {
    * countries
    * @param {Array} borderCountries - an array of objects containing the names of the countries that border the
    * country you're looking at.
-   * @returns {Array}
    */
-  function setBorderCountriesNames(borderCountries) {
+  function setBorderCountriesNames(borderCountries: any[]): void {
     country.value.borderCountriesNames = borderCountries.map(
       (country) => country.name.common
     )
@@ -142,8 +137,8 @@ export const useCountriesStore = defineStore('countries', () => {
    * fetch countries by region
    * @param event - the event object that is passed to the function when the event occurs.
    */
-  function filterCountriesByRegion(event) {
-    let selectedRegion = event.target.innerText
+  function filterCountriesByRegion(event: any) {
+    const selectedRegion = event.target.innerText
     setRegionFilterOption(selectedRegion)
     selectedRegion === 'All'
       ? fetchAllCountries()
@@ -155,8 +150,8 @@ export const useCountriesStore = defineStore('countries', () => {
    * fetchCountriesByName function with the value of the input field as an argument
    * @param event - the event object that is passed to the function when the event occurs.
    */
-  function filterCountriesByQuery(event) {
-    let searchInputQuery = event.target.value
+  function filterCountriesByQuery(event: any) {
+    const searchInputQuery = event.target.value
     searchInputQuery.trim() && fetchCountriesByName(searchInputQuery)
   }
 
@@ -164,7 +159,7 @@ export const useCountriesStore = defineStore('countries', () => {
    * It takes a countries object and sets the value of the countries observable to that object
    * @param fetchedCountries - The countries object that were fetched from the API.
    */
-  function setCountriesObservable(fetchedCountries) {
+  function setCountriesObservable(fetchedCountries: object) {
     countries.value = fetchedCountries
   }
 
@@ -173,15 +168,15 @@ export const useCountriesStore = defineStore('countries', () => {
    * country object
    * @param {Object} fetchedCountry - The country object that was fetched from the API.
    */
-  function setCountryObservable(fetchedCountry) {
+  function setCountryObservable(fetchedCountry: object) {
     country.value = fetchedCountry
   }
 
   /**
-   * @desc It sets the current selected region filter option.
+   * It sets the current selected region filter option.
    * @param {string} option
    */
-  function setRegionFilterOption(option) {
+  function setRegionFilterOption(option: string) {
     regionFilterOption.value = option
   }
 
@@ -205,7 +200,7 @@ export const useCountriesStore = defineStore('countries', () => {
 
   /* A computed property that returns the text that is displayed in the dropdown menu. */
   const getRegionFilterText = computed(() => {
-    let selectedOption = regionFilterOption.value
+    const selectedOption = regionFilterOption.value
     return selectedOption === 'All' ? 'Filter by Region' : selectedOption
   })
 
@@ -218,25 +213,28 @@ export const useCountriesStore = defineStore('countries', () => {
   length is greater than 0. */
   const isCountriesObjectLoaded = computed(() => {
     const apiStore = useApiStore()
-    return apiStore.apiState === LOADED && getCountriesLength.value
+    return apiStore.apiState === ApiState.LOADED && getCountriesLength.value
   })
 
   /* A computed property that returns true if the API state is LOADED, and the country object is non-empty. */
   const isCountryDetailsLoaded = computed(() => {
     const apiStore = useApiStore()
-    return apiStore.apiState === LOADED && country.value
+    return apiStore.apiState === ApiState.LOADED && country.value
   })
 
   /* A computed property that returns true if the border countries names were successfully loaded */
   const isBorderCountriesLoaded = computed(() => {
     const apiStore = useApiStore()
-    return apiStore.apiState === LOADED && country.value.borderCountriesNames
+    return (
+      apiStore.apiState === ApiState.LOADED &&
+      country.value.borderCountriesNames
+    )
   })
 
   /* A computed property that returns true if the API state is ERROR. */
   const isResourceUnavailable = computed(() => {
     const apiStore = useApiStore()
-    return apiStore.apiState === ERROR
+    return apiStore.apiState === ApiState.ERROR
   })
   return {
     countries,

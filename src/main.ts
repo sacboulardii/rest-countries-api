@@ -1,7 +1,7 @@
 /* Set up using Vue 3 */
 import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import App from '@/App.vue'
+import router from '@/router'
 import { createPinia } from 'pinia'
 import './assets/reset.css'
 import VueClickAway from 'vue3-click-away'

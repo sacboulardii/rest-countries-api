@@ -4,7 +4,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'NotFound',
   props: {
     resource: {
@@ -12,7 +14,7 @@ export default {
       default: 'page',
     },
   },
-}
+})
 </script>
 
 <style></style>

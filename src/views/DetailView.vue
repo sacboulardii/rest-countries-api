@@ -72,6 +72,7 @@ import CountryDetails from '@/components/CountryDetails.vue'
 import { defineProps, onBeforeMount } from 'vue'
 
 import { useCountriesStore } from '@/store/countries'
+
 const store = useCountriesStore()
 
 // Received route param

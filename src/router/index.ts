@@ -1,9 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import DetailView from '../views/DetailView.vue'
-import NotFound from '../views/NotFound'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import HomeView from '@/views/HomeView.vue'
+import NotFound from '@/views/HomeView.vue'
+import DetailView from '@/views/DetailView.vue'
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
   // Default route: fetch all countries
   {
     path: '/',
