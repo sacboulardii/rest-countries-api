@@ -8,66 +8,49 @@ import { DetailFields } from '@/types/CountryFields'
 export default function useCountryData(props: DetailFields): {
   [key: string]: Ref<string>
 } {
-  const getName = computed(() => {
-    return props.name.common
-  })
+  const getName = computed(() => props.name.common)
+  const getImage = computed(() => props.flags.svg)
+  const getRegion = computed(() => props.region)
+  const getSubRegion = computed(() => props.subregion)
+  const getCapital = computed(() => props.capital && props.capital[0])
+  const getTopLevelDomain = computed(() => props.tld && props.tld.join(', '))
 
-  const getImage = computed(() => {
-    return props.flags.svg
-  })
+  const getPopulation = computed(
+    () => (props.population && props.population.toLocaleString('en-US')) || '0'
+  )
 
-  const getRegion = computed(() => {
-    return props.region
-  })
+  const getLanguages = computed(
+    () => props.languages && Object.values(props.languages).join(', ')
+  )
 
-  const getSubRegion = computed(() => {
-    return props.subregion
-  })
-
-  const getPopulation = computed(() => {
-    return (props.population && props.population.toLocaleString('en-US')) || '0'
-  })
-
-  const getCapital = computed(() => {
-    return props.capital && props.capital[0]
-  })
-
-  const getTopLevelDomain = computed(() => {
-    return props.tld && props.tld.join(', ')
-  })
-
-  const getLanguages = computed(() => {
-    return props.languages && Object.values(props.languages).join(', ')
-  })
-
-  const getNativeName = computed(() =>
-    [
-      ...new Set(
-        props.name.nativeName &&
+  const getNativeName = computed(
+    () =>
+      props.name.nativeName &&
+      [
+        ...new Set(
           Object.values(props.name.nativeName).map(
             (nativeName: any) => nativeName.common
           )
-      ),
-    ].join(', ')
+        ),
+      ].join(', ')
   )
 
-  const getCurrencies = computed(() => {
-    return (
+  const getCurrencies = computed(
+    () =>
       props.currencies &&
       Object.values(props.currencies)
         .map((currency: any) => currency.name)
         .join(', ')
-    )
-  })
+  )
 
   return {
     getName,
     getImage,
     getRegion,
     getSubRegion,
-    getPopulation,
     getCapital,
     getTopLevelDomain,
+    getPopulation,
     getLanguages,
     getNativeName,
     getCurrencies,
