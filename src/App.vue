@@ -1,37 +1,12 @@
 <template>
-  <header class="header">
-    <div class="header__inner container">
-      <router-link :to="{ name: 'home', params: { clear: true } }">
-        <h1 class="header__title title">Where in the world?</h1>
-      </router-link>
-      <div class="theme-toggle" @click="store.switchTheme">
-        <!-- Render the right theme toggle icon conditionally based on current theme -->
-        <font-awesome-icon
-          v-if="store.getCurrentTheme === 'light'"
-          icon="fa-moon"
-          class="getCurrentTheme-toggle__icon"
-        />
-        <font-awesome-icon
-          v-else-if="store.getCurrentTheme === 'wolf'"
-          icon="fa-solid fa-lightbulb"
-          class="theme-toggle__icon"
-        />
-        <img
-          v-else
-          src="./assets/wolf-svgrepo-com.svg"
-          alt="wolf"
-          class="theme-toggle__icon"
-        />
-        <!-- endloop -->
-      </div>
-    </div>
-  </header>
+  <Header />
   <router-view />
 </template>
 
 <script setup>
 import { onBeforeMount } from '@vue/runtime-core'
 import { useThemeStore } from './store/theme'
+import Header from '@/components/HeaderComp.vue'
 
 const store = useThemeStore()
 
@@ -67,33 +42,6 @@ body {
   @media (min-width: 768px) {
     padding-left: 4.5rem;
     padding-right: 4.5rem;
-  }
-}
-
-.header {
-  background-color: var($--theme-foreground);
-
-  box-shadow: 0px 2px 4px 0px rgba(0, 0%, 0%, 0.075);
-
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-
-  position: relative;
-  z-index: 10;
-
-  transition: color 0.4s ease, background-color 0.4s ease, opacity 0.4s ease;
-
-  &__inner {
-    @include flex($justify: space-between, $align: center);
-  }
-}
-
-.title {
-  color: var($--theme-font-color);
-  @include fluid-type(14, 24, 375, 1440);
-
-  @media (min-width: 768px) {
-    font-weight: $fw-800;
   }
 }
 
@@ -148,16 +96,6 @@ body {
 
   @media (min-width: 768px) {
     width: 100%;
-  }
-}
-
-.theme-toggle {
-  cursor: pointer;
-  font-size: $font-sm;
-  transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
-
-  &__icon {
-    height: 1rem;
   }
 }
 
