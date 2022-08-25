@@ -16,6 +16,23 @@ onBeforeMount(() => {
 </script>
 
 <style lang="scss">
+/**
+ * App.vue
+ *
+ * These are the styles for the Country App Component.
+ *
+ * Index
+ * - Body
+ * - Container
+ * - Subtitle
+ * - Button
+ * - Input
+ * - Dropdown
+ * - Scroll To Top
+ */
+
+/* ------------------------- Include Theme Variables ------------------------ */
+
 .light {
   @include spread-map($theme-map-light);
 }
@@ -25,6 +42,8 @@ onBeforeMount(() => {
 .wolf {
   @include spread-map($theme-map-wolf);
 }
+
+/* -------------------------------------------------------------------------- */
 
 body {
   background-color: var($--theme-background);
