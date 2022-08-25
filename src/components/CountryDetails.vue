@@ -102,23 +102,22 @@ export default {
 /**
  * CountryDetails.vue
  *
- * These are the styles for the Country Details section.
+ * These are the styles for the Country Details Component.
  *
  * Index
- * - Country Details Section
- * - Country Details Figure
- * - Country Details Image
- * - Country Details Description
- * - Country Details Name
- * - Country Details Fields
- * - Country Details Main Fields
- * - Country Details Other Fields
- * - Country Details Border Countries
+ * - Country Details
+ *   - Figure
+ *   - Image
+ *   - Description
+ *   - Name
+ *   - Fields
+ *   - Main Fields
+ *   - Other Fields
+ *   - Field
+ *   - Data
+ *   - Border Countries
+ *     - Title
  */
-
-/* ------------------------------------------------------ */
-
-/* Country Details Section */
 
 .country-details {
   margin-top: 3.5rem;
@@ -143,15 +142,11 @@ export default {
     grid-gap: 50px 100px;
   }
 
-  /* Country Details Figure */
-
   &__figure {
     grid-area: figure;
     align-self: flex-start;
     justify-self: center;
   }
-
-  /* Country Details Image */
 
   &__image {
     display: block;
@@ -159,8 +154,6 @@ export default {
     height: 100%;
     max-height: 450px;
   }
-
-  /* Country Details Description */
 
   &__description {
     display: grid;
@@ -180,13 +173,9 @@ export default {
     font-size: $font-sm;
   }
 
-  /* Country Details Name */
-
   &__name {
     align-self: flex-end;
   }
-
-  /* Country Details Fields */
 
   &__fields {
     margin-top: 2rem;
@@ -204,13 +193,9 @@ export default {
     }
   }
 
-  /* Country Details Main Fields */
-
   &__main-fields {
     grid-area: main-fields;
   }
-
-  /* Country Details Other Fields */
 
   &__other-fields {
     grid-area: other-fields;
@@ -222,23 +207,17 @@ export default {
     }
   }
 
-  /* Country Details Field */
-
   &__field {
     font-weight: $fw-600;
-  }
 
-  &__field + &__field {
-    margin-top: 1rem;
+    & + & {
+      margin-top: 1rem;
+    }
   }
-
-  /* Country Details Data */
 
   &__data {
     font-weight: $fw-300;
   }
-
-  /* Country Details Border Countries */
 
   &__border-countries {
     grid-area: border-countries;
@@ -248,8 +227,6 @@ export default {
     flex-wrap: wrap;
 
     row-gap: 1rem;
-
-    /* Country Details Border Countries Title */
 
     &-title {
       font-size: $font-md;
