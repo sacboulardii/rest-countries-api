@@ -32,15 +32,15 @@ export const useCountriesStore = defineStore('countries', () => {
    */
   function fetchAllCountries() {
     const apiStore = useApiStore()
-    apiStore.setApiState(ApiState.LOADING)
+    apiStore.setApiState(LOADING)
     CountriesService.fetchAll()
       .then((response) => {
         const data: CountryCardFields = response.data
         setCountriesObservable(data)
-        apiStore.setApiState(ApiState.LOADED)
+        apiStore.setApiState(LOADED)
       })
       .catch(() => {
-        apiStore.setApiState(ApiState.ERROR)
+        apiStore.setApiState(ERROR)
       })
   }
 
@@ -50,15 +50,15 @@ export const useCountriesStore = defineStore('countries', () => {
    */
   function fetchCountriesByRegion(region: string) {
     const apiStore = useApiStore()
-    apiStore.setApiState(ApiState.LOADING)
+    apiStore.setApiState(LOADING)
 
     CountriesService.fetchByRegion(region)
       .then((response: any) => {
         setCountriesObservable(response.data)
-        apiStore.setApiState(ApiState.LOADED)
+        apiStore.setApiState(LOADED)
       })
       .catch(() => {
-        apiStore.setApiState(ApiState.ERROR)
+        apiStore.setApiState(ERROR)
       })
   }
 
@@ -68,15 +68,15 @@ export const useCountriesStore = defineStore('countries', () => {
    */
   function fetchCountriesByName(name: string) {
     const apiStore = useApiStore()
-    apiStore.setApiState(ApiState.LOADING)
+    apiStore.setApiState(LOADING)
 
     CountriesService.fetchByName(name)
       .then((response: any) => {
         setCountriesObservable(response.data)
-        apiStore.setApiState(ApiState.LOADED)
+        apiStore.setApiState(LOADED)
       })
       .catch(() => {
-        apiStore.setApiState(ApiState.ERROR)
+        apiStore.setApiState(ERROR)
       })
   }
 
@@ -88,14 +88,14 @@ export const useCountriesStore = defineStore('countries', () => {
   function fetchCountryDetails(name: string) {
     clearCountryObservable()
     const apiStore = useApiStore()
-    apiStore.setApiState(ApiState.LOADING)
+    apiStore.setApiState(LOADING)
     CountriesService.fetchDetails(name)
       .then((response: any) => {
         setCountryObservable(response.data[0])
-        apiStore.setApiState(ApiState.LOADED)
+        apiStore.setApiState(LOADED)
       })
       .catch(() => {
-        apiStore.setApiState(ApiState.ERROR)
+        apiStore.setApiState(ERROR)
       })
   }
 
@@ -108,17 +108,17 @@ export const useCountriesStore = defineStore('countries', () => {
 
   function fetchBorderCountriesNames() {
     const apiStore = useApiStore()
-    apiStore.setApiState(ApiState.LOADING)
+    apiStore.setApiState(LOADING)
 
     const timerID = setInterval(() => {
       if (country.value && country.value.borders) {
         CountriesService.fetchBorderCountries(country.value.borders)
           .then((response: any) => {
             setBorderCountriesNames(response.data)
-            apiStore.setApiState(ApiState.LOADED)
+            apiStore.setApiState(LOADED)
           })
           .catch((error: any) => {
-            apiStore.setApiState(ApiState.ERROR)
+            apiStore.setApiState(ERROR)
             throw error
           })
         clearInterval(timerID)
@@ -219,28 +219,25 @@ export const useCountriesStore = defineStore('countries', () => {
   length is greater than 0. */
   const isCountriesObjectLoaded = computed(() => {
     const apiStore = useApiStore()
-    return apiStore.apiState === ApiState.LOADED && getCountriesLength.value
+    return apiStore.apiState === LOADED && getCountriesLength.value
   })
 
   /* A computed property that returns true if the API state is LOADED, and the country object is non-empty. */
   const isCountryDetailsLoaded = computed(() => {
     const apiStore = useApiStore()
-    return apiStore.apiState === ApiState.LOADED && country.value
+    return apiStore.apiState === LOADED && country.value
   })
 
   /* A computed property that returns true if the border countries names were successfully loaded */
   const isBorderCountriesLoaded = computed(() => {
     const apiStore = useApiStore()
-    return (
-      apiStore.apiState === ApiState.LOADED &&
-      country.value.borderCountriesNames
-    )
+    return apiStore.apiState === LOADED && country.value.borderCountriesNames
   })
 
   /* A computed property that returns true if the API state is ERROR. */
   const isResourceUnavailable = computed(() => {
     const apiStore = useApiStore()
-    return apiStore.apiState === ApiState.ERROR
+    return apiStore.apiState === ERROR
   })
   return {
     countries,
