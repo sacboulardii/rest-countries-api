@@ -9,6 +9,11 @@ import { sortCountriesAlphabetically } from '@/helpers'
 import { ApiState } from '@/enums'
 
 export const useCountriesStore = defineStore('countries', () => {
+  /* -------------------------------------------------------------------------- */
+  /*                                 API states                                 */
+  /* -------------------------------------------------------------------------- */
+  const { LOADING, ERROR, LOADED } = ApiState
+
   /* ---------------------------------------------------------------- */
   //                              STATE
   /* ---------------------------------------------------------------- */
