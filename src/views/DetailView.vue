@@ -14,7 +14,7 @@
   </main>
 </template>
 
-<script lang="ts">
+<script>
 import { useCountriesStore as useStore } from '@/store/countries'
 
 export default {
@@ -24,8 +24,8 @@ export default {
     }
   },
   // Assign previous route for future handling
-  beforeRouteEnter(to, from, next): void {
-    next((vm: any): void => {
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
       vm.$data.fromRoute = from
     })
   },
@@ -34,7 +34,7 @@ export default {
    * @desc Clear stored countries, reset region filter and load all countries before going to a route that has a clear param.
    * This is only true when going to home route though the header title ensuring its refresh to default home funcionality.
    **/
-  beforeRouteLeave(to, from, next): void {
+  beforeRouteLeave(to, from, next) {
     const store = useStore()
     if (to.params.clear) {
       store.fetchAllCountries
@@ -42,7 +42,7 @@ export default {
     next()
   },
 
-  beforeRouteUpdate(to: any): void {
+  beforeRouteUpdate(to) {
     const store = useStore()
     store.fetchCountryDetails(to.params.countryName)
     store.fetchBorderCountriesNames()
@@ -55,9 +55,8 @@ export default {
      * @param {string} fallback - The fallback path if there is no history to use with $router.back().
      * This is usually the case if the page was visited directly or from another site
      **/
-    handleBack(fallback: string): void {
-      const fromRoute: any = this.fromRoute
-      if (fromRoute && !fromRoute.name) {
+    handleBack(fallback) {
+      if (this.fromRoute && !this.fromRoute.name) {
         this.$router.push(fallback)
       } else {
         this.$router.back()
@@ -67,7 +66,7 @@ export default {
 }
 </script>
 
-<script setup lang="ts">
+<script setup>
 // Components
 import CountryDetails from '@/components/CountryDetails.vue'
 import { defineProps, onBeforeMount } from 'vue'
