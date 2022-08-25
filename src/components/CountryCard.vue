@@ -34,22 +34,22 @@
   </li>
 </template>
 
-<script>
+<script setup lang="ts">
 import useCountryData from '@/use/country-data'
+import { defineProps } from 'vue'
+import { Flags, Name } from '@/types/CountryFields'
 
-export default {
-  // Declare received country object props
-  props: {
-    name: Object,
-    population: Number,
-    capital: Array,
-    region: String,
-    flags: Object,
-  },
-  setup(props) {
-    return { ...useCountryData(props) }
-  },
+interface CountryCardFields {
+  flags: Flags
+  name: Name
+  population: number
+  region: string
 }
+
+const props = defineProps<CountryCardFields>()
+
+const { getName, getImage, getPopulation, getRegion, getCapital } =
+  useCountryData(props)
 </script>
 
 <style lang="scss" scoped>

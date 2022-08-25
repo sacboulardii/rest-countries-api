@@ -1,18 +1,18 @@
 /* Defining the shape of the data that we are getting from the API. */
 
-type Flags = {
+export type Flags = {
   png: string
   svg: string
 }
 
-type NativeName = {
+export type NativeName = {
   [key: string]: {
     official?: string
     common: string
   }
 }
 
-type Name = {
+export type Name = {
   common: string
   nativeName: NativeName
   official?: string

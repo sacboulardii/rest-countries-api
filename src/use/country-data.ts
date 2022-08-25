@@ -1,11 +1,11 @@
 import { computed, Ref } from 'vue'
-import { DetailFields } from '@/types/CountryFields'
+import { CountryCardFields, DetailFields } from '@/types/CountryFields'
 
 /**
  * Composable Function
  * @desc Encapsulates reusable logic for accessing country objects properties
  **/
-export default function useCountryData(props: DetailFields): {
+export default function useCountryData(props: any): {
   [key: string]: Ref<string>
 } {
   const getName = computed(() => props.name.common)
