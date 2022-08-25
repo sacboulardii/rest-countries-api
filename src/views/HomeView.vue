@@ -9,7 +9,7 @@
       <ul v-if="store.isCountriesObjectLoaded" class="countries-results__list">
         <CountryCard
           v-for="(country, index) in store.getSortedCountries"
-          v-bind="country"
+          v-bind="{ country: country }"
           :key="index"
         />
       </ul>
@@ -84,7 +84,7 @@ onBeforeMount(() => {
 
 .countries-results__list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, $card-x);
+  grid-template-columns: repeat(auto-fill, $card-x);
   row-gap: 2.5rem;
   column-gap: 2.5rem;
   justify-content: center;
