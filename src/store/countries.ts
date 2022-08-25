@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { useApiStore } from './api'
+import { ApiState } from '@/enums'
+
 import CountriesService from '@/services/CountriesService'
+
 import { CountryCardFields } from '@/types/CountryFields'
 
-import { sortCountriesAlphabetically } from '@/helpers'
-
-import { ApiState } from '@/enums'
+import { sortCountries } from '@/helpers'
 
 export const useCountriesStore = defineStore('countries', () => {
   /* -------------------------------------------------------------------------- */
@@ -192,7 +193,7 @@ export const useCountriesStore = defineStore('countries', () => {
 
   /* A computed property that returns the sorted countries list. */
   const getSortedCountries = computed(() => {
-    return sortCountriesAlphabetically(countries.value)
+    return sortCountries(countries.value)
   })
 
   /* A computed property that returns the country details. */
