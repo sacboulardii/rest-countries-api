@@ -1,15 +1,6 @@
-import axios, { AxiosResponse, AxiosInstance } from 'axios'
+import { AxiosResponse } from 'axios'
 import { CountryCardFields, DetailFields } from '@/types/CountryFields'
-
-/* Creating an axios instance with the baseURL and headers. */
-export const apiClient: AxiosInstance = axios.create({
-  baseURL: 'https://restcountries.com/v3.1',
-  withCredentials: false,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-})
+import http from '@/http-common'
 
 const responseBody = (response: AxiosResponse) => response.data
 
@@ -24,25 +15,25 @@ const detailsFilterQuery: string =
 export default {
   /* Fetching all the countries from the API. */
   fetchAll(): Promise<AxiosResponse<CountryCardFields>> {
-    return apiClient.get('/all' + cardsFilterQuery)
+    return http.get('/all' + cardsFilterQuery)
   },
   /* Fetching the country by name. */
   fetchByName(name: string): Promise<AxiosResponse<CountryCardFields>> {
-    return apiClient.get(`/name/${name}` + cardsFilterQuery)
+    return http.get(`/name/${name}` + cardsFilterQuery)
   },
   /* Fetching the countries by region. */
   fetchByRegion(region: string): Promise<AxiosResponse<CountryCardFields>> {
-    if (region === 'All') return apiClient.get('/all' + cardsFilterQuery)
+    if (region === 'All') return http.get('/all' + cardsFilterQuery)
 
-    return apiClient.get(`/region/${region}` + cardsFilterQuery)
+    return http.get(`/region/${region}` + cardsFilterQuery)
   },
   /* Fetching the details of the country by name. */
   fetchDetails(name: string): Promise<AxiosResponse<DetailFields>> {
-    return apiClient.get(`/name/${name}`)
+    return http.get(`/name/${name}`)
   },
   /* Fetching the border countries of the country. */
   fetchBorderCountries(borders: string): Promise<AxiosResponse<DetailFields>> {
     const bordersCodes = Object.values(borders)
-    return apiClient.get('/alpha?codes=' + bordersCodes.join(','))
+    return http.get('/alpha?codes=' + bordersCodes.join(','))
   },
 }
