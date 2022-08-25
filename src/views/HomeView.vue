@@ -38,7 +38,6 @@ export default {
 </script>
 
 <script setup>
-// Components
 import SearchBar from '@/components/SearchBar.vue'
 import CountryCard from '@/components/CountryCard.vue'
 import AppDropdownWrapper from '@/components/AppDropdownWrapper.vue'
