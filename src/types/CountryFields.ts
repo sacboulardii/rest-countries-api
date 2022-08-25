@@ -1,20 +1,37 @@
 /* Defining the shape of the data that we are getting from the API. */
 
-export interface CountryCardFields {
-  flags: {
-    png: string
-    svg: string
-  }
-  name: {
+type Flags = {
+  png: string
+  svg: string
+}
+
+type NativeName = {
+  [key: string]: {
+    official?: string
     common: string
-    nativeName: {
-      [key: string]: {
-        official?: string
-        common: string
-      }
-    }
-    official: string
   }
+}
+
+type Name = {
+  common: string
+  nativeName: NativeName
+  official?: string
+}
+
+type Currencies = {
+  [key: string]: {
+    name: string
+    symbol?: string
+  }
+}
+
+type Languages = {
+  [key: string]: string
+}
+
+export interface CountryCardFields {
+  flags: Flags
+  name: Name
   population: number
   region: string
 }
@@ -22,15 +39,8 @@ export interface CountryCardFields {
 export interface DetailFields extends CountryCardFields {
   borders: string[]
   capital: string[]
-  currencies: {
-    [key: string]: {
-      name: string
-      symbol: string
-    }
-  }
-  languages: {
-    [key: string]: string
-  }
+  currencies: Currencies
+  languages: Languages
   subregion: string
   tld: string[]
 }
