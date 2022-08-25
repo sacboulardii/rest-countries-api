@@ -40,15 +40,17 @@ export default function useCountryData(props: DetailFields): {
     return props.languages ? Object.values(props.languages).join(', ') : 'None'
   })
 
-  const getNativeName = computed(() => {
-    if (props.name.nativeName) {
-      return Object.values(props.name.nativeName)
-        .map((nativeName: any) => nativeName.common)
-        .join(', ')
-    } else {
-      return props.name.common ? props.name.common : 'None'
-    }
-  })
+  const getNativeName = computed(
+    () =>
+      [
+        ...new Set(
+          props.name.nativeName &&
+            Object.values(props.name.nativeName).map(
+              (nativeName: any) => nativeName.common
+            )
+        ),
+      ].join(', ') || 'None'
+  )
 
   const getCurrencies = computed(() => {
     if (props.currencies) {
