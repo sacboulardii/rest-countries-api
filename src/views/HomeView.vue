@@ -58,9 +58,9 @@ onBeforeMount(() => {
   store.fetchAllCountries()
   route.params.region && store.filterCountriesByRegion(route.params.region)
   route.params.search && store.getCountryByName(route.params.search)
-  // !Object.keys(route.params).length &&
-  //   !store.getCountriesList &&
-  //   store.fetchAllCountries()
+  !Object.keys(route.params).length &&
+    !store.getCountriesLength &&
+    store.fetchAllCountries()
 })
 </script>
 
