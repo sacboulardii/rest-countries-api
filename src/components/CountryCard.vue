@@ -8,7 +8,7 @@
 
         <div class="card__description">
           <h3 class="card__name">
-            {{ getName }}
+            {{ getName || 'None' }}
           </h3>
           <p class="card__field">
             Population:
@@ -19,13 +19,13 @@
           <p class="card__field">
             Region:
             <span class="card__data">
-              {{ getRegion }}
+              {{ getRegion || 'None' }}
             </span>
           </p>
           <p class="card__field">
             Capital:
             <span class="card__data">
-              {{ getCapital }}
+              {{ getCapital || 'None' }}
             </span>
           </p>
         </div>

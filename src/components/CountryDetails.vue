@@ -15,7 +15,9 @@
         <div class="country-details__main-fields">
           <p class="country-details__field">
             Native Name:
-            <span class="country-details__data">{{ getNativeName }}</span>
+            <span class="country-details__data">{{
+              getNativeName || 'None'
+            }}</span>
           </p>
           <p class="country-details__field">
             Population:
@@ -23,29 +25,39 @@
           </p>
           <p class="country-details__field">
             Region:
-            <span class="country-details__data">{{ getRegion }}</span>
+            <span class="country-details__data">{{ getRegion || 'None' }}</span>
           </p>
           <p class="country-details__field">
             Sub Region:
-            <span class="country-details__data">{{ getSubRegion }}</span>
+            <span class="country-details__data">{{
+              getSubRegion || 'None'
+            }}</span>
           </p>
           <p class="country-details__field">
             Capital:
-            <span class="country-details__data">{{ getCapital }}</span>
+            <span class="country-details__data">{{
+              getCapital || 'None'
+            }}</span>
           </p>
         </div>
         <div class="country-details__other-fields">
           <p class="country-details__field">
             Top Level Domain:
-            <span class="country-details__data">{{ getTopLevelDomain }}</span>
+            <span class="country-details__data">{{
+              getTopLevelDomain || 'None'
+            }}</span>
           </p>
           <p class="country-details__field">
             Currencies:
-            <span class="country-details__data">{{ getCurrencies }} </span>
+            <span class="country-details__data"
+              >{{ getCurrencies || 'None' }}
+            </span>
           </p>
           <p class="country-details__field">
             Languages:
-            <span class="country-details__data">{{ getLanguages }}</span>
+            <span class="country-details__data">{{
+              getLanguages || 'None'
+            }}</span>
           </p>
         </div>
       </div>

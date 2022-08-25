@@ -9,7 +9,7 @@ export default function useCountryData(props: DetailFields): {
   [key: string]: Ref<string>
 } {
   const getName = computed(() => {
-    return props.name.common ? props.name.common : 'None'
+    return props.name.common
   })
 
   const getImage = computed(() => {
@@ -17,49 +17,47 @@ export default function useCountryData(props: DetailFields): {
   })
 
   const getRegion = computed(() => {
-    return props.region ? props.region : 'None'
+    return props.region
   })
 
   const getSubRegion = computed(() => {
-    return props.subregion ? props.subregion : 'None'
+    return props.subregion
   })
 
   const getPopulation = computed(() => {
-    return props.population ? props.population.toLocaleString('en-US') : 'None'
+    return (props.population && props.population.toLocaleString('en-US')) || '0'
   })
 
   const getCapital = computed(() => {
-    return props.capital ? props.capital[0] : 'None'
+    return props.capital && props.capital[0]
   })
 
   const getTopLevelDomain = computed(() => {
-    return props.tld ? props.tld.join(', ') : 'None'
+    return props.tld && props.tld.join(', ')
   })
 
   const getLanguages = computed(() => {
-    return props.languages ? Object.values(props.languages).join(', ') : 'None'
+    return props.languages && Object.values(props.languages).join(', ')
   })
 
-  const getNativeName = computed(
-    () =>
-      [
-        ...new Set(
-          props.name.nativeName &&
-            Object.values(props.name.nativeName).map(
-              (nativeName: any) => nativeName.common
-            )
-        ),
-      ].join(', ') || 'None'
+  const getNativeName = computed(() =>
+    [
+      ...new Set(
+        props.name.nativeName &&
+          Object.values(props.name.nativeName).map(
+            (nativeName: any) => nativeName.common
+          )
+      ),
+    ].join(', ')
   )
 
   const getCurrencies = computed(() => {
-    if (props.currencies) {
-      return Object.values(props.currencies)
+    return (
+      props.currencies &&
+      Object.values(props.currencies)
         .map((currency: any) => currency.name)
         .join(', ')
-    } else {
-      return 'None'
-    }
+    )
   })
 
   return {
