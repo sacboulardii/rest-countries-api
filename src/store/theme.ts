@@ -16,8 +16,8 @@ export const useThemeStore = defineStore('theme', () => {
   /* ---------------------------------------------------------------- */
 
   /**
-   * Sets the value of the theme object to the value of `newTheme`.
-   * @param newTheme - The new theme to set.
+   * SetTheme takes a DesignTheme and returns nothing.
+   * @param {DesignTheme} newTheme - The new theme to set.
    */
 
   function setTheme(newTheme: DesignTheme): void {
