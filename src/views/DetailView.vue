@@ -9,7 +9,7 @@
     </button>
     <CountryDetails
       v-if="store.isCountryDetailsLoaded"
-      v-bind="store.getCountryDetails"
+      v-bind="{ country: store.getCountryDetails }"
     />
   </main>
 </template>

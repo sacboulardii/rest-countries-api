@@ -36,20 +36,22 @@
 
 <script setup lang="ts">
 import useCountryData from '@/use/country-data'
-import { defineProps } from 'vue'
-import { Flags, Name } from '@/types/CountryFields'
+import { defineProps, Ref } from 'vue'
+import { DetailFields } from '@/types/CountryFields'
 
-interface CountryCardFields {
-  flags: Flags
-  name: Name
-  population: number
-  region: string
+interface Props {
+  country: DetailFields
 }
 
-const props = defineProps<CountryCardFields>()
+const props = defineProps<Props>()
 
-const { getName, getImage, getPopulation, getRegion, getCapital } =
-  useCountryData(props)
+const {
+  getName,
+  getImage,
+  getPopulation,
+  getRegion,
+  getCapital,
+}: { [key: string]: Ref<string> } = useCountryData(props)
 </script>
 
 <style lang="scss" scoped>

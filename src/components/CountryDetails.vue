@@ -72,30 +72,34 @@
   </section>
 </template>
 
-<script>
+<script setup lang="ts">
 import useCountryData from '@/use/country-data'
 import BorderCountriesList from './BorderCountriesList.vue'
 
+import { defineProps, Ref } from 'vue'
+import { DetailFields } from '@/types/CountryFields'
 import { useCountriesStore } from '@/store/countries'
 
-export default {
-  components: { BorderCountriesList },
-  props: {
-    name: Object,
-    flags: Object,
-    population: Number,
-    region: String,
-    subregion: String,
-    capital: Array,
-    tld: Array,
-    currencies: Object,
-    languages: Object,
-  },
-  setup(props) {
-    const store = useCountriesStore()
-    return { ...useCountryData(props), store }
-  },
+const store = useCountriesStore()
+
+interface Props {
+  country: DetailFields
 }
+
+const props = defineProps<Props>()
+
+const {
+  getName,
+  getNativeName,
+  getImage,
+  getPopulation,
+  getRegion,
+  getSubRegion,
+  getCapital,
+  getTopLevelDomain,
+  getCurrencies,
+  getLanguages,
+}: { [key: string]: Ref<string> } = useCountryData(props)
 </script>
 
 <style lang="scss" scoped>
