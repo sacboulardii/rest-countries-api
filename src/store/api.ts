@@ -4,6 +4,8 @@ import { ref } from 'vue'
 import { ApiState } from '@/enums'
 
 export const useApiStore = defineStore('api', () => {
+  const { INIT } = ApiState
+
   /* ---------------------------------------------------------------- */
   //                              STATE
   /* ---------------------------------------------------------------- */
@@ -11,7 +13,7 @@ export const useApiStore = defineStore('api', () => {
   /**
    * It initializes api state to INIT (0)
    */
-  const apiState = ref(ApiState.INIT)
+  const apiState = ref(INIT)
 
   /* ---------------------------------------------------------------- */
   //                              ACTIONS
