@@ -3,7 +3,7 @@ import { DetailFields } from '@/types/CountryFields'
 
 /**
  * Composable Function
- * @desc Encapsulates reusable logic for accessing country objects properties and extracting required data.
+ * @desc Encapsulates reusable logic for accessing country objects properties
  **/
 export default function useCountryData(props: DetailFields): {
   [key: string]: Ref<string>
