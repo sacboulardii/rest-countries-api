@@ -47,10 +47,16 @@ const store = useCountriesStore()
 
   &__input {
     @include fluid-type(12, 14, 375, 1440);
+    font-family: $font-family;
 
     padding-left: 4.5rem;
     padding-right: 1.125rem;
     width: 100%;
+    transition: box-shadow 300ms;
+
+    &:focus {
+      box-shadow: 0px 3px 14px 1px rgba(0, 0%, 0%, 0.0875);
+    }
   }
 }
 
