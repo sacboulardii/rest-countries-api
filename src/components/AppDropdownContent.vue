@@ -41,6 +41,7 @@ export default {
   position: absolute;
   transform: translateY(5px);
 
+  z-index: 2;
   overflow: hidden;
 }
 </style>

@@ -72,6 +72,10 @@ const {
     border-radius: $border-radius-sm;
   }
 
+  &__figure {
+    overflow: hidden;
+  }
+
   &__image {
     object-fit: cover;
     height: 100%;
@@ -102,6 +106,56 @@ const {
 
   &__data {
     font-weight: $fw-300;
+  }
+}
+
+/* --------------------------- Card Hover Circle Effect -------------------------- */
+
+.card figure {
+  position: relative;
+}
+.card figure::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  content: '';
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.card figure:hover::before {
+  -webkit-animation: circle 0.75s;
+  animation: circle 0.75s;
+}
+@-webkit-keyframes circle {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+  }
+}
+@keyframes circle {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    width: 200%;
+    height: 200%;
+    opacity: 0;
   }
 }
 </style>
