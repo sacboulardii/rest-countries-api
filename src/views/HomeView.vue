@@ -18,11 +18,7 @@
         Nenhum resultado foi encotrado.
       </p>
     </section>
-    <font-awesome-icon
-      id="scroll-to-top"
-      v-scroll-to="'.header'"
-      icon="fa-solid fa-circle-chevron-up"
-    />
+    <ScrollToTop />
   </main>
 </template>
 
@@ -41,6 +37,7 @@ export default {
 import SearchBar from '@/components/SearchBar.vue'
 import CountryCard from '@/components/CountryCard.vue'
 import AppDropdownWrapper from '@/components/AppDropdownWrapper.vue'
+import ScrollToTop from '@/components/ScrollToTop.vue'
 
 import { useRoute } from 'vue-router'
 import { onBeforeMount } from 'vue'
