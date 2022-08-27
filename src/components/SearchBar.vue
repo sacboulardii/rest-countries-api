@@ -1,9 +1,9 @@
 <template>
   <div class="search-bar">
-    <font-awesome-icon
+    <img
+      :src="require(`../assets/search_${themeStore.getCurrentTheme}_24dp.svg`)"
       class="search-bar__icon"
-      icon="fa-solid fa-magnifying-glass"
-      opacity="0.2"
+      alt="Manifying Glass"
     />
     <input
       type="text"
@@ -16,7 +16,9 @@
 
 <script setup>
 import { useCountriesStore } from '@/store/countries'
+import { useThemeStore } from '@/store/theme'
 const store = useCountriesStore()
+const themeStore = useThemeStore()
 </script>
 
 <style lang="scss" scoped>
