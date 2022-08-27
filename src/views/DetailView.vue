@@ -2,8 +2,15 @@
   <main class="details container">
     <button class="btn btn--round details__btn--back" @click="handleBack('/')">
       <img
+        v-if="themeStore.getCurrentTheme === 'light'"
         class="details__btn--back-icon"
         src="@/assets/arrow_left.svg"
+        alt="Back"
+      />
+      <img
+        v-else
+        class="details__btn--back-icon"
+        src="@/assets/arrow_left_black.svg"
         alt="Back"
       />
       back
@@ -75,8 +82,10 @@ import CountryDetails from '@/components/CountryDetails.vue'
 import { defineProps, onBeforeMount } from 'vue'
 
 import { useCountriesStore } from '@/store/countries'
+import { useThemeStore } from '@/store/theme'
 
 const store = useCountriesStore()
+const themeStore = useThemeStore()
 
 // Received route param
 const props = defineProps(['countryName'])
@@ -114,6 +123,7 @@ onBeforeMount(() => {
 
   &__btn--back-icon {
     width: 1.375rem;
+    color: red;
     margin-right: 0.25rem;
   }
 }
