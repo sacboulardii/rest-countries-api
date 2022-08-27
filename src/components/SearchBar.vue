@@ -52,7 +52,7 @@ const store = useCountriesStore()
     padding-left: 4.5rem;
     padding-right: 1.125rem;
     width: 100%;
-    transition: box-shadow 300ms;
+    transition: color 0.4s ease, background-color 0.4s ease, box-shadow 300ms;
 
     &:focus {
       box-shadow: 0px 3px 14px 1px rgba(0, 0%, 0%, 0.0875);

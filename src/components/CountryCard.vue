@@ -67,6 +67,7 @@ const {
 
   font-weight: $fw-300;
   overflow: hidden;
+  transition: color 0.4s ease, background-color 0.4s ease;
 
   @media (min-width: 768px) {
     border-radius: $border-radius-sm;
