@@ -101,10 +101,19 @@ onBeforeMount(() => {
   }
 
   &__btn--back {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.75rem;
+    padding-right: 2.25rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    column-gap: 0.25rem;
     cursor: pointer;
   }
 
   &__btn--back-icon {
+    width: 1.375rem;
     margin-right: 0.25rem;
   }
 }
