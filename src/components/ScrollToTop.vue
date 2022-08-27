@@ -34,19 +34,9 @@ onBeforeMount(() => {
 </script>
 
 <style lang="scss" scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.4s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
 .gg-chevron-up-r {
-  background-color: var($--theme-circle-chevron-color);
-  color: black;
+  background-color: var($--theme-scroll-bg-color);
+  color: var($--theme-scroll-chevron-color);
 
   border-radius: 6px;
   border: 0;
@@ -71,7 +61,7 @@ onBeforeMount(() => {
   }
 
   &::after {
-    color: white;
+    color: var($--theme-scroll-chevron-color);
 
     border-right: 3px solid;
     border-top: 3px solid;
