@@ -2,9 +2,9 @@ import { computed, Ref } from 'vue'
 import { DetailFields } from '@/types/CountryFields'
 
 /**
- * Composable Function
  * @desc Encapsulates reusable logic for accessing country objects properties
- **/
+ * @returns A bunch of computed properties that are derived from the country data
+ */
 export default function useCountryData(props: { country: DetailFields }): {
   [key: string]: Ref<string>
 } {
