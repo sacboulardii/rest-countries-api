@@ -1,26 +1,11 @@
 <template>
   <div class="theme-toggle" @click="store.switchTheme">
-    <!-- Render the right theme toggle icon conditionally based on current theme -->
     <img
-      v-if="store.getCurrentTheme === 'experimental'"
+      :src="require(`../assets/${store.getNextTheme}_theme_icon.svg`)"
       class="theme-toggle__icon"
-      src="@/assets/sun.svg"
-      alt="Light Theme"
-    />
-    <img
-      v-else-if="store.getCurrentTheme === 'light'"
-      class="theme-toggle__icon"
-      src="@/assets/moon.svg"
-      alt="Moon Theme"
-    />
-    <img
-      v-else
-      class="theme-toggle__icon"
-      src="@/assets/brush.svg"
-      alt="Experimental Theme"
+      :alt="`${store.getNextTheme} Theme`"
     />
     {{ store.getNextTheme }} Mode
-    <!-- endloop -->
   </div>
 </template>
 
