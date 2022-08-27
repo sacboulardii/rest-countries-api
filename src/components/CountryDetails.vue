@@ -153,7 +153,7 @@ const {
   }
 
   &__image {
-    border-radius: $border-radius-lg;
+    border-radius: $border-radius;
     display: block;
     object-fit: contain;
     height: 100%;
