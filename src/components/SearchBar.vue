@@ -1,7 +1,14 @@
 <template>
   <div class="search-bar">
     <img
-      :src="require(`../assets/search_${themeStore.getCurrentTheme}_24dp.svg`)"
+      v-if="themeStore.getCurrentTheme === 'light'"
+      src="@/assets/search_light_24dp.svg"
+      class="search-bar__icon"
+      alt="Magnifying Glass"
+    />
+    <img
+      v-else
+      src="@/assets/search_dark_24dp.svg"
       class="search-bar__icon"
       alt="Magnifying Glass"
     />

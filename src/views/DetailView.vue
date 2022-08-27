@@ -3,14 +3,14 @@
     <button class="btn btn--round details__btn--back" @click="handleBack('/')">
       <img
         v-if="themeStore.getCurrentTheme === 'light'"
-        class="details__btn--back-icon"
-        src="@/assets/arrow_left.svg"
+        src="@/assets/arrow_left_light.svg"
+        class="details_btn---back-icon"
         alt="Back"
       />
       <img
         v-else
-        class="details__btn--back-icon"
-        src="@/assets/arrow_left_black.svg"
+        src="@/assets/arrow_left_dark.svg"
+        class="details_btn---back-icon"
         alt="Back"
       />
       back
