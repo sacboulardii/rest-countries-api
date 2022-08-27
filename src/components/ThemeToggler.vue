@@ -1,21 +1,24 @@
 <template>
   <div class="theme-toggle" @click="store.switchTheme">
     <!-- Render the right theme toggle icon conditionally based on current theme -->
-    <font-awesome-icon
-      v-if="store.getCurrentTheme === 'light'"
-      icon="fa-moon"
+    {{ store.getNextTheme }} Mode
+    <img
+      v-if="store.getCurrentTheme === 'wolf'"
       class="theme-toggle__icon"
+      src="@/assets/sun.svg"
+      alt="Wolf Theme"
     />
-    <font-awesome-icon
-      v-else-if="store.getCurrentTheme === 'wolf'"
-      icon="fa-solid fa-lightbulb"
+    <img
+      v-else-if="store.getCurrentTheme === 'light'"
       class="theme-toggle__icon"
+      src="@/assets/moon.svg"
+      alt="Moon Theme"
     />
     <img
       v-else
-      src="@/assets/wolf-svgrepo-com.svg"
-      alt="wolf"
       class="theme-toggle__icon"
+      src="@/assets/brush.svg"
+      alt="Experimental Theme"
     />
     <!-- endloop -->
   </div>
@@ -29,11 +32,14 @@ const store = useThemeStore()
 <style lang="scss" scoped>
 .theme-toggle {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  column-gap: 0.375rem;
   font-size: $font-sm;
-  transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+  text-transform: capitalize;
 
   &__icon {
-    height: 1rem;
+    height: 1.2rem;
   }
 }
 </style>

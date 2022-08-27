@@ -41,5 +41,5 @@ export const useThemeStore = defineStore('theme', () => {
     )
   })
 
-  return { switchTheme, getCurrentTheme }
+  return { switchTheme, getCurrentTheme, getNextTheme }
 })

@@ -15,23 +15,23 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // import specific icons
 import {
-  faMoon,
-  faGlasses,
+  // faMoon,
+  // faGlasses,
   faMagnifyingGlass,
   faChevronDown,
-  faCircleChevronUp,
-  faLightbulb,
+  // faCircleChevronUp,
+  // faLightbulb,
   faArrowLeftLong,
 } from '@fortawesome/free-solid-svg-icons'
 
 // add icons to the library
 library.add(
-  faMoon,
-  faGlasses,
+  // faMoon,
+  // faGlasses,
   faMagnifyingGlass,
   faChevronDown,
-  faCircleChevronUp,
-  faLightbulb,
+  // faCircleChevronUp,
+  // faLightbulb,
   faArrowLeftLong
 )
 
