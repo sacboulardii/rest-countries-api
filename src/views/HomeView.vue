@@ -6,13 +6,19 @@
     </section>
     <!-- Lista de países -->
     <section class="countries-results">
-      <ul v-if="store.isCountriesObjectLoaded" class="countries-results__list">
+      <transition-group
+        tag="ul"
+        v-if="store.isCountriesObjectLoaded"
+        class="countries-results__list"
+        name="fade"
+        appear
+      >
         <CountryCard
           v-for="(country, index) in store.getSortedCountries"
           v-bind="{ country: country }"
           :key="index"
         />
-      </ul>
+      </transition-group>
       <!-- Mensagem de resultado não encontrado -->
       <p class="not-found" v-if="store.isResourceUnavailable">
         Nenhum resultado foi encotrado.
