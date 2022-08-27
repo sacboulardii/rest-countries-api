@@ -6,7 +6,7 @@
 <script setup>
 import { onBeforeMount } from '@vue/runtime-core'
 import { useThemeStore } from './store/theme'
-import Header from '@/components/HeaderComp.vue'
+import Header from '@/components/Header.vue'
 
 const store = useThemeStore()
 
