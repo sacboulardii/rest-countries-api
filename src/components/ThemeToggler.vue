@@ -1,7 +1,6 @@
 <template>
   <div class="theme-toggle" @click="store.switchTheme">
     <!-- Render the right theme toggle icon conditionally based on current theme -->
-    {{ store.getNextTheme }} Mode
     <img
       v-if="store.getCurrentTheme === 'experimental'"
       class="theme-toggle__icon"
@@ -20,6 +19,7 @@
       src="@/assets/brush.svg"
       alt="Experimental Theme"
     />
+    {{ store.getNextTheme }} Mode
     <!-- endloop -->
   </div>
 </template>
