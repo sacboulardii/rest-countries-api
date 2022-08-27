@@ -7,10 +7,12 @@
       />
       back
     </button>
-    <CountryDetails
-      v-if="store.isCountryDetailsLoaded"
-      v-bind="{ country: store.getCountryDetails }"
-    />
+    <transition name="fade">
+      <CountryDetails
+        v-if="store.isCountryDetailsLoaded"
+        v-bind="{ country: store.getCountryDetails }"
+      />
+    </transition>
   </main>
 </template>
 
