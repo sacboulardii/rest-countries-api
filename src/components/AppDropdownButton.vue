@@ -1,17 +1,27 @@
 <template>
   <button class="input dropdown dropdown__button">
     {{ store.getRegionFilterText }}
-    <font-awesome-icon
-      icon="fa-solid fa-chevron-down"
+    <img
+      v-if="themeStore.getCurrentTheme === 'light'"
+      src="@/assets/expand_more_black_24dp.svg"
       class="dropdown__toggle"
+      alt="Select Region"
+    />
+    <img
+      v-else
+      src="@/assets/expand_more_white_24dp.svg"
+      class="dropdown__toggle"
+      alt="Select Region"
     />
   </button>
 </template>
 
 <script setup>
 import { useCountriesStore } from '@/store/countries'
+import { useThemeStore } from '@/store/theme'
 
 const store = useCountriesStore()
+const themeStore = useThemeStore()
 </script>
 
 <style lang="scss">
@@ -27,7 +37,7 @@ const store = useCountriesStore()
 
   color: var($--theme-angle-icon-color);
 
-  width: 0.5rem;
+  width: 1.125rem;
   right: 1.25rem;
 }
 </style>

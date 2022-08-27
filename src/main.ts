@@ -18,21 +18,21 @@ import {
   // faMoon,
   // faGlasses,
   faMagnifyingGlass,
-  faChevronDown,
+  // faChevronDown,
   // faCircleChevronUp,
   // faLightbulb,
-  faArrowLeftLong,
+  // faArrowLeftLong,
 } from '@fortawesome/free-solid-svg-icons'
 
 // add icons to the library
 library.add(
   // faMoon,
   // faGlasses,
-  faMagnifyingGlass,
-  faChevronDown,
+  faMagnifyingGlass
+  // faChevronDown
   // faCircleChevronUp,
   // faLightbulb,
-  faArrowLeftLong
+  // faArrowLeftLong
 )
 
 // Create pinia store
