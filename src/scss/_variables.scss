@@ -10,7 +10,8 @@ $--theme-font-color: --theme-font-color;
 $--theme-placeholder-opacity: --theme-placeholder-opacity;
 $--theme-hover-color: --theme-hover-color;
 $--theme-angle-icon-color: --angle-icon-color;
-$--theme-circle-chevron-color: --theme-circle-chevron-color;
+$--theme-scroll-chevron-color: --theme-scroll-chevron-color;
+$--theme-scroll-bg-color: --theme-scroll-bg-color;
 
 /* ------------------------------- Light Theme ------------------------------ */
 
@@ -21,7 +22,8 @@ $theme-map-light: (
     $--theme-placeholder-opacity: 0.3,
     $--theme-hover-color: darken(white, 5%),
     $--theme-angle-icon-color: black,
-    $--theme-circle-chevron-color: black,
+    $--theme-scroll-chevron-color: white,
+    $--theme-scroll-bg-color: black,
 );
 
 /* ------------------------------- Dark Theme ------------------------------- */
@@ -33,7 +35,8 @@ $theme-map-dark: (
     $--theme-placeholder-opacity: 1,
     $--theme-hover-color: lighten(hsl(209deg, 23%, 22%), 5%),
     $--theme-angle-icon-color: white,
-    $--theme-circle-chevron-color: rgb(221, 219, 219),
+    $--theme-scroll-chevron-color: white,
+    $--theme-scroll-bg-color: hsl(209deg, 23%, 22%),
 );
 
 /* ------------------------------- Wolf Theme ------------------------------- */
@@ -45,7 +48,8 @@ $theme-map-wolf: (
     $--theme-placeholder-opacity: 0.75,
     $--theme-hover-color: lighten(#1C0C5B, 5%),
     $--theme-angle-icon-color: white,
-    $--theme-circle-chevron-color: white,
+    $--theme-scroll-chevron-color: white,
+    $--theme-scroll-bg-color: #1C0C5B,
 );
     
 $white: hsl(0deg, 0%, 100%);
