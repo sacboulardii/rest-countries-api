@@ -6,7 +6,7 @@ export const useThemeStore = defineStore('theme', () => {
   //                              STATE
   /* ---------------------------------------------------------------- */
 
-  const theme = ref(localStorage.getItem('theme') || '') || ref('light')
+  const theme = ref(localStorage.getItem('theme') || 'light')
 
   /* ---------------------------------------------------------------- */
   //                              ACTIONS

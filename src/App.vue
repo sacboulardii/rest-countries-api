@@ -11,7 +11,11 @@ import Header from '@/components/HeaderComp.vue'
 const store = useThemeStore()
 
 onBeforeMount(() => {
-  document.documentElement.classList.add(store.getCurrentTheme)
+  const storedTheme = localStorage.getItem('theme')
+
+  storedTheme
+    ? document.documentElement.classList.add(storedTheme)
+    : document.documentElement.classList.add(store.getCurrentTheme)
 })
 </script>
 
