@@ -1,4 +1,3 @@
-import { DesignTheme } from '@/types/DesignTheme'
 import { CountryCardFields } from '@/types/CountryFields'
 
 /**
@@ -13,10 +12,10 @@ function sortCountries(countries: CountryCardFields[]) {
 /**
  * If the current theme is light, return dark, if the current theme is dark, return wolf, otherwise
  * return light
- * @param {DesignTheme} currentTheme - DesignTheme - this is the current theme that the user is using.
+ * @param {string} currentTheme - this is the current theme that the user is using.
  * @returns The next theme in the sequence.
  */
-function getNextTheme(currentTheme: DesignTheme): DesignTheme {
+function getNextTheme(currentTheme: string): string {
   return (
     (currentTheme === 'light' && 'dark') ||
     (currentTheme === 'dark' && 'wolf') ||

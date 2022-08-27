@@ -1,27 +1,21 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { getNextTheme } from '@/helpers'
-import { DesignTheme } from '@/types/DesignTheme'
 
 export const useThemeStore = defineStore('theme', () => {
   /* ---------------------------------------------------------------- */
   //                              STATE
   /* ---------------------------------------------------------------- */
 
-  /* Creating a theme reactive object with the default of `light`. */
-  const theme = ref<DesignTheme>('light')
+  const theme = ref(localStorage.getItem('theme') || '') || ref('light')
 
   /* ---------------------------------------------------------------- */
   //                              ACTIONS
   /* ---------------------------------------------------------------- */
 
-  /**
-   * SetTheme takes a DesignTheme and returns nothing.
-   * @param {DesignTheme} newTheme - The new theme to set.
-   */
-
-  function setTheme(newTheme: DesignTheme): void {
+  function setTheme(newTheme: string): void {
     theme.value = newTheme
+    localStorage.setItem('theme', newTheme)
   }
 
   /**
@@ -39,7 +33,7 @@ export const useThemeStore = defineStore('theme', () => {
   /* ---------------------------------------------------------------- */
 
   /* A computed property that returns the value of `theme`. */
-  const getCurrentTheme = computed<DesignTheme>(() => theme.value)
+  const getCurrentTheme = computed<string>(() => theme.value)
 
   return { switchTheme, getCurrentTheme }
 })
