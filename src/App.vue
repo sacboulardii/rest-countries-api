@@ -53,8 +53,8 @@ onBeforeMount(() => {
 .dark {
   @include spread-map($theme-map-dark);
 }
-.wolf {
-  @include spread-map($theme-map-wolf);
+.experimental {
+  @include spread-map($theme-map-experimental);
 }
 
 /* -------------------------------------------------------------------------- */

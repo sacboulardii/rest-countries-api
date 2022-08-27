@@ -3,10 +3,10 @@
     <!-- Render the right theme toggle icon conditionally based on current theme -->
     {{ store.getNextTheme }} Mode
     <img
-      v-if="store.getCurrentTheme === 'wolf'"
+      v-if="store.getCurrentTheme === 'experimental'"
       class="theme-toggle__icon"
       src="@/assets/sun.svg"
-      alt="Wolf Theme"
+      alt="Light Theme"
     />
     <img
       v-else-if="store.getCurrentTheme === 'light'"

@@ -36,7 +36,7 @@ export const useThemeStore = defineStore('theme', () => {
   const getNextTheme = computed<string>(() => {
     return (
       (getCurrentTheme.value === 'light' && 'dark') ||
-      (getCurrentTheme.value === 'dark' && 'wolf') ||
+      (getCurrentTheme.value === 'dark' && 'experimental') ||
       'light'
     )
   })
