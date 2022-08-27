@@ -1,9 +1,10 @@
 <template>
   <main class="details container">
     <button class="btn btn--round details__btn--back" @click="handleBack('/')">
-      <font-awesome-icon
+      <img
         class="details__btn--back-icon"
-        icon="fa-solid fa-arrow-left-long"
+        src="@/assets/arrow_left.svg"
+        alt="Back"
       />
       back
     </button>
