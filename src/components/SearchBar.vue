@@ -3,7 +3,7 @@
     <img
       :src="require(`../assets/search_${themeStore.getCurrentTheme}_24dp.svg`)"
       class="search-bar__icon"
-      alt="Manifying Glass"
+      alt="Magnifying Glass"
     />
     <input
       type="text"
