@@ -25,7 +25,7 @@ import ThemeToggler from '@/components/ThemeToggler.vue'
   position: relative;
   z-index: 10;
 
-  transition: color 0.4s ease, background-color 0.4s ease, opacity 0.4s ease;
+  transition: color 0.2s ease, background-color 0.2s ease;
 
   &__inner {
     @include flex($justify: space-between, $align: center);

@@ -17,7 +17,7 @@ const store = useCountriesStore()
 <style lang="scss">
 .dropdown__button {
   position: relative;
-  transition: color 0.4s ease, background-color 0.4s ease;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .dropdown__toggle {

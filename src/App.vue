@@ -63,7 +63,7 @@ body {
   background-color: var($--theme-background);
   color: var($--theme-font-color);
   font-family: $font-family;
-  transition: color 0.4s ease, background-color 0.4s ease, opacity 0.4s ease;
+  transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
 }
 
 .container {
