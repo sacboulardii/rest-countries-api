@@ -1,5 +1,6 @@
 <template>
   <main class="details container">
+    <BaseButton variant="--round">Base Button</BaseButton>
     <button class="btn btn--round details__btn--back" @click="handleBack('/')">
       <img
         v-if="themeStore.getCurrentTheme === 'light'"
@@ -79,6 +80,8 @@ export default {
 <script setup>
 // Components
 import CountryDetails from '@/components/CountryDetails.vue'
+import BaseButton from '@/components/BaseButton.vue'
+
 import { defineProps, onBeforeMount } from 'vue'
 
 import { useCountriesStore } from '@/store/countries'
