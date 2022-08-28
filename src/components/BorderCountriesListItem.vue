@@ -24,12 +24,16 @@ defineProps({
 .border-countries-list {
   &__item {
     text-align: center;
-    min-width: 100px;
+    width: 100px;
   }
 
   &__link {
     display: block;
     width: 100%;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &:hover,
     &:focus {
