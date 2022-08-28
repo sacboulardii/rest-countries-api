@@ -5,16 +5,17 @@
       :key="country"
       class="border-countries-list__item"
     >
-      <router-link
-        class="btn btn--sm border-countries-list__link"
-        :to="{ name: 'detail', params: { countryName: country } }"
-        >{{ country }}</router-link
-      >
+      <router-link :to="{ name: 'detail', params: { countryName: country } }">
+        <BaseButton class="border-countries-list__link" variant="--sm">
+          {{ country }}
+        </BaseButton>
+      </router-link>
     </li>
   </ul>
 </template>
 
 <script setup>
+import BaseButton from '@/components/BaseButton.vue'
 import { useCountriesStore } from '@/store/countries'
 const store = useCountriesStore()
 </script>
@@ -39,9 +40,8 @@ const store = useCountriesStore()
   }
 
   &__link {
-    box-shadow: 0px 0px 5px 0px rgba(0, 0%, 0%, 0.2);
     display: block;
-    font-size: 12px;
+    width: 100%;
 
     &:hover,
     &:focus {
