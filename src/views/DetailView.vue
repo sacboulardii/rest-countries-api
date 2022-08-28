@@ -1,21 +1,8 @@
 <template>
   <main class="details container">
-    <BaseButton variant="--round">Base Button</BaseButton>
-    <button class="btn btn--round details__btn--back" @click="handleBack('/')">
-      <img
-        v-if="themeStore.getCurrentTheme === 'light'"
-        src="@/assets/arrow_left_light.svg"
-        class="details_btn---back-icon"
-        alt="Back"
-      />
-      <img
-        v-else
-        src="@/assets/arrow_left_dark.svg"
-        class="details_btn---back-icon"
-        alt="Back"
-      />
+    <ButtonArrowLeft class="details__btn--back" @click="handleBack('/')">
       back
-    </button>
+    </ButtonArrowLeft>
     <transition name="fade">
       <CountryDetails
         v-if="store.isCountryDetailsLoaded"
@@ -80,15 +67,13 @@ export default {
 <script setup>
 // Components
 import CountryDetails from '@/components/CountryDetails.vue'
-import BaseButton from '@/components/BaseButton.vue'
+import ButtonArrowLeft from '@/components/ButtonArrowLeft.vue'
 
 import { defineProps, onBeforeMount } from 'vue'
 
 import { useCountriesStore } from '@/store/countries'
-import { useThemeStore } from '@/store/theme'
 
 const store = useCountriesStore()
-const themeStore = useThemeStore()
 
 // Received route param
 const props = defineProps(['countryName'])
@@ -110,24 +95,6 @@ onBeforeMount(() => {
   @media (max-width: 768px) {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-  }
-
-  &__btn--back {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 1.75rem;
-    padding-right: 2.25rem;
-    font-size: 0.875rem;
-    display: flex;
-    align-items: center;
-    column-gap: 0.25rem;
-    cursor: pointer;
-  }
-
-  &__btn--back-icon {
-    width: 1.375rem;
-    color: red;
-    margin-right: 0.25rem;
   }
 }
 </style>
