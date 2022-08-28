@@ -86,25 +86,6 @@ body {
   }
 }
 
-.btn {
-  background-color: var($--theme-foreground);
-  border: none;
-  border-radius: 0.15rem;
-  color: var($--theme-font-color);
-  padding: 0.625rem 1.875rem;
-  box-shadow: 0px 0px 6px 0px hsl(0deg, 0%, 0%, 0.25);
-  text-transform: capitalize;
-  transition: color 0.4s ease, background-color 0.4s ease;
-
-  &--sm {
-    padding: 0.375rem 0.5rem;
-  }
-
-  &--round {
-    border-radius: 0.375rem;
-  }
-}
-
 .input {
   background-color: var($--theme-foreground);
 
