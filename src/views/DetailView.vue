@@ -27,24 +27,6 @@ export default {
       vm.$data.fromRoute = from
     })
   },
-  /**
-   * Refresh to default home page
-   * @desc Clear stored countries, reset region filter and load all countries before going to a route that has a clear param.
-   * This is only true when going to home route though the header title ensuring its refresh to default home funcionality.
-   **/
-  beforeRouteLeave(to, from, next) {
-    const store = useStore()
-    if (to.params.clear) {
-      store.fetchAllCountries
-    }
-    next()
-  },
-
-  beforeRouteUpdate(to) {
-    const store = useStore()
-    store.fetchCountryDetails(to.params.countryName)
-    store.fetchBorderCountriesNames()
-  },
 
   methods: {
     /**
@@ -70,6 +52,7 @@ import CountryDetails from '@/components/CountryDetails.vue'
 import ButtonArrowLeft from '@/components/ButtonArrowLeft.vue'
 
 import { defineProps, onBeforeMount } from 'vue'
+import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
 
 import { useCountriesStore } from '@/store/countries'
 
@@ -77,6 +60,24 @@ const store = useCountriesStore()
 
 // Received route param
 const props = defineProps(['countryName'])
+
+/**
+ * Refresh to default home page
+ * @desc Clear stored countries, reset region filter and load all countries before going to a route that has a clear param.
+ * This is only true when going to home route though the header title ensuring its refresh to default home funcionality.
+ **/
+onBeforeRouteLeave((to, from) => {
+  const store = useStore()
+  if (to.params.clear) {
+    store.fetchAllCountries
+  }
+})
+
+onBeforeRouteUpdate((to) => {
+  const store = useStore()
+  store.fetchCountryDetails(to.params.countryName)
+  store.fetchBorderCountriesNames()
+})
 
 // Fetch country details
 onBeforeMount(() => {
