@@ -40,10 +40,14 @@ onBeforeRouteUpdate((to) => {
 
 // Fetch countries
 onBeforeMount(() => {
-  store.fetchAllCountries()
-  route.params.region && store.filterCountriesByRegion(route.params.region)
-  route.params.search && store.getCountryByName(route.params.search)
-  !Object.keys(route.params).length &&
+  const regionParam = route.params.region as string
+  const searchParam = route.params.search as string
+
+  regionParam && store.filterCountriesByRegion(regionParam)
+  searchParam && store.fetchCountriesByName(searchParam)
+
+  !regionParam &&
+    !searchParam &&
     !store.getCountriesLength &&
     store.fetchAllCountries()
 })
