@@ -5,7 +5,6 @@
       class="theme-toggle__icon"
       :alt="`${store.getNextTheme} Theme`"
     />
-    {{ store.getNextTheme }} Mode
   </div>
 </template>
 
