@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { useApiStore } from './api'
 import { ApiState } from '@/enums'
+import { AxiosResponse } from 'axios'
 
 import CountriesService from '@/services/CountriesService'
 
@@ -21,7 +22,6 @@ export const useCountriesStore = defineStore('countries', () => {
 
   const country: any = ref({})
   const countries: any = ref({})
-  /* Setting the initial value of the regionFilterOption variable to 'All'. */
   const regionFilterOption = ref('All')
 
   /* ---------------------------------------------------------------- */
@@ -29,19 +29,31 @@ export const useCountriesStore = defineStore('countries', () => {
   /* ---------------------------------------------------------------- */
 
   /**
-   * It fetches all countries from the API and sets the state of the API to either LOADED or ERROR
+   * @desc It takes in a service, a setter, and a query, sets the api state to LOADING,
+   * calls the service with or without the query, calls the setter with the response
+   * data or catches any errors and throws the error and sets the api state to LOADED
+   * or ERROR depending on the response.
+   *
+   * @param {any} service - The service function that will be called to fetch the data.
+   * @param {any} setter - The setter function for the state variable that will hold the data.
+   * @param {string} [query] - string = ''
    */
-  function fetchAllCountries() {
+  function fetchCountriesResource(
+    service: any,
+    setter: any,
+    query: string = ''
+  ): void {
     const apiStore = useApiStore()
     apiStore.setApiState(LOADING)
-    CountriesService.fetchAll()
-      .then((response) => {
-        const data: CountryCardFields = response.data
-        setCountriesObservable(data)
+
+    service(query)
+      .then((response: AxiosResponse) => {
+        setter(response.data)
         apiStore.setApiState(LOADED)
       })
-      .catch(() => {
+      .catch((error: AxiosResponse) => {
         apiStore.setApiState(ERROR)
+        throw error
       })
   }
 
