@@ -246,6 +246,7 @@ export const useCountriesStore = defineStore('countries', () => {
     regionFilterOption,
 
     fetchAllCountries,
+    fetchCountriesByName,
     fetchCountriesByRegion,
     fetchCountryDetails,
     fetchBorderCountriesNames,
@@ -257,6 +258,7 @@ export const useCountriesStore = defineStore('countries', () => {
     getCountryDetails,
     getBorderCountriesNames,
     getRegionFilterText,
+    getCountriesLength,
     isCountriesObjectLoaded,
     isCountryDetailsLoaded,
     isBorderCountriesLoaded,
