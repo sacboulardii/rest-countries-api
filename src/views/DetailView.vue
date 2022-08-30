@@ -41,9 +41,11 @@ const props = defineProps({
  * This is only true when going to home route though the header title ensuring its refresh to default home funcionality.
  **/
 onBeforeRouteLeave((to) => {
-  const store = useCountriesStore()
-  if (to.params.clear) {
-    store.fetchAllCountries
+  const shouldRefreshToHome = to.params.clear
+
+  if (shouldRefreshToHome) {
+    store.setRegionFilterOption('All')
+    store.fetchAllCountries()
   }
 })
 
