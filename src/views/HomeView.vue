@@ -13,24 +13,13 @@
   </main>
 </template>
 
-<script>
-export default {
-  beforeRouteLeave(to, from, next) {
-    if (to.params.clear) {
-      this.$root.$store.dispatch('countries/getCountries')
-    }
-    next()
-  },
-}
-</script>
-
 <script setup>
 import SearchBar from '@/components/SearchBar.vue'
 import CountriesList from '@/components/CountriesList.vue'
 import AppDropdownWrapper from '@/components/AppDropdownWrapper.vue'
 import ScrollToTop from '@/components/ScrollToTop.vue'
 
-import { useRoute } from 'vue-router'
+import { useRoute, onBeforeRouteLeave } from 'vue-router'
 import { onBeforeMount } from 'vue'
 import { useCountriesStore } from '@/store/countries'
 
@@ -39,6 +28,11 @@ const route = useRoute()
 
 // Countries Store
 const store = useCountriesStore()
+
+onBeforeRouteLeave((to) => {
+  const shouldRefreshToHome = to.params.clear
+  shouldRefreshToHome && store.fetchAllCountries()
+})
 
 // Fetch countries
 onBeforeMount(() => {
