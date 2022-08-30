@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import NotFound from '@/views/HomeView.vue'
 import DetailView from '@/views/DetailView.vue'
+import { nextTick } from 'vue'
 
 const routes: Array<RouteRecordRaw> = [
   // Default route: fetch all countries
@@ -46,6 +47,13 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+})
+
+/* A router hook that is called after each navigation. It is used to store the last route name in local
+storage. */
+router.afterEach((to, from): void => {
+  const lastRouteName = from.name as string
+  localStorage.setItem('LAST_ROUTE_NAME', lastRouteName)
 })
 
 export default router
