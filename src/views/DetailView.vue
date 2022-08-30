@@ -12,56 +12,27 @@
   </main>
 </template>
 
-<script>
-import { useCountriesStore as useStore } from '@/store/countries'
-
-export default {
-  data() {
-    return {
-      fromRoute: null,
-    }
-  },
-  // Assign previous route for future handling
-  beforeRouteEnter(to, from, next) {
-    next((vm) => {
-      vm.$data.fromRoute = from
-    })
-  },
-
-  methods: {
-    /**
-     * Handle Back
-     * @desc Extends default router back functionality
-     * @param {string} fallback - The fallback path if there is no history to use with $router.back().
-     * This is usually the case if the page was visited directly or from another site
-     **/
-    handleBack(fallback) {
-      if (this.fromRoute && !this.fromRoute.name) {
-        this.$router.push(fallback)
-      } else {
-        this.$router.back()
-      }
-    },
-  },
-}
-</script>
-
-<script setup>
+<script setup lang="ts">
 import CountryDetails from '@/components/CountryDetails.vue'
 import ButtonArrowLeft from '@/components/ButtonArrowLeft.vue'
 
 import { defineProps, onBeforeMount } from 'vue'
-import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
+import { useRouter, onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
 
 import { useCountriesStore } from '@/store/countries'
 
+// Pinia Stores
 const store = useCountriesStore()
 
+// Router
+const router = useRouter()
+
+// Props
 const props = defineProps({
   countryName: {
     type: String,
     required: true,
-  }
+  },
 })
 
 /**
@@ -69,23 +40,48 @@ const props = defineProps({
  * @desc Clear stored countries, reset region filter and load all countries before going to a route that has a clear param.
  * This is only true when going to home route though the header title ensuring its refresh to default home funcionality.
  **/
-onBeforeRouteLeave((to, from) => {
-  const store = useStore()
+onBeforeRouteLeave((to) => {
+  const store = useCountriesStore()
   if (to.params.clear) {
     store.fetchAllCountries
   }
 })
 
+/**
+ * @desc Fetch details from selected border country in the border countries list
+ * This is executed when the DetailView component is reused to display another country details
+ */
 onBeforeRouteUpdate((to) => {
-  const store = useStore()
-  store.fetchCountryDetails(to.params.countryName)
+  const store = useCountriesStore()
+  const selectedCountry = to.params.countryName as string
+  store.fetchCountryDetails(selectedCountry)
   store.fetchBorderCountriesNames()
 })
 
+/**
+ * @desc Fetch details from country given as countryName param to detail route
+ * This is executed when the DetailView is being mounted and not reused
+ */
 onBeforeMount(() => {
   store.fetchCountryDetails(props.countryName)
   store.fetchBorderCountriesNames()
 })
+
+/**
+ * Handle Back
+ * @desc Extends default router back functionality
+ * @param {string} fallback - The fallback path if there is no history to use with $router.back().
+ * This is usually the case if the page was visited directly or from another site
+ **/
+function handleBack(fallback: string) {
+  const lastRouteName = localStorage.getItem('LAST_ROUTE_NAME')
+
+  if (!lastRouteName) {
+    router.push(fallback)
+  } else {
+    router.back()
+  }
+}
 </script>
 
 <style lang="scss">
