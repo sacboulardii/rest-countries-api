@@ -13,13 +13,13 @@
   </main>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import SearchBar from '@/components/SearchBar.vue'
 import CountriesList from '@/components/CountriesList.vue'
 import AppDropdownWrapper from '@/components/AppDropdownWrapper.vue'
 import ScrollToTop from '@/components/ScrollToTop.vue'
 
-import { useRoute, onBeforeRouteLeave } from 'vue-router'
+import { useRoute, onBeforeRouteUpdate } from 'vue-router'
 import { onBeforeMount } from 'vue'
 import { useCountriesStore } from '@/store/countries'
 
@@ -29,9 +29,13 @@ const route = useRoute()
 // Countries Store
 const store = useCountriesStore()
 
-onBeforeRouteLeave((to) => {
+onBeforeRouteUpdate((to) => {
   const shouldRefreshToHome = to.params.clear
-  shouldRefreshToHome && store.fetchAllCountries()
+
+  if (shouldRefreshToHome) {
+    store.setRegionFilterOption('All')
+    store.fetchAllCountries()
+  }
 })
 
 // Fetch countries
