@@ -57,7 +57,12 @@ import { useCountriesStore } from '@/store/countries'
 
 const store = useCountriesStore()
 
-const props = defineProps(['countryName'])
+const props = defineProps({
+  countryName: {
+    type: String,
+    required: true,
+  }
+})
 
 /**
  * Refresh to default home page
