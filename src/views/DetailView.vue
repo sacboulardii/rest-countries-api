@@ -47,7 +47,6 @@ export default {
 </script>
 
 <script setup>
-// Components
 import CountryDetails from '@/components/CountryDetails.vue'
 import ButtonArrowLeft from '@/components/ButtonArrowLeft.vue'
 
@@ -58,7 +57,6 @@ import { useCountriesStore } from '@/store/countries'
 
 const store = useCountriesStore()
 
-// Received route param
 const props = defineProps(['countryName'])
 
 /**
@@ -79,7 +77,6 @@ onBeforeRouteUpdate((to) => {
   store.fetchBorderCountriesNames()
 })
 
-// Fetch country details
 onBeforeMount(() => {
   store.fetchCountryDetails(props.countryName)
   store.fetchBorderCountriesNames()
