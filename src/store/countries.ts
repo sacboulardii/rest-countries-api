@@ -23,6 +23,7 @@ export const useCountriesStore = defineStore('countries', () => {
   const country: any = ref({})
   const countries: any = ref({})
   const regionFilterOption = ref('All')
+  const lastSearched = ref('')
 
   /* ---------------------------------------------------------------- */
   //                             ACTIONS
@@ -145,6 +146,7 @@ export const useCountriesStore = defineStore('countries', () => {
    */
   function filterCountriesByQuery(event: any): void {
     const searchInputQuery = event.target.value
+    lastSearched.value = searchInputQuery
     searchInputQuery.trim() && fetchCountriesByName(searchInputQuery)
   }
 
@@ -213,6 +215,8 @@ export const useCountriesStore = defineStore('countries', () => {
     return apiStore.apiState === ERROR
   })
 
+  const getLastSearchedText = computed(() => lastSearched.value)
+
   return {
     countries,
     country,
@@ -232,6 +236,7 @@ export const useCountriesStore = defineStore('countries', () => {
     getBorderCountriesNames,
     getRegionFilterText,
     getCountriesLength,
+    getLastSearchedText,
     isCountriesObjectLoaded,
     isCountryDetailsLoaded,
     isBorderCountriesLoaded,
