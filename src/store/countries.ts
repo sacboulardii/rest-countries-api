@@ -52,9 +52,8 @@ export const useCountriesStore = defineStore('countries', () => {
         setter(response.data, query)
         apiStore.setApiState(LOADED)
       })
-      .catch((error: AxiosResponse) => {
+      .catch(() => {
         apiStore.setApiState(ERROR)
-        throw error
       })
   }
 
