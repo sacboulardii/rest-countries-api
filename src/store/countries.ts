@@ -48,7 +48,7 @@ export const useCountriesStore = defineStore('countries', () => {
 
     service(query)
       .then((response: AxiosResponse) => {
-        setter(response.data)
+        setter(response.data, query)
         apiStore.setApiState(LOADED)
       })
       .catch((error: AxiosResponse) => {
@@ -152,8 +152,10 @@ export const useCountriesStore = defineStore('countries', () => {
     countries.value = fetchedCountries
   }
 
-  function setCountryObservable(fetchedCountries: object[]): void {
-    country.value = fetchedCountries[0]
+  function setCountryObservable(fetchedCountries: any, name: string): void {
+    country.value = fetchedCountries.find((country: any) =>
+      country.name.common.startsWith(name)
+    )
   }
 
   function clearCountryObservable(): void {
