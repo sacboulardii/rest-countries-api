@@ -40,7 +40,7 @@ export default {
 
   text-transform: capitalize;
 
-  transition: color 0.4s ease, background-color 0.4s ease;
+  transition: color 0.2s ease, background-color 0.2s ease;
 
   @media (min-width: 1024px) {
     padding: 0.5rem 2rem;
