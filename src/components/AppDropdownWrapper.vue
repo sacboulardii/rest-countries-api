@@ -12,6 +12,7 @@
           'Asia',
           'Europe',
           'Oceania',
+          'Antarctic',
         ]"
         :key="region"
       >
