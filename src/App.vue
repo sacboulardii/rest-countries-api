@@ -1,12 +1,14 @@
 <template>
   <Header />
   <router-view />
+  <Footer />
 </template>
 
 <script setup>
 import { onBeforeMount } from '@vue/runtime-core'
 import { useThemeStore } from './store/theme'
 import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 
 const store = useThemeStore()
 
@@ -64,6 +66,11 @@ body {
   color: var($--theme-font-color);
   font-family: $font-family;
   transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+main {
+  min-height: calc(100vh - 92px - 28px);
+  padding-bottom: 4rem;
 }
 
 .container {
