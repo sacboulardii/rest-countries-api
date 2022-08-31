@@ -4,7 +4,7 @@
       <img
         class="country-details__image"
         :src="getImage"
-        alt="'Teste' + ' Flag'"
+        :alt="getName + ' Flag'"
       />
     </figure>
     <div class="country-details__description">
