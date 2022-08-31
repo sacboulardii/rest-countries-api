@@ -149,7 +149,6 @@ const {
   &__figure {
     grid-area: figure;
     align-self: flex-start;
-    justify-self: center;
   }
 
   &__image {
