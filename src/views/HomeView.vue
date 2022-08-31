@@ -43,7 +43,7 @@ onBeforeMount(() => {
   const regionParam = route.params.region as string
   const searchParam = route.params.search as string
 
-  regionParam && store.filterCountriesByRegion(regionParam)
+  regionParam && store.fetchCountriesByRegion(regionParam)
   searchParam && store.fetchCountriesByName(searchParam)
 
   !regionParam &&
