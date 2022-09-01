@@ -16,15 +16,18 @@
       type="text"
       class="input search-bar__input"
       placeholder="Search for a country..."
-      @keyup.enter="store.filterCountriesByQuery"
+      @keyup.enter="
+        (e) =>
+          router.push({ name: 'search', params: { search: e.target.value } })
+      "
     />
   </div>
 </template>
 
 <script setup>
-import { useCountriesStore } from '@/store/countries'
+import { useRouter } from 'vue-router'
 import { useThemeStore } from '@/store/theme'
-const store = useCountriesStore()
+const router = useRouter()
 const themeStore = useThemeStore()
 </script>
 

@@ -1,13 +1,22 @@
 <template>
-  <a @click="store.filterCountriesByRegion" class="dropdown__item" href="#">
+  <a
+    @click="
+      (event) =>
+        router.push({
+          name: 'region',
+          params: { region: event.target.innerText },
+        })
+    "
+    class="dropdown__item"
+    href="#"
+  >
     <slot />
   </a>
 </template>
 
 <script setup>
-import { useCountriesStore } from '@/store/countries'
-
-const store = useCountriesStore()
+import { useRouter } from 'vue-router'
+const router = useRouter()
 </script>
 
 <style lang="scss">
