@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { useApiStore } from './api'
 import { ApiState } from '@/enums'
+import { Region } from '@/enums'
 import { AxiosResponse } from 'axios'
 
 import CountriesService from '@/services/CountriesService'
@@ -44,15 +45,17 @@ export const useCountriesStore = defineStore('countries', () => {
     setter: any,
     query: string = ''
   ): void {
+    console.log('CALLED FETCH COUNTRIES RESOURCE')
     const apiStore = useApiStore()
     apiStore.setApiState(LOADING)
-
     service(query)
       .then((response: AxiosResponse) => {
+        console.log('REQUEST SUCCEDED')
         setter(response.data, query)
         apiStore.setApiState(LOADED)
       })
       .catch(() => {
+        console.log('REQUEST FAILED')
         apiStore.setApiState(ERROR)
       })
   }
@@ -155,7 +158,7 @@ export const useCountriesStore = defineStore('countries', () => {
   ): void {
     countries.value = fetchedCountries
 
-    if (name) {
+    if (!Object.values(Region).includes(name as Region)) {
       countries.value = fetchedCountries.filter((country: any) =>
         country.name.common.toLowerCase().startsWith(name.toLowerCase())
       )

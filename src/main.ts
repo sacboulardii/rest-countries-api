@@ -6,6 +6,11 @@ import { createPinia } from 'pinia'
 import './assets/reset.css'
 import VueClickAway from 'vue3-click-away'
 import VueScrollTo from 'vue-scrollto'
+import { makeServer } from '@/mirage/mirage'
+
+if (process.env.NODE_ENV === 'development') {
+  makeServer()
+}
 
 // Create pinia store
 const pinia = createPinia()

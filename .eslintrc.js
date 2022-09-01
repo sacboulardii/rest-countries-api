@@ -1,3 +1,5 @@
+const { getNodeMajorVersion } = require('typescript')
+
 module.exports = {
   root: true,
 

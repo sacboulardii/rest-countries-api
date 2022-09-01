@@ -5,3 +5,13 @@ export enum ApiState {
   ERROR,
   LOADED,
 }
+
+export enum Region {
+  All = 'All',
+  Africa = 'Africa',
+  Asia = 'Asia',
+  Americas = 'Americas',
+  Europe = 'Europe',
+  Antarctic = 'Antarctic',
+  Oceania = 'Oceania',
+}
