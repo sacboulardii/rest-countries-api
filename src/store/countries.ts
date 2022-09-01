@@ -149,8 +149,17 @@ export const useCountriesStore = defineStore('countries', () => {
     searchInputQuery.trim() && fetchCountriesByName(searchInputQuery)
   }
 
-  function setCountriesObservable(fetchedCountries: CountryCardFields): void {
+  function setCountriesObservable(
+    fetchedCountries: CountryCardFields[],
+    name: string
+  ): void {
     countries.value = fetchedCountries
+
+    if (name) {
+      countries.value = fetchedCountries.filter((country: any) =>
+        country.name.common.toLowerCase().startsWith(name.toLowerCase())
+      )
+    }
   }
 
   function setCountryObservable(fetchedCountries: any, name: string): void {
