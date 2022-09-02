@@ -5,8 +5,8 @@ import http from '@/http-common'
 const responseBody = (response: AxiosResponse) => response.data
 
 /* Creating a query string that will be used to get the fields that we want from the API. */
-// const cardsFilterQuery: string =
-//   '?fields=' + 'name,flags,population,region,capital'
+const cardsFilterQuery: string =
+  '?fields=' + 'name,flags,population,region,capital'
 
 // const detailsFilterQuery: string =
 //   '?fields=' +
@@ -25,7 +25,7 @@ export default {
   fetchByRegion(region: string): Promise<AxiosResponse<CountryCardFields>> {
     if (region === 'All') return http.get('/all')
 
-    return http.get(`/region/${region}`)
+    return http.get(`/region/${region}` + cardsFilterQuery)
   },
   /* Fetching the details of the country by name. */
   fetchDetails(name: string): Promise<AxiosResponse<DetailFields>> {

@@ -45,17 +45,14 @@ export const useCountriesStore = defineStore('countries', () => {
     setter: any,
     query: string = ''
   ): void {
-    console.log('CALLED FETCH COUNTRIES RESOURCE')
     const apiStore = useApiStore()
     apiStore.setApiState(LOADING)
     service(query)
       .then((response: AxiosResponse) => {
-        console.log('REQUEST SUCCEDED')
         setter(response.data, query)
         apiStore.setApiState(LOADED)
       })
       .catch(() => {
-        console.log('REQUEST FAILED')
         apiStore.setApiState(ERROR)
       })
   }
