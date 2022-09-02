@@ -30,9 +30,9 @@ function filterObjectProps(dataObj: object, allowedFields: string[]): object {
 function filterByRequiredFields(request: any, data: object[]) {
   const fieldsParams = request.queryParams.fields?.split(',')
 
-  return fieldsParams ? 
-    data.map(obj => filterObjectProps(obj, fieldsParams)) 
-    : data 
+  return fieldsParams
+    ? data.map((obj) => filterObjectProps(obj, fieldsParams))
+    : data
 }
 
 export function makeServer({ environment = 'development' } = {}) {
@@ -52,27 +52,24 @@ export function makeServer({ environment = 'development' } = {}) {
     routes() {
       this.namespace = 'api'
 
-      this.get('/all', (schema) => {
-        return schema.db.countries
+      this.get('/all', (schema, request) => {
+        return filterByRequiredFields(request, schema.db.countries)
       })
-      
 
       this.get('/region/:region', (schema, request: any) => {
-        const regionFilter = request.params.region
+        const countriesFilteredByRegion = schema.db.countries.where({
+          region: request.params.region,
+        })
 
-        const countries = filterByRequiredFields(request, schema.db.countries) 
-      
-        const countriesFilteredByRegion = regionFilter !== 'All' ?
-        countries.filter((country: any) => country.region === regionFilter) :
-        countries 
-
-        return countriesFilteredByRegion
+        return filterByRequiredFields(request, countriesFilteredByRegion)
       })
 
       this.get('/name/:name', (schema, request) => {
-        return schema.db.countries.where({
+        const countriesFilteredByName = schema.db.countries.where({
           name: { common: request.params.name },
         })
+
+        return filterByRequiredFields(request, countriesFilteredByName)
       })
 
       this.get('/alpha', (schema, request: any) => {

@@ -8,18 +8,18 @@ const responseBody = (response: AxiosResponse) => response.data
 const cardsFilterQuery: string =
   '?fields=' + 'name,flags,population,region,capital'
 
-// const detailsFilterQuery: string =
-//   '?fields=' +
-//   'name,flags,population,region,capital,subregion,languages,currencies,tld,borders'
+const detailsFilterQuery: string =
+  '?fields=' +
+  'name,flags,population,region,capital,subregion,languages,currencies,tld,borders'
 
 export default {
   /* Fetching all the countries from the API. */
   fetchAll(): Promise<AxiosResponse<CountryCardFields>> {
-    return http.get('/all')
+    return http.get('/all' + cardsFilterQuery)
   },
   /* Fetching the country by name. */
   fetchByName(name: string): Promise<AxiosResponse<CountryCardFields>> {
-    return http.get(`/name/${name}`)
+    return http.get(`/name/${name}` + cardsFilterQuery)
   },
   /* Fetching the countries by region. */
   fetchByRegion(region: string): Promise<AxiosResponse<CountryCardFields>> {
@@ -29,7 +29,7 @@ export default {
   },
   /* Fetching the details of the country by name. */
   fetchDetails(name: string): Promise<AxiosResponse<DetailFields>> {
-    return http.get(`/name/${name}`)
+    return http.get(`/name/${name}` + detailsFilterQuery)
   },
   /* Fetching the border countries of the country. */
   fetchBorderCountries(borders: string): Promise<AxiosResponse<DetailFields>> {
