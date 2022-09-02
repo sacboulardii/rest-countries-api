@@ -21,18 +21,18 @@ function filterObjectProps(dataObj: object, allowedFields: string[]): object {
   return filteredObj
 }
 
-// /**
-//  * It takes a request object and an array of objects, and returns an array of objects with only the
-//  * fields specified in the request
-//  * @param {any} request - the request object
-//  * @param {object[]} data - the data you want to filter
-//  */
-function filterByFieldsParams(request: any, data: object[]) {
-  const fields = request.queryParams.fields?.split(',')
-  // EGAEGAEGGUFA
-  return fields ? 
-  data.map(obj => filterObjectProps(obj, fields)) :
-  data
+/**
+ * It takes a request object and an array of objects, and returns the array of objects with only the
+ * properties specified in the request's fields query parameter
+ * @param {any} request - any - the request object
+ * @param {object[]} data - object[] - the data to be filtered
+ */
+function filterByRequiredFields(request: any, data: object[]) {
+  const fieldsParams = request.queryParams.fields?.split(',')
+
+  return fieldsParams ? 
+    data.map(obj => filterObjectProps(obj, fieldsParams)) 
+    : data 
 }
 
 export function makeServer({ environment = 'development' } = {}) {
@@ -58,14 +58,15 @@ export function makeServer({ environment = 'development' } = {}) {
       
 
       this.get('/region/:region', (schema, request: any) => {
-        const region = request.params.region
+        const regionFilter = request.params.region
 
-        const filteredCountries = filterByFieldsParams(request, schema.db.countries) 
-        const shouldFilterByRegion = region !== 'All'
-        console.log(filteredCountries)
-        return shouldFilterByRegion ?
-        filteredCountries.filter((country: any) => country.region === region) :
-        filteredCountries 
+        const countries = filterByRequiredFields(request, schema.db.countries) 
+      
+        const countriesFilteredByRegion = regionFilter !== 'All' ?
+        countries.filter((country: any) => country.region === regionFilter) :
+        countries 
+
+        return countriesFilteredByRegion
       })
 
       this.get('/name/:name', (schema, request) => {
