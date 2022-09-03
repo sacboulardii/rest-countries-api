@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 import { CountryCardFields, DetailFields } from '@/types/CountryFields'
-import http from '@/http-common'
+import http from '@/api/api'
 
 const responseBody = (response: AxiosResponse) => response.data
 
