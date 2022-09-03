@@ -50,6 +50,7 @@ export const useCountriesStore = defineStore('countries', () => {
     service(query)
       .then((response: AxiosResponse) => {
         setter(response.data, query)
+        console.log('✅ REQUEST SUCCEEDED')
         apiStore.setApiState(LOADED)
       })
       .catch(() => {

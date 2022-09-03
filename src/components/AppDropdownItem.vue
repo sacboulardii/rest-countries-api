@@ -1,22 +1,22 @@
 <template>
-  <a
-    @click="
-      (event) =>
-        router.push({
-          name: 'region',
-          params: { region: event.target.innerText },
-        })
-    "
+  <router-link
+    :to="{ name: 'region', params: { region: region } }"
     class="dropdown__item"
-    href="#"
   >
+    {{ region }}
     <slot />
-  </a>
+  </router-link>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { defineProps } from 'vue'
+
+defineProps({
+  region: {
+    type: String,
+    required: true,
+  },
+})
 </script>
 
 <style lang="scss">

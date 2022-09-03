@@ -20,7 +20,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   // Filter route: fetch countries by region
   {
-    path: '/:region',
+    path: '/region/:region',
     name: 'region',
     component: HomeView,
   },
@@ -50,9 +50,9 @@ const router = createRouter({
 
 /* A router hook that is called after each navigation. It is used to store the last route name in local
 storage. */
-router.afterEach((to, from): void => {
-  const lastRouteName = from.name as string
-  localStorage.setItem('LAST_ROUTE_NAME', lastRouteName)
-})
+// router.afterEach((to, from): void => {
+//   const lastRouteName = from.name as string
+//   localStorage.setItem('LAST_ROUTE_NAME', lastRouteName)
+// })
 
 export default router

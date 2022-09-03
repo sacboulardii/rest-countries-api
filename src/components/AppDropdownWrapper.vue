@@ -15,9 +15,8 @@
           'Antarctic',
         ]"
         :key="region"
-      >
-        {{ region }}
-      </AppDropdownItem>
+        :region="region"
+      />
     </AppDropdownContent>
   </AppDropdown>
 </template>
