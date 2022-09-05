@@ -63,7 +63,7 @@
       </div>
     </div>
     <div
-      v-if="store.isBorderCountriesLoaded"
+      v-if="store.fetchBorderCountriesSuccess"
       class="country-details__border-countries"
     >
       <h3 class="country-details__border-countries-title">Border Countries:</h3>

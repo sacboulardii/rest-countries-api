@@ -1,7 +1,7 @@
 <template>
   <TransitionGroup
     tag="ul"
-    v-if="store.isCountriesObjectLoaded"
+    v-if="store.fetchCountriesStatusSuccess"
     class="countries-results__list"
     name="fade"
     appear
@@ -13,7 +13,7 @@
     />
   </TransitionGroup>
   <!-- Mensagem de resultado não encontrado -->
-  <p class="not-found" v-if="store.isResourceUnavailable">
+  <p class="not-found" v-if="store.fetchCountriesStatusError">
     No results for “{{ store.getLastSearchedText }}”
     <span class="not-found__tip">Check your search for typos.</span>
   </p>

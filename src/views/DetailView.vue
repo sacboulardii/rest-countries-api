@@ -5,7 +5,7 @@
     </ButtonArrowLeft>
     <transition name="fade">
       <CountryDetails
-        v-if="store.isCountryDetailsLoaded"
+        v-if="store.fetchDetailsStatusSuccess"
         v-bind="{ country: store.getCountryDetails }"
       />
     </transition>
