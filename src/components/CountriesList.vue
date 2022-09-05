@@ -1,5 +1,5 @@
 <template>
-  <transition-group
+  <TransitionGroup
     tag="ul"
     v-if="store.isCountriesObjectLoaded"
     class="countries-results__list"
@@ -11,7 +11,7 @@
       v-bind="{ country: country }"
       :key="index"
     />
-  </transition-group>
+  </TransitionGroup>
   <!-- Mensagem de resultado não encontrado -->
   <p class="not-found" v-if="store.isResourceUnavailable">
     No results for “{{ store.getLastSearchedText }}”
