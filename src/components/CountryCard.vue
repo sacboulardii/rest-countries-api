@@ -90,6 +90,8 @@ const {
     padding-right: 1.5rem;
     padding-bottom: 3rem;
     padding-left: 1.5rem;
+    overflow: hidden;
+    width: 100%;
 
     > * + * {
       margin-top: 0.5rem;
@@ -99,9 +101,14 @@ const {
   &__name {
     font-size: $font-lg;
     margin-bottom: 1.5rem;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &__field {
+    font-weight: $fw-300;
     font-weight: $fw-600;
   }
 
