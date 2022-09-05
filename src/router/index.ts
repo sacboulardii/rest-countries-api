@@ -30,11 +30,13 @@ const routes: Array<RouteRecordRaw> = [
     name: 'search',
     component: HomeView,
   },
+  // Catch all route: catch invalid path
   {
     path: '/:catchAll(.*)',
     name: 'NotFound',
     component: NotFound,
   },
+  // 404 route: resource not found error
   {
     path: '/404/:resource',
     name: '404Resource',
@@ -50,9 +52,9 @@ const router = createRouter({
 
 /* A router hook that is called after each navigation. It is used to store the last route name in local
 storage. */
-// router.afterEach((to, from): void => {
-//   const lastRouteName = from.name as string
-//   localStorage.setItem('LAST_ROUTE_NAME', lastRouteName)
-// })
+router.afterEach((to, from): void => {
+  const lastRouteName = from.name as string
+  localStorage.setItem('LAST_ROUTE_NAME', lastRouteName)
+})
 
 export default router
