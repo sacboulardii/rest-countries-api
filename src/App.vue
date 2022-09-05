@@ -72,7 +72,7 @@ body {
 
 main {
   min-height: calc(100vh - 92px - 28px);
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
 }
 
 .container {
