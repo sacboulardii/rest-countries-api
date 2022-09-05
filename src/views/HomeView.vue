@@ -11,6 +11,7 @@
 
     <ScrollToTop />
   </main>
+  <Footer />
 </template>
 
 <script setup lang="ts">
@@ -18,6 +19,7 @@ import SearchBar from '@/components/SearchBar.vue'
 import CountriesList from '@/components/CountriesList.vue'
 import AppDropdownWrapper from '@/components/AppDropdownWrapper.vue'
 import ScrollToTop from '@/components/ScrollToTop.vue'
+import Footer from '@/components/Footer.vue'
 
 import {
   useRoute,

@@ -1,14 +1,12 @@
 <template>
   <Header />
   <router-view />
-  <Footer />
 </template>
 
 <script setup>
 import { onBeforeMount } from '@vue/runtime-core'
 import { useThemeStore } from './store/theme'
 import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
 
 const store = useThemeStore()
 
