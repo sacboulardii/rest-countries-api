@@ -72,7 +72,7 @@ function handleRouteParams(toRoute: RouteLocationNormalized) {
 
 <style scoped lang="scss">
 .search-section {
-  padding-top: 1.875rem;
+  margin-top: 3rem;
   @include flex($direction: column, $align: center);
 
   @include second-to-last-child {
