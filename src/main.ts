@@ -2,10 +2,13 @@
 import { createApp } from 'vue'
 import App from '@/App.vue'
 import router from '@/router'
-import { createPinia } from 'pinia'
 import './assets/reset.css'
+
+import { createPinia } from 'pinia'
+
 import VueClickAway from 'vue3-click-away'
 import VueScrollTo from 'vue-scrollto'
+
 import { makeServer } from '@/mirage/mirage'
 
 if (process.env.NODE_ENV === 'development') {

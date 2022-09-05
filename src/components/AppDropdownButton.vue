@@ -26,6 +26,8 @@ const themeStore = useThemeStore()
 
 <style lang="scss">
 .dropdown__button {
+  font-family: inherit;
+  font-weight: $fw-600;
   position: relative;
   transition: color 0.2s ease, background-color 0.2s ease;
 }

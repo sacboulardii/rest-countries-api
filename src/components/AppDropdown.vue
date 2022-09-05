@@ -30,6 +30,7 @@ const onClickAway = () => {
 <style lang="scss">
 .dropdown-wrapper {
   font-size: $font-sm;
+  font-weight: $fw-600;
   width: 100%;
   max-width: 400px;
 
