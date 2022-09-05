@@ -61,13 +61,24 @@ export function makeServer({ environment = 'development' } = {}) {
           region: request.params.region,
         })
 
+        if (!countriesFilteredByRegion.length) throw 'Error'
+
         return filterByRequiredFields(request, countriesFilteredByRegion)
       })
 
       this.get('/name/:name', (schema, request) => {
-        const countriesFilteredByName = schema.db.countries.where({
-          name: { common: request.params.name },
-        })
+        const countries: object[] = [...schema.db.countries]
+        const name: string = request.params.name
+
+        const countriesFilteredByName: any = countries.filter(
+          (country: any): boolean => {
+            const countryNameLower: string = country.name.common.toLowerCase()
+            const requestParamNameLower: string = name.toLowerCase()
+            return countryNameLower.startsWith(requestParamNameLower)
+          }
+        )
+
+        if (!countriesFilteredByName.length) throw 'Error'
 
         return filterByRequiredFields(request, countriesFilteredByName)
       })
@@ -75,9 +86,14 @@ export function makeServer({ environment = 'development' } = {}) {
       this.get('/alpha', (schema, request: any) => {
         const codes = request.queryParams.codes.split(',')
 
-        return schema.db.countries.filter((country) =>
+        const borderCountries: any = schema.db.countries.filter((country) =>
           codes.includes(country.cioc)
         )
+
+        if (!borderCountries.length) throw 'Error'
+        console.log(borderCountries)
+
+        return borderCountries
       })
     },
   })
