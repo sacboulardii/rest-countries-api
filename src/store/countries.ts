@@ -7,7 +7,7 @@ import * as CountriesService from '@/services/CountriesService'
 
 import { CountryCardFields, DetailFields } from '@/types/CountryFields'
 
-import { sortCountries } from '@/helpers'
+import sortCountries from '@/helpers/sortCountries'
 
 export const useCountriesStore = defineStore('countries', () => {
   /* -------------------------------------------------------------------------- */

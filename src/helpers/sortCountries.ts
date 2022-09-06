@@ -5,8 +5,6 @@ import { CountryCardFields } from '@/types/CountryFields'
  * sorted array.
  * @returns An array of countries sorted by name.
  */
-function sortCountries(countries: CountryCardFields[]) {
+export default function sortCountries(countries: CountryCardFields[]) {
   return countries.sort((a, b) => a.name.common.localeCompare(b.name.common))
 }
-
-export { sortCountries }
