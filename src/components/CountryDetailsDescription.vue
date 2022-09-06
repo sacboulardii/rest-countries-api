@@ -8,12 +8,14 @@
         <p class="country-details__field">
           Native Name:
           <span class="country-details__data">{{
-            getNativeName || 'None'
+            nativeNameFormatter(getNativeName) || 'None'
           }}</span>
         </p>
         <p class="country-details__field">
           Population:
-          <span class="country-details__data">{{ getPopulation }}</span>
+          <span class="country-details__data">{{
+            populationFormatter(getPopulation)
+          }}</span>
         </p>
         <p class="country-details__field">
           Region:
@@ -34,19 +36,19 @@
         <p class="country-details__field">
           Top Level Domain:
           <span class="country-details__data">{{
-            getTopLevelDomain || 'None'
+            tldFormatter(getTopLevelDomain) || 'None'
           }}</span>
         </p>
         <p class="country-details__field">
           Currencies:
           <span class="country-details__data"
-            >{{ getCurrencies || 'None' }}
+            >{{ currenciesFormatter(getCurrencies) || 'None' }}
           </span>
         </p>
         <p class="country-details__field">
           Languages:
           <span class="country-details__data">{{
-            getLanguages || 'None'
+            languagesFormatter(getLanguages) || 'None'
           }}</span>
         </p>
       </div>
@@ -58,6 +60,11 @@
 import { defineProps, Ref } from 'vue'
 import useCountryData from '@/composables/countryData'
 import { DetailFields } from '@/types/CountryFields'
+import tldFormatter from '@/components/helpers/tldFormatter'
+import populationFormatter from '@/components/helpers/populationFormatter'
+import languagesFormatter from '@/components/helpers/languagesFormatter'
+import nativeNameFormatter from '@/components/helpers/nativeNameFormatter'
+import currenciesFormatter from '@/components/helpers/currenciesFormatter'
 
 interface Props {
   country: DetailFields
