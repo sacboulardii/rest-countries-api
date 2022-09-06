@@ -132,8 +132,9 @@ export const useCountriesStore = defineStore('countries', () => {
 
   function fetchBorderCountriesNames(): void {
     const timerID = setInterval(() => {
-      if (country.value && country.value.borders) {
-        fetchCountriesResource('border-countries-names', country.value.borders)
+      if (getBorderCountriesCodes.value) {
+        const csvCodes = getBorderCountriesCodes.value.join(',')
+        fetchCountriesResource('border-countries-names', csvCodes)
         clearInterval(timerID)
       }
     }, 0.15)
@@ -179,6 +180,10 @@ export const useCountriesStore = defineStore('countries', () => {
 
   const getCountryDetails = computed(() => {
     return country.value
+  })
+
+  const getBorderCountriesCodes = computed(() => {
+    return country.value.borders && Object.values(country.value.borders)
   })
 
   const getBorderCountriesNames = computed(() => {
