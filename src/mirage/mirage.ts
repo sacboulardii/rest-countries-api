@@ -57,6 +57,11 @@ export function makeServer({ environment = 'development' } = {}) {
       })
 
       this.get('/region/:region', (schema, request: any) => {
+        const region = request.params.region
+
+        if (region === 'All')
+          return filterByRequiredFields(request, schema.db.countries)
+
         const countriesFilteredByRegion = schema.db.countries.where({
           region: request.params.region,
         })
