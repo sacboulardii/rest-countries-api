@@ -1,5 +1,4 @@
 import { computed, Ref } from 'vue'
-import { DetailFields } from '@/types/CountryFields'
 
 /**
  * @desc Encapsulates reusable logic for accessing country objects properties
@@ -8,7 +7,6 @@ import { DetailFields } from '@/types/CountryFields'
 export default function useCountryData(country: any): {
   [key: string]: Ref<string>
 } {
-  console.log(country.name)
   const getName = computed(() => country.name.common)
   const getImage = computed(() => country.flags.svg)
   const getRegion = computed(() => country.region)
