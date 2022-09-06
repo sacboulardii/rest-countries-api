@@ -18,7 +18,7 @@ interface Props {
   country: DetailFields
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
 </script>
 
 <style lang="scss" scoped>
