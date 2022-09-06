@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { ApiState } from '@/enums'
 import { AxiosResponse, AxiosError } from 'axios'
 
-import CountriesService from '@/services/CountriesService'
+import * as CountriesService from '@/services/CountriesService'
 
 import { CountryCardFields, DetailFields } from '@/types/CountryFields'
 
