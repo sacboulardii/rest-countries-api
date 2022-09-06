@@ -10,7 +10,7 @@
       v-for="(country, index) in store.getSortedCountries"
       :key="index"
     >
-      <CountryCard v-bind="{ country: country }" />
+      <CountryCard :country="country" />
     </CountriesListItem>
   </TransitionGroup>
 </template>

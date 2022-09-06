@@ -49,7 +49,7 @@ const {
   getPopulation,
   getRegion,
   getCapital,
-}: { [key: string]: Ref<string> } = useCountryData(props)
+}: { [key: string]: Ref<string> } = useCountryData(props.country)
 </script>
 
 <style lang="scss" scoped>
