@@ -7,6 +7,7 @@
 
     <section class="countries-results">
       <CountriesList />
+      <NoResultsMessage />
     </section>
 
     <ScrollToTop />
@@ -18,6 +19,7 @@
 import SearchBar from '@/components/SearchBar.vue'
 import CountriesList from '@/components/CountriesList.vue'
 import AppDropdownWrapper from '@/components/AppDropdownWrapper.vue'
+import NoResultsMessage from '@/components/NoResultsMessage.vue'
 import ScrollToTop from '@/components/ScrollToTop.vue'
 import Footer from '@/components/Footer.vue'
 
