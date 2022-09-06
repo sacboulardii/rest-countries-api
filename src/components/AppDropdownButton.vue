@@ -3,13 +3,13 @@
     {{ store.getRegionFilterText }}
     <img
       v-if="themeStore.getCurrentTheme === 'light'"
-      src="@/assets/expand_more_black_24dp.svg"
+      src="@/assets/icons/expand_more_black_24dp.svg"
       class="dropdown__toggle"
       alt="Select Region"
     />
     <img
       v-else
-      src="@/assets/expand_more_white_24dp.svg"
+      src="@/assets/icons/expand_more_white_24dp.svg"
       class="dropdown__toggle"
       alt="Select Region"
     />

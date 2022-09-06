@@ -2,13 +2,13 @@
   <div class="search-bar">
     <img
       v-if="themeStore.getCurrentTheme === 'light'"
-      src="@/assets/search_light_24dp.svg"
+      src="@/assets/icons/search_light_24dp.svg"
       class="search-bar__icon"
       alt="Magnifying Glass"
     />
     <img
       v-else
-      src="@/assets/search_dark_24dp.svg"
+      src="@/assets/icons/search_dark_24dp.svg"
       class="search-bar__icon"
       alt="Magnifying Glass"
     />

@@ -2,13 +2,13 @@
   <BaseButton :class="$style['btn-arrow-left']">
     <img
       v-if="store.getCurrentTheme === 'light'"
-      src="@/assets/arrow_left_light.svg"
+      src="@/assets/icons/arrow_left_light.svg"
       :class="$style['icon']"
       alt="Back"
     />
     <img
       v-else
-      src="@/assets/arrow_left_dark.svg"
+      src="@/assets/icons/arrow_left_dark.svg"
       :class="$style['icon']"
       alt="Back"
     />

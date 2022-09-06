@@ -1,7 +1,7 @@
 <template>
   <div class="theme-toggle" @click="store.switchTheme">
     <img
-      :src="require(`../assets/${store.getNextTheme}_theme_icon.svg`)"
+      :src="require(`../assets/icons/${store.getNextTheme}_theme_icon.svg`)"
       class="theme-toggle__icon"
       :alt="`${store.getNextTheme} Theme`"
     />
