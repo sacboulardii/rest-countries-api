@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { ApiState } from '@/enums'
+import { ApiStatus } from '@/constants/appConstants'
 import { AxiosResponse, AxiosError } from 'axios'
 
 import * as CountriesService from '@/services/CountriesService'
@@ -13,7 +13,7 @@ export const useCountriesStore = defineStore('countries', () => {
   /* -------------------------------------------------------------------------- */
   /*                                 API states                                 */
   /* -------------------------------------------------------------------------- */
-  const { INIT, PENDING, ERROR, SUCCESS } = ApiState
+  const { INIT, PENDING, ERROR, SUCCESS } = ApiStatus
 
   /* -------------------------------------------------------------------------- */
   /*                                    STATE                                   */
@@ -38,15 +38,15 @@ export const useCountriesStore = defineStore('countries', () => {
     regionFilterOption.value = option
   }
 
-  function setFetchCountriesStatus(status: ApiState) {
+  function setFetchCountriesStatus(status: ApiStatus) {
     fetchCountriesStatus.value = status
   }
 
-  function setFetchBorderCountriesStatus(status: ApiState) {
+  function setFetchBorderCountriesStatus(status: ApiStatus) {
     fetchBorderCountriesStatus.value = status
   }
 
-  function setFetchCountryDetailsStatus(status: ApiState) {
+  function setFetchCountryDetailsStatus(status: ApiStatus) {
     fetchCountryDetailsStatus.value = status
   }
 
@@ -61,7 +61,7 @@ export const useCountriesStore = defineStore('countries', () => {
     ...args: any
   ): Promise<any> {
     let service: (...args: any) => Promise<AxiosResponse>
-    let setStatus: (status: ApiState) => void
+    let setStatus: (status: ApiStatus) => void
     let setData: (data: any, ...args: any) => void
 
     switch (resource) {

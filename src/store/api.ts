@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-import { ApiState } from '@/enums'
+import { ApiStatus } from '@/constants/appConstants'
 
 export const useApiStore = defineStore('api', () => {
-  const { INIT } = ApiState
+  const { INIT } = ApiStatus
 
   /* ---------------------------------------------------------------- */
   //                              STATE
@@ -19,7 +19,7 @@ export const useApiStore = defineStore('api', () => {
   //                              ACTIONS
   /* ---------------------------------------------------------------- */
 
-  function setApiState(payload: ApiState): void {
+  function setApiState(payload: ApiStatus): void {
     apiState.value = payload
   }
 

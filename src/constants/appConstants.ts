@@ -1,3 +1,11 @@
+/* Creating a type that can be used to check the state of the API. */
+export enum ApiStatus {
+  INIT,
+  PENDING,
+  SUCCESS,
+  ERROR,
+}
+
 /* Creating query strings that will be used to get the fields that we want from the API. */
 
 export const COUNTRY_CARD_FIELDS_QUERY =
