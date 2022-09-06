@@ -20,13 +20,11 @@
   padding: 0.375rem 0;
 
   & a {
-    $color: rgb(24, 24, 129);
-    color: $color;
+    color: var($--theme-footer-link-color);
     transition: color 0.2s ease;
 
     &:hover {
-      $hover-color: lighten($color, 30%);
-      color: $hover-color;
+      color: var($--theme-footer-hover-color);
     }
   }
 }

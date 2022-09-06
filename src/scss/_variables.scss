@@ -12,6 +12,8 @@ $--theme-hover-color: --theme-hover-color;
 $--theme-angle-icon-color: --angle-icon-color;
 $--theme-scroll-chevron-color: --theme-scroll-chevron-color;
 $--theme-scroll-bg-color: --theme-scroll-bg-color;
+$--theme-footer-link-color: --theme-footer-link-color;
+$--theme-footer-hover-color: --theme-footer-hover-color;
 
 /* ------------------------------- Light Theme ------------------------------ */
 
@@ -27,6 +29,9 @@ $theme-map-light: (
 
     $--theme-scroll-chevron-color: white,
     $--theme-scroll-bg-color: black,
+
+    $--theme-footer-link-color: rgb(24, 24, 129),
+    $--theme-footer-hover-color: lighten(rgb(24, 24, 129), 30%),
 );
 
 /* ------------------------------- Dark Theme ------------------------------- */
@@ -43,6 +48,9 @@ $theme-map-dark: (
 
     $--theme-scroll-chevron-color: white,
     $--theme-scroll-bg-color: hsl(209deg, 23%, 22%),
+
+    $--theme-footer-link-color: rgb(148, 148, 245),
+    $--theme-footer-hover-color: darken(rgb(148, 148, 245), 10%),
 );
 
 /* ------------------------------- Experimental Theme ------------------------------- */
@@ -59,6 +67,9 @@ $theme-map-experimental: (
 
     $--theme-scroll-chevron-color: white,
     $--theme-scroll-bg-color: #1C0C5B,
+
+    $--theme-footer-link-color: rgb(24, 24, 129),
+    $--theme-footer-hover-color: lighten(rgb(24, 24, 129), 30%),
 );
     
 $white: hsl(0deg, 0%, 100%);
