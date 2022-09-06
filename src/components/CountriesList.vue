@@ -6,11 +6,12 @@
     name="fade"
     appear
   >
-    <CountryCard
+    <CountriesListItem
       v-for="(country, index) in store.getSortedCountries"
-      v-bind="{ country: country }"
       :key="index"
-    />
+    >
+      <CountryCard v-bind="{ country: country }" />
+    </CountriesListItem>
   </TransitionGroup>
   <!-- Mensagem de resultado não encontrado -->
   <p class="not-found" v-if="store.fetchCountriesStatusError">
@@ -21,6 +22,7 @@
 
 <script setup>
 import CountryCard from '@/components/CountryCard.vue'
+import CountriesListItem from '@/components/CountriesListItem.vue'
 import { useCountriesStore } from '@/store/countries'
 
 const store = useCountriesStore()

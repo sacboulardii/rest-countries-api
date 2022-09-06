@@ -5,39 +5,34 @@ import { DetailFields } from '@/types/CountryFields'
  * @desc Encapsulates reusable logic for accessing country objects properties
  * @returns A bunch of computed properties that are derived from the country data
  */
-export default function useCountryData(props: { country: DetailFields }): {
+export default function useCountryData(country: any): {
   [key: string]: Ref<string>
 } {
-  const getName = computed(() => props.country.name.common)
-  const getImage = computed(() => props.country.flags.svg)
-  const getRegion = computed(() => props.country.region)
-  const getSubRegion = computed(() => props.country.subregion)
-  const getCapital = computed(
-    () => props.country.capital && props.country.capital[0]
-  )
+  console.log(country.name)
+  const getName = computed(() => country.name.common)
+  const getImage = computed(() => country.flags.svg)
+  const getRegion = computed(() => country.region)
+  const getSubRegion = computed(() => country.subregion)
+  const getCapital = computed(() => country.capital && country.capital[0])
   const getTopLevelDomain = computed(
-    () => props.country.tld && props.country.tld.join(', ')
+    () => country.tld && country.tld.join(', ')
   )
 
   const getPopulation = computed(
     () =>
-      (props.country.population &&
-        props.country.population.toLocaleString('en-US')) ||
-      '0'
+      (country.population && country.population.toLocaleString('en-US')) || '0'
   )
 
   const getLanguages = computed(
-    () =>
-      props.country.languages &&
-      Object.values(props.country.languages).join(', ')
+    () => country.languages && Object.values(country.languages).join(', ')
   )
 
   const getNativeName = computed(
     () =>
-      props.country.name.nativeName &&
+      country.name.nativeName &&
       [
         ...new Set(
-          Object.values(props.country.name.nativeName).map(
+          Object.values(country.name.nativeName).map(
             (nativeName: any) => nativeName.common
           )
         ),
@@ -46,8 +41,8 @@ export default function useCountryData(props: { country: DetailFields }): {
 
   const getCurrencies = computed(
     () =>
-      props.country.currencies &&
-      Object.values(props.country.currencies)
+      country.currencies &&
+      Object.values(country.currencies)
         .map((currency: any) => currency.name)
         .join(', ')
   )

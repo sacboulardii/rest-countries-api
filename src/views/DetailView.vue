@@ -6,7 +6,7 @@
     <transition name="fade">
       <CountryDetails
         v-if="store.fetchDetailsStatusSuccess"
-        v-bind="{ country: store.getCountryDetails }"
+        :country="{ country: store.getCountryDetails }"
       />
     </transition>
   </main>

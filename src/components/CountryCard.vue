@@ -1,37 +1,35 @@
 <template>
-  <li class="countries-results__item">
-    <router-link :to="{ name: 'detail', params: { countryName: getName } }">
-      <div class="card">
-        <figure class="card__figure">
-          <img :src="getImage" class="card__image" :alt="getName + ' Flag'" />
-        </figure>
+  <router-link :to="{ name: 'detail', params: { countryName: getName } }">
+    <div class="card">
+      <figure class="card__figure">
+        <img :src="getImage" class="card__image" :alt="getName + ' Flag'" />
+      </figure>
 
-        <div class="card__description">
-          <h3 class="card__name">
-            {{ getName || 'None' }}
-          </h3>
-          <p class="card__field">
-            Population:
-            <span class="card__data">
-              {{ getPopulation }}
-            </span>
-          </p>
-          <p class="card__field">
-            Region:
-            <span class="card__data">
-              {{ getRegion || 'None' }}
-            </span>
-          </p>
-          <p class="card__field">
-            Capital:
-            <span class="card__data">
-              {{ getCapital || 'None' }}
-            </span>
-          </p>
-        </div>
+      <div class="card__description">
+        <h3 class="card__name">
+          {{ getName || 'None' }}
+        </h3>
+        <p class="card__field">
+          Population:
+          <span class="card__data">
+            {{ getPopulation }}
+          </span>
+        </p>
+        <p class="card__field">
+          Region:
+          <span class="card__data">
+            {{ getRegion || 'None' }}
+          </span>
+        </p>
+        <p class="card__field">
+          Capital:
+          <span class="card__data">
+            {{ getCapital || 'None' }}
+          </span>
+        </p>
       </div>
-    </router-link>
-  </li>
+    </div>
+  </router-link>
 </template>
 
 <script setup lang="ts">
