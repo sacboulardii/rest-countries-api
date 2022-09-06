@@ -6,6 +6,16 @@ export enum ApiStatus {
   ERROR,
 }
 
+export enum RegionFilterOption {
+  ALL = 'All',
+  AFRICA = 'Africa',
+  AMERICAS = 'Americas',
+  ASIA = 'Asia',
+  EUROPE = 'Europe',
+  OCEANIA = 'Oceania',
+  ANTARCTIC = 'Antarctic',
+}
+
 /* Creating query strings that will be used to get the fields that we want from the API. */
 
 export const COUNTRY_CARD_FIELDS_QUERY =
