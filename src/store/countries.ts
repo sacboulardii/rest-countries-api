@@ -118,6 +118,7 @@ export const useCountriesStore = defineStore('countries', () => {
   }
 
   function fetchCountriesByRegion(region: string): void {
+    setRegionFilterOption(region)
     fetchCountriesResource('region', region)
   }
 
