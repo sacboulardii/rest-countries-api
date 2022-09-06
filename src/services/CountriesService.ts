@@ -6,7 +6,12 @@ import {
   COUNTRY_DETAILS_FIELDS_QUERY,
 } from '@/constants/appConstants'
 
-const responseBody = (response: AxiosResponse) => response.data
+const URLS: { [key: string]: string } = {
+  fetchAllUrl: '/all',
+  fetchByNameUrl: '/name/',
+  fetchByCodeList: '/alpha?codes=',
+  fetchByRegionUrl: '/region/',
+}
 
 export default {
   /* Fetching all the countries from the API. */
