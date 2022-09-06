@@ -54,7 +54,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { defineProps, Ref } from 'vue'
 import useCountryData from '@/composables/countryData'
 import { DetailFields } from '@/types/CountryFields'
@@ -75,7 +75,73 @@ const {
   getTopLevelDomain,
   getCurrencies,
   getLanguages,
-}: { [key: string]: Ref<string> } = useCountryData(props)
+}: { [key: string]: Ref<string> } = useCountryData(props.country)
 </script>
 
-<style></style>
+<style lang="scss">
+.country-details {
+  &__description {
+    display: grid;
+    grid-area: description;
+
+    @media (min-width: 768px) {
+      padding-top: 1rem;
+      row-gap: 1.5rem;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 3fr;
+    }
+
+    @media (min-width: 1024px) {
+      padding-top: 2rem;
+    }
+
+    font-size: $font-sm;
+  }
+
+  &__name {
+    align-self: flex-end;
+  }
+
+  &__fields {
+    margin-top: 2rem;
+
+    @media (min-width: 520px) {
+      display: grid;
+      grid-gap: 0 3rem;
+      grid-template:
+        'main-fields other-fields'
+        / 1fr 1fr;
+    }
+
+    @media (min-width: 1440px) {
+      grid-column-gap: 2rem;
+    }
+  }
+
+  &__main-fields {
+    grid-area: main-fields;
+  }
+
+  &__other-fields {
+    grid-area: other-fields;
+
+    margin-top: 3rem;
+
+    @media (min-width: 520px) {
+      margin-top: 0;
+    }
+  }
+
+  &__field {
+    font-weight: $fw-600;
+
+    & + & {
+      margin-top: 1rem;
+    }
+  }
+
+  &__data {
+    font-weight: $fw-300;
+  }
+}
+</style>

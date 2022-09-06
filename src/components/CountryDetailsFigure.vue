@@ -12,7 +12,7 @@
 import { defineProps, Ref } from 'vue'
 import useCountryData from '@/composables/countryData'
 
-import DetailFields from '@/types/CountryFields'
+import { DetailFields } from '@/types/CountryFields'
 
 interface Props {
   country: DetailFields
@@ -25,4 +25,19 @@ const { getName, getImage }: { [key: string]: Ref<string> } = useCountryData(
 )
 </script>
 
-<style></style>
+<style lang="scss">
+.country-details {
+  &__figure {
+    grid-area: figure;
+    align-self: flex-start;
+  }
+
+  &__image {
+    border-radius: $border-radius;
+    display: block;
+    object-fit: contain;
+    height: 100%;
+    max-height: 450px;
+  }
+}
+</style>
