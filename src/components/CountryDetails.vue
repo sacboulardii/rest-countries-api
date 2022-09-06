@@ -73,7 +73,7 @@
 </template>
 
 <script setup lang="ts">
-import useCountryData from '@/use/country-data'
+import useCountryData from '@/composables/countryData'
 import BorderCountriesList from './BorderCountriesList.vue'
 
 import { defineProps, Ref } from 'vue'

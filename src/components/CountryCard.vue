@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import useCountryData from '@/use/country-data'
+import useCountryData from '@/composables/countryData'
 import { defineProps, Ref } from 'vue'
 import { DetailFields } from '@/types/CountryFields'
 
