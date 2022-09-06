@@ -91,7 +91,6 @@ export function makeServer({ environment = 'development' } = {}) {
         )
 
         if (!borderCountries.length) throw 'Error'
-        console.log(borderCountries)
 
         return borderCountries
       })
