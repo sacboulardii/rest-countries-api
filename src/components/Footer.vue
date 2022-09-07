@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer" v-once>
     Challenge by
     <a target="blank" href="https://www.frontendmentor.io">Frontend Mentor</a>.
     Coded by

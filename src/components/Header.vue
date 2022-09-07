@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" v-once>
     <div class="header__inner container">
       <router-link :to="{ name: 'home', params: { clear: true } }">
         <h1 class="header__title title">Where in the world?</h1>
