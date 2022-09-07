@@ -12,7 +12,7 @@
         <p class="card__field">
           Population:
           <span class="card__data">
-            {{ getPopulation }}
+            {{ populationFormatter(getPopulation) }}
           </span>
         </p>
         <p class="card__field">
@@ -34,6 +34,7 @@
 
 <script setup lang="ts">
 import useCountryData from '@/composables/countryData'
+import populationFormatter from '@/components/helpers/populationFormatter'
 import { defineProps, Ref } from 'vue'
 import { DetailFields } from '@/types/CountryFields'
 
