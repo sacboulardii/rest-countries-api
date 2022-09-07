@@ -1,46 +1,48 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
-import NotFound from '@/views/HomeView.vue'
-import DetailView from '@/views/DetailView.vue'
+
+const loadView = (path: string) => {
+  return () =>
+    import(/* webpackChunkName: "view-[request]" */ `@/views/${path}.vue`)
+}
 
 const routes: Array<RouteRecordRaw> = [
   // Default route: fetch all countries
   {
     path: '/',
     name: 'home',
-    component: HomeView,
+    component: loadView('HomeView'),
     props: true,
   },
   // Detail route: fetch country details
   {
     path: '/details/:countryName',
     name: 'detail',
-    component: DetailView,
+    component: loadView('DetailView'),
     props: true,
   },
   // Filter route: fetch countries by region
   {
     path: '/region/:region',
     name: 'region',
-    component: HomeView,
+    component: loadView('HomeView'),
   },
   // Search route: fetch countries matching the search query
   {
     path: '/search/:search',
     name: 'search',
-    component: HomeView,
+    component: loadView('HomeView'),
   },
   // Catch all route: catch invalid path
   {
     path: '/:catchAll(.*)',
     name: 'NotFound',
-    component: NotFound,
+    component: loadView('NotFound'),
   },
   // 404 route: resource not found error
   {
     path: '/404/:resource',
     name: '404Resource',
-    component: NotFound,
+    component: loadView('NotFound'),
     props: true,
   },
 ]
