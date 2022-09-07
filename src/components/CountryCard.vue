@@ -6,9 +6,9 @@
       </figure>
 
       <div class="card__description">
-        <h3 class="card__name">
+        <h2 class="card__name">
           {{ getName || 'None' }}
-        </h3>
+        </h2>
         <p class="card__field">
           Population:
           <span class="card__data">
