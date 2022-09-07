@@ -120,6 +120,10 @@ const {
         / 1fr 1fr;
     }
 
+    @media (min-width: 1024px) {
+      margin-top: 0;
+    }
+
     @media (min-width: 1440px) {
       grid-column-gap: 2rem;
     }
