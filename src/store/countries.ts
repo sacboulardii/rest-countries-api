@@ -11,7 +11,7 @@ import sortCountries from '@/helpers/sortCountries'
 
 export const useCountriesStore = defineStore('countries', () => {
   /* -------------------------------------------------------------------------- */
-  /*                                 API states                                 */
+  /*                                 API Statuses                               */
   /* -------------------------------------------------------------------------- */
   const { INIT, PENDING, ERROR, SUCCESS } = ApiStatus
 
