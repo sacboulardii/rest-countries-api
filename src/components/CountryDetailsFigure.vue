@@ -35,9 +35,13 @@ const { getName, getImage }: { [key: string]: Ref<string> } = useCountryData(
   &__image {
     border-radius: $border-radius;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
     height: 100%;
     max-height: 450px;
+
+    @media (min-width: 768px) {
+      min-height: 400px;
+    }
   }
 }
 </style>
