@@ -21,6 +21,8 @@ export const fetchByName = (name: string) => {
 }
 
 export const fetchByRegion = (region: string) => {
+  if (region === 'All') return fetchAll()
+
   return http.get(URLS.fetchByRegionUrl + region + COUNTRY_CARD_FIELDS_QUERY)
 }
 
