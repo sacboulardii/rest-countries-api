@@ -19,8 +19,8 @@ import ThemeToggler from '@/components/ThemeToggler.vue'
 
   box-shadow: 0px 2px 4px 0px rgba(0, 0%, 0%, 0.075);
 
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 
   position: relative;
   z-index: 10;
